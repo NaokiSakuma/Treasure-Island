@@ -1,4 +1,5 @@
-# Created by https://www.gitignore.io/api/unity,xcode,macos,windows,visualstudio
+
+# Created by https://www.gitignore.io/api/unity,xcode,macos,windows,visualstudio,visualstudiocode
 
 ### macOS ###
 *.DS_Store
@@ -62,6 +63,14 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history
 
 ### Windows ###
 # Windows thumbnail cache files
@@ -407,4 +416,4 @@ __pycache__/
 # should be stored in the .pubxml.user file.
 
 
-# End of https://www.gitignore.io/api/unity,xcode,macos,windows,visualstudio
+# End of https://www.gitignore.io/api/unity,xcode,macos,windows,visualstudio,visualstudiocode
