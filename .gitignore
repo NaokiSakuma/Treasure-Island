@@ -34,6 +34,8 @@ Temporary Items
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
+/[Uu]nityPackageManager/
+
 /Assets/AssetStoreTools*
 /Assets/Plugins/UniRx*
 /Assets/Demigiant/DOTween*
