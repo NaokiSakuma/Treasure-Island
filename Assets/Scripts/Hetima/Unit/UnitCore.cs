@@ -84,4 +84,38 @@ public class UnitCore : MonoBehaviour {
 			.Timer(TimeSpan.FromSeconds(1))
 			.Subscribe(x => _stateProcessor.State = _stateIdle);
 	}
+
+	/// <summary>
+	/// 一番近くにいる敵を取得
+	/// </summary>
+	/// <returns>一番近くにいる敵、いない場合はnull</returns>
+	/// <param name="range">索敵範囲</param>
+	GameObject GetNearestEnemy(float range) {
+		// 一番近い敵
+		GameObject nearestEnemy = null;
+		// 一番近い距離
+		float minDis = range;
+		// 範囲内のコライダーのついているオブジェクトを全て探す
+		Collider[] targets = Physics.OverlapSphere(transform.position, range);
+
+		foreach (Collider target in targets) {
+			// ユニットかどうかを判別する
+			var core = target.GetComponent<UnitCore>();
+			// ユニットでない
+			// 生きている
+			// 自分と所属している陣営が違う
+			if (core == null || core.Health.Value < 0 || core.Team != this.Team) {
+				continue;
+			}
+			// 対象との距離を求める
+			float dis = Vector3.Distance(transform.position, target.transform.position);
+			// 最小距離を更新していたら対象を最小距離として
+			if (dis < minDis) {
+				minDis = dis;
+				nearestEnemy = target.gameObject;
+			}
+		}
+
+		return nearestEnemy;
+	}
 }
