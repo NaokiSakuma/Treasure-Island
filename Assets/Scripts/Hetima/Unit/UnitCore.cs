@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using UniRx.Triggers;
+using UnitState;
+using System;
 
 public class UnitCore : MonoBehaviour {
 
@@ -18,9 +21,9 @@ public class UnitCore : MonoBehaviour {
 	}
 
 	// 攻撃力
-	private int _attack = 1;
-	public int Attack{
-		get { return _attack; }
+	private int _strength = 1;
+	public int Strength{
+		get { return _strength; }
 	}
 
 	// 所属陣営
@@ -31,7 +34,54 @@ public class UnitCore : MonoBehaviour {
 		get { return _team; }
 	}
 
+	// ステート
+	private ReactiveProperty<UnitState.UnitState> _state = new ReactiveProperty<UnitState.UnitState>(new UnitStateDefault());
+	public ReactiveProperty<UnitState.UnitState> State{
+		get { return _state; }
+	}
+
+	private StateProcessor _stateProcessor = new StateProcessor();
+	private UnitStateIdle _stateIdle = new UnitStateIdle();
+	private UnitStateAttack _stateAttack = new UnitStateAttack();
+
 	// Use this for initialization
 	void Start () {
+		// ステートの設定
+		_stateProcessor.State = _stateIdle;
+		_stateIdle.execDelegate = Idle;
+		_stateAttack.execDelegate = Attack;
+
+		// ステートの更新
+		this.UpdateAsObservable()
+		    .Where(_ => _stateProcessor.State != null)
+		    .Subscribe(_ => {
+				_stateProcessor.Execute();
+		});
+
+		// ステートが変わった時
+		_state.ObserveEveryValueChanged(_ => true)
+		      .Subscribe(_ => {
+				// TODO: Enter実装
+				//_stateProcessor.Enter();
+		});
+	}
+
+
+	public void Idle(){
+		// 待機ステート
+		Debug.Log(_stateIdle.GetStateName());
+		//１秒後に状態遷移
+		Observable
+			.Timer(TimeSpan.FromSeconds(1))
+			.Subscribe(x => _stateProcessor.State = _stateAttack);
+	}
+
+	public void Attack(){
+		// 待機ステート
+		Debug.Log(_stateAttack.GetStateName());
+		//１秒後に状態遷移
+		Observable
+			.Timer(TimeSpan.FromSeconds(1))
+			.Subscribe(x => _stateProcessor.State = _stateIdle);
 	}
 }
