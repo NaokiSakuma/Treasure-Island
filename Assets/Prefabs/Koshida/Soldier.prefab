@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33184346295236452}
   - component: {fileID: 136939680192001658}
   - component: {fileID: 23729748123702042}
-  - component: {fileID: 114768362194297994}
+  - component: {fileID: 114819164532961828}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7513869f9d898a046923306ce82bc017, type: 2}
+  - {fileID: 2100000, guid: 7baecfb0e3c80b94aa39734b7265d2f3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1095874768981164}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114768362194297994
+--- !u!114 &114819164532961828
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1095874768981164}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12da6ccb952601442b3abc103ca8d9c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ba79d4aae3f20c4893c5418eda79aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!136 &136939680192001658

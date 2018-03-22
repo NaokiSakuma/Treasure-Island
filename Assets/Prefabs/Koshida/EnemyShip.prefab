@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65975264815569080}
   - component: {fileID: 23738867186663718}
   - component: {fileID: 195948129631761748}
-  - component: {fileID: 114779312705352460}
+  - component: {fileID: 114427802214238884}
   m_Layer: 0
   m_Name: EnemyShip
   m_TagString: Untagged
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114779312705352460
+--- !u!114 &114427802214238884
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -105,11 +105,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1846408906313658}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d84da6b610a314e86e561fae7c5fd9, type: 3}
+  m_Script: {fileID: 11500000, guid: fa968002bc581c243b0bbf1ad4c07e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 1095874768981164, guid: 97a97cfe6c702644eacfccf448176387,
-    type: 2}
+  _enemyPrefab: {fileID: 0}
   _target: {fileID: 0}
   _isRideRP:
     value: 0
