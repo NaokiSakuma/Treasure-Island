@@ -8,10 +8,11 @@ using DG.Tweening;
 [RequireComponent(typeof(UnitCore))]
 public class UnitMover : MonoBehaviour {
 
+	UnitCore _core;
+
 	// TODO: 正しい値に変更
 	[SerializeField]
-	private float _moveSpeed = 2.0f;
-	UnitCore _core;
+	private float _moveSpeed = 0.5f;
 
 	// 近づく限界距離
 	[SerializeField]
@@ -29,12 +30,21 @@ public class UnitMover : MonoBehaviour {
 	void Start() {
 		_core = GetComponent<UnitCore>();
 
+		// 移動中かどうかを更新する
 		this.UpdateAsObservable()
+		    // TODO: 比較が大丈夫なのかちょっと不安
+			.Select(_ => _velocity != Vector3.zero)
+			.Subscribe(x => _isMoving.SetValueAndForceNotify(x));
+
+		// 移動
+		this.UpdateAsObservable()
+		    .Where(_ => _isMoving.Value)
 			.Subscribe(_ => {
 				// 移動
 				transform.position += _velocity;
 			});
 
+		_isMoving.Subscribe(x => Debug.Log(x ? "move" : "stop"));
 	}
 
 	/// <summary>

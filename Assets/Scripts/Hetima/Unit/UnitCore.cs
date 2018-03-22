@@ -8,25 +8,61 @@ using System;
 
 [RequireComponent(typeof(UnitMover))]
 public class UnitCore : MonoBehaviour {
+	 
+	// TODO: データを持つ場所はもう少し考えたほうがいいと思う
+
+	// 最大体力
+	[SerializeField]
+	private IntReactiveProperty _maxHealth = new IntReactiveProperty(10);
+	public IntReactiveProperty MaxHealth{
+		get { return _maxHealth; }
+	}
 
 	// 体力
 	[SerializeField]
-	private IntReactiveProperty _health = new IntReactiveProperty(1);
-	public IntReactiveProperty Health {
+	private int _health = 1;
+	public int Health {
 		get { return _health; }
 		set {
 			_health = value;
-			if (_health.Value <= 0) {
-				_health.Value = 0;
+			if (_health < 0) {
+				_health = 0;
 			}
 		}
 	}
 
 	// 攻撃力
-	private int _strength = 1;
+	private int _strength = 10;
 	public int Strength{
 		get { return _strength; }
 	}
+
+	// 攻撃速度
+	private float _attackSpeed = 1.0f;
+	public float AttackSpeed{
+		get { return _attackSpeed; }
+	}
+
+	// 攻撃が届く距離
+	private float _attackReach = 2.0f;
+	public float AttackReach{
+		get { return _attackReach; }
+	}
+
+	// 索敵範囲
+	private float _searchRange = 10.0f;
+	public float SearchRange{
+		get { return _searchRange; }
+	}
+
+	// 移動速度
+	private float _moveSpeed = 0.5f;
+	public float MoveSpeed{
+		get { return _moveSpeed; }
+	}
+
+	// 大きさ
+	// TODO:整数か少数か不明なので保留
 
 	// 所属陣営
 	// TODO: ひとまずint
@@ -55,6 +91,9 @@ public class UnitCore : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		// HPの初期値は最大HPにしておく
+		_health = MaxHealth.Value;
+
 		// ステートの設定
 		_stateProcessor.State = _stateIdle;
 		_stateIdle.execDelegate = Idle;
@@ -67,6 +106,20 @@ public class UnitCore : MonoBehaviour {
 		    .Subscribe(_ => {
 				_stateProcessor.Execute();
 		});
+
+		// ダメージを受けた時
+		this.ObserveEveryValueChanged(_ => Health)
+			.Subscribe(x => {
+				var textMesh = GetComponentInChildren<TextMesh>();
+				textMesh.text = x.ToString() + "/" + MaxHealth.Value.ToString();
+			});
+
+		// HPが0になったら死亡ステートに変更
+		this.ObserveEveryValueChanged(_ => Health)
+		    .Where(x => x <= 0)
+			.Subscribe(_ => {
+				_stateProcessor.State = _stateDead;
+			});
 	}
 
 	public void Idle(){
@@ -86,8 +139,8 @@ public class UnitCore : MonoBehaviour {
 		Debug.Log(_stateAttack.GetStateName());
 
 		// ターゲットが死んでいたら
-		if(_target.GetComponent<UnitCore>().Health.Value <= 0){
-			_stateProcessor.State = _stateDead;
+		if(_target.GetComponent<UnitCore>().Health <= 0){
+			_stateProcessor.State = _stateIdle;
 		}
 
 		transform.GetComponent<UnitMover>().MoveToNearestEnemy();
@@ -117,7 +170,7 @@ public class UnitCore : MonoBehaviour {
 			// ユニットでない
 			// 生きている
 			// 自分と所属している陣営が違う
-			if (core == null || core.Health.Value < 0 || core.Team == this.Team) {
+			if (core == null || core.Health < 0 || core.Team == this.Team) {
 				continue;
 			}
 			// 対象との距離を求める
