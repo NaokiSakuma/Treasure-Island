@@ -53,18 +53,24 @@ namespace GucchiCS
             {
                 GameObject hit = GetHitObject();
 
-                if (hit && hit.GetComponent<IUnit>() != null)
-                {
-                    // ユニットの場合
-                    if (hit.GetComponent<Unit>() != null)
-                    {
-                        Unit unit = hit.GetComponent<Unit>();
+                // nullチェック
+                if (hit == null)
+                    return;
 
-                        if (!unit.IsClutched)
-                        {
-                            _unitList.Add(unit);
-                            unit.IsClutched = true;
-                        }
+                // つかめるオブジェクトでないとき
+                if (hit.GetComponent<IUnit>() == null)
+                    return;
+
+                // ユニットの場合
+                if (hit.GetComponent<Unit>() != null)
+                {
+                    Unit unit = hit.GetComponent<Unit>();
+
+                    // まだつかまれていないユニットだったら
+                    if (!unit.IsClutched)
+                    {
+                        _unitList.Add(unit);
+                        unit.IsClutched = true;
                     }
                 }
             }
