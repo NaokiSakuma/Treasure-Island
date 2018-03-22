@@ -27,9 +27,6 @@ public class MoveMap : MonoBehaviour {
         mousePos.z = mouseZpos;
         var mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
         var mouseviewPos = Camera.main.WorldToViewportPoint(mouseWorldPos);
-        print("左下のワールド座標" + Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 10)));
-        print("右上のワールド座標" + Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 10)));
-
         // 拡縮
         float scroll = -Input.GetAxis("Mouse ScrollWheel");
         transform.position += new Vector3(0, scroll * scrollSpeed, 0);
