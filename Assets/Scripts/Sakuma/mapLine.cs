@@ -18,10 +18,10 @@ public class mapLine : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        var worldDownLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 10));
-        var worldDownRight = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, 10));
-        var worldTopLeft = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 10));
-        var worldTopRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 10));
+        var worldDownLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.transform.position.y));
+        var worldDownRight = Camera.main.ViewportToWorldPoint(new Vector3(0, 1, Camera.main.transform.position.y));
+        var worldTopLeft = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, Camera.main.transform.position.y));
+        var worldTopRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.transform.position.y));
 
         //print("左下のワールド座標" + camera.ViewportToWorldPoint(new Vector3(0, 0, 0)));
         //print("右上のワールド座標" + camera.ViewportToWorldPoint(new Vector3(1, 1, 0)));
@@ -36,6 +36,10 @@ public class mapLine : MonoBehaviour {
         points[1] = worldDownRight;
         points[2] = worldTopRight;
         points[3] = worldTopLeft;
+        for(int i=0; i<lineNum; i++)
+        {
+            points[i].y = points[1].y;
+        }
         lineRenderer.SetPositions(points);
     }
 }

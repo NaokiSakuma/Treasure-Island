@@ -17,7 +17,7 @@ public class minimap : MonoBehaviour {
 	void Update () {
         // あとで修正（継承かインターフェイス）
         var mousePos = Input.mousePosition;
-        const int mouseZpos = 10;
+        float mouseZpos = Camera.main.transform.position.y;
         mousePos.z = mouseZpos;
         var mouseWorldPos = minimapCamera.ScreenToWorldPoint(mousePos);
         var mouseviewPos = minimapCamera.WorldToViewportPoint(mouseWorldPos);
@@ -33,7 +33,10 @@ public class minimap : MonoBehaviour {
 
         if(Input.GetMouseButton(0))
         {
-            Camera.main.transform.position = minimapCamera.ViewportToWorldPoint(viewPos);
+            viewPos.z = Camera.main.transform.position.y;
+            Camera.main.transform.position = new Vector3(minimapCamera.ViewportToWorldPoint(viewPos).x,
+                Camera.main.transform.position.y,
+                minimapCamera.ViewportToWorldPoint(viewPos).z);//minimapCamera.ViewportToWorldPoint(viewPos);
         }
     }
 }

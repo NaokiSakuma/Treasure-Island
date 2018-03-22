@@ -23,7 +23,7 @@ public class MoveMap : MonoBehaviour {
 	void Update () {
         // マウスのビューポート座標
         var mousePos = Input.mousePosition;
-        const int mouseZpos = 10;
+        float mouseZpos = transform.position.y;
         mousePos.z = mouseZpos;
         var mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
         var mouseviewPos = Camera.main.WorldToViewportPoint(mouseWorldPos);
