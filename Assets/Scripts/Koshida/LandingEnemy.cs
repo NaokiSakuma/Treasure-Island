@@ -7,19 +7,19 @@ namespace Konji
 {
     public class LandingEnemy : MonoBehaviour
     {
-        private GameObject _nearObj;
+        public Transform _nearObj;
 
-        void Awake()
-        {
-            _nearObj = SerchTag(gameObject, "LandingPoint");
-        }
+        //void Awake()
+        //{
+        //    _nearObj = SerchTag(gameObject, "LandingPoint");
+        //}
 
         // Use this for initialization
         void Start()
         {
             if (_nearObj)
             {
-                gameObject.transform.DOJump(_nearObj.transform.position, 5, 1, 0.8f);
+                gameObject.transform.DOJump(_nearObj.position, 5, 1, 0.8f);
             }
         }
 

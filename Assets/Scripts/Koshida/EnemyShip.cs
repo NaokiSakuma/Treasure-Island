@@ -68,7 +68,10 @@ namespace Konji
                 .Take(_enemyNum)
                 .Subscribe(_ =>
                 {
-                    Instantiate(_enemyPrefab, gameObject.transform.position, Quaternion.identity);
+                    GameObject enemy = Instantiate(_enemyPrefab, gameObject.transform.position, Quaternion.identity);
+                    LandingEnemy le = enemy.GetComponent<LandingEnemy>();
+                    le._nearObj = _target;
+
                 }, () => Debug.Log("End!"))
                 .AddTo(this);
         }
