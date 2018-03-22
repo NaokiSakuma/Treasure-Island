@@ -8,26 +8,55 @@ namespace UnitState{
 		//ステート本体
 		private UnitState _State;
 		public UnitState State {
-			set { _State = value; }
+			set {
+				if(_State != null){
+					_State.Exit();
+				}
+				_State = value;
+				_State.Enter();
+			}
 			get { return _State; }
 		}
-
+		// 入場
+		private void Enter() {
+			State.Enter();
+		}
 		// 実行
 		public void Execute() {
 			State.Execute();
+		}
+		// 退場
+		private void Exit() {
+			State.Exit();
 		}
 	}
 
 	//ステートのクラス
 	public abstract class UnitState {
 		// デリゲート
+		public delegate void enterState();
+		public enterState enterDelegate;
 		public delegate void executeState();
 		public executeState execDelegate;
+		public delegate void exitState();
+		public exitState exitDelegate;
 
+		// 入場処理
+		public virtual void Enter() {
+			if (enterDelegate != null) {
+				enterDelegate();
+			}
+		}
 		// 実行処理
 		public virtual void Execute() {
 			if (execDelegate != null) {
 				execDelegate();
+			}
+		}
+		// 退場処理
+		public virtual void Exit() {
+			if (exitDelegate != null) {
+				exitDelegate();
 			}
 		}
 
@@ -100,6 +129,15 @@ namespace UnitState{
 	public class UnitStateAttack : UnitStateHostility{
 		public override string GetStateName() {
 			return "State:Hostility.Attack";
+		}
+	}
+
+	/// <summary>
+	/// 死亡ステート
+	/// </summary>
+	public class UnitStateDead : UnitState{
+		public override string GetStateName() {
+			return "State:Dead";
 		}
 	}
 }

@@ -6,9 +6,11 @@ using UniRx.Triggers;
 using UnitState;
 using System;
 
+[RequireComponent(typeof(UnitMover))]
 public class UnitCore : MonoBehaviour {
 
 	// 体力
+	[SerializeField]
 	private IntReactiveProperty _health = new IntReactiveProperty(1);
 	public IntReactiveProperty Health {
 		get { return _health; }
@@ -43,6 +45,13 @@ public class UnitCore : MonoBehaviour {
 	private StateProcessor _stateProcessor = new StateProcessor();
 	private UnitStateIdle _stateIdle = new UnitStateIdle();
 	private UnitStateAttack _stateAttack = new UnitStateAttack();
+	private UnitStateDead _stateDead = new UnitStateDead();
+
+	[SerializeField]
+	private UnitCore _target;
+	public UnitCore Target{
+		get { return _target; }
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -50,6 +59,7 @@ public class UnitCore : MonoBehaviour {
 		_stateProcessor.State = _stateIdle;
 		_stateIdle.execDelegate = Idle;
 		_stateAttack.execDelegate = Attack;
+		_stateDead.execDelegate = Dead;
 
 		// ステートの更新
 		this.UpdateAsObservable()
@@ -57,32 +67,35 @@ public class UnitCore : MonoBehaviour {
 		    .Subscribe(_ => {
 				_stateProcessor.Execute();
 		});
-
-		// ステートが変わった時
-		_state.ObserveEveryValueChanged(_ => true)
-		      .Subscribe(_ => {
-				// TODO: Enter実装
-				//_stateProcessor.Enter();
-		});
 	}
-
 
 	public void Idle(){
 		// 待機ステート
 		Debug.Log(_stateIdle.GetStateName());
-		//１秒後に状態遷移
-		Observable
-			.Timer(TimeSpan.FromSeconds(1))
-			.Subscribe(x => _stateProcessor.State = _stateAttack);
+
+		// 近くにいる敵を探す
+		_target = GetNearestEnemy(100.0f);
+		// ターゲットがいたら攻撃フェーズに移行
+		if(_target != null){
+			_stateProcessor.State = _stateAttack;
+		}
 	}
 
 	public void Attack(){
 		// 待機ステート
 		Debug.Log(_stateAttack.GetStateName());
-		//１秒後に状態遷移
-		Observable
-			.Timer(TimeSpan.FromSeconds(1))
-			.Subscribe(x => _stateProcessor.State = _stateIdle);
+
+		// ターゲットが死んでいたら
+		if(_target.GetComponent<UnitCore>().Health.Value <= 0){
+			_stateProcessor.State = _stateDead;
+		}
+
+		transform.GetComponent<UnitMover>().MoveToNearestEnemy();
+	}
+
+	public void Dead(){
+		// 死亡ステート
+		Debug.Log(_stateDead.GetStateName());
 	}
 
 	/// <summary>
@@ -90,9 +103,9 @@ public class UnitCore : MonoBehaviour {
 	/// </summary>
 	/// <returns>一番近くにいる敵、いない場合はnull</returns>
 	/// <param name="range">索敵範囲</param>
-	GameObject GetNearestEnemy(float range) {
+	UnitCore GetNearestEnemy(float range) {
 		// 一番近い敵
-		GameObject nearestEnemy = null;
+		UnitCore nearestEnemy = null;
 		// 一番近い距離
 		float minDis = range;
 		// 範囲内のコライダーのついているオブジェクトを全て探す
@@ -104,7 +117,7 @@ public class UnitCore : MonoBehaviour {
 			// ユニットでない
 			// 生きている
 			// 自分と所属している陣営が違う
-			if (core == null || core.Health.Value < 0 || core.Team != this.Team) {
+			if (core == null || core.Health.Value < 0 || core.Team == this.Team) {
 				continue;
 			}
 			// 対象との距離を求める
@@ -112,7 +125,7 @@ public class UnitCore : MonoBehaviour {
 			// 最小距離を更新していたら対象を最小距離として
 			if (dis < minDis) {
 				minDis = dis;
-				nearestEnemy = target.gameObject;
+				nearestEnemy = core;
 			}
 		}
 
