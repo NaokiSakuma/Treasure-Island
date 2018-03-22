@@ -69,8 +69,8 @@ namespace GucchiCS
                     // まだつかまれていないユニットだったら
                     if (!unit.IsClutched)
                     {
+						unit.IsClutched = true;
                         _unitList.Add(unit);
-                        unit.IsClutched = true;
                     }
                 }
             }
@@ -85,28 +85,29 @@ namespace GucchiCS
         void UncatchMode()
         {
             // 左クリック
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 GameObject hit = GetHitObject(_islandLayer);
                 if (hit && hit.GetComponent<IGround>() != null)
                 {
+                    foreach (Unit unit in _unitList)
+                    {
+                        unit.IsClutched = false;
+                    }
+
 					_unitList.Clear();
                 }
             }
             // 右クリック
-            if (Input.GetMouseButtonDown(1))
+            else if (Input.GetMouseButtonDown(1))
             {
                 GameObject hit = GetHitObject(_islandLayer);
 
                 if (hit && hit.GetComponent<IGround>() != null)
                 {
+                    _unitList[0].IsClutched = false;
                     _unitList.RemoveAt(0);
                 }
-            }
-
-            if (GetUnitNum == 0)
-            {
-                _catchMode = true;
             }
         }
 
@@ -131,6 +132,12 @@ namespace GucchiCS
         // 神の手に追従
         void FollowHand()
         {
+            if (GetUnitNum == 0)
+            {
+                _catchMode = true;
+                return;
+            }
+
             foreach (Unit unit in _unitList)
             {
                 // 自身の座標をスクリーン座標に変換
@@ -155,6 +162,8 @@ namespace GucchiCS
                 return _unitList.Count;
             }
         }
+
+        // 
 
         // つかんでいるユニット数テキストを更新
         //void UpdateSeizeNumText()
