@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 166030216}
   - component: {fileID: 166030215}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -379,7 +379,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 093d0e92450a24aab89788812005fff7, type: 2}
+  - {fileID: 2100000, guid: a06547593d1994593b9254518139e0cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -441,10 +441,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1144593431}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8609e998d4e4b4c99be1888594e3beb6, type: 3}
+  m_Script: {fileID: 11500000, guid: 84f618ddc1f11455c91a520b77564905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _limitDistance: 2
 --- !u!114 &1144593437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,18 +452,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1144593431}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 980c1328fe429432ab29f3572218b159, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1144593438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1144593431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9d3ad156a7c14c2a9e33183f179f263, type: 3}
+  m_Script: {fileID: 11500000, guid: a7f34ba3e8a6c4e469957914f97b2ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth:
@@ -477,6 +465,18 @@ MonoBehaviour:
   _moveSpeed: 0.5
   _team: 1
   _target: {fileID: 0}
+--- !u!114 &1144593438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1144593431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1ce9247b8684496682702670e5208f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _limitDistance: 2
 --- !u!1 &1451377934
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +509,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b30e0c89cb1324e1c8f123e7fb175a1e, type: 2}
+  - {fileID: 2100000, guid: 8df1be87bfdf443b09217f17cc7746ab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 1584223157}
   - component: {fileID: 1584223156}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: HealthText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -657,10 +657,9 @@ GameObject:
   - component: {fileID: 1713989988}
   - component: {fileID: 1713989987}
   - component: {fileID: 1713989986}
+  - component: {fileID: 1713989992}
   - component: {fileID: 1713989991}
   - component: {fileID: 1713989990}
-  - component: {fileID: 1713989992}
-  - component: {fileID: 1713989993}
   m_Layer: 0
   m_Name: Ally
   m_TagString: Untagged
@@ -682,7 +681,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d6b7e37c303a64ecf93ba504124aea52, type: 2}
+  - {fileID: 2100000, guid: 8e7e58e7a81ba45b2991bbb2d6770f01, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -744,7 +743,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1713989985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 980c1328fe429432ab29f3572218b159, type: 3}
+  m_Script: {fileID: 11500000, guid: 84f618ddc1f11455c91a520b77564905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1713989991
@@ -755,7 +754,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1713989985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9d3ad156a7c14c2a9e33183f179f263, type: 3}
+  m_Script: {fileID: 11500000, guid: d1ce9247b8684496682702670e5208f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _limitDistance: 2
+--- !u!114 &1713989992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1713989985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f34ba3e8a6c4e469957914f97b2ba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth:
@@ -768,26 +779,3 @@ MonoBehaviour:
   _moveSpeed: 0.5
   _team: 0
   _target: {fileID: 0}
---- !u!114 &1713989992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1713989985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8609e998d4e4b4c99be1888594e3beb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _limitDistance: 2
---- !u!114 &1713989993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1713989985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa16fa52c93a24f28a4e5246fe009b72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
