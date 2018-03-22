@@ -25,6 +25,7 @@ public class UnitCore : MonoBehaviour {
 		get { return _health; }
 		set {
 			_health = value;
+			// HPが負の値にならないようにする
 			if (_health < 0) {
 				_health = 0;
 			}
@@ -32,30 +33,35 @@ public class UnitCore : MonoBehaviour {
 	}
 
 	// 攻撃力
-	private int _strength = 10;
+	[SerializeField]
+	private int _strength = 1;
 	public int Strength{
 		get { return _strength; }
 	}
 
 	// 攻撃速度
+	[SerializeField]
 	private float _attackSpeed = 1.0f;
 	public float AttackSpeed{
 		get { return _attackSpeed; }
 	}
 
 	// 攻撃が届く距離
+	[SerializeField]
 	private float _attackReach = 2.0f;
 	public float AttackReach{
 		get { return _attackReach; }
 	}
 
 	// 索敵範囲
+	[SerializeField]
 	private float _searchRange = 10.0f;
 	public float SearchRange{
 		get { return _searchRange; }
 	}
 
 	// 移動速度
+	[SerializeField]
 	private float _moveSpeed = 0.5f;
 	public float MoveSpeed{
 		get { return _moveSpeed; }
@@ -80,6 +86,7 @@ public class UnitCore : MonoBehaviour {
 
 	private StateProcessor _stateProcessor = new StateProcessor();
 	private UnitStateIdle _stateIdle = new UnitStateIdle();
+	private UnitStateHolded _stateHolded = new UnitStateHolded();
 	private UnitStateAttack _stateAttack = new UnitStateAttack();
 	private UnitStateDead _stateDead = new UnitStateDead();
 
@@ -97,6 +104,7 @@ public class UnitCore : MonoBehaviour {
 		// ステートの設定
 		_stateProcessor.State = _stateIdle;
 		_stateIdle.execDelegate = Idle;
+		_stateHolded.execDelegate = Holded;
 		_stateAttack.execDelegate = Attack;
 		_stateDead.execDelegate = Dead;
 
@@ -134,12 +142,20 @@ public class UnitCore : MonoBehaviour {
 		}
 	}
 
+	public void Holded(){
+		// 掴まれているステート
+		Debug.Log(_stateHolded.GetStateName());
+
+
+	}
+
 	public void Attack(){
-		// 待機ステート
+		// 攻撃ステート
 		Debug.Log(_stateAttack.GetStateName());
 
 		// ターゲットが死んでいたら
 		if(_target.GetComponent<UnitCore>().Health <= 0){
+			// 待機ステートにする
 			_stateProcessor.State = _stateIdle;
 		}
 

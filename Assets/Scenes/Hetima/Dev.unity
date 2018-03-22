@@ -444,7 +444,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8609e998d4e4b4c99be1888594e3beb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
   _limitDistance: 2
 --- !u!114 &1144593437
 MonoBehaviour:
@@ -470,8 +469,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth:
     value: 10
-  _health:
-    value: 10
+  _health: 1
+  _strength: 1
+  _attackSpeed: 1
+  _attackReach: 2
+  _searchRange: 10
+  _moveSpeed: 0.5
   _team: 1
   _target: {fileID: 0}
 --- !u!1 &1451377934
@@ -757,8 +760,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth:
     value: 10
-  _health:
-    value: 10
+  _health: 1
+  _strength: 1
+  _attackSpeed: 1
+  _attackReach: 2
+  _searchRange: 10
+  _moveSpeed: 0.5
   _team: 0
   _target: {fileID: 0}
 --- !u!114 &1713989992
@@ -772,7 +779,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8609e998d4e4b4c99be1888594e3beb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
   _limitDistance: 2
 --- !u!114 &1713989993
 MonoBehaviour:

@@ -10,10 +10,6 @@ public class UnitMover : MonoBehaviour {
 
 	UnitCore _core;
 
-	// TODO: 正しい値に変更
-	[SerializeField]
-	private float _moveSpeed = 0.5f;
-
 	// 近づく限界距離
 	[SerializeField]
 	private float _limitDistance = 2.0f;
@@ -43,8 +39,6 @@ public class UnitMover : MonoBehaviour {
 				// 移動
 				transform.position += _velocity;
 			});
-
-		_isMoving.Subscribe(x => Debug.Log(x ? "move" : "stop"));
 	}
 
 	/// <summary>
@@ -62,7 +56,7 @@ public class UnitMover : MonoBehaviour {
 		// ターゲットのほうを向く
 		transform.LookAt(_core.Target.transform.position);
 		if(IsTooNear()){
-			_velocity = transform.forward * _moveSpeed * Time.deltaTime;
+			_velocity = transform.forward * _core.MoveSpeed * Time.deltaTime;
 		}
 		else{
 			_velocity = Vector3.zero;

@@ -73,28 +73,6 @@ namespace UnitState{
 		}
 	}
 
-	////  StateA
-	//public class UnitStateA : UnitState {
-	//	public override string GetStateName() {
-	//		return "State:A";
-	//	}
-	//}
-
-	////  StateB
-	//public class UnitStateB : UnitState {
-	//	public override string GetStateName() {
-	//		return "State:B";
-	//	}
-
-	//	public override void Execute() {
-	//		Debug.Log("特別な処理がある場合は子が処理してもよい");
-	//		if (execDelegate != null) {
-	//			execDelegate();
-	//		}
-	//	}
-	//}
-
-
 	/// <summary>
 	/// ニュートラルステート
 	/// </summary>
@@ -111,6 +89,15 @@ namespace UnitState{
 		// TODO: 徘徊ステートになるかも
 		public override string GetStateName() {
 			return "State:Neutral.Idle";
+		}
+	}
+
+	/// <summary>
+	/// 掴まれている
+	/// </summary>
+	public class UnitStateHolded : UnitStateNeutral {
+		public override string GetStateName() {
+			return "State:Neutral.Holded";
 		}
 	}
 
