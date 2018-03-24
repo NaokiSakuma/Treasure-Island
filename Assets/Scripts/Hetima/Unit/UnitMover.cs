@@ -27,9 +27,9 @@ public class UnitMover : MonoBehaviour {
 
 		// 移動中かどうかを更新する
 		this.UpdateAsObservable()
-		    // TODO: 比較が大丈夫なのかちょっと不安
-			.Select(_ => _velocity != Vector3.zero)
-			.Subscribe(x => _isMoving.SetValueAndForceNotify(x));
+		    // ターゲットがいなくなったら停止
+		    .Select(x => _core.Target != null)
+		    .Subscribe(x => _isMoving.SetValueAndForceNotify(x));
 
 		// 移動
 		this.UpdateAsObservable()
