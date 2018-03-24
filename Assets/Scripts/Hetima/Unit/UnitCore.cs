@@ -101,12 +101,17 @@ public class UnitCore : MonoBehaviour {
 		// HPの初期値は最大HPにしておく
 		_health = MaxHealth.Value;
 
+		// 味方はつかめるようにする
+		if(_team == 0){
+			gameObject.AddComponent<GucchiCS.Unit>();
+		}
+
 		// ステートの設定
 		_stateProcessor.State = _stateIdle;
 		_stateIdle.execDelegate = Idle;
 		_stateHolded.execDelegate = Holded;
 		_stateAttack.execDelegate = Attack;
-		_stateDead.execDelegate = Dead;
+		_stateDead.enterDelegate = DeadEnter;
 
 		// ステートの更新
 		this.UpdateAsObservable()
@@ -158,13 +163,19 @@ public class UnitCore : MonoBehaviour {
 			// 待機ステートにする
 			_stateProcessor.State = _stateIdle;
 		}
-
-		transform.GetComponent<UnitMover>().MoveToNearestEnemy();
+		else{
+			transform.GetComponent<UnitMover>().MoveToNearestEnemy();
+		}
 	}
 
-	public void Dead(){
+	public void DeadEnter() {
 		// 死亡ステート
 		Debug.Log(_stateDead.GetStateName());
+		// 死亡した時につかめなくする
+		var unit = GetComponent<GucchiCS.Unit>();
+		if(unit){
+			Destroy(unit);
+		}
 	}
 
 	/// <summary>
@@ -186,7 +197,7 @@ public class UnitCore : MonoBehaviour {
 			// ユニットでない
 			// 生きている
 			// 自分と所属している陣営が違う
-			if (core == null || core.Health < 0 || core.Team == this.Team) {
+			if (core == null || core.Health <= 0 || core.Team == this.Team) {
 				continue;
 			}
 			// 対象との距離を求める

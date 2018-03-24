@@ -4,6 +4,7 @@
 */
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -69,8 +70,8 @@ namespace GucchiCS
                     // まだつかまれていないユニットだったら
                     if (!unit.IsClutched)
                     {
+						unit.IsClutched = true;
                         _unitList.Add(unit);
-                        unit.IsClutched = true;
                     }
                 }
             }
@@ -90,6 +91,10 @@ namespace GucchiCS
                 GameObject hit = GetHitObject(_islandLayer);
                 if (hit && hit.GetComponent<IGround>() != null)
                 {
+					//foreach (Unit unit in _unitList)
+					//{
+					//	unit.IsClutched = false;
+					//}
 					_unitList.Clear();
                 }
             }
@@ -100,6 +105,7 @@ namespace GucchiCS
 
                 if (hit && hit.GetComponent<IGround>() != null)
                 {
+					_unitList[0].IsClutched = false;
                     _unitList.RemoveAt(0);
                 }
             }
