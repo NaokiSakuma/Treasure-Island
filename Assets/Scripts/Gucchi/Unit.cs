@@ -11,6 +11,11 @@ namespace GucchiCS
     // ユニットデータ
     public class Unit : MonoBehaviour, IUnit
     {
+        void Awake()
+        {
+            this.IsClutched = false;
+        }
+
         public bool IsClutched
         {
             get;
