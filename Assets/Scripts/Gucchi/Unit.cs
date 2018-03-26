@@ -11,15 +11,37 @@ namespace GucchiCS
     // ユニットデータ
     public class Unit : MonoBehaviour, IUnit
     {
+        // 初期地点
+        [SerializeField]
+        Island firstIsland;
+
+        // 現在いる場所
+        IGround ground;
+
         void Awake()
         {
+            ground = firstIsland;
             this.IsClutched = false;
         }
 
+        // つかまれている状態かどうか
         public bool IsClutched
         {
             get;
             set;
+        }
+
+        // 現在いる場所
+        public IGround Ground
+        {
+            get
+            {
+                return ground;
+            }
+            set
+            {
+                ground = value;
+            }
         }
     }
 }

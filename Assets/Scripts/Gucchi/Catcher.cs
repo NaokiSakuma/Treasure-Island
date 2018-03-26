@@ -41,6 +41,12 @@ namespace GucchiCS
             // 追従処理
             FollowHand();
 
+            // つかんでいるユニットがいる島から移動できる島はいくつあるか表示
+            if (GetUnitNum > 0)
+            {
+                Debug.Log(_unitList[0].Ground.GetNearIslands().Count);
+            }
+
             // ユニット数を更新
             //UpdateSeizeNumText();
         }
@@ -88,11 +94,12 @@ namespace GucchiCS
             if (Input.GetMouseButtonUp(0))
             {
                 GameObject hit = GetHitObject(_islandLayer);
-                if (hit && hit.GetComponent<IGround>() != null)
+                if (hit && CheckGroundIntoMovingRange(hit))
                 {
                     foreach (Unit unit in _unitList)
                     {
                         unit.IsClutched = false;
+                        unit.Ground = hit.GetComponent<IGround>();
                     }
 
 					_unitList.Clear();
@@ -103,9 +110,10 @@ namespace GucchiCS
             {
                 GameObject hit = GetHitObject(_islandLayer);
 
-                if (hit && hit.GetComponent<IGround>() != null)
+                if (hit && CheckGroundIntoMovingRange(hit))
                 {
                     _unitList[0].IsClutched = false;
+                    _unitList[0].Ground = hit.GetComponent<IGround>();
                     _unitList.RemoveAt(0);
                 }
             }
@@ -163,7 +171,30 @@ namespace GucchiCS
             }
         }
 
-        // 
+        // 移動しようした場所が移動範囲内にあるか
+        bool CheckGroundIntoMovingRange(GameObject hit)
+        {
+            // そもそも移動できるオブジェクトかどうか
+            if (hit.GetComponent<IGround>() == null)
+                return false;
+
+            // 移動範囲内かどうか
+            IGround ground = null;
+            foreach (IGround nearGrounds in _unitList[0].Ground.GetNearIslands())
+            {
+                IGround target = hit.GetComponent<IGround>();
+                if (nearGrounds == target)
+                {
+                    ground = target;
+                    break;
+                }
+            }
+
+            if (ground == null)
+                return false;
+
+            return true;
+        }
 
         // つかんでいるユニット数テキストを更新
         //void UpdateSeizeNumText()
