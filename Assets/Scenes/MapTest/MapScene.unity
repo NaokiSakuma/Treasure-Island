@@ -152,6 +152,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 20480615716711050, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468628609879476, guid: 2ec4eba716fc37247a98197b605a4250, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 120253707804239528, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ec4eba716fc37247a98197b605a4250, type: 2}
   m_IsPrefabParent: 0
@@ -284,6 +298,11 @@ Prefab:
         type: 2}
       propertyPath: moveSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697245201149072, guid: d1373db8ba956bb4086ded40fbabe79e,
+        type: 2}
+      propertyPath: scrollLimit.y
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1373db8ba956bb4086ded40fbabe79e, type: 2}

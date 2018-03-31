@@ -8,7 +8,6 @@ public class mapLine : MonoBehaviour {
     private LineRenderer lineRenderer;
 
     private const int lineNum = 4;
-    private int posY = 5;
     // Use this for initialization
     void Start()
     {

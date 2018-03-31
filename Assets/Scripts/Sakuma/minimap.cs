@@ -11,6 +11,7 @@ public class minimap : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        transform.position = new Vector3(transform.position.x, Camera.main.transform.position.y, transform.position.z);
     }
 	
 	// Update is called once per frame
@@ -36,7 +37,14 @@ public class minimap : MonoBehaviour {
             viewPos.z = Camera.main.transform.position.y;
             Camera.main.transform.position = new Vector3(minimapCamera.ViewportToWorldPoint(viewPos).x,
                 Camera.main.transform.position.y,
-                minimapCamera.ViewportToWorldPoint(viewPos).z);//minimapCamera.ViewportToWorldPoint(viewPos);
+                minimapCamera.ViewportToWorldPoint(viewPos).z);
+
+            // カメラの移動制限
+            Camera.main.transform.position = new Vector3(
+                Mathf.Clamp(Camera.main.transform.position.x, -5, 5),
+                Camera.main.transform.position.y,
+                Mathf.Clamp(Camera.main.transform.position.z, -5, 5));
+
         }
     }
 }
