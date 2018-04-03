@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace GucchiCS
 {
-    public class Catcher : MonoBehaviour
+    public class GodHand : MonoBehaviour
     {
         List<Unit>      _unitList;
         bool            _catchMode;
@@ -148,17 +148,16 @@ namespace GucchiCS
 
             foreach (Unit unit in _unitList)
             {
-                // 自身の座標をスクリーン座標に変換
-                Vector3 screenPos = Camera.main.WorldToScreenPoint(unit.transform.position);
+                // クリックした位置のレイキャストを取得
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                // マウスの座標を取得
-                Vector3 mousePos = Input.mousePosition;
-
-                // マウスの座標に追従させる
-                Vector3 tmpPos = new Vector3(mousePos.x, mousePos.y, screenPos.z);
-
-                // 座標の更新
-                unit.transform.position = Camera.main.ScreenToWorldPoint(tmpPos);
+				// レイキャストで触れたものの場所に置く（y軸固定）
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                {
+                    var targetPos = new Vector3(hit.point.x, 5f, hit.point.z);
+                    unit.transform.position = targetPos;
+                }
             }
         }
 

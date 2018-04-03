@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1628701365939080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 0.3, z: 5}
+  m_LocalScale: {x: 35, y: 3, z: 35}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
+  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,7 +96,7 @@ MeshCollider:
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
-  m_SkinWidth: 0.01
+  m_SkinWidth: 1.00000005e-20
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114840875666379652
 MonoBehaviour:
@@ -109,3 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _islandMaterial:
+  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
+  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
+  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
+  _islandState: 0
+  _islandSize: 0
+  _movingRange: 200
