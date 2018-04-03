@@ -17,7 +17,7 @@ namespace Konji
             _type = CO.RelicType.Cannon;
 
             //名前の設定
-            _name = CO.RELIC_LIST[(int)CO.RelicType.Cannon];
+            _name = CO.RELIC_LIST[(int)_type];
         }
 
         //最近ユニット検索

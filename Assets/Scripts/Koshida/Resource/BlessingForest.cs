@@ -11,7 +11,7 @@ namespace Konji
         private int _interval = 2;     //回復間隔
 
         [SerializeField]
-        private int _healAmo = 1;     //回復量
+        private int _increase = 1;     //上昇量
 
         protected override void Start()
         {
@@ -21,14 +21,14 @@ namespace Konji
             _type = CO.RelicType.BlessingForest;
 
             //名前の設定
-            _name = CO.RELIC_LIST[(int)CO.RelicType.BlessingForest];
+            _name = CO.RELIC_LIST[(int)_type];
 
             //置かれているときn秒間隔ごとに食料回復
             Observable.Interval(System.TimeSpan.FromSeconds(_interval))
                 .Where(_ => IsPut)
                 .Subscribe(_ =>
                 {
-                    Debug.Log("+" + _healAmo.ToString() + "Food");
+                    Debug.Log("+" + _increase.ToString() + "Food");
                 });
         }
     }
