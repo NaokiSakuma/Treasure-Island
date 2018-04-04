@@ -8,6 +8,7 @@ namespace Konji
 {
     public class ShipManager : MonoBehaviour
     {
+        //船の情報
         [System.Serializable]
         class ShipInfo
         {
@@ -18,9 +19,11 @@ namespace Konji
             public float _spawnTime = 0.0f;    //出現タイミング
         }
 
+        //船情報のリスト
         [SerializeField]
         private List<ShipInfo> _shipInfo;
 
+        //小数ソート用
         private int SortFloat(float a,float b)
         {
             if (a - b > 0)
@@ -39,9 +42,10 @@ namespace Konji
         // Use this for initialization
         void Start()
         {
+            //小数一桁秒で指定した時間に船を生成
             Observable.Timer(System.TimeSpan.FromSeconds(0), System.TimeSpan.FromSeconds(0.1))
                 .Where(_ => _shipInfo.Count > 0)
-                .Select(ms => (float)(ms / 10.0f))
+                .Select(ms => ms / 10.0f)
                 .Where(time => _shipInfo[0]._spawnTime <= time)
                 .Select(_ => _shipInfo[0])
                 .Subscribe(info =>
