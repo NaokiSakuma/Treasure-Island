@@ -2,6 +2,7 @@
  * @Date    18/03/19
  * @Create  Yuta Higuchi
 */
+using Konji;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +13,12 @@ namespace GucchiCS
     public class GodHand : MonoBehaviour
     {
         List<Unit>      _unitList;
+        Relic           _relic;
         bool            _catchMode;
 
         // レイヤーテスト用。後々enumかなにかで管理したほうがいい
         const int       _islandLayer = 8;
+        const int       _relicSetterLayer = 9;
 
         //public Text     _unitNumText;
 
@@ -80,6 +83,30 @@ namespace GucchiCS
                     }
                 }
             }
+            // 右クリック
+            else if (Input.GetMouseButtonDown(1))
+            {
+                GameObject hit = GetHitObject();
+
+                // nullチェック
+                if (hit == null)
+                    return;
+
+                // 遺物でないとき
+                if (hit.GetComponent<Relic>() == null)
+                    return;
+
+                Relic relic = hit.GetComponent<Relic>();
+
+                // まだつかまれていない遺物だったら
+                if (!relic.IsClutched)
+                {
+                    relic.IsClutched = true;
+                    _relic = relic;
+                    _relic.IsPut = false;
+					_catchMode = false;
+                }
+            }
             // クリックを離したとき
             else if (Input.GetMouseButtonUp(0))
             {
@@ -91,7 +118,7 @@ namespace GucchiCS
         void UncatchMode()
         {
             // 左クリック
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0) && !_relic)
             {
                 GameObject hit = GetHitObject(_islandLayer);
                 if (hit && CheckGroundIntoMovingRange(hit))
@@ -108,13 +135,30 @@ namespace GucchiCS
             // 右クリック
             else if (Input.GetMouseButtonDown(1))
             {
-                GameObject hit = GetHitObject(_islandLayer);
-
-                if (hit && CheckGroundIntoMovingRange(hit))
+                // ユニット
+                if (!_relic)
                 {
-                    _unitList[0].IsClutched = false;
-                    _unitList[0].Ground = hit.GetComponent<IGround>();
-                    _unitList.RemoveAt(0);
+                    GameObject hit = GetHitObject(_islandLayer);
+
+                    if (hit && CheckGroundIntoMovingRange(hit))
+                    {
+                        _unitList[0].IsClutched = false;
+                        _unitList[0].Ground = hit.GetComponent<IGround>();
+                        _unitList.RemoveAt(0);
+                    }
+                }
+                // 遺物
+                else
+                {
+                    GameObject hit = GetHitObject(_relicSetterLayer);
+
+                    if (hit)
+                    {
+                        _relic.IsClutched = false;
+                        _relic.transform.position = new Vector3(hit.transform.position.x, 18f, hit.transform.position.z);
+                        _relic.IsPut = true;
+                        _relic = null;
+                    }
                 }
             }
         }
@@ -140,12 +184,30 @@ namespace GucchiCS
         // 神の手に追従
         void FollowHand()
         {
+            // 遺物
+            if (_relic)
+            {
+                // クリックした位置のレイキャストを取得
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                // レイキャストで触れたものの場所に置く（y軸固定）
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                {
+                    var targetPos = new Vector3(hit.point.x, 18f, hit.point.z);
+                    _relic.transform.position = targetPos;
+                }
+
+                return;
+            }
+
             if (GetUnitNum == 0)
             {
                 _catchMode = true;
                 return;
             }
 
+            // ユニット
             foreach (Unit unit in _unitList)
             {
                 // クリックした位置のレイキャストを取得

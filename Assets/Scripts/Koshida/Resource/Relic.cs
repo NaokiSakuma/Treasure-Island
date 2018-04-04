@@ -29,6 +29,13 @@ namespace Konji
             set { _isPut.Value = value; }
         }
 
+        //つかまれている状態かどうか
+        public bool IsClutched
+        {
+            get;
+            set;
+        }
+
         protected virtual void Start()
         {
             _isPut.Where(put => put == true)

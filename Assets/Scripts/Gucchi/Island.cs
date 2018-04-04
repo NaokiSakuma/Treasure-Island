@@ -24,15 +24,15 @@ namespace GucchiCS
         [SerializeField]
         ISLAND_MATERIAL _islandState = ISLAND_MATERIAL.NULL;
 
-        // 島にいるユニットリスト
-        List<Unit> _unitList;
-
-        // 島にいる敵リスト
-        // 敵に関するスクリプトが現在ない、今後作るか不明なので一旦Unit
-        List<Unit> _enemyList;
+        // サイズリスト
+        public List<float> _islandSizeData = new List<float>() {
+            35f,
+            50f, 
+            75f
+        };
 
         // サイズプルダウン用
-        enum ISLAND_SIZE : int
+        public enum ISLAND_SIZE : int
         {
             SMALL,
             MIDDLE,
@@ -41,9 +41,9 @@ namespace GucchiCS
 
         // サイズの管理
         Dictionary<ISLAND_SIZE, float> _islandSizeDic = new Dictionary<ISLAND_SIZE, float>() {
-            { ISLAND_SIZE.SMALL, 35f },
-            { ISLAND_SIZE.MIDDLE, 50f },
-            { ISLAND_SIZE.LARGE, 75f }
+            { ISLAND_SIZE.SMALL,  0f },
+            { ISLAND_SIZE.MIDDLE, 0f },
+            { ISLAND_SIZE.LARGE,  0f }
         };
 
         // 島のサイズ
@@ -54,10 +54,22 @@ namespace GucchiCS
         [SerializeField]
         float _movingRange = 8f;
 
+        // 島にいるユニットリスト
+        List<Unit> _unitList;
+
+        // 島にいる敵リスト
+        // 敵に関するスクリプトが現在ない、今後作るか不明なので一旦Unit
+        List<Unit> _enemyList;
+
         void Awake()
         {
             _unitList = new List<Unit>();
             _enemyList = new List<Unit>();
+
+            // サイズの設定（コード的にやばいので余裕があるときになおす）
+            _islandSizeDic[ISLAND_SIZE.SMALL] = _islandSizeData[(int)ISLAND_SIZE.SMALL];
+            _islandSizeDic[ISLAND_SIZE.MIDDLE] = _islandSizeData[(int)ISLAND_SIZE.MIDDLE];
+            _islandSizeDic[ISLAND_SIZE.LARGE] = _islandSizeData[(int)ISLAND_SIZE.LARGE];
 
             // 指定されたスケールに変える
             float islandSize = _islandSizeDic[_islandSize];
@@ -65,6 +77,9 @@ namespace GucchiCS
 
             // マテリアル設定
             transform.GetComponent<Renderer>().material = _islandMaterial[(int)_islandState];
+
+            // 遺物設置場所を設定
+            transform.GetComponent<RelicSetter>().SetRelicSetter(transform.position, _islandSize);
         }
 
         // 更新処理
