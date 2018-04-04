@@ -6,6 +6,9 @@ namespace Konji
 {
     public class Wardrum : Relic
     {
+        [SerializeField]
+        private int _buffAmo = 1;   //バフ量
+
         protected override void Start()
         {
             base.Start();
@@ -14,7 +17,7 @@ namespace Konji
             _type = CO.RelicType.WarDrum;
 
             //名前の設定
-            _name = CO.RELIC_LIST[(int)CO.RelicType.WarDrum];
+            _name = CO.RELIC_LIST[(int)_type];
 
         }
 
