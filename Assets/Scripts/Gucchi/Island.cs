@@ -79,7 +79,7 @@ namespace GucchiCS
             transform.GetComponent<Renderer>().material = _islandMaterial[(int)_islandState];
 
             // 遺物設置場所を設定
-            transform.GetComponent<RelicSetter>().SetRelicSetter(transform.position, _islandSize);
+            transform.GetComponent<RelicSetter>().SetRelicSetter(this, _islandSize);
         }
 
         // 更新処理
