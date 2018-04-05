@@ -11,18 +11,21 @@ namespace GucchiCS
     // 島
     public class Island : MonoBehaviour, IGround
     {
-        // マテリアル
-        enum ISLAND_MATERIAL : int
+        // 島に存在するユニットの種類
+        enum ISLAND_OCCUPATION : int
         {
-            NULL,
             UNIT,
-            ENEMY
+            ENEMY,
+            NULL
         }
-        public List<Material> _islandMaterial;
 
-        // 島の初期状態（マテリアルのやつを使い回し）
+        // 占領状況
         [SerializeField]
-        ISLAND_MATERIAL _islandState = ISLAND_MATERIAL.NULL;
+        ISLAND_OCCUPATION _islandState = ISLAND_OCCUPATION.NULL;
+        ISLAND_OCCUPATION _islandStateBefore = ISLAND_OCCUPATION.NULL;
+
+        // マテリアル
+		public List<Material> _islandMaterial;
 
         // サイズリスト
         public List<float> _islandSizeData = new List<float>() {
@@ -54,6 +57,22 @@ namespace GucchiCS
         [SerializeField]
         float _movingRange = 8f;
 
+        // 占領値
+        public List<int> _occupationList = new List<int>()
+        {
+            100,
+            300,
+            500
+        };
+        int _maxOccupation;
+
+        // 現在の占領値
+        int _occupation;
+
+        // 占領タイマーの間隔
+        [SerializeField]
+        float _occupationTimerInterval = 0.01f;
+
         // 島にいるユニットリスト
         List<Unit> _unitList;
 
@@ -78,6 +97,21 @@ namespace GucchiCS
             // マテリアル設定
             transform.GetComponent<Renderer>().material = _islandMaterial[(int)_islandState];
 
+            // 最大占領値設定
+            _maxOccupation = _occupationList[(int)_islandSize];
+
+            // すでに占領状態であれば占領値を最大にしておく
+            if (_islandState != ISLAND_OCCUPATION.NULL)
+            {
+                _occupation = _maxOccupation;
+            }
+
+            // 占領値を表すテキストを設定
+            transform.GetComponentInChildren<TextMesh>().text = "0 / " + _maxOccupation.ToString();
+
+            // 占領状況設定
+            _islandStateBefore = _islandState;
+
             // 遺物設置場所を設定
             transform.GetComponent<RelicSetter>().SetRelicSetter(this, _islandSize);
         }
@@ -86,27 +120,71 @@ namespace GucchiCS
         void Update()
         {
             // 占拠状況
-            //CheckOccupationState();
+            CheckOccupationState();
+
+            // 占領値を表すテキストを設定
+            transform.GetComponentInChildren<TextMesh>().text = Occupation.ToString() + " / " + _maxOccupation.ToString();
         }
 
         // 占拠状況
         void CheckOccupationState()
         {
-            // 島にいるユニットによって占拠状況を変える
-            if (_unitList.Count > 0 && _enemyList.Count <= 0)
+            // 味方が占領中
+            bool superiorityUnit = _unitList.Count > 0 && _enemyList.Count <= 0;
+
+            // 敵が占領中
+            bool superiorityEnemy = _unitList.Count <= 0 && _enemyList.Count > 0;
+
+            // ユニットなし
+            bool emptyIsland = _unitList.Count <= 0 && _enemyList.Count <= 0;
+
+            // 味方が占領している場合
+            if (superiorityUnit && _islandStateBefore != ISLAND_OCCUPATION.UNIT)
             {
-                // マテリアル設定
-                transform.GetComponent<Renderer>().material = _islandMaterial[(int)ISLAND_MATERIAL.UNIT];
+                OccupationTimer(ISLAND_OCCUPATION.UNIT);
+                return;
             }
-            else if (_unitList.Count <= 0 && _enemyList.Count > 0)
+
+            // 敵が占領している場合
+            if (superiorityEnemy && _islandStateBefore != ISLAND_OCCUPATION.ENEMY)
             {
-                // マテリアル設定
-                transform.GetComponent<Renderer>().material = _islandMaterial[(int)ISLAND_MATERIAL.ENEMY];
+                OccupationTimer(ISLAND_OCCUPATION.ENEMY);
+                return;
             }
-            else
+
+            // ユニットがいない場合
+            if (emptyIsland && _islandStateBefore != ISLAND_OCCUPATION.NULL)
+            {
+                //OccupationTimer(ISLAND_OCCUPATION.NULL);
+            }
+        }
+
+        // 占領タイマー
+        void OccupationTimer(ISLAND_OCCUPATION occupation)
+        {
+            // 占領準備中
+            if (occupation != ISLAND_OCCUPATION.NULL)
+            {
+                if (_islandState != occupation)
+                {
+                    // 占領者の変更
+                    _islandState = occupation;
+
+                    // 占領値を0にする
+                    _occupation = 0;
+                }
+
+                _occupation++;
+            }
+
+            // 占領完了
+            if (_occupation >= _maxOccupation)
             {
                 // マテリアル設定
-                transform.GetComponent<Renderer>().material = _islandMaterial[(int)ISLAND_MATERIAL.NULL];
+                transform.GetComponent<Renderer>().material = _islandMaterial[(int)occupation];
+
+                // 占領者の変更
+                _islandStateBefore = _islandState;
             }
         }
 
@@ -130,6 +208,33 @@ namespace GucchiCS
             }
 
             return nearIslands;
+        }
+
+        // 現在の島の占領値
+        public int Occupation
+        {
+            get
+            {
+                return _occupation;
+            }
+        }
+
+        // 味方ユニットのリスト
+        public List<Unit> UnitList
+        {
+            get
+            {
+                return _unitList;
+            }
+        }
+
+        // 敵リスト
+        public List<Unit> EnemyList
+        {
+            get
+            {
+                return _enemyList;
+            }
         }
     }
 }

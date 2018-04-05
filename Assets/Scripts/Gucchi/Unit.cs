@@ -13,7 +13,7 @@ namespace GucchiCS
     {
         // 初期地点
         [SerializeField]
-        Island firstIsland;
+        Island firstIsland = null;
 
         // 現在いる場所
         IGround ground;

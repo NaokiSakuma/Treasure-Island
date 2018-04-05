@@ -125,6 +125,7 @@ namespace GucchiCS
                 {
                     foreach (Unit unit in _unitList)
                     {
+                        hit.GetComponent<Island>().UnitList.Add(unit);
                         unit.IsClutched = false;
                         unit.Ground = hit.GetComponent<IGround>();
                     }
@@ -142,6 +143,7 @@ namespace GucchiCS
 
                     if (hit && CheckGroundIntoMovingRange(hit))
                     {
+                        hit.GetComponent<Island>().UnitList.Add(_unitList[0]);
                         _unitList[0].IsClutched = false;
                         _unitList[0].Ground = hit.GetComponent<IGround>();
                         _unitList.RemoveAt(0);
