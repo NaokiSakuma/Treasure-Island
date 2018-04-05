@@ -106,7 +106,7 @@ public class UnitCore : MonoBehaviour {
 		_stateIdle.execDelegate = Idle;
 		_stateHolded.execDelegate = Holded;
 		_stateAttack.execDelegate = Attack;
-		_stateDead.execDelegate = Dead;
+		_stateDead.enterDelegate = DeadEnter;
 
 		// ステートの更新
 		this.UpdateAsObservable()
@@ -131,9 +131,6 @@ public class UnitCore : MonoBehaviour {
 	}
 
 	public void Idle(){
-		// 待機ステート
-		Debug.Log(_stateIdle.GetStateName());
-
 		// 近くにいる敵を探す
 		_target = GetNearestEnemy(100.0f);
 		// ターゲットがいたら攻撃フェーズに移行
@@ -143,16 +140,9 @@ public class UnitCore : MonoBehaviour {
 	}
 
 	public void Holded(){
-		// 掴まれているステート
-		Debug.Log(_stateHolded.GetStateName());
-
-
 	}
 
 	public void Attack(){
-		// 攻撃ステート
-		Debug.Log(_stateAttack.GetStateName());
-
 		// ターゲットが死んでいたら
 		if(_target.GetComponent<UnitCore>().Health <= 0){
 			// 待機ステートにする
@@ -162,9 +152,9 @@ public class UnitCore : MonoBehaviour {
 		transform.GetComponent<UnitMover>().MoveToNearestEnemy();
 	}
 
-	public void Dead(){
+	public void DeadEnter(){
 		// 死亡ステート
-		Debug.Log(_stateDead.GetStateName());
+		Debug.Log(transform.name + " is Dead");
 	}
 
 	/// <summary>
