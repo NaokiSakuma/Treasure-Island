@@ -5,7 +5,7 @@ using UniRx;
 public class TimerText : MonoBehaviour {
 
 	[SerializeField]
-	public BaseTimer _timer;
+	private BaseTimer _timer;
 
 	// Use this for initialization
 	void Start () {
