@@ -35,8 +35,18 @@ public class UnitCore : MonoBehaviour {
 	// 攻撃力
 	[SerializeField]
 	private int _strength = 1;
-	public int Strength{
+	public int Strength {
 		get { return _strength; }
+	}
+
+	// 攻撃力のバフ
+	[SerializeField]
+	private int _additionalStrength = 0;
+	// TODO: あとでバフの制限かけるかもしれないので一応プロパティ化
+	public int AdditionalStrength{
+		get { return _additionalStrength; }
+		set { _additionalStrength = value; }
+
 	}
 
 	// 攻撃速度
