@@ -96,6 +96,13 @@ namespace GucchiCS
                 // まだつかまれていない遺物だったら
                 if (!relic.IsClutched)
                 {
+                    // 島の設定
+                    GameObject islandHit = GetHitObject(_islandLayer);
+                    if (islandHit && islandHit.GetComponent<Island>() != null)
+                        islandHit.GetComponent<Island>().RemoveRelic(relic);
+                    relic.LandingIsland = null;
+
+                    // 遺物をつかむ
                     relic.IsClutched = true;
                     _relic = relic;
                     _relic.IsPut = false;
@@ -163,6 +170,12 @@ namespace GucchiCS
 
                     if (hit)
                     {
+                        // 島の設定
+                        Island landingIsland = GetHitObject(_islandLayer).GetComponent<Island>();
+                        landingIsland.RegisterRelic(_relic);
+                        _relic.LandingIsland = landingIsland;
+
+                        // 遺物の設置
                         _relic.IsClutched = false;
                         _relic.transform.position = new Vector3(hit.transform.position.x, 18f, hit.transform.position.z);
                         _relic.IsPut = true;

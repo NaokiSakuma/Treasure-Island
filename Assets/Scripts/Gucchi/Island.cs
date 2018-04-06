@@ -5,6 +5,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GucchiCS
 {
@@ -73,21 +74,24 @@ namespace GucchiCS
         // 占領旗
         public OccupationFlag _flag;
 
+        // 占領ゲージ
+        public GameObject _occupationGage;
+
         // スコア
         [SerializeField]
         int _score = 1000;
 
         // 島にいるユニットリスト
-        List<Unit> _unitList;
+        List<Unit> _unitList = new List<Unit>();
 
         // 島にいる敵リスト
-        List<Konji.LandingEnemy> _enemyList;
+        List<Konji.LandingEnemy> _enemyList = new List<Konji.LandingEnemy>();
+
+        // 島に置いてある遺物リスト
+        List<Konji.Relic> _relicList = new List<Konji.Relic>();
 
         void Awake()
         {
-            _unitList = new List<Unit>();
-            _enemyList = new List<Konji.LandingEnemy>();
-
             // サイズの設定（コード的にやばいので余裕があるときになおす）
             _islandSizeDic[ISLAND_SIZE.SMALL] = _islandSizeData[(int)ISLAND_SIZE.SMALL];
             _islandSizeDic[ISLAND_SIZE.MIDDLE] = _islandSizeData[(int)ISLAND_SIZE.MIDDLE];
@@ -97,12 +101,18 @@ namespace GucchiCS
             float islandSize = _islandSizeDic[_islandSize];
             transform.localScale = new Vector3(islandSize, 3f, islandSize);
 
-            // 初期の占領状況に応じてマテリアルを変更
+            // 初期の占領状況に応じて占領旗の色変更と占領ゲージを設定
             if (_islandState != ISLAND_OCCUPATION.NULL)
             {
+                // 占領旗
                 OccupationFlag flag = Instantiate(_flag, new Vector3(transform.position.x, 1.5f, transform.position.z + _islandSizeDic[_islandSize] / 3f), Quaternion.identity);
                 flag.transform.SetParent(this.transform, true);
                 flag.ChangeMaterial(_islandState);
+
+                // 占領ゲージ
+                GameObject gage = Instantiate(_occupationGage, new Vector3(transform.position.x, 100f, transform.position.z - _islandSizeDic[_islandSize] / 2f), Quaternion.identity);
+                gage.transform.SetParent(transform.GetComponentInChildren<Canvas>().transform, false);
+                gage.GetComponent<Slider>().value = 0f;
             }
 
             // 最大占領値設定
@@ -114,9 +124,6 @@ namespace GucchiCS
                 _occupation = _maxOccupation;
             }
 
-            // 占領値を表すテキストを設定
-            transform.GetComponentInChildren<TextMesh>().text = "0 / " + _maxOccupation.ToString();
-
             // 占領状況設定
             _islandStateBefore = _islandState;
 
@@ -127,8 +134,13 @@ namespace GucchiCS
         // 更新処理
         void Update()
         {
-            // 占領値を表すテキストを設定
-            transform.GetComponentInChildren<TextMesh>().text = Occupation.ToString() + " / " + _maxOccupation.ToString();
+            Slider gage = transform.GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>();
+
+            if (_islandState != ISLAND_OCCUPATION.NULL && gage != null)
+            {
+                // 占領値ゲージ設定
+                gage.value = _occupation / (float)_maxOccupation;
+            }
         }
 
         // 占拠状況
@@ -196,19 +208,28 @@ namespace GucchiCS
                 if (_islandState != ISLAND_OCCUPATION.NULL)
                 {
                     OccupationFlag flag = transform.GetComponentInChildren<OccupationFlag>();
+                    GameObject gage = transform.GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>().gameObject;
 					
-                    // 旗がすでに存在している場合
-                    if (flag != null)
+                    // 旗、占領ゲージがすでに存在している場合
+                    if (flag != null && gage != null)
                     {
                         // マテリアルのみ変更
                         flag.ChangeMaterial(_islandState);
+
+                        // 味方・敵の変更
                     }
-                    // 旗がない場合
+                    // 旗、占領ゲージがない場合
                     else
                     {
+                        // 旗の生成
                         flag = Instantiate(_flag, new Vector3(transform.position.x, 1.5f, transform.position.z + _islandSizeDic[_islandSize] / 3f), Quaternion.identity);
                         flag.transform.SetParent(this.transform, true);
-                        flag.ChangeMaterial(_islandState);   
+                        flag.ChangeMaterial(_islandState);
+
+                        // 占領ゲージの生成
+                        gage = Instantiate(_occupationGage, new Vector3(transform.position.x, 100f, transform.position.z - _islandSizeDic[_islandSize] / 2f), Quaternion.identity);
+                        gage.transform.SetParent(transform.GetComponentInChildren<Canvas>().transform, false);
+                        gage.GetComponent<Slider>().value = 0f;
                     }
                 }
                 // 占領ユニットがいないなら旗を消す
@@ -257,31 +278,42 @@ namespace GucchiCS
             return nearIslands;
         }
 
+        // 遺物の登録（もっとうまい方法あれば変えたい）
+        public void RegisterRelic(Konji.Relic relic)
+        {
+            _relicList.Add(relic);
+        }
+
+        // 遺物の解除（もっとうまい方法あれば変えたい）
+        public void RemoveRelic(Konji.Relic relic)
+        {
+            _relicList.Remove(relic);
+        }
+
+        /* プロパティ */
+
         // 現在の島の占領値
         public int Occupation
         {
-            get
-            {
-                return _occupation;
-            }
+            get { return _occupation; }
         }
 
         // 味方ユニットのリスト
         public List<Unit> UnitList
         {
-            get
-            {
-                return _unitList;
-            }
+            get { return _unitList; }
         }
 
         // 敵リスト
         public List<Konji.LandingEnemy> EnemyList
         {
-            get
-            {
-                return _enemyList;
-            }
+            get { return _enemyList; }
+        }
+
+        // 遺物リスト
+        public List<Konji.Relic> RelicList
+        {
+            get { return _relicList; }
         }
 
         // スコア
