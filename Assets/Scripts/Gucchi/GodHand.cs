@@ -6,7 +6,6 @@ using Konji;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace GucchiCS
 {
@@ -65,11 +64,7 @@ namespace GucchiCS
                 // nullチェック
                 if (hit == null)
                     return;
-
-                // つかめるオブジェクトでないとき
-                if (hit.GetComponent<IUnit>() == null)
-                    return;
-
+                
                 // ユニットの場合
                 if (hit.GetComponent<Unit>() != null)
                 {
@@ -125,9 +120,15 @@ namespace GucchiCS
                 {
                     foreach (Unit unit in _unitList)
                     {
-                        hit.GetComponent<Island>().UnitList.Add(unit);
+                        // 島の取得
+                        Island island = hit.GetComponent<Island>();
+
+                        island.UnitList.Add(unit);
                         unit.IsClutched = false;
                         unit.Ground = hit.GetComponent<IGround>();
+
+                        // 通知
+                        island.LandingNotify(unit);
                     }
 
 					_unitList.Clear();
@@ -143,10 +144,16 @@ namespace GucchiCS
 
                     if (hit && CheckGroundIntoMovingRange(hit))
                     {
-                        hit.GetComponent<Island>().UnitList.Add(_unitList[0]);
+                        // 島の取得
+                        Island island = hit.GetComponent<Island>();
+
+                        island.UnitList.Add(_unitList[0]);
                         _unitList[0].IsClutched = false;
                         _unitList[0].Ground = hit.GetComponent<IGround>();
                         _unitList.RemoveAt(0);
+
+                        // 通知
+                        island.LandingNotify(_unitList[0]);
                     }
                 }
                 // 遺物

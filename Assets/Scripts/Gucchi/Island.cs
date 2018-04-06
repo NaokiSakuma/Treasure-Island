@@ -77,13 +77,12 @@ namespace GucchiCS
         List<Unit> _unitList;
 
         // 島にいる敵リスト
-        // 敵に関するスクリプトが現在ない、今後作るか不明なので一旦Unit
-        List<Unit> _enemyList;
+        List<Konji.LandingEnemy> _enemyList;
 
         void Awake()
         {
             _unitList = new List<Unit>();
-            _enemyList = new List<Unit>();
+            _enemyList = new List<Konji.LandingEnemy>();
 
             // サイズの設定（コード的にやばいので余裕があるときになおす）
             _islandSizeDic[ISLAND_SIZE.SMALL] = _islandSizeData[(int)ISLAND_SIZE.SMALL];
@@ -119,9 +118,6 @@ namespace GucchiCS
         // 更新処理
         void Update()
         {
-            // 占拠状況
-            CheckOccupationState();
-
             // 占領値を表すテキストを設定
             transform.GetComponentInChildren<TextMesh>().text = Occupation.ToString() + " / " + _maxOccupation.ToString();
         }
@@ -141,27 +137,29 @@ namespace GucchiCS
             // 味方が占領している場合
             if (superiorityUnit && _islandStateBefore != ISLAND_OCCUPATION.UNIT)
             {
-                OccupationTimer(ISLAND_OCCUPATION.UNIT);
+                StartCoroutine(OccupationTimer(ISLAND_OCCUPATION.UNIT));
                 return;
             }
 
             // 敵が占領している場合
             if (superiorityEnemy && _islandStateBefore != ISLAND_OCCUPATION.ENEMY)
             {
-                OccupationTimer(ISLAND_OCCUPATION.ENEMY);
+                StartCoroutine(OccupationTimer(ISLAND_OCCUPATION.ENEMY));
                 return;
             }
 
             // ユニットがいない場合
             if (emptyIsland && _islandStateBefore != ISLAND_OCCUPATION.NULL)
             {
-                //OccupationTimer(ISLAND_OCCUPATION.NULL);
+                //StartCoroutine(OccupationTimer(ISLAND_OCCUPATION.NULL));
             }
         }
 
         // 占領タイマー
-        void OccupationTimer(ISLAND_OCCUPATION occupation)
+        IEnumerator OccupationTimer(ISLAND_OCCUPATION occupation)
         {
+            yield return new WaitForSeconds(_occupationTimerInterval);
+
             // 占領準備中
             if (occupation != ISLAND_OCCUPATION.NULL)
             {
@@ -175,17 +173,31 @@ namespace GucchiCS
                 }
 
                 _occupation++;
+
+                StartCoroutine(OccupationTimer(occupation));
             }
 
             // 占領完了
             if (_occupation >= _maxOccupation)
             {
+                // 占領値を最大の状態にする（念のため）
+                _occupation = _maxOccupation;
+
                 // マテリアル設定
                 transform.GetComponent<Renderer>().material = _islandMaterial[(int)occupation];
 
                 // 占領者の変更
                 _islandStateBefore = _islandState;
             }
+        }
+
+        // 味方または敵が島に上陸したときに呼ぶ処理
+        public void LandingNotify(ICharacter character)
+        {
+            Debug.Log(character);
+
+            // 占拠状況
+            CheckOccupationState();
         }
 
         // 移動できる範囲内にある島を取得
@@ -229,7 +241,7 @@ namespace GucchiCS
         }
 
         // 敵リスト
-        public List<Unit> EnemyList
+        public List<Konji.LandingEnemy> EnemyList
         {
             get
             {

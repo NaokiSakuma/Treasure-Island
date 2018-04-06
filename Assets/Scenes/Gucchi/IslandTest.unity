@@ -113,11 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &39996957 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4088379375941990, guid: 8030a01b10cc14445813d8c4e6aa211f,
-    type: 2}
-  m_PrefabInternal: {fileID: 82008391}
 --- !u!114 &50892136 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114285083786936050, guid: 8030a01b10cc14445813d8c4e6aa211f,
@@ -133,6 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 72041197}
   - component: {fileID: 72041196}
+  - component: {fileID: 72041198}
   m_Layer: 0
   m_Name: Water4SimpleReflectionMain Camera
   m_TagString: Untagged
@@ -189,6 +185,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!45 &72041198
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 72041195}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 0}
 --- !u!1001 &82008391
 Prefab:
   m_ObjectHideFlags: 0
@@ -468,6 +472,11 @@ Prefab:
       propertyPath: _islandState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114221553034568204, guid: 8030a01b10cc14445813d8c4e6aa211f,
+        type: 2}
+      propertyPath: _occupationTimerInterval
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8030a01b10cc14445813d8c4e6aa211f, type: 2}
   m_IsPrefabParent: 0
@@ -666,7 +675,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1453862917}
   - component: {fileID: 1453862916}
-  - component: {fileID: 1453862918}
   m_Layer: 0
   m_Name: Master
   m_TagString: Untagged
@@ -698,22 +706,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1453862918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1453862915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec5af2c84e6c30a44a48751c373c861e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shipInfo:
-  - _ship: {fileID: 1846408906313658, guid: 1655af7af4441384c9a257ad193957d8, type: 2}
-    _spawn: {fileID: 39996957}
-    _target: {fileID: 0}
-    _spawnTime: 2
 --- !u!1 &1470442570
 GameObject:
   m_ObjectHideFlags: 0

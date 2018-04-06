@@ -9,7 +9,7 @@ using UnityEngine;
 namespace GucchiCS
 {
     // ユニットデータ
-    public class Unit : MonoBehaviour, IUnit
+    public class Unit : MonoBehaviour, ICharacter
     {
         // 初期地点
         [SerializeField]

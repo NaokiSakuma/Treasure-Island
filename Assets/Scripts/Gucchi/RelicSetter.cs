@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+ * @Date    18/04/04
+ * @Create  Yuta Higuchi
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
