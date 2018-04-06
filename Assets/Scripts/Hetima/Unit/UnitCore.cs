@@ -35,8 +35,18 @@ public class UnitCore : MonoBehaviour {
 	// 攻撃力
 	[SerializeField]
 	private int _strength = 1;
-	public int Strength{
+	public int Strength {
 		get { return _strength; }
+	}
+
+	// 攻撃力のバフ
+	[SerializeField]
+	private int _additionalStrength = 0;
+	// TODO: あとでバフの制限かけるかもしれないので一応プロパティ化
+	public int AdditionalStrength{
+		get { return _additionalStrength; }
+		set { _additionalStrength = value; }
+
 	}
 
 	// 攻撃速度
@@ -136,9 +146,6 @@ public class UnitCore : MonoBehaviour {
 	}
 
 	public void Idle(){
-		// 待機ステート
-		Debug.Log(_stateIdle.GetStateName());
-
 		// 近くにいる敵を探す
 		_target = GetNearestEnemy(100.0f);
 		// ターゲットがいたら攻撃フェーズに移行
@@ -148,16 +155,9 @@ public class UnitCore : MonoBehaviour {
 	}
 
 	public void Holded(){
-		// 掴まれているステート
-		Debug.Log(_stateHolded.GetStateName());
-
-
 	}
 
 	public void Attack(){
-		// 攻撃ステート
-		Debug.Log(_stateAttack.GetStateName());
-
 		// ターゲットが死んでいたら
 		if(_target.GetComponent<UnitCore>().Health <= 0){
 			// 待機ステートにする

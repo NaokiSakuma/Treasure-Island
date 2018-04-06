@@ -29,7 +29,8 @@ namespace Konji
                     .Subscribe(_ =>
                     {
                         Debug.Log("Spawn");
-                    });
+                    })
+                    .AddTo(this);
         }
     }
 }
