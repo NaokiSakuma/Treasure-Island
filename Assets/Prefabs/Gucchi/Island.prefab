@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4984531238938080}
   - component: {fileID: 23073774000254486}
   - component: {fileID: 102139233757211368}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OccupationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 114274402751292592}
   - component: {fileID: 64812762603631838}
   - component: {fileID: 114973649826805578}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,6 +209,7 @@ MonoBehaviour:
   _movingRange: 200
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
+  _score: 1000
 --- !u!114 &114973649826805578
 MonoBehaviour:
   m_ObjectHideFlags: 1

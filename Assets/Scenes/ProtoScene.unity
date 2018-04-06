@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -422,7 +422,7 @@ MonoBehaviour:
   moveSpeed: 10
   moveLimit: 5
   scrollLimit: {x: 5, y: 250}
-  scrollSpeed: 3
+  scrollSpeed: 20
 --- !u!1 &582444739 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1926544365797138, guid: 7ff9b91d9d21143c192651be90263353,
@@ -1378,6 +1378,41 @@ Prefab:
     - target: {fileID: 4468628609879476, guid: 2ec4eba716fc37247a98197b605a4250, type: 2}
       propertyPath: m_LocalPosition.y
       value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 120253707804239528, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120253707804239528, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120253707804239528, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120253707804239528, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120253707804239528, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120253707804239528, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120253707804239528, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ec4eba716fc37247a98197b605a4250, type: 2}

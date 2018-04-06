@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33792154824488188}
   - component: {fileID: 64036505807961894}
   - component: {fileID: 23473568252232650}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: RelicSetter
   m_TagString: Untagged
   m_Icon: {fileID: 0}

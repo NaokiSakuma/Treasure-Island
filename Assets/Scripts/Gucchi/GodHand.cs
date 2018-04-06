@@ -16,8 +16,8 @@ namespace GucchiCS
         bool            _catchMode;
 
         // レイヤーテスト用。後々enumかなにかで管理したほうがいい
-        const int       _islandLayer = 8;
-        const int       _relicSetterLayer = 9;
+        const int       _islandLayer = 9;
+        const int       _relicSetterLayer = 10;
 
         //public Text     _unitNumText;
 
