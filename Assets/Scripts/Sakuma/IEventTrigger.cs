@@ -1,5 +1,7 @@
 ﻿interface IEventTrigger
 {
-    void StartEvent();
-    void EndEvent();
+    bool IsEnd { set; }
+    bool StartEvent();
+    bool NowEvent();
+    bool EndEvent();
 }
