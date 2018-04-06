@@ -410,13 +410,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1990064434}
   - component: {fileID: 1990064433}
+  - component: {fileID: 1990064435}
   m_Layer: 0
   m_Name: hoge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1990064433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,9 +426,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1990064432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab879cbf091a32a48b1166b2db171c68, type: 3}
+  m_Script: {fileID: 11500000, guid: 79fe4d59f1011ad48ab7d0c2ff5d1390, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sample:
+    list:
+    - Key: 
+      Value: {x: 0, y: 0, z: 0}
+    - Key: 
+      Value: {x: 0, y: 0, z: 0}
+    - Key: 
+      Value: {x: 0, y: 0, z: 0}
 --- !u!4 &1990064434
 Transform:
   m_ObjectHideFlags: 0
@@ -441,3 +450,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1990064435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1990064432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab879cbf091a32a48b1166b2db171c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventFlagDictionary:
+    list:
+    - Key: aaa
+      Value: 0
