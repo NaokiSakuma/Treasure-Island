@@ -15,6 +15,8 @@ public class UnitAttacker : MonoBehaviour {
 
 		// 攻撃
 		this.UpdateAsObservable()
+		    // 自分が生きていて
+		    .Where(_ => _core.Health > 0)
 		    // ターゲットがいる
 		    .Where(_ => _core.Target)
 		    // ターゲットが攻撃の届く距離にいる
@@ -30,6 +32,6 @@ public class UnitAttacker : MonoBehaviour {
 	void Attack(){
 		// TODO: アニメーションの追加もしくは連動
 		// 対象にダメージ
-		_core.Target.Health -= _core.Strength;
+		_core.Target.Health -= _core.Strength + _core.AdditionalStrength;
 	}
 }
