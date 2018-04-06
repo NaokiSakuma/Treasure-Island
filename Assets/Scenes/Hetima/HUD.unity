@@ -231,10 +231,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 121282639}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9819ec067a444b2f826916313c11440, type: 3}
+  m_Script: {fileID: 11500000, guid: 13850b9d8845b46b1894fe0fccf3d2ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttons: []
+  _manager: {fileID: 0}
 --- !u!1 &133902745
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 205068689}
   - component: {fileID: 205068691}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: RelicIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 205068687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08a9f783169b343f6b83ab2bfe7cd5ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 65249204f85a04d428dcbc5cf4f9061c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &215388684
@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 890792207}
   - component: {fileID: 890792209}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: RelicIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -802,7 +802,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 890792205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08a9f783169b343f6b83ab2bfe7cd5ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 65249204f85a04d428dcbc5cf4f9061c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &978560364
@@ -970,7 +970,7 @@ GameObject:
   - component: {fileID: 1046972472}
   - component: {fileID: 1046972474}
   m_Layer: 5
-  m_Name: Image (3)
+  m_Name: RelicIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1046972470}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08a9f783169b343f6b83ab2bfe7cd5ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 65249204f85a04d428dcbc5cf4f9061c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1119055050
@@ -1453,7 +1453,7 @@ GameObject:
   - component: {fileID: 1475206172}
   - component: {fileID: 1475206174}
   m_Layer: 5
-  m_Name: Image
+  m_Name: RelicIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1518,7 +1518,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1475206170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08a9f783169b343f6b83ab2bfe7cd5ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 65249204f85a04d428dcbc5cf4f9061c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1488858481
@@ -2239,7 +2239,7 @@ GameObject:
   - component: {fileID: 2142479506}
   - component: {fileID: 2142479508}
   m_Layer: 5
-  m_Name: Image (4)
+  m_Name: RelicIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2304,6 +2304,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2142479504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08a9f783169b343f6b83ab2bfe7cd5ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 65249204f85a04d428dcbc5cf4f9061c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

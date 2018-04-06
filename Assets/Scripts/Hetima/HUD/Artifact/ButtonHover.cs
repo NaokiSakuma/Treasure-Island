@@ -7,8 +7,6 @@ using UniRx;
 
 public class ButtonHover : MonoBehaviour , IPointerEnterHandler, IPointerExitHandler{
 
-	private Image _image;
-
 	private Subject<PointerEventData> enterSubject = new Subject<PointerEventData>();
 	public IObservable<PointerEventData> OnPointerEnterAsObservable {
 		get { return enterSubject; }
@@ -17,11 +15,6 @@ public class ButtonHover : MonoBehaviour , IPointerEnterHandler, IPointerExitHan
 	private Subject<PointerEventData> exitSubject = new Subject<PointerEventData>();
 	public IObservable<PointerEventData> OnPointerExitAsObservable {
 		get { return exitSubject; }
-	}
-
-	// Use this for initialization
-	void Start() {
-		_image = GetComponent<Image>();
 	}
 
 	/// <summary>
@@ -38,7 +31,6 @@ public class ButtonHover : MonoBehaviour , IPointerEnterHandler, IPointerExitHan
 	/// </summary>
 	/// <param name="pointerEventData">Pointer event data.</param>
 	public void OnPointerExit(PointerEventData pointerEventData) {
-		//this.transform.position += (Vector3)pointerEventData.delta;
 		exitSubject.OnNext(pointerEventData);
 	}
 }
