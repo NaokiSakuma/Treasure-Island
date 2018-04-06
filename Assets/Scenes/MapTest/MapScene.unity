@@ -429,8 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3dd9444ef4368448299b62beb4fc4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ignitionTime: 0
-  _timer: 3
+  _ignitionTime: 3
 --- !u!4 &1990064434
 Transform:
   m_ObjectHideFlags: 0
@@ -457,3 +456,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerEvent: {fileID: 1990064433}
   end: 0
+  start: 0

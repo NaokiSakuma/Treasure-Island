@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
+using UniRx.Triggers;
 
 public class TimerEventTrigger : MonoBehaviour,IEventTrigger {
 
@@ -8,33 +10,74 @@ public class TimerEventTrigger : MonoBehaviour,IEventTrigger {
     [SerializeField]
     private int _ignitionTime = 0;
     // タイマー
-    [SerializeField]
     private int _timer = 0;
+    
+    // タイマーイベントを管理するdictionary
+    private Dictionary<string, bool> timeDic = new Dictionary<string, bool>();
 
-    // イベントが始まった
-    private bool _isStart = false;
-    // イベントが終わった
-    private bool _isEnd = false;
-    public bool IsEnd
+    // イベント終了
+    public bool End
     {
-        set { _isEnd = value; }
+        set { timeDic["end"] = value; }
     }
 
+    // タイマーをスタート
+    public bool Count
+    {
+        set { timeDic["count"] = value; }
+    }
+    void Awake()
+    {
+        // 登録
+        timeDic.Add("start", false);
+        timeDic.Add("end", false);
+        timeDic.Add("count", false);
+    }
+    void Start()
+    {
+        // タイマーを動かしている時
+        this.UpdateAsObservable()
+            .Where(_ => timeDic["count"])
+            .First(_ => timeDic["count"])
+            .Subscribe(_ => StartCoroutine(AddTime()));
+    }
+
+    /// <summary>
+    /// タイマーをカウント
+    /// </summary>
+    /// <returns>1秒毎</returns>
+    IEnumerator AddTime()
+    {
+        while (!timeDic["end"])
+        {
+            yield return new WaitForSeconds(1);
+            _timer++;
+        }
+    }
+
+    /// <summary>
+    /// イベントの開始
+    /// </summary>
+    /// <returns>開始している：true, 開始していない：false</returns>
     public bool StartEvent()
     {
-        if (_isStart) return false;
+        if (timeDic["start"]) return false;
         if(_timer == _ignitionTime)
         {
             Debug.Log("イベント開始");
-            _isStart = true;
+            timeDic["start"] = true;
             return true;
         }
         return false;
     }
 
+    /// <summary>
+    /// イベント中
+    /// </summary>
+    /// <returns>イベント中：true, イベント中ではない：false</returns>
     public bool NowEvent()
     {
-        if (_isStart && !_isEnd)
+        if (timeDic["start"] && !timeDic["end"])
         {
             Debug.Log("イベント中");
             return true;
@@ -42,11 +85,16 @@ public class TimerEventTrigger : MonoBehaviour,IEventTrigger {
         return false;
     }
 
+    /// <summary>
+    /// イベントの終了
+    /// </summary>
+    /// <returns>終了している：true, 終了していない：false</returns>
     public bool EndEvent()
     {
-        if (_isEnd)
+        if (timeDic["end"])
         {
             Debug.Log("イベント終了");
+            StopAllCoroutines();
             return true;
         }
         return false;
