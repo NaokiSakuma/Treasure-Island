@@ -197,10 +197,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _islandState: 1
-  _islandMaterial:
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
-  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
-  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
   _islandSizeData:
   - 35
   - 50
@@ -209,6 +205,7 @@ MonoBehaviour:
   _movingRange: 200
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
+  _flag: {fileID: 114767819407620146, guid: eeb70806faf824bcf83e446f1a2c0710, type: 2}
   _score: 1000
 --- !u!114 &114973649826805578
 MonoBehaviour:

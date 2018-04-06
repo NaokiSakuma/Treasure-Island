@@ -12,7 +12,7 @@ namespace GucchiCS
     public class Island : MonoBehaviour, IGround
     {
         // 島に存在するユニットの種類
-        enum ISLAND_OCCUPATION : int
+        public enum ISLAND_OCCUPATION : int
         {
             UNIT,
             ENEMY,
@@ -23,9 +23,6 @@ namespace GucchiCS
         [SerializeField]
         ISLAND_OCCUPATION _islandState = ISLAND_OCCUPATION.NULL;
         ISLAND_OCCUPATION _islandStateBefore = ISLAND_OCCUPATION.NULL;
-
-        // マテリアル
-		public List<Material> _islandMaterial;
 
         // サイズリスト
         public List<float> _islandSizeData = new List<float>() {
@@ -73,6 +70,9 @@ namespace GucchiCS
         [SerializeField]
         float _occupationTimerInterval = 0.01f;
 
+        // 占領旗
+        public OccupationFlag _flag;
+
         // スコア
         [SerializeField]
         int _score = 1000;
@@ -97,8 +97,13 @@ namespace GucchiCS
             float islandSize = _islandSizeDic[_islandSize];
             transform.localScale = new Vector3(islandSize, 3f, islandSize);
 
-            // マテリアル設定
-            transform.GetComponent<Renderer>().material = _islandMaterial[(int)_islandState];
+            // 初期の占領状況に応じてマテリアルを変更
+            if (_islandState != ISLAND_OCCUPATION.NULL)
+            {
+                OccupationFlag flag = Instantiate(_flag, new Vector3(transform.position.x, 1.5f, transform.position.z + _islandSizeDic[_islandSize] / 3f), Quaternion.identity);
+                flag.transform.SetParent(this.transform, true);
+                flag.ChangeMaterial(_islandState);
+            }
 
             // 最大占領値設定
             _maxOccupation = _occupationList[(int)_islandSize];
@@ -155,7 +160,7 @@ namespace GucchiCS
             // ユニットがいない場合
             if (emptyIsland && _islandStateBefore != ISLAND_OCCUPATION.NULL)
             {
-                //StartCoroutine(OccupationTimer(ISLAND_OCCUPATION.NULL));
+                StartCoroutine(OccupationTimer(ISLAND_OCCUPATION.NULL));
             }
         }
 
@@ -187,8 +192,34 @@ namespace GucchiCS
                 // 占領値を最大の状態にする（念のため）
                 _occupation = _maxOccupation;
 
-                // マテリアル設定
-                transform.GetComponent<Renderer>().material = _islandMaterial[(int)occupation];
+                // 占領状況に応じてマテリアルを変更
+                if (_islandState != ISLAND_OCCUPATION.NULL)
+                {
+                    OccupationFlag flag = transform.GetComponentInChildren<OccupationFlag>();
+					
+                    // 旗がすでに存在している場合
+                    if (flag != null)
+                    {
+                        // マテリアルのみ変更
+                        flag.ChangeMaterial(_islandState);
+                    }
+                    // 旗がない場合
+                    else
+                    {
+                        flag = Instantiate(_flag, new Vector3(transform.position.x, 1.5f, transform.position.z + _islandSizeDic[_islandSize] / 3f), Quaternion.identity);
+                        flag.transform.SetParent(this.transform, true);
+                        flag.ChangeMaterial(_islandState);   
+                    }
+                }
+                // 占領ユニットがいないなら旗を消す
+                else
+                {
+                    OccupationFlag flag = transform.GetComponentInChildren<OccupationFlag>();
+                    if (flag != null)
+                    {
+                        Destroy(flag);
+                    }
+                }
 
                 // 占領者の変更
                 _islandStateBefore = _islandState;

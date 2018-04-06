@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4841494778687222}
   - component: {fileID: 23923046321228092}
   - component: {fileID: 102838397309037636}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OccupationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4937766964902588}
   - component: {fileID: 23933313412593982}
   - component: {fileID: 102306017452716198}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OccupationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 114216309318737076}
   - component: {fileID: 64983563445128376}
   - component: {fileID: 114336281911240436}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 114221553034568204}
   - component: {fileID: 64655870020063324}
   - component: {fileID: 114828157786026756}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 114203764482751598}
   - component: {fileID: 64876073911915234}
   - component: {fileID: 114466857668424372}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 4986138949315190}
   - component: {fileID: 23654411210954416}
   - component: {fileID: 102110077791922746}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OccupationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4497940821165334}
   - component: {fileID: 23597323856878678}
   - component: {fileID: 102607628371447304}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OccupationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 4735805112341876}
   - component: {fileID: 23812386044265554}
   - component: {fileID: 102886851412162176}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OccupationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 4852873267670118}
   - component: {fileID: 23703826771931368}
   - component: {fileID: 102794660903267612}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OccupationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 4100498371086206}
   - component: {fileID: 23253049813898228}
   - component: {fileID: 102620534429978128}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OccupationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 114200608244723058}
   - component: {fileID: 64853593834972592}
   - component: {fileID: 114382199886925902}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 114962521159531324}
   - component: {fileID: 64099485951801540}
   - component: {fileID: 114704307677213844}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 4938606016469182}
   - component: {fileID: 23173672902653698}
   - component: {fileID: 102289227745074664}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OccupationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 4281591817068364}
   - component: {fileID: 23598847251971742}
   - component: {fileID: 102789603628280646}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OccupationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 4918486845099160}
   - component: {fileID: 23953172985884916}
   - component: {fileID: 102953344443611804}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OccupationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 114819145978293936}
   - component: {fileID: 64923418173305894}
   - component: {fileID: 114222494389685522}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 114887367481020798}
   - component: {fileID: 64252705099332428}
   - component: {fileID: 114997963113788294}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 114031556876354650}
   - component: {fileID: 64560065709986474}
   - component: {fileID: 114972989110999332}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 4294478948789786}
   - component: {fileID: 23444154916620524}
   - component: {fileID: 102374739258898898}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OccupationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 4424287066687436}
   - component: {fileID: 23166767861860334}
   - component: {fileID: 102468755390855254}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OccupationText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   - component: {fileID: 114590143029914500}
   - component: {fileID: 64539746937457092}
   - component: {fileID: 114210308121123408}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 114044024699637244}
   - component: {fileID: 64803148680676732}
   - component: {fileID: 114932039605078520}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 114167837966379516}
   - component: {fileID: 64578234567455714}
   - component: {fileID: 114591890774845252}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 114502213868712436}
   - component: {fileID: 64080729874396944}
   - component: {fileID: 114231082851358274}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Island
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2412,11 +2412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _islandState: 0
-  _islandMaterial:
-  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
-  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
+  _islandState: 2
   _islandSizeData:
   - 35
   - 50
@@ -2425,7 +2421,8 @@ MonoBehaviour:
   _movingRange: 200
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
-  _score: 1000
+  _flag: {fileID: 0}
+  _score: 5000
 --- !u!114 &114044024699637244
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2437,11 +2434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _islandState: 2
-  _islandMaterial:
-  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
-  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
+  _islandState: 1
   _islandSizeData:
   - 35
   - 50
@@ -2450,7 +2443,8 @@ MonoBehaviour:
   _movingRange: 200
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
-  _score: 1000
+  _flag: {fileID: 0}
+  _score: 3000
 --- !u!114 &114167837966379516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2462,11 +2456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _islandState: 2
-  _islandMaterial:
-  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
-  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
+  _islandState: 1
   _islandSizeData:
   - 35
   - 50
@@ -2475,6 +2465,7 @@ MonoBehaviour:
   _movingRange: 150
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
+  _flag: {fileID: 0}
   _score: 1000
 --- !u!114 &114200608244723058
 MonoBehaviour:
@@ -2487,11 +2478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _islandState: 1
-  _islandMaterial:
-  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
-  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
+  _islandState: 0
   _islandSizeData:
   - 35
   - 50
@@ -2500,6 +2487,7 @@ MonoBehaviour:
   _movingRange: 200
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
+  _flag: {fileID: 0}
   _score: 1000
 --- !u!114 &114203764482751598
 MonoBehaviour:
@@ -2512,11 +2500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _islandState: 1
-  _islandMaterial:
-  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
-  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
+  _islandState: 0
   _islandSizeData:
   - 35
   - 50
@@ -2525,7 +2509,8 @@ MonoBehaviour:
   _movingRange: 200
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
-  _score: 1000
+  _flag: {fileID: 0}
+  _score: 3000
 --- !u!114 &114210308121123408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2551,11 +2536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _islandState: 1
-  _islandMaterial:
-  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
-  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
+  _islandState: 0
   _islandSizeData:
   - 35
   - 50
@@ -2564,6 +2545,7 @@ MonoBehaviour:
   _movingRange: 200
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
+  _flag: {fileID: 114767819407620146, guid: eeb70806faf824bcf83e446f1a2c0710, type: 2}
   _score: 1000
 --- !u!114 &114221553034568204
 MonoBehaviour:
@@ -2576,11 +2558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _islandState: 2
-  _islandMaterial:
-  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
-  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
+  _islandState: 1
   _islandSizeData:
   - 35
   - 50
@@ -2589,7 +2567,8 @@ MonoBehaviour:
   _movingRange: 200
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
-  _score: 1000
+  _flag: {fileID: 0}
+  _score: 5000
 --- !u!114 &114222494389685522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2629,11 +2608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _islandState: 2
-  _islandMaterial:
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
-  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
-  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
+  _islandState: 0
   _islandSizeData:
   - 35
   - 50
@@ -2642,7 +2617,8 @@ MonoBehaviour:
   _movingRange: 200
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
-  _score: 1000
+  _flag: {fileID: 114767819407620146, guid: eeb70806faf824bcf83e446f1a2c0710, type: 2}
+  _score: 0
 --- !u!114 &114336281911240436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2710,11 +2686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _islandState: 2
-  _islandMaterial:
-  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
-  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
+  _islandState: 1
   _islandSizeData:
   - 35
   - 50
@@ -2723,7 +2695,8 @@ MonoBehaviour:
   _movingRange: 200
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
-  _score: 1000
+  _flag: {fileID: 0}
+  _score: 3000
 --- !u!114 &114590143029914500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2735,11 +2708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _islandState: 0
-  _islandMaterial:
-  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
-  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
+  _islandState: 2
   _islandSizeData:
   - 35
   - 50
@@ -2748,7 +2717,8 @@ MonoBehaviour:
   _movingRange: 200
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
-  _score: 1000
+  _flag: {fileID: 0}
+  _score: 10000
 --- !u!114 &114591890774845252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2789,10 +2759,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _islandState: 0
-  _islandMaterial:
-  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
-  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
   _islandSizeData:
   - 35
   - 50
@@ -2801,6 +2767,7 @@ MonoBehaviour:
   _movingRange: 150
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
+  _flag: {fileID: 0}
   _score: 1000
 --- !u!114 &114828157786026756
 MonoBehaviour:
@@ -2827,11 +2794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _islandState: 2
-  _islandMaterial:
-  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
-  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
+  _islandState: 1
   _islandSizeData:
   - 35
   - 50
@@ -2840,6 +2803,7 @@ MonoBehaviour:
   _movingRange: 150
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
+  _flag: {fileID: 0}
   _score: 1000
 --- !u!114 &114932039605078520
 MonoBehaviour:
@@ -2866,11 +2830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _islandState: 0
-  _islandMaterial:
-  - {fileID: 2100000, guid: ff6e9d36c5e2749b5aac37d4e67ed439, type: 2}
-  - {fileID: 2100000, guid: eb5c2723394ab443e9cf062224227b36, type: 2}
-  - {fileID: 2100000, guid: 3365bd56f91354072987726023ad45c1, type: 2}
+  _islandState: 2
   _islandSizeData:
   - 35
   - 50
@@ -2879,7 +2839,8 @@ MonoBehaviour:
   _movingRange: 200
   _occupationList: 640000002c010000f4010000
   _occupationTimerInterval: 0.01
-  _score: 1000
+  _flag: {fileID: 0}
+  _score: 6000
 --- !u!114 &114972989110999332
 MonoBehaviour:
   m_ObjectHideFlags: 1
