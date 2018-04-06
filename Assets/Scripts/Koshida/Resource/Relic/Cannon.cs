@@ -29,9 +29,6 @@ namespace Konji
             //名前の設定
             _name = CO.RELIC_LIST[(int)_type];
 
-            //デバック用
-            IsPut = true;
-
             //置かれているときn秒間隔ごとに大砲発射
             Observable.Interval(System.TimeSpan.FromSeconds(_interval))
                 .Where(_ => IsPut)
