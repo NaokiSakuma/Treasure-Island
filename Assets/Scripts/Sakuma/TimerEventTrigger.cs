@@ -6,40 +6,58 @@ using UniRx.Triggers;
 
 public class TimerEventTrigger : MonoBehaviour,IEventTrigger {
 
-    // イベントが発火する時間
+    // イベントが発火する時間(秒)
     [SerializeField]
     private int _ignitionTime = 0;
     // タイマー
     private int _timer = 0;
     
     // タイマーイベントを管理するdictionary
-    private Dictionary<string, bool> timeDic = new Dictionary<string, bool>();
+    private Dictionary<string, bool> _timeDic = new Dictionary<string, bool>();
 
     // イベント終了
     public bool End
     {
-        set { timeDic["end"] = value; }
+        set { _timeDic["end"] = value; }
     }
 
     // タイマーをスタート
     public bool Count
     {
-        set { timeDic["count"] = value; }
+        set { _timeDic["count"] = value; }
     }
     void Awake()
     {
         // 登録
-        timeDic.Add("start", false);
-        timeDic.Add("end", false);
-        timeDic.Add("count", false);
+        _timeDic.Add("start", false);    // イベントの開始
+        _timeDic.Add("end", false);      // イベントの終了
+        _timeDic.Add("count", false);    // タイマーを動かす
     }
     void Start()
     {
-        // タイマーを動かしている時
+        // タイマーをカウント
         this.UpdateAsObservable()
-            .Where(_ => timeDic["count"])
-            .First(_ => timeDic["count"])
+            .Where(_ => _timeDic["count"])
+            .First(_ => _timeDic["count"])
             .Subscribe(_ => StartCoroutine(AddTime()));
+
+        // イベントの開始した瞬間
+        this.UpdateAsObservable()
+            .Where(_ => _timer == _ignitionTime)
+            .Take(1)
+            .Subscribe(_ => StartEvent());
+
+        // イベント中
+        this.UpdateAsObservable()
+            .Where(_ => _timeDic["start"] && !_timeDic["end"])
+            .Subscribe(_ => NowEvent());
+
+        // イベントの終了
+        this.UpdateAsObservable()
+            .Where(_ => _timeDic["end"])
+            .Take(1)
+            .Subscribe(_ => EndEvent());
+
     }
 
     /// <summary>
@@ -48,7 +66,7 @@ public class TimerEventTrigger : MonoBehaviour,IEventTrigger {
     /// <returns>1秒毎</returns>
     IEnumerator AddTime()
     {
-        while (!timeDic["end"])
+        while (!_timeDic["end"])
         {
             yield return new WaitForSeconds(1);
             _timer++;
@@ -56,16 +74,16 @@ public class TimerEventTrigger : MonoBehaviour,IEventTrigger {
     }
 
     /// <summary>
-    /// イベントの開始
+    /// イベントの開始した瞬間
     /// </summary>
-    /// <returns>開始している：true, 開始していない：false</returns>
+    /// <returns>開始した瞬間：true, 開始した瞬間ではない：false</returns>
     public bool StartEvent()
     {
-        if (timeDic["start"]) return false;
+        if (_timeDic["start"]) return false;
         if(_timer == _ignitionTime)
         {
             Debug.Log("イベント開始");
-            timeDic["start"] = true;
+            _timeDic["start"] = true;
             return true;
         }
         return false;
@@ -77,7 +95,7 @@ public class TimerEventTrigger : MonoBehaviour,IEventTrigger {
     /// <returns>イベント中：true, イベント中ではない：false</returns>
     public bool NowEvent()
     {
-        if (timeDic["start"] && !timeDic["end"])
+        if (_timeDic["start"] && !_timeDic["end"])
         {
             Debug.Log("イベント中");
             return true;
@@ -91,7 +109,7 @@ public class TimerEventTrigger : MonoBehaviour,IEventTrigger {
     /// <returns>終了している：true, 終了していない：false</returns>
     public bool EndEvent()
     {
-        if (timeDic["end"])
+        if (_timeDic["end"])
         {
             Debug.Log("イベント終了");
             StopAllCoroutines();
