@@ -10,7 +10,11 @@ public class MoveMap : MonoBehaviour {
 
     // カメラの移動制限
     [SerializeField]
-    private float moveLimit = 0;
+    private Vector2 moveLimit = Vector2.zero;
+    public Vector2 MoveLimit
+    {
+        get { return moveLimit; }
+    }
 
     // カメラのスクロール
     [SerializeField]
@@ -31,22 +35,26 @@ public class MoveMap : MonoBehaviour {
         float scroll = -Input.GetAxis("Mouse ScrollWheel");
         transform.position += new Vector3(0, scroll * scrollSpeed, 0);
 
-        // ここやばいからあとで修正 カメラの移動
-        if (mouseviewPos.y >= 0.9f)
+        // test用
+        if (!Input.GetMouseButton(0))
         {
-            transform.position += (new Vector3(0, 0, moveSpeed * Time.deltaTime));
-        }
-        if (mouseviewPos.y <= 0.1f)
-        {
-            transform.position += (new Vector3(0, 0, -moveSpeed * Time.deltaTime));
-        }
-        if (mouseviewPos.x >= 0.9f)
-        {
-            transform.position += (new Vector3(moveSpeed * Time.deltaTime, 0, 0));
-        }
-        if (mouseviewPos.x <= 0.1f)
-        {
-            transform.position += (new Vector3(-moveSpeed * Time.deltaTime, 0, 0));
+            // ここやばいからあとで修正 カメラの移動
+            if (mouseviewPos.y >= 0.9f)
+            {
+                transform.position += (new Vector3(0, 0, moveSpeed * Time.deltaTime));
+            }
+            if (mouseviewPos.y <= 0.1f)
+            {
+                transform.position += (new Vector3(0, 0, -moveSpeed * Time.deltaTime));
+            }
+            if (mouseviewPos.x >= 0.9f)
+            {
+                transform.position += (new Vector3(moveSpeed * Time.deltaTime, 0, 0));
+            }
+            if (mouseviewPos.x <= 0.1f)
+            {
+                transform.position += (new Vector3(-moveSpeed * Time.deltaTime, 0, 0));
+            }
         }
         // ここまで
 
@@ -54,8 +62,8 @@ public class MoveMap : MonoBehaviour {
 
         // カメラの移動制限
         transform.position = new Vector3(
-            Mathf.Clamp(transform.position.x,-moveLimit, moveLimit),
+            Mathf.Clamp(transform.position.x,-moveLimit.x, moveLimit.x),
             Mathf.Clamp(transform.position.y,scrollLimit.x,scrollLimit.y), 
-            Mathf.Clamp(transform.position.z, -moveLimit, moveLimit));
+            Mathf.Clamp(transform.position.z, -moveLimit.y, moveLimit.y));
     }
 }
