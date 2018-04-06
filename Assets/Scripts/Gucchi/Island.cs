@@ -73,6 +73,10 @@ namespace GucchiCS
         [SerializeField]
         float _occupationTimerInterval = 0.01f;
 
+        // スコア
+        [SerializeField]
+        int _score = 1000;
+
         // 島にいるユニットリスト
         List<Unit> _unitList;
 
@@ -246,6 +250,15 @@ namespace GucchiCS
             get
             {
                 return _enemyList;
+            }
+        }
+
+        // スコア
+        public int Score
+        {
+            get
+            {
+                return _score;
             }
         }
     }
