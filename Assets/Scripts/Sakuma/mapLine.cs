@@ -6,9 +6,8 @@ public class mapLine : MonoBehaviour {
     // ライン
     [SerializeField]
     private LineRenderer lineRenderer;
-
+    // ラインの数
     private const int lineNum = 4;
-    private int posY = 5;
     // Use this for initialization
     void Start()
     {

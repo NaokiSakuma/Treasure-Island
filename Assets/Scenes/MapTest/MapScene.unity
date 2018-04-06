@@ -152,6 +152,64 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 20480615716711050, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468628609879476, guid: 2ec4eba716fc37247a98197b605a4250, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 120253707804239528, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114270424557480024, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: moveMap
+      value: 
+      objectReference: {fileID: 1970515888}
+    - target: {fileID: 20480615716711050, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1195436943662310, guid: 2ec4eba716fc37247a98197b605a4250, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114269099413215062, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: miniCamera
+      value: 
+      objectReference: {fileID: 1354689086}
+    - target: {fileID: 4468628609879476, guid: 2ec4eba716fc37247a98197b605a4250, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468628609879476, guid: 2ec4eba716fc37247a98197b605a4250, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468628609879476, guid: 2ec4eba716fc37247a98197b605a4250, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468628609879476, guid: 2ec4eba716fc37247a98197b605a4250, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4468628609879476, guid: 2ec4eba716fc37247a98197b605a4250, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 114270424557480024, guid: 2ec4eba716fc37247a98197b605a4250,
+        type: 2}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1354689086}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ec4eba716fc37247a98197b605a4250, type: 2}
   m_IsPrefabParent: 0
@@ -283,11 +341,46 @@ Prefab:
     - target: {fileID: 114697245201149072, guid: d1373db8ba956bb4086ded40fbabe79e,
         type: 2}
       propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697245201149072, guid: d1373db8ba956bb4086ded40fbabe79e,
+        type: 2}
+      propertyPath: scrollLimit.y
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697245201149072, guid: d1373db8ba956bb4086ded40fbabe79e,
+        type: 2}
+      propertyPath: moveLimit
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697245201149072, guid: d1373db8ba956bb4086ded40fbabe79e,
+        type: 2}
+      propertyPath: moveLimit.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697245201149072, guid: d1373db8ba956bb4086ded40fbabe79e,
+        type: 2}
+      propertyPath: moveLimit.y
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 20924112911498588, guid: d1373db8ba956bb4086ded40fbabe79e,
+        type: 2}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697245201149072, guid: d1373db8ba956bb4086ded40fbabe79e,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d1373db8ba956bb4086ded40fbabe79e, type: 2}
   m_IsPrefabParent: 0
+--- !u!20 &1354689086 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 20480615716711050, guid: 2ec4eba716fc37247a98197b605a4250,
+    type: 2}
+  m_PrefabInternal: {fileID: 728165045}
 --- !u!1001 &1837788666
 Prefab:
   m_ObjectHideFlags: 0
@@ -330,6 +423,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 557d0b1da52ff564d91303950d957625, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1970515888 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114697245201149072, guid: d1373db8ba956bb4086ded40fbabe79e,
+    type: 2}
+  m_PrefabInternal: {fileID: 989688128}
+  m_Script: {fileID: 11500000, guid: 49f4e94ab2022f1469c251cfdf4a2770, type: 3}
 --- !u!1 &1988799115
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,3 +494,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1990064432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1990064434}
+  - component: {fileID: 1990064433}
+  m_Layer: 0
+  m_Name: hoge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1990064433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1990064432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab879cbf091a32a48b1166b2db171c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1990064434
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1990064432}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.0162935, y: 1.4795895, z: 3.3160496}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
