@@ -75,7 +75,7 @@ namespace GucchiCS
         public OccupationFlag _flag;
 
         // 占領ゲージ
-        public GameObject _occupationGage;
+        public Slider _occupationGage;
 
         // スコア
         [SerializeField]
@@ -101,6 +101,9 @@ namespace GucchiCS
             float islandSize = _islandSizeDic[_islandSize];
             transform.localScale = new Vector3(islandSize, 3f, islandSize);
 
+            // キャンバス設定
+            transform.GetComponentInChildren<Canvas>().transform.Translate(new Vector3(0, 10f, -_islandSizeDic[_islandSize] / 2f));
+
             // 初期の占領状況に応じて占領旗の色変更と占領ゲージを設定
             if (_islandState != ISLAND_OCCUPATION.NULL)
             {
@@ -110,8 +113,9 @@ namespace GucchiCS
                 flag.ChangeMaterial(_islandState);
 
                 // 占領ゲージ
-                GameObject gage = Instantiate(_occupationGage, new Vector3(transform.position.x, 100f, transform.position.z - _islandSizeDic[_islandSize] / 2f), Quaternion.identity);
+                Slider gage = Instantiate(_occupationGage, Vector3.zero, Quaternion.identity);
                 gage.transform.SetParent(transform.GetComponentInChildren<Canvas>().transform, false);
+                gage.transform.localScale = new Vector3(0.5f, 1f, 0.5f);
                 gage.GetComponent<Slider>().value = 0f;
             }
 
@@ -191,6 +195,17 @@ namespace GucchiCS
 
                     // 占領値を0にする
                     _occupation = 0;
+
+                    Slider gage = transform.GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>();
+
+                    // 占領ゲージがない場合は生成
+                    if (!gage)
+                    {
+                        gage = Instantiate(_occupationGage, Vector3.zero, Quaternion.identity);
+                        gage.transform.SetParent(transform.GetComponentInChildren<Canvas>().transform, false);
+                        gage.transform.localScale = new Vector3(0.5f, 1f, 0.5f);
+                        gage.GetComponent<Slider>().value = 0f;
+                    }
                 }
 
                 _occupation++;
@@ -208,15 +223,12 @@ namespace GucchiCS
                 if (_islandState != ISLAND_OCCUPATION.NULL)
                 {
                     OccupationFlag flag = transform.GetComponentInChildren<OccupationFlag>();
-                    GameObject gage = transform.GetComponentInChildren<Canvas>().GetComponentInChildren<Slider>().gameObject;
-					
+
                     // 旗、占領ゲージがすでに存在している場合
-                    if (flag != null && gage != null)
+                    if (flag != null)
                     {
                         // マテリアルのみ変更
                         flag.ChangeMaterial(_islandState);
-
-                        // 味方・敵の変更
                     }
                     // 旗、占領ゲージがない場合
                     else
@@ -225,11 +237,6 @@ namespace GucchiCS
                         flag = Instantiate(_flag, new Vector3(transform.position.x, 1.5f, transform.position.z + _islandSizeDic[_islandSize] / 3f), Quaternion.identity);
                         flag.transform.SetParent(this.transform, true);
                         flag.ChangeMaterial(_islandState);
-
-                        // 占領ゲージの生成
-                        gage = Instantiate(_occupationGage, new Vector3(transform.position.x, 100f, transform.position.z - _islandSizeDic[_islandSize] / 2f), Quaternion.identity);
-                        gage.transform.SetParent(transform.GetComponentInChildren<Canvas>().transform, false);
-                        gage.GetComponent<Slider>().value = 0f;
                     }
                 }
                 // 占領ユニットがいないなら旗を消す
