@@ -38,7 +38,7 @@ public class TimerEventTrigger : EventTrigger {
         // タイマーをカウント
         this.UpdateAsObservable()
             .Where(_ => _eventDic["count"])
-            .First(_ => _eventDic["count"])
+            .Take(1)
             .Subscribe(_ => StartCoroutine(AddTime()));
 
         // イベントの開始した瞬間
