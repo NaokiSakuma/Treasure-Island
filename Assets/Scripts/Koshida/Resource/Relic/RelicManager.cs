@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using UnityEngine;
 
 namespace Konji
@@ -8,16 +8,10 @@ namespace Konji
     public class RelicManager : MonoBehaviour
     {
         //Relicリストの最大数
-        private const int MAX_RELIC_NUM = 6;
+        public const int MAX_RELIC_NUM = 6;
 
         //レリック管理リスト
-        public List<CO.RelicInfo> _relicList = new List<CO.RelicInfo>(MAX_RELIC_NUM);
-
-        //index番目のRelicを削除
-        public void RemoveRelic(int index)
-        {
-            _relicList.RemoveAt(index);
-        }
+        private List<CO.RelicInfo> _relicList = new List<CO.RelicInfo>();
 
         //最後にRelic追加
         public void AddRelic(CO.RelicType type)
@@ -37,11 +31,35 @@ namespace Konji
             _relicList.Add(info);
         }
 
+        //RelicInffoの取得
+        public CO.RelicInfo GetRelicInfo(int index)
+        {
+            //リストが0個、indexが0未満,indexがリスト個数以上
+            if (_relicList.Count == 0 || index < 0 || index >= _relicList.Count)
+            {
+                return null;
+            }
+
+            return _relicList[index];
+        }
+
+        //index番目のRelicを削除
+        public void RemoveRelic(int index)
+        {
+            //リストが0個、indexが0未満,indexがリスト個数以上
+            if (_relicList.Count == 0 || index < 0 || index >= _relicList.Count)
+            {
+                return;
+            }
+
+            _relicList.RemoveAt(index);
+        }
+
         //Relicを選択状態にする
         public void SelectRelic(int index)
         {
-            //範囲外を選ばないように
-            if(index >= CO.RELIC_LIST.Count)
+            //リストが0個、indexが0未満,indexがリスト個数以上
+            if (_relicList.Count == 0 || index < 0 || index >= _relicList.Count)
             {
                 return;
             }
@@ -56,8 +74,8 @@ namespace Konji
         //Relicを非選択状態にする
         public void CancelRelic(int index)
         {
-            //範囲外を選ばないように
-            if (index >= CO.RELIC_LIST.Count)
+            //リストが0個、indexが0未満,indexがリスト個数以上
+            if (_relicList.Count == 0 || index < 0 || index >= _relicList.Count)
             {
                 return;
             }
