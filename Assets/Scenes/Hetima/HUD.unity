@@ -487,21 +487,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 224824343625284588, guid: 61267245300c541648103101b7bcd6ff,
+    - target: {fileID: 114405172436733132, guid: 61267245300c541648103101b7bcd6ff,
         type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224824343625284588, guid: 61267245300c541648103101b7bcd6ff,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224824343625284588, guid: 61267245300c541648103101b7bcd6ff,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -500
-      objectReference: {fileID: 0}
+      propertyPath: _moveMap
+      value: 
+      objectReference: {fileID: 565366627}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61267245300c541648103101b7bcd6ff, type: 2}
   m_IsPrefabParent: 0
@@ -1000,29 +990,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1026454140}
---- !u!1 &1188487165 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1736552754969284, guid: 61267245300c541648103101b7bcd6ff,
-    type: 2}
-  m_PrefabInternal: {fileID: 390751069}
 --- !u!224 &1188487166 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224757243407298658, guid: 61267245300c541648103101b7bcd6ff,
     type: 2}
   m_PrefabInternal: {fileID: 390751069}
---- !u!114 &1188487167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1188487165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ca33707e9ca54e9ca046ea0f32c6c90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveMap: {fileID: 565366627}
-  _arrows: []
 --- !u!1 &1211785385
 GameObject:
   m_ObjectHideFlags: 0

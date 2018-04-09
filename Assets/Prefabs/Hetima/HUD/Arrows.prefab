@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224757243407298658}
+  - component: {fileID: 114405172436733132}
   m_Layer: 5
   m_Name: Arrows
   m_TagString: Untagged
@@ -148,6 +149,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114405172436733132
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736552754969284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca33707e9ca54e9ca046ea0f32c6c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveMap: {fileID: 0}
+  _arrows: []
+  _scalingSpeed: 1
+  _scaleLimit: 1.5
 --- !u!114 &114855002578419424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -315,8 +331,8 @@ RectTransform:
   m_Father: {fileID: 224757243407298658}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -500, y: 0}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0, y: 0.5}
