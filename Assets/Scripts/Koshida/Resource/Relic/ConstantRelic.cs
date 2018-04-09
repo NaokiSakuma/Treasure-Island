@@ -36,7 +36,7 @@ namespace Konji
                             Resources.Load<Sprite>("Images/Relic/bless"),
                             Resources.Load<Sprite>("Images/Relic/money"),
                             Resources.Load<Sprite>("Images/Relic/drum"),
-                            Resources.Load<Sprite>("Images/Relic/selected")
+                            Resources.Load<Sprite>("Images/Relic/selected"),
                         });
 
         //遺物情報
@@ -64,5 +64,6 @@ namespace Konji
                 _image = RELIC_IMAGE_LIST[(int)type];
             }
         }
+
     }
 }

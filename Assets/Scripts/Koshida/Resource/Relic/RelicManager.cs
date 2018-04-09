@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Konji
 {
     //シングルトンにします
-    public class RelicManager : SingletonMonoBehaviour<RelicManager>
+    public class RelicManager : MonoBehaviour
     {
         //Relicリストの最大数
         public const int MAX_RELIC_NUM = 6;
@@ -35,7 +35,7 @@ namespace Konji
             _relicList.Add(info);
         }
 
-        //RelicInfoの取得
+        //RelicInffoの取得
         public CO.RelicInfo GetRelicInfo(int index)
         {
             //リストが0個、indexが0未満,indexがリスト個数以上
