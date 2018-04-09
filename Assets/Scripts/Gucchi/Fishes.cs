@@ -234,6 +234,18 @@ namespace GucchiCS
             return nearIslands;
         }
 
+        // 味方の解放
+        public void RemoveUnit(Unit unit)
+        {
+            _unitList.Remove(unit);
+        }
+
+        // 敵の解放
+        public void RemoveEnemy(Konji.LandingEnemy enemy)
+        {
+            _enemyList.Remove(enemy);
+        }
+
         /* プロパティ */
 
         // 占領状況
