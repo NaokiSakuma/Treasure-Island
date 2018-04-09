@@ -11,6 +11,10 @@ namespace Konji
         //資源
         [SerializeField]
         private int _resource = 0;
+
+        //資源テキスト
+        public Text _resourceText;
+
         public int Resource
         {
             get { return _resource; }
@@ -18,6 +22,8 @@ namespace Konji
             {
                 //0未満にならないように丸める
                 _resource = value > 0 ? value : 0;
+
+                _resourceText.text = _resource.ToString();
             }
         }
 
@@ -35,15 +41,18 @@ namespace Konji
             get { return _score; }
             set
             {
-                //スコアを徐々に更新
-                int tmpScore = _score;
+                ////スコアを徐々に更新
+                //int tmpScore = _score;
+                //_score = value;
+                //DOTween.To(
+                //() => tmpScore,
+                //num => _scoreText.text = num.ToString(),
+                //_score,
+                //2.0f)
+                //.SetEase(_curve);
+
                 _score = value;
-                DOTween.To(
-                    () => tmpScore,
-                    num => _scoreText.text = num.ToString(),
-                    _score,
-                    2.0f)
-                    .SetEase(_curve);
+                _scoreText.text = _score.ToString();
             }
         }
 
@@ -54,6 +63,10 @@ namespace Konji
             _resource = 0;
             //スコアの初期化
             _score = 0;
+
+            //テキストの初期化
+            _resourceText.text = _resource.ToString();
+            _scoreText.text = _score.ToString();
         }
     }
 }

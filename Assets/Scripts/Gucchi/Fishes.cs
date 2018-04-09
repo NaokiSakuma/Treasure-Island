@@ -180,12 +180,16 @@ namespace GucchiCS
                         flag.ChangeMaterial(_islandState);
                     }
 
-                    // 味方の占領なら資源を取得
+                    // 味方の占領なら資源とスコアを取得
                     if (_islandState == Island.ISLAND_OCCUPATION.UNIT)
                     {
                         // 資源を取得
                         Konji.ResourceManager.Instance.Resource += _resource;
                         _resource = 0;
+
+                        // スコアを取得
+                        Konji.ResourceManager.Instance.Score += _score;
+                        _score = 0;
                     }
                 }
 
