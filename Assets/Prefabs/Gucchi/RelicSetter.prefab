@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33792154824488188}
   - component: {fileID: 64036505807961894}
   - component: {fileID: 23473568252232650}
+  - component: {fileID: 114428979457129208}
   m_Layer: 10
   m_Name: RelicSetter
   m_TagString: Untagged
@@ -97,3 +98,14 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114428979457129208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1595940433425854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e82a0de66099412497aba4f2d7c368c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

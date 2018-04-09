@@ -102,6 +102,10 @@ namespace GucchiCS
                         islandHit.GetComponent<Island>().RemoveRelic(relic);
                     relic.LandingIsland = null;
 
+                    // 遺物の土台設定
+                    relic.LandingFoundation.LandingRelic = null;
+                    relic.LandingFoundation = null;
+
                     // 遺物をつかむ
                     relic.IsClutched = true;
                     _relic = relic;
@@ -202,12 +206,17 @@ namespace GucchiCS
                 {
                     GameObject hit = GetHitObject(_relicSetterLayer);
 
-                    if (hit)
+                    // 土台を取得できてかつその土台に別の遺物がなかったら
+                    if (hit && hit.GetComponent<RelicFoundation>().LandingRelic == null)
                     {
                         // 島の設定
                         Island landingIsland = GetHitObject(_islandLayer).GetComponent<Island>();
                         landingIsland.RegisterRelic(_relic);
                         _relic.LandingIsland = landingIsland;
+
+                        // 遺物の土台の設定
+                        hit.GetComponent<RelicFoundation>().LandingRelic = _relic;
+                        _relic.LandingFoundation = hit.GetComponent<RelicFoundation>();
 
                         // 遺物の設置
                         _relic.IsClutched = false;

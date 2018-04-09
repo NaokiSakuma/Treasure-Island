@@ -10,6 +10,8 @@ namespace Konji
         //Relicリストの最大数
         public const int MAX_RELIC_NUM = 6;
        
+        // 遺物プレハブ
+        public List<Relic> _relicPrefab = new List<Relic>();
 
         //レリック管理リスト
         private List<CO.RelicInfo> _relicList = new List<CO.RelicInfo>();

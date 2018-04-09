@@ -18,7 +18,7 @@ namespace GucchiCS
         float _relicSetterSize = 100f;
 
 		// 島の大きさに応じて遺物を置ける場所を設置
-		public void SetRelicSetter(Island island, Island.ISLAND_SIZE size)
+		public void SetRelicSetter(Island island, Island.ISLAND_SIZE size, List<int> beginningRelic)
         {
             // 島の中心を基準に並べる
             for (int i = 0; i < ((int)size + 1) * ((int)size + 1); i++)
@@ -29,6 +29,16 @@ namespace GucchiCS
                                                         Quaternion.identity);
 
                 relicSetter.transform.SetParent(island.transform, true);
+
+                // 初期配置する遺物
+                if (i < beginningRelic.Count)
+                {
+                    // 遺物を配置
+                    Konji.Relic relic = Instantiate(Konji.RelicManager.Instance._relicPrefab[beginningRelic[i]]);
+                    relic.transform.position = new Vector3(relicSetter.transform.position.x, 18f, relicSetter.transform.position.z);
+                    relic.LandingFoundation = relicSetter.GetComponent<RelicFoundation>();
+                    relicSetter.GetComponent<RelicFoundation>().LandingRelic = relic;
+                }
             }
         }
     }
