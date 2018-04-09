@@ -8,6 +8,6 @@ public class RelicDebug : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-        _relicManager.AddRelic(Konji.CO.RelicType.MoneyTree);
+        _relicManager.AddRelic(Konji.CO.RelicType.WarDrum);
 	}
 }

@@ -12,8 +12,6 @@ public class PowerUpParticle : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         powerUpParticle = Instantiate(powerUpParticle);
-        // ここで Particle System を停止する.
-        powerUpParticle.GetComponent<ParticleSystem>(). Play();
         isCntUp = true;
   
     }
@@ -48,4 +46,19 @@ public class PowerUpParticle : MonoBehaviour {
             isCntUp = true;
         }
     }
+
+    public void Play(Vector3 particlePosition)
+    {
+        powerUpParticle.GetComponent<ParticleSystem>().transform.localPosition = particlePosition;
+        powerUpParticle.GetComponent<ParticleSystem>().Play();
+        powerUpParticle.GetComponent<ParticleSystem>().gameObject.SetActive(true);
+    }
+
+    public void Stop()
+    {
+        powerUpParticle.GetComponent<ParticleSystem>().gameObject.SetActive(false);
+        powerUpParticle.GetComponent<ParticleSystem>().Stop();
+
+    }
+
 }

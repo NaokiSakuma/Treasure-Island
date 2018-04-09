@@ -100,6 +100,10 @@ public class UnitCore : MonoBehaviour {
 	private UnitStateAttack _stateAttack = new UnitStateAttack();
 	private UnitStateDead _stateDead = new UnitStateDead();
 
+    //パーティクル発射オブジェクト
+    [SerializeField]
+    OccurrenceRelicParticle occurrenceRelicParticle;
+
 	[SerializeField]
 	private UnitCore _target;
 	public UnitCore Target{
@@ -108,6 +112,9 @@ public class UnitCore : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        //パーティクル発生を生成
+        occurrenceRelicParticle = OccurrenceRelicParticle.MyInstantiate(occurrenceRelicParticle, this);
+
 		// HPの初期値は最大HPにしておく
 		_health = MaxHealth.Value;
 

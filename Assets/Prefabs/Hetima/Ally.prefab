@@ -222,9 +222,12 @@ MonoBehaviour:
     value: 10
   _health: 1
   _strength: 1
+  _additionalStrength: 0
   _attackSpeed: 1
   _attackReach: 2
   _searchRange: 10
   _moveSpeed: 2
   _team: 0
+  occurrenceRelicParticle: {fileID: 114152688754418950, guid: 8d3938cdca509e949a792561df212c38,
+    type: 2}
   _target: {fileID: 0}

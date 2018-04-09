@@ -1326,6 +1326,36 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 781233120}
+--- !u!1 &858046867 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1323574685870994, guid: 8030a01b10cc14445813d8c4e6aa211f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1292670292}
+--- !u!114 &858046874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858046867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c0d8d53f8204e51bfd139111eab7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemy: {fileID: 1095874768981164, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
+--- !u!114 &858046875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858046867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8093178e1f5cc84bb0e74b4dae19a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _wantOccupy: 01
+  wantSameNum: 1
 --- !u!1 &881015311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1681,61 +1711,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1026454140}
---- !u!1 &1036590701
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1036590703}
-  - component: {fileID: 1036590702}
-  - component: {fileID: 1036590704}
-  m_Layer: 0
-  m_Name: AmbushEvent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1036590702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1036590701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64c0d8d53f8204e51bfd139111eab7e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemy: {fileID: 1095874768981164, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
---- !u!4 &1036590703
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1036590701}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 180, y: 25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1036590704
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1036590701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8093178e1f5cc84bb0e74b4dae19a3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _wantOccupy: 01
-  wantSameNum: 1
 --- !u!1 &1082680995 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1802251527235402, guid: 3a9739d8cb3ce4f75942f41eea2bf62b,
@@ -2177,7 +2152,7 @@ Prefab:
     - target: {fileID: 114184982155998838, guid: 8030a01b10cc14445813d8c4e6aa211f,
         type: 2}
       propertyPath: _event.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4359567839759042, guid: 8030a01b10cc14445813d8c4e6aa211f, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2235,7 +2210,7 @@ Prefab:
         type: 2}
       propertyPath: _event.Array.data[0]
       value: 
-      objectReference: {fileID: 1036590701}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8030a01b10cc14445813d8c4e6aa211f, type: 2}
   m_IsPrefabParent: 0
@@ -2797,6 +2772,8 @@ MonoBehaviour:
   _searchRange: 10
   _moveSpeed: 0.5
   _team: 0
+  occurrenceRelicParticle: {fileID: 114152688754418950, guid: 8d3938cdca509e949a792561df212c38,
+    type: 2}
   _target: {fileID: 0}
 --- !u!114 &1548769970
 MonoBehaviour:
