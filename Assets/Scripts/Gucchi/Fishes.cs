@@ -40,6 +40,10 @@ namespace GucchiCS
         [SerializeField]
         int _score = 500;
 
+        // 資源
+        [SerializeField]
+        int _resource = 0;
+
         // 島にいるユニットリスト
         List<Unit> _unitList = new List<Unit>();
 
@@ -175,6 +179,14 @@ namespace GucchiCS
                         flag.transform.SetParent(this.transform, true);
                         flag.ChangeMaterial(_islandState);
                     }
+
+                    // 味方の占領なら資源を取得
+                    if (_islandState == Island.ISLAND_OCCUPATION.UNIT)
+                    {
+                        // 資源を取得
+                        Konji.ResourceManager.Instance.Resource += _resource;
+                        _resource = 0;
+                    }
                 }
 
                 // 占領されたらイベント発生
@@ -223,6 +235,12 @@ namespace GucchiCS
         }
 
         /* プロパティ */
+
+        // 占領状況
+        public Island.ISLAND_OCCUPATION IslandState
+        {
+            get { return _islandState; }
+        }
 
         // 現在の島の占領値
         public int Occupation
