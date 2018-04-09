@@ -7,7 +7,6 @@ using UniRx.Triggers;
 
 public class RelicIcon : ButtonClicker {
 
-	//[SerializeField]
 	private Konji.CO.RelicInfo _relicInfo;
 	public Konji.CO.RelicInfo RelicInfo{
 		get { return _relicInfo; }
@@ -39,6 +38,7 @@ public class RelicIcon : ButtonClicker {
 
 		// 選択、非選択時の透明度の変更
 		this.OnPointerClickAsObservable
+		    .Where(_ => _relicInfo != null)
 			.Subscribe(_ => {
 				_relicInfo._isSelect = !_relicInfo._isSelect;
 				var c = GetComponent<Image>().color;
