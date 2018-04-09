@@ -23,16 +23,13 @@ namespace GucchiCS
         [SerializeField]
         int _id = 0;
 
-        // 遺物プレハブ
-        public List<Relic> _relicList = new List<Relic>();
-
 		// 所持している遺物を選択した場合
 		public void CatchHavingRelic()
         {
             if (transform.GetComponent<RelicIcon>().RelicInfo != null)
             {
                 // 生成
-                Relic relic = Instantiate(_relicList[_id]);
+                Relic relic = Instantiate(RelicManager.Instance._relicPrefab[_id]);
 
                 _godHand.GetComponent<GodHand>().CatchHavingRelic(relic);
                 _relic = relic;

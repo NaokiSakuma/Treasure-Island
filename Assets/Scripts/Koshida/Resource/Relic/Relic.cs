@@ -44,6 +44,14 @@ namespace Konji
             set { _landingIsland = value; }
         }
 
+        //どの土台に置かれているか
+        protected GucchiCS.RelicFoundation _foundation;
+        public GucchiCS.RelicFoundation LandingFoundation
+        {
+            get { return _foundation; }
+            set { _foundation = value; }
+        }
+
         protected virtual void Start()
         {
             _isPut.Where(put => put == true)

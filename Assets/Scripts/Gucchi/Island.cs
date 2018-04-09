@@ -98,6 +98,10 @@ namespace GucchiCS
         // 島に置いてある遺物リスト
         List<Konji.Relic> _relicList = new List<Konji.Relic>();
 
+        // 初期配置させる遺物（Dictionaryがインスペクタで設定できないのでこれで）
+        // x: 遺物ID　y: 数
+        public List<Vector2> _beginningRelic = new List<Vector2>();
+
         void Awake()
         {
             // サイズの設定（コード的にやばいので余裕があるときになおす）
@@ -139,8 +143,18 @@ namespace GucchiCS
             // 占領状況設定
             _islandStateBefore = _islandState;
 
+            // Dictionary化
+            List<int> beginningRelic = new List<int>();
+            foreach (Vector2 relicInfo in _beginningRelic)
+            {
+                for (int i = 0; i < relicInfo.y; i++)
+                {
+                    beginningRelic.Add((int)relicInfo.x);
+                }
+            }
+
             // 遺物設置場所を設定
-            transform.GetComponent<RelicSetter>().SetRelicSetter(this, _islandSize);
+            transform.GetComponent<RelicSetter>().SetRelicSetter(this, _islandSize, beginningRelic);
         }
 
         // 更新処理
@@ -352,6 +366,18 @@ namespace GucchiCS
         public void RemoveRelic(Konji.Relic relic)
         {
             _relicList.Remove(relic);
+        }
+
+        // 味方の解放
+        public void RemoveUnit(Unit unit)
+        {
+            _unitList.Remove(unit);
+        }
+
+        // 敵の解放
+        public void RemoveEnemy(Konji.LandingEnemy enemy)
+        {
+            _enemyList.Remove(enemy);
         }
 
         /* プロパティ */
