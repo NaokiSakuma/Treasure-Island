@@ -189,27 +189,27 @@ namespace GucchiCS
                         {
                             // 島の取得
                             Island island = hit.GetComponent<Island>();
+                            // 通知
+                            island.LandingNotify(_unitList[0]);
 
                             island.UnitList.Add(_unitList[0]);
                             _unitList[0].IsClutched = false;
                             _unitList[0].Ground = hit.GetComponent<IGround>();
                             _unitList.RemoveAt(0);
 
-                            // 通知
-                            island.LandingNotify(_unitList[0]);
                         }
                         // 魚群
                         else if (hit.GetComponent<Fishes>() != null)
                         {
                             // 魚群の取得
                             Fishes fishes = hit.GetComponent<Fishes>();
+                            // 通知
+                            fishes.LandingNotify(_unitList[0]);
 
                             fishes.UnitList.Add(_unitList[0]);
                             _unitList[0].IsClutched = false;
                             _unitList[0].Ground = hit.GetComponent<IGround>();
-
-                            // 通知
-                            fishes.LandingNotify(_unitList[0]);
+                            _unitList.RemoveAt(0);
                         }
                     }
                 }
