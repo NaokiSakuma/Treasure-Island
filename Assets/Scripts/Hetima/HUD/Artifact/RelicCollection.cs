@@ -9,6 +9,7 @@ public class RelicCollection : MonoBehaviour {
 	[SerializeField]
 	private Konji.RelicManager _manager;
 
+	[SerializeField]
 	private RelicIcon[] _icons;
 
 	// Use this for initialization
@@ -23,21 +24,6 @@ public class RelicCollection : MonoBehaviour {
 			back.color -= new Color(0, 0, 0, 1);
 		}
 
-		// ボタンにホバーした時の処理
-		foreach (var icon in _icons) {
-			var hover = icon.GetComponentInParent<ButtonHover>();
-
-			hover.OnPointerEnterAsObservable
-				 .Subscribe(_ => {
-					hover.GetComponent<Image>().color += new Color(0, 0, 0, 1);
-				 });
-
-			hover.OnPointerExitAsObservable
-				 .Subscribe(_ => {
-					hover.GetComponent<Image>().color -= new Color(0, 0, 0, 1);
-				 });
-		}
-
 		// ひとまず全部更新
 		this.ObserveEveryValueChanged(_ => rm._relicList)
 			.Subscribe(x => {
@@ -48,9 +34,8 @@ public class RelicCollection : MonoBehaviour {
 	void SetAllRelicInfo(){
 		// TODO: レリックの最大数を取れるようにしてもらう
 		for (int i = 0; i < _manager._relicList.Count; i++){
-			if(_manager._relicList[i]._image){
-				_icons[i].GetComponent<Image>().sprite = _manager._relicList[i]._image;
-			}
+			//_icons[i].GetComponent<Image>().sprite = _manager._relicList[i]._image;
+			_icons[i].RelicInfo = _manager._relicList[i];
 		}
 	}
 }
