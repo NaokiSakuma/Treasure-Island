@@ -20,7 +20,11 @@ public class Pausable : MonoBehaviour {
 	/// <summary>
 	/// 現在Pause中か？
 	/// </summary>
-	public bool pausing;
+	private bool pausing;
+	public bool Pausing{
+		get { return pausing; }
+		set { pausing = value; }
+	}
 
 	/// <summary>
 	/// 無視するGameObject
