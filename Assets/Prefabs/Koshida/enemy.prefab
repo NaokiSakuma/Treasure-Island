@@ -38,11 +38,11 @@ GameObject:
   - component: {fileID: 4876596196413350}
   - component: {fileID: 33417820703967608}
   - component: {fileID: 23313672201602180}
-  - component: {fileID: 65365510040842264}
   - component: {fileID: 114034199200436166}
   - component: {fileID: 114794438733850784}
   - component: {fileID: 114239086548110278}
   - component: {fileID: 114867626642884170}
+  - component: {fileID: 65568801690938868}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -69,8 +69,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1947469076726336}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.6, y: 145.942, z: -20.37854}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -323.8, y: 155.7, z: 142}
   m_LocalScale: {x: 272.23047, y: 272.23047, z: 272.23047}
   m_Children:
   - {fileID: 4690023811846682}
@@ -153,7 +153,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1947469076726336}
   m_Mesh: {fileID: 4300000, guid: 9a73afd08350fe14ba99e57a2229d810, type: 3}
---- !u!65 &65365510040842264
+--- !u!65 &65568801690938868
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -163,8 +163,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.03295759, y: 0.019498046, z: 0.05891431}
-  m_Center: {x: 0.00035664064, y: -0.0000000060535954, z: 0.011249044}
+  m_Size: {x: 0.03295759, y: 0.058914322, z: 0.019498048}
+  m_Center: {x: 0.00035663505, y: 0.011249016, z: 0.0000000046566124}
 --- !u!102 &102181176288778792
 TextMesh:
   serializedVersion: 3
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ce9247b8684496682702670e5208f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _limitDistance: 2
+  _limitDistance: 10
 --- !u!114 &114794438733850784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,7 +226,7 @@ MonoBehaviour:
   _strength: 1
   _additionalStrength: 0
   _attackSpeed: 1
-  _attackReach: 2
+  _attackReach: 10
   _searchRange: 10
   _moveSpeed: 2
   _team: 1
@@ -243,3 +243,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nearObj: {fileID: 0}
+  firstIsland: {fileID: 0}

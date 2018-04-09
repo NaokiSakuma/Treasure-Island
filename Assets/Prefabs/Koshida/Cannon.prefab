@@ -36,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1020595991185194}
   m_LocalRotation: {x: 0.00000013767877, y: 0.7071068, z: 0.70710677, w: -0.00000013767878}
-  m_LocalPosition: {x: -0.0000000879702, y: 0, z: -1.0062618}
-  m_LocalScale: {x: 100, y: 19.960781, z: 100}
+  m_LocalPosition: {x: 2.6329, y: -1.2123, z: -4.077}
+  m_LocalScale: {x: 405.1619, y: 80.87352, z: 405.1621}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 141e6ef21f2ea644f8a925293c5e49ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _range: 50
+  _range: 300
   _team: 0
   _interval: 6
   _ammunition: {fileID: 1137538989262480, guid: 4d026174ce5184041b9fcd40cc2ee117,

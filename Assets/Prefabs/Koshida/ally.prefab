@@ -37,12 +37,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4801980867486354}
   - component: {fileID: 33035203904283224}
-  - component: {fileID: 65220955796378596}
   - component: {fileID: 23078139615280136}
   - component: {fileID: 114744372674358940}
   - component: {fileID: 114365444830710024}
   - component: {fileID: 114291227428929096}
   - component: {fileID: 114975312420492078}
+  - component: {fileID: 65102182092527320}
   m_Layer: 0
   m_Name: ally
   m_TagString: Untagged
@@ -153,7 +153,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1633974971772768}
   m_Mesh: {fileID: 4300000, guid: 66dffa0f0f8271c4f80f42e5fb13d62b, type: 3}
---- !u!65 &65220955796378596
+--- !u!65 &65102182092527320
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -163,8 +163,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.03295759, y: 0.019498046, z: 0.05891431}
-  m_Center: {x: 0.0003566425, y: -0.0000000060535954, z: 0.011249044}
+  m_Size: {x: 0.03295759, y: 0.058914322, z: 0.019498048}
+  m_Center: {x: 0.0003566425, y: 0.011249012, z: 0.000000008381903}
 --- !u!102 &102261180904298046
 TextMesh:
   serializedVersion: 3
@@ -215,7 +215,7 @@ MonoBehaviour:
   _strength: 1
   _additionalStrength: 0
   _attackSpeed: 1
-  _attackReach: 2
+  _attackReach: 10
   _searchRange: 10
   _moveSpeed: 0.5
   _team: 0
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ce9247b8684496682702670e5208f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _limitDistance: 2
+  _limitDistance: 10
 --- !u!114 &114975312420492078
 MonoBehaviour:
   m_ObjectHideFlags: 1
