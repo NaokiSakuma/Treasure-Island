@@ -1,18 +1,19 @@
 fileFormatVersion: 2
-guid: ca3b633e710c3704d82d4eca161481f5
-timeCreated: 1523273216
+guid: d5a26d5d27c372e4793f333150c5e1a0
+timeCreated: 1523278834
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: DrumBody1
-    2100002: DrumBody2
-    2100004: Pedestal
+    2100000: IslandMaterial1
+    2100002: IslandMaterial2
     2300000: //RootNode
     3300000: //RootNode
-    4300000: drum
+    4300000: Island
+    7400000: Default Take
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -87,7 +88,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

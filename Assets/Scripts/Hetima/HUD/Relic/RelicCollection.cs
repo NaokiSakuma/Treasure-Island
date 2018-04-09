@@ -32,7 +32,7 @@ public class RelicCollection : MonoBehaviour {
                 _icons[i].RelicInfo = RelicManager.Instance.RelicList[i];
             }
             else{
-                _icons[i].RelicInfo._image = null;
+                //_icons[i].RelicInfo._image = null;
 				//_icons[i].RelicInfo = null;
             }
    		}

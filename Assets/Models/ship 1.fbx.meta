@@ -1,17 +1,16 @@
 fileFormatVersion: 2
-guid: 41b205633273819438523e8f5203a071
-timeCreated: 1523258087
+guid: 1744dbef71751b640bc39dcf113b566b
+timeCreated: 1523284274
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: IslandMaterial1
-    2100002: IslandMaterial2
+    2100000: Ship
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Island
+    4300000: "\u5E73\u9762.005"
   externalObjects: {}
   materials:
     importMaterials: 1

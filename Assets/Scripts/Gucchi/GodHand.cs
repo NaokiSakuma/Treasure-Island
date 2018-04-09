@@ -64,7 +64,7 @@ namespace GucchiCS
                 // nullチェック
                 if (hit == null)
                     return;
-                
+
                 // ユニットの場合
                 if (hit.GetComponent<Unit>() != null)
                 {
@@ -180,7 +180,7 @@ namespace GucchiCS
                             _unitList.RemoveAt(0);
 
                             // 通知
-                            island.LandingNotify(_unitList[0]);   
+                            island.LandingNotify(_unitList[0]);
                         }
                         // 魚群
                         else if (hit.GetComponent<Fishes>() != null)
@@ -273,7 +273,7 @@ namespace GucchiCS
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity))
                 {
-                    var targetPos = new Vector3(hit.point.x, 5f, hit.point.z);
+                    var targetPos = new Vector3(hit.point.x, 20f, hit.point.z);
                     unit.transform.position = targetPos;
                 }
             }

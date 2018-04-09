@@ -1,25 +1,17 @@
 fileFormatVersion: 2
-guid: 4abf6bf5a3b4ff24e92314207d6c691f
-timeCreated: 1523258087
+guid: 9a73afd08350fe14ba99e57a2229d810
+timeCreated: 1523286804
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: "\u5186\u67F1"
-    100004: "\u7ACB\u65B9\u4F53"
     400000: //RootNode
-    400002: "\u5186\u67F1"
-    400004: "\u7ACB\u65B9\u4F53"
-    2100000: Axe2
-    2100002: Axe1
-    2100004: AxeHandle
-    2300000: "\u5186\u67F1"
-    2300002: "\u7ACB\u65B9\u4F53"
-    3300000: "\u5186\u67F1"
-    3300002: "\u7ACB\u65B9\u4F53"
-    4300000: "\u7ACB\u65B9\u4F53"
-    4300002: "\u5186\u67F1"
+    2100000: BandanaMaterial1
+    2100002: Skin
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: unit_red
   externalObjects: {}
   materials:
     importMaterials: 1

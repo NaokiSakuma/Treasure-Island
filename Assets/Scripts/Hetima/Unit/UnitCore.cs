@@ -8,7 +8,7 @@ using System;
 
 [RequireComponent(typeof(UnitMover))]
 public class UnitCore : MonoBehaviour {
-	 
+
 	// TODO: データを持つ場所はもう少し考えたほうがいいと思う
 
 	// 最大体力
@@ -101,8 +101,8 @@ public class UnitCore : MonoBehaviour {
 	private UnitStateDead _stateDead = new UnitStateDead();
 
     //パーティクル発射オブジェクト
-    [SerializeField]
-    OccurrenceRelicParticle occurrenceRelicParticle;
+    //[SerializeField]
+    //OccurrenceRelicParticle occurrenceRelicParticle;
 
 	[SerializeField]
 	private UnitCore _target;
@@ -113,7 +113,7 @@ public class UnitCore : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //パーティクル発生を生成
-        occurrenceRelicParticle = OccurrenceRelicParticle.MyInstantiate(occurrenceRelicParticle, this);
+        //occurrenceRelicParticle = OccurrenceRelicParticle.MyInstantiate(occurrenceRelicParticle, this);
 
 		// HPの初期値は最大HPにしておく
 		_health = MaxHealth.Value;

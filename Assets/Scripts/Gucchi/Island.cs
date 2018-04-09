@@ -29,7 +29,7 @@ namespace GucchiCS
         // サイズリスト
         public List<float> _islandSizeData = new List<float>() {
             35f,
-            50f, 
+            50f,
             75f
         };
 
@@ -103,7 +103,7 @@ namespace GucchiCS
 
             // 指定されたスケールに変える
             float islandSize = _islandSizeDic[_islandSize];
-            transform.localScale = new Vector3(islandSize, 3f, islandSize);
+            transform.localScale = new Vector3(islandSize, islandSize, islandSize);
 
             // キャンバス設定
             transform.GetComponentInChildren<Canvas>().transform.Translate(new Vector3(0, 25f, _islandSizeDic[_islandSize] / 2f));
@@ -112,7 +112,7 @@ namespace GucchiCS
             if (_islandState != ISLAND_OCCUPATION.NULL)
             {
                 // 占領旗
-                OccupationFlag flag = Instantiate(_flag, new Vector3(transform.position.x, 1.5f, transform.position.z + _islandSizeDic[_islandSize] / 3f), Quaternion.identity);
+                OccupationFlag flag = Instantiate(_flag, new Vector3(transform.position.x, 10.5f, transform.position.z + _islandSizeDic[_islandSize] / 3f), Quaternion.identity);
                 flag.transform.SetParent(this.transform, true);
                 flag.ChangeMaterial(_islandState);
 
@@ -273,7 +273,7 @@ namespace GucchiCS
                     else
                     {
                         // 旗の生成
-                        flag = Instantiate(_flag, new Vector3(transform.position.x, 1.5f, transform.position.z + _islandSizeDic[_islandSize] / 3f), Quaternion.identity);
+                        flag = Instantiate(_flag, new Vector3(transform.position.x, 10.5f, transform.position.z + _islandSizeDic[_islandSize] / 3f), Quaternion.identity);
                         flag.transform.SetParent(this.transform, true);
                         flag.ChangeMaterial(_islandState);
                     }

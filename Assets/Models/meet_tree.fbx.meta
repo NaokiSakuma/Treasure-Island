@@ -1,32 +1,12 @@
 fileFormatVersion: 2
-guid: ff39f529e2cedd444bda854058808e42
-timeCreated: 1523258089
+guid: 8d18c693ba3b60e4985a1884bbe2b3d4
+timeCreated: 1523273215
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: "\u5186\u67F1"
-    100004: "\u7403"
-    100006: "\u7ACB\u65B9\u4F53.000"
-    100008: "\u7ACB\u65B9\u4F53.001"
-    100010: "\u7ACB\u65B9\u4F53.002"
-    100012: "\u7ACB\u65B9\u4F53.003"
-    100014: "\u7ACB\u65B9\u4F53.004"
-    100016: "\u7ACB\u65B9\u4F53.005"
-    100018: "\u7ACB\u65B9\u4F53.006"
-    100020: "\u7ACB\u65B9\u4F53.007"
     400000: //RootNode
-    400002: "\u5186\u67F1"
-    400004: "\u7403"
-    400006: "\u7ACB\u65B9\u4F53.000"
-    400008: "\u7ACB\u65B9\u4F53.001"
-    400010: "\u7ACB\u65B9\u4F53.002"
-    400012: "\u7ACB\u65B9\u4F53.003"
-    400014: "\u7ACB\u65B9\u4F53.004"
-    400016: "\u7ACB\u65B9\u4F53.005"
-    400018: "\u7ACB\u65B9\u4F53.006"
-    400020: "\u7ACB\u65B9\u4F53.007"
     2100000: Leaf
     2100002: Wood
     2100004: Meet
@@ -45,36 +25,9 @@ ModelImporter:
     2100030: MeetBone.006
     2100032: Meet.007
     2100034: MeetBone.007
-    2300000: "\u5186\u67F1"
-    2300002: "\u7403"
-    2300004: "\u7ACB\u65B9\u4F53.000"
-    2300006: "\u7ACB\u65B9\u4F53.001"
-    2300008: "\u7ACB\u65B9\u4F53.002"
-    2300010: "\u7ACB\u65B9\u4F53.003"
-    2300012: "\u7ACB\u65B9\u4F53.004"
-    2300014: "\u7ACB\u65B9\u4F53.005"
-    2300016: "\u7ACB\u65B9\u4F53.006"
-    2300018: "\u7ACB\u65B9\u4F53.007"
-    3300000: "\u5186\u67F1"
-    3300002: "\u7403"
-    3300004: "\u7ACB\u65B9\u4F53.000"
-    3300006: "\u7ACB\u65B9\u4F53.001"
-    3300008: "\u7ACB\u65B9\u4F53.002"
-    3300010: "\u7ACB\u65B9\u4F53.003"
-    3300012: "\u7ACB\u65B9\u4F53.004"
-    3300014: "\u7ACB\u65B9\u4F53.005"
-    3300016: "\u7ACB\u65B9\u4F53.006"
-    3300018: "\u7ACB\u65B9\u4F53.007"
-    4300000: "\u7403"
-    4300002: "\u5186\u67F1"
-    4300004: "\u7ACB\u65B9\u4F53.001"
-    4300006: "\u7ACB\u65B9\u4F53.000"
-    4300008: "\u7ACB\u65B9\u4F53.002"
-    4300010: "\u7ACB\u65B9\u4F53.003"
-    4300012: "\u7ACB\u65B9\u4F53.004"
-    4300014: "\u7ACB\u65B9\u4F53.005"
-    4300016: "\u7ACB\u65B9\u4F53.006"
-    4300018: "\u7ACB\u65B9\u4F53.007"
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: meettree
   externalObjects: {}
   materials:
     importMaterials: 1

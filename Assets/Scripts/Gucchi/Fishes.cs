@@ -250,5 +250,5 @@ namespace GucchiCS
                 return _score;
             }
         }
-    }   
+    }
 }

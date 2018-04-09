@@ -1,24 +1,17 @@
 fileFormatVersion: 2
-guid: dbb5b3c6695b5854a8721e2fc50702bd
-timeCreated: 1523258088
+guid: 9f19ed62ab4dead48a13595f89b91cb6
+timeCreated: 1523273216
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: "\u7403"
-    100004: "\u7ACB\u65B9\u4F53"
     400000: //RootNode
-    400002: "\u7403"
-    400004: "\u7ACB\u65B9\u4F53"
     2100000: BandanaMaterial1
     2100002: Skin
-    2300000: "\u7403"
-    2300002: "\u7ACB\u65B9\u4F53"
-    3300000: "\u7403"
-    3300002: "\u7ACB\u65B9\u4F53"
-    4300000: "\u7403"
-    4300002: "\u7ACB\u65B9\u4F53"
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: unit_bllue
   externalObjects: {}
   materials:
     importMaterials: 1
