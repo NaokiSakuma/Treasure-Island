@@ -19,6 +19,12 @@ namespace GucchiCS
         const int       _islandLayer = 9;
         const int       _relicSetterLayer = 10;
 
+        // カーソル
+        public Texture2D _cursorDefault;
+        public Texture2D _cursorCatched;
+        [SerializeField]
+        Vector2 _offset = new Vector2(16f, 16f);
+
         //public Text     _unitNumText;
 
 		void Awake()
@@ -33,10 +39,16 @@ namespace GucchiCS
             // キャッチャー処理
             if (_catchMode)
             {
+                // カーソル設定
+                Cursor.SetCursor(_cursorDefault, _offset, CursorMode.Auto);
+
                 CatchMode();
             }
             else
             {
+                // カーソル設定
+                Cursor.SetCursor(_cursorCatched, _offset, CursorMode.Auto);
+
                 UncatchMode();
             }
 
