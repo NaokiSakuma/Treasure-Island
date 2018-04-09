@@ -22,7 +22,14 @@ public class MoveMap : MonoBehaviour {
 
     // カメラのスクロール速度
     [SerializeField]
-    private float scrollSpeed = 0;	
+    private float scrollSpeed = 0;
+
+	// カメラの移動方向
+	private Vector3 moveDirection;
+	public Vector3 MoveDirection{
+		get { return moveDirection; }
+	}
+
 	// Update is called once per frame
 	void Update () {
         // マウスのビューポート座標
@@ -38,23 +45,32 @@ public class MoveMap : MonoBehaviour {
         // test用
         if (!Input.GetMouseButton(0))
         {
+			Vector3 direction = Vector3.zero;
+
             // ここやばいからあとで修正 カメラの移動
             if (mouseviewPos.y >= 0.9f)
             {
-                transform.position += (new Vector3(0, 0, moveSpeed * Time.deltaTime));
+				direction += new Vector3(0, 0, moveSpeed * Time.deltaTime);
+                //transform.position += (new Vector3(0, 0, moveSpeed * Time.deltaTime));
             }
             if (mouseviewPos.y <= 0.1f)
             {
-                transform.position += (new Vector3(0, 0, -moveSpeed * Time.deltaTime));
+				direction += new Vector3(0, 0, -moveSpeed * Time.deltaTime);
+                //transform.position += (new Vector3(0, 0, -moveSpeed * Time.deltaTime));
             }
             if (mouseviewPos.x >= 0.9f)
             {
-                transform.position += (new Vector3(moveSpeed * Time.deltaTime, 0, 0));
+				direction += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                //transform.position += (new Vector3(moveSpeed * Time.deltaTime, 0, 0));
             }
             if (mouseviewPos.x <= 0.1f)
             {
-                transform.position += (new Vector3(-moveSpeed * Time.deltaTime, 0, 0));
+				direction += new Vector3(-moveSpeed * Time.deltaTime, 0, 0);
+                //transform.position += (new Vector3(-moveSpeed * Time.deltaTime, 0, 0));
             }
+
+			transform.position += direction;
+			moveDirection = direction;
         }
         // ここまで
 
