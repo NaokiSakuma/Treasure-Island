@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Konji
 {
     //シングルトンにします
-    public class RelicManager : MonoBehaviour
+    public class RelicManager : SingletonMonoBehaviour<RelicManager>
     {
         //Relicリストの最大数
         public const int MAX_RELIC_NUM = 6;
