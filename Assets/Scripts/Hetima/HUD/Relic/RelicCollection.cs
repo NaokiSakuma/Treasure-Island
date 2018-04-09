@@ -23,14 +23,12 @@ public class RelicCollection : MonoBehaviour {
 		// ひとまず全部更新
 		this.ObserveEveryValueChanged(_ => RelicManager.Instance.RelicList)
 			.Subscribe(x => {
-				SetAllRelicInfo();
+				UpdateAllRelicInfo();
 			});
 	}
 
-	void SetAllRelicInfo(){
-		// TODO: レリックの最大数を取れるようにしてもらう
+	void UpdateAllRelicInfo(){
 		for (int i = 0; i < RelicManager.Instance.RelicList.Count; i++){
-			//_icons[i].GetComponent<Image>().sprite = _manager._relicList[i]._image;
 			_icons[i].RelicInfo = RelicManager.Instance.RelicList[i];
 		}
 	}
