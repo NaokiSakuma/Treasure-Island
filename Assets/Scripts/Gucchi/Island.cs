@@ -344,6 +344,12 @@ namespace GucchiCS
 
         /* プロパティ */
 
+        // 占領状況
+        public ISLAND_OCCUPATION IslandState
+        {
+            get { return _islandState; }
+        }
+
         // 現在の島の占領値
         public int Occupation
         {
