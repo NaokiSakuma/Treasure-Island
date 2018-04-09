@@ -29,6 +29,21 @@ namespace Konji
             set { _isPut.Value = value; }
         }
 
+        //つかまれている状態かどうか
+        public bool IsClutched
+        {
+            get;
+            set;
+        }
+
+        //どの島に置かれているか
+        protected GucchiCS.Island _landingIsland;
+        public GucchiCS.Island LandingIsland
+        {
+            get { return _landingIsland; }
+            set { _landingIsland = value; }
+        }
+
         protected virtual void Start()
         {
             _isPut.Where(put => put == true)
