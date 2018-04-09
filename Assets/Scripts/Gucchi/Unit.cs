@@ -21,6 +21,13 @@ namespace GucchiCS
         void Awake()
         {
             ground = firstIsland;
+
+            // 初期の島のユニット数をカウント
+            if (firstIsland != null)
+            {
+                firstIsland.UnitList.Add(this);
+            }
+
             this.IsClutched = false;
         }
 

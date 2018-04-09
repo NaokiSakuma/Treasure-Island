@@ -9,6 +9,13 @@ namespace Konji
     {
         public Transform _nearObj;
 
+        // 初期地点
+        [SerializeField]
+        GucchiCS.Island firstIsland = null;
+
+        // 現在いる場所
+        GucchiCS.IGround ground;
+
         //void Awake()
         //{
         //    _nearObj = SerchTag(gameObject, "LandingPoint");
@@ -17,6 +24,14 @@ namespace Konji
         // Use this for initialization
         void Start()
         {
+            ground = firstIsland;
+
+            // 初期の島のユニット数をカウント
+            if (firstIsland != null)
+            {
+                firstIsland.EnemyList.Add(this);
+            }
+
             if (_nearObj)
             {
                 gameObject.transform.DOJump(_nearObj.position, 5, 1, 0.8f);
@@ -42,6 +57,19 @@ namespace Konji
                 }
             }
             return targetObj;
+        }
+
+        // 現在いる場所
+        public GucchiCS.IGround Ground
+        {
+            get
+            {
+                return ground;
+            }
+            set
+            {
+                ground = value;
+            }
         }
     }
 }

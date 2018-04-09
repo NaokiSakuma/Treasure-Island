@@ -161,6 +161,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -271,6 +276,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -430,7 +440,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 72041195}
   m_LocalRotation: {x: 0.65312797, y: 0.015898481, z: 0.013717761, w: -0.75695634}
-  m_LocalPosition: {x: -294.77332, y: -28.089539, z: 142.28796}
+  m_LocalPosition: {x: 4.2404604, y: -1216.007, z: -187.91966}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -513,6 +523,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 736474695}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -809,6 +824,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 736474695}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -1363,6 +1383,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1571106276}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -1414,6 +1439,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -1498,6 +1528,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -1611,6 +1646,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1813906691}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -1662,6 +1702,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -1713,6 +1758,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1571106276}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -1760,6 +1810,11 @@ Prefab:
       propertyPath: _team
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1571106276}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -1811,6 +1866,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1464522828}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -2014,6 +2074,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -2070,6 +2135,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1813906691}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -2126,6 +2196,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1813906691}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -2301,6 +2376,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -2442,6 +2522,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1813906691}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -2844,6 +2929,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4528947614782656, guid: 8030a01b10cc14445813d8c4e6aa211f,
     type: 2}
   m_PrefabInternal: {fileID: 1292670292}
+--- !u!114 &736474695 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114074707919543654, guid: 8030a01b10cc14445813d8c4e6aa211f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1292670292}
+  m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
 --- !u!1 &740393654
 GameObject:
   m_ObjectHideFlags: 0
@@ -3071,6 +3162,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -3826,6 +3922,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 736474695}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -3946,6 +4047,11 @@ Prefab:
       propertyPath: _team
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 736474695}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -4153,6 +4259,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1813906691}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -4332,6 +4443,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -4458,6 +4574,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1571106276}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -4556,6 +4677,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1464522828}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -4808,6 +4934,11 @@ Prefab:
     - target: {fileID: 4565963383657706, guid: 8030a01b10cc14445813d8c4e6aa211f, type: 2}
       propertyPath: m_LocalPosition.z
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 64552824774290688, guid: 8030a01b10cc14445813d8c4e6aa211f,
+        type: 2}
+      propertyPath: m_Convex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8030a01b10cc14445813d8c4e6aa211f, type: 2}
@@ -5196,6 +5327,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -5336,6 +5472,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1464522828}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -5392,6 +5533,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1813906691}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -5491,6 +5637,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4634670336083782, guid: 8030a01b10cc14445813d8c4e6aa211f,
     type: 2}
   m_PrefabInternal: {fileID: 1292670292}
+--- !u!114 &1464522828 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114714870088463418, guid: 8030a01b10cc14445813d8c4e6aa211f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1292670292}
+  m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
 --- !u!1 &1465916291 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1114699598570046, guid: 152bb56761fee4af287089aca9f4fdf0,
@@ -5888,6 +6040,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1571106276}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -6010,6 +6167,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4237531167833354, guid: 8030a01b10cc14445813d8c4e6aa211f,
     type: 2}
   m_PrefabInternal: {fileID: 1292670292}
+--- !u!114 &1571106276 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114899312470598018, guid: 8030a01b10cc14445813d8c4e6aa211f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1292670292}
+  m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
 --- !u!4 &1590669931 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4307149984466842, guid: 8030a01b10cc14445813d8c4e6aa211f,
@@ -6063,6 +6226,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1813906691}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -6114,6 +6282,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1813906691}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -6547,6 +6720,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -6598,6 +6776,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1813906691}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -6649,6 +6832,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1464522828}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -6733,6 +6921,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -6780,6 +6973,11 @@ Prefab:
       propertyPath: _team
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1813906691}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -7316,6 +7514,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 736474695}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -7530,6 +7733,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -7588,6 +7796,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4565963383657706, guid: 8030a01b10cc14445813d8c4e6aa211f,
     type: 2}
   m_PrefabInternal: {fileID: 1292670292}
+--- !u!114 &1813906691 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114714545522415812, guid: 8030a01b10cc14445813d8c4e6aa211f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1292670292}
+  m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
 --- !u!1001 &1831156258
 Prefab:
   m_ObjectHideFlags: 0
@@ -7632,6 +7846,11 @@ Prefab:
       propertyPath: _team
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -7772,6 +7991,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4411984500967552, guid: 8030a01b10cc14445813d8c4e6aa211f,
     type: 2}
   m_PrefabInternal: {fileID: 1292670292}
+--- !u!114 &1881763864 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114179337854333492, guid: 8030a01b10cc14445813d8c4e6aa211f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1292670292}
+  m_Script: {fileID: 11500000, guid: 4b3d526c40fde4e08b6e9e7ef7e1ea58, type: 3}
 --- !u!1 &1892048178 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1114699598570046, guid: 152bb56761fee4af287089aca9f4fdf0,
@@ -7877,6 +8102,11 @@ Prefab:
       propertyPath: m_Name
       value: Soldier (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1881763864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
@@ -8321,6 +8551,11 @@ Prefab:
       propertyPath: _team
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114819164532961828, guid: e968e1c83bb1be6498cb4875aeb336e0,
+        type: 2}
+      propertyPath: firstIsland
+      value: 
+      objectReference: {fileID: 1464522828}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e968e1c83bb1be6498cb4875aeb336e0, type: 2}
   m_IsPrefabParent: 0
