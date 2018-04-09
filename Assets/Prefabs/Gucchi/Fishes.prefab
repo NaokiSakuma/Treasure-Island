@@ -199,6 +199,7 @@ MonoBehaviour:
   - {fileID: 114627555008622806, guid: 8595ccf7e76fa48f2ace8e238bcd690e, type: 2}
   - {fileID: 114616440574681432, guid: ef4b6036dc74746b8b07c496fc45f8b5, type: 2}
   _score: 500
+  _resource: 200
 --- !u!136 &136632528347596576
 CapsuleCollider:
   m_ObjectHideFlags: 1
