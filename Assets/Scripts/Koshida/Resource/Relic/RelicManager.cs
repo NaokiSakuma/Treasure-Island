@@ -12,6 +12,10 @@ namespace Konji
 
         //レリック管理リスト
         private List<CO.RelicInfo> _relicList = new List<CO.RelicInfo>();
+        public List<CO.RelicInfo> RelicList
+        {
+            get { return _relicList; }
+        }
 
         //最後にRelic追加
         public void AddRelic(CO.RelicType type)
