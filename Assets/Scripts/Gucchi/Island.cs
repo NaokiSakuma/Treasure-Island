@@ -150,7 +150,7 @@ namespace GucchiCS
             // 戦闘中
             if (_islandState == ISLAND_OCCUPATION.BATTLE)
             {
-                gage.value = _unitList.Count / (_unitList.Count + _enemyList.Count);
+                gage.value = _unitList.Count / (float)(_unitList.Count + _enemyList.Count);
             }
             else if (_islandState != ISLAND_OCCUPATION.NULL)
             {
@@ -278,6 +278,8 @@ namespace GucchiCS
                         flag.ChangeMaterial(_islandState);
                     }
                 }
+
+                // 資源を取得
 
                 // イベントがあれば発生させる
                 if (_event.Count > 0)
