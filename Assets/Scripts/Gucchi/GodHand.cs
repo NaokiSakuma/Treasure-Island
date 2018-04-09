@@ -127,15 +127,32 @@ namespace GucchiCS
                 {
                     foreach (Unit unit in _unitList)
                     {
-                        // 島の取得
-                        Island island = hit.GetComponent<Island>();
+                        // 島
+                        if (hit.GetComponent<Island>() != null)
+                        {
+                            // 島の取得
+                            Island island = hit.GetComponent<Island>();
 
-                        island.UnitList.Add(unit);
-                        unit.IsClutched = false;
-                        unit.Ground = hit.GetComponent<IGround>();
+                            island.UnitList.Add(unit);
+                            unit.IsClutched = false;
+                            unit.Ground = hit.GetComponent<IGround>();
 
-                        // 通知
-                        island.LandingNotify(unit);
+                            // 通知
+                            island.LandingNotify(unit);
+                        }
+                        // 魚群
+                        else if (hit.GetComponent<Fishes>() != null)
+                        {
+                            // 魚群の取得
+                            Fishes fishes = hit.GetComponent<Fishes>();
+
+                            fishes.UnitList.Add(unit);
+                            unit.IsClutched = false;
+                            unit.Ground = hit.GetComponent<IGround>();
+
+                            // 通知
+                            fishes.LandingNotify(unit);
+                        }
                     }
 
 					_unitList.Clear();
@@ -151,16 +168,33 @@ namespace GucchiCS
 
                     if (hit && CheckGroundIntoMovingRange(hit))
                     {
-                        // 島の取得
-                        Island island = hit.GetComponent<Island>();
+                        // 島
+                        if (hit.GetComponent<Island>() != null)
+                        {
+                            // 島の取得
+                            Island island = hit.GetComponent<Island>();
 
-                        island.UnitList.Add(_unitList[0]);
-                        _unitList[0].IsClutched = false;
-                        _unitList[0].Ground = hit.GetComponent<IGround>();
-                        _unitList.RemoveAt(0);
+                            island.UnitList.Add(_unitList[0]);
+                            _unitList[0].IsClutched = false;
+                            _unitList[0].Ground = hit.GetComponent<IGround>();
+                            _unitList.RemoveAt(0);
 
-                        // 通知
-                        island.LandingNotify(_unitList[0]);
+                            // 通知
+                            island.LandingNotify(_unitList[0]);   
+                        }
+                        // 魚群
+                        else if (hit.GetComponent<Fishes>() != null)
+                        {
+                            // 魚群の取得
+                            Fishes fishes = hit.GetComponent<Fishes>();
+
+                            fishes.UnitList.Add(_unitList[0]);
+                            _unitList[0].IsClutched = false;
+                            _unitList[0].Ground = hit.GetComponent<IGround>();
+
+                            // 通知
+                            fishes.LandingNotify(_unitList[0]);
+                        }
                     }
                 }
                 // 遺物
