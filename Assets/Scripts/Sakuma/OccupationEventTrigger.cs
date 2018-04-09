@@ -11,7 +11,6 @@ public class OccupationEventTrigger : EventTrigger {
     private List<bool> _wantOccupy = new List<bool>();
 
     // 今の占拠状態
-    [SerializeField]
     private List<bool> _occupy = new List<bool>();
 
     // 占拠されるとイベントが発火するオブジェクトと今の占拠状態で合致しているtrueが何個存在してほしいか

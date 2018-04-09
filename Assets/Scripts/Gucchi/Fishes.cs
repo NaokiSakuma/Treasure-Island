@@ -176,15 +176,9 @@ namespace GucchiCS
                         flag.ChangeMaterial(_islandState);
                     }
                 }
-                // 占領ユニットがいないなら旗を消す
-                else
-                {
-                    OccupationFlag flag = transform.GetComponentInChildren<OccupationFlag>();
-                    if (flag != null)
-                    {
-                        Destroy(flag);
-                    }
-                }
+
+                // 占領されたらイベント発生
+                transform.GetComponent<FishesEvent>().OccupationNotify();
 
                 // 占領者の変更
                 _islandStateBefore = _islandState;

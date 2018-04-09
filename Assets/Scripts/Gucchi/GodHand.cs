@@ -313,6 +313,12 @@ namespace GucchiCS
             return true;
         }
 
+        // 現在つかんでいる遺物を取得
+        public Relic CatchingRelic
+        {
+            get { return _relic; }
+        }
+
         // つかんでいるユニット数テキストを更新
         //void UpdateSeizeNumText()
         //{

@@ -178,8 +178,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 72041195}
-  m_LocalRotation: {x: 0.5796591, y: 0.0004834912, z: 0.00034313148, w: -0.8148589}
-  m_LocalPosition: {x: -369.73325, y: -646.8683, z: -374.29218}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -9.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -391,7 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 716860886}
   m_Layer: 0
-  m_Name: IslandEvent (1)
+  m_Name: IslandEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3dd9444ef4368448299b62beb4fc4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ignitionTime: 60
+  _ignitionTime: 6
 --- !u!1 &881015311
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,7 +639,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1006814000}
   m_Layer: 0
-  m_Name: IslandEvent (2)
+  m_Name: IslandEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
