@@ -12,5 +12,11 @@ namespace GucchiCS
     {
         // 移動できる範囲内にある島を取得
         List<IGround> GetNearIslands();
+
+        // 味方の解放
+        void RemoveUnit(Unit unit);
+
+        // 敵の解放
+        void RemoveEnemy(Konji.LandingEnemy enemy);
     }
 }
