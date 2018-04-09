@@ -9,7 +9,7 @@ public class TestTimer : BaseTimer{
 		this.UpdateAsObservable()
 		    .ThrottleFirst(System.TimeSpan.FromSeconds(1))
 			.Subscribe(_ => {
-				--_remainingTime.Value;
+				RemainingTime--;
 			});
 	}
 }

@@ -1618,7 +1618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260f59bb71e744d7b95a6eb6004a4e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timer: {fileID: 1734351335}
 --- !u!114 &1734351335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1630,6 +1629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a21f947f601428fb393db5a5589eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _remainingTime: 300
 --- !u!1 &1790683369
 GameObject:
   m_ObjectHideFlags: 0
