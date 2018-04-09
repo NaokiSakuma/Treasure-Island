@@ -20,15 +20,21 @@ public class RelicCollection : MonoBehaviour {
 		}
 
 		// ひとまず全部更新
-		this.ObserveEveryValueChanged(_ => RelicManager.Instance.RelicList)
+		this.ObserveEveryValueChanged(_ => RelicManager.Instance.RelicList.Count)
 			.Subscribe(x => {
 				UpdateAllRelicInfo();
 			});
 	}
 
 	void UpdateAllRelicInfo(){
-		for (int i = 0; i < RelicManager.Instance.RelicList.Count; i++){
-			_icons[i].RelicInfo = RelicManager.Instance.RelicList[i];
-		}
+		for (int i = 0; i < RelicManager.MAX_RELIC_NUM; i++){
+            if(i < RelicManager.Instance.RelicList.Count){
+                _icons[i].RelicInfo = RelicManager.Instance.RelicList[i];
+            }
+            else{
+                _icons[i].RelicInfo._image = null;
+				//_icons[i].RelicInfo = null;
+            }
+   		}
 	}
 }

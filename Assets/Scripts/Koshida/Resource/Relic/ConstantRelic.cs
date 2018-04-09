@@ -40,7 +40,7 @@ namespace Konji
                         });
 
         //遺物情報
-        [System.Serializable]
+        //[System.Serializable]
         public class RelicInfo
         {
             public RelicType _type;

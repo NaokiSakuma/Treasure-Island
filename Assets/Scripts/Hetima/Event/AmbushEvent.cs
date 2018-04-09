@@ -37,7 +37,7 @@ public class AmbushEvent : MonoBehaviour {
 		// 10体敵を湧かせる
 		for (int i = 0; i < 10; i++){
 			var enemy = Instantiate(_enemy);
-			enemy.transform.position = transform.position + new Vector3(i, 100, 0);
+			enemy.transform.position = transform.position + new Vector3(i, transform.position.y + 15, 0);
 		}
 	}
 }

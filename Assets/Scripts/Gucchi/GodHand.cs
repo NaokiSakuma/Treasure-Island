@@ -313,6 +313,16 @@ namespace GucchiCS
             return true;
         }
 
+        // 所持している遺物を選択した場合
+        public void CatchHavingRelic(Relic relic)
+        {
+            // 遺物をつかむ
+            relic.IsClutched = true;
+            _relic = relic;
+            _relic.IsPut = false;
+            _catchMode = false;
+        }
+
         // 現在つかんでいる遺物を取得
         public Relic CatchingRelic
         {

@@ -9,9 +9,9 @@ namespace Konji
     {
         //Relicリストの最大数
         public const int MAX_RELIC_NUM = 6;
+       
 
         //レリック管理リスト
-        [SerializeField]
         private List<CO.RelicInfo> _relicList = new List<CO.RelicInfo>();
         public List<CO.RelicInfo> RelicList
         {
@@ -49,15 +49,19 @@ namespace Konji
         }
 
         //index番目のRelicを削除
-        public void RemoveRelic(int index)
-        {
-            //リストが0個、indexが0未満,indexがリスト個数以上
-            if (_relicList.Count == 0 || index < 0 || index >= _relicList.Count)
-            {
-                return;
-            }
+        //public void RemoveRelic(int index)
+        //{
+        //    //リストが0個、indexが0未満,indexがリスト個数以上
+        //    if (_relicList.Count == 0 || index < 0 || index >= _relicList.Count)
+        //    {
+        //        return;
+        //    }
 
-            _relicList.RemoveAt(index);
+        //    _relicList.RemoveAt(index);
+        //}
+        public void RemoveRelic(CO.RelicInfo info)
+        {
+            _relicList.Remove(info);
         }
 
         //Relicを選択状態にする
