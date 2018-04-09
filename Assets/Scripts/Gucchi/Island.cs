@@ -288,7 +288,6 @@ namespace GucchiCS
                         // 資源を取得
                         Konji.ResourceManager.Instance.Resource += _resource;
                         _resource = 0;
-                        Debug.Log(Konji.ResourceManager.Instance.Resource);
                     }
                 }
 
