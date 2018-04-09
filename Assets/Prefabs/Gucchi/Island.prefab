@@ -161,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _relicSetterPrefab: {fileID: 1595940433425854, guid: bdd14a816e4cf431887eab7ed5bd787a,
     type: 2}
-  _relicSetterSize: 15
+  _relicSetterSize: 10
 --- !u!114 &114415516861163466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -189,6 +189,8 @@ MonoBehaviour:
   - {fileID: 114616440574681432, guid: ef4b6036dc74746b8b07c496fc45f8b5, type: 2}
   _event: []
   _score: 0
+  _resource: 0
+  _beginningRelic: []
 --- !u!114 &114701875657190774
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -171,8 +171,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 9256755}
-  m_LocalRotation: {x: -0.25778925, y: 0.1685112, z: 0.045713026, w: 0.9502942}
-  m_LocalPosition: {x: -203.58197, y: -715.8135, z: -999.77576}
+  m_LocalRotation: {x: -0.44955474, y: 0.09083338, z: 0.046014246, w: 0.8874303}
+  m_LocalPosition: {x: -192.62729, y: -748.90686, z: -434.98608}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1390,6 +1390,10 @@ Prefab:
         type: 2}
       propertyPath: _islandSizeData.Array.data[2]
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261037475437254, guid: 3efc706b9f96bf7429c96c7b4312142c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 64674641699365182, guid: 3efc706b9f96bf7429c96c7b4312142c, type: 2}
@@ -3719,6 +3723,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d11f3b9ffeff47818932f221309ea1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cursorDefault: {fileID: 2800000, guid: 870dc65b6955c40ca9dff4e368504b2c, type: 3}
+  _cursorCatched: {fileID: 2800000, guid: 631cdaa3817174b0b8774be523e40075, type: 3}
+  _offset: {x: 16, y: 16}
 --- !u!4 &1453862917
 Transform:
   m_ObjectHideFlags: 0
@@ -4680,7 +4687,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260f59bb71e744d7b95a6eb6004a4e30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timer: {fileID: 1734351335}
 --- !u!114 &1734351335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4692,6 +4698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a21f947f601428fb393db5a5589eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _remainingTime: 60
 --- !u!4 &1742177384 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4801980867486354, guid: cb14134f026449447820ebae54b3e168,
