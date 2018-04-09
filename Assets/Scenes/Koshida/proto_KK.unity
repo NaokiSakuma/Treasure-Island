@@ -171,8 +171,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 9256755}
-  m_LocalRotation: {x: -0.29244784, y: 0.035850115, z: 0.01097248, w: 0.95554626}
-  m_LocalPosition: {x: -299.93005, y: -52.003433, z: 103.07823}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -86, y: -1794.9008, z: -4.9997883}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -877,6 +877,7 @@ MonoBehaviour:
   _ship: {fileID: 1846408906313658, guid: 1655af7af4441384c9a257ad193957d8, type: 2}
   _spawn: {fileID: 184345854}
   _target: {fileID: 0}
+  _enemyNum: 0
 --- !u!4 &184345854
 Transform:
   m_ObjectHideFlags: 0
@@ -933,6 +934,7 @@ MonoBehaviour:
   _ship: {fileID: 1846408906313658, guid: 1655af7af4441384c9a257ad193957d8, type: 2}
   _spawn: {fileID: 196514237}
   _target: {fileID: 0}
+  _enemyNum: 0
 --- !u!4 &196514237
 Transform:
   m_ObjectHideFlags: 0
@@ -4744,6 +4746,63 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!1 &1788134142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1788134145}
+  - component: {fileID: 1788134144}
+  - component: {fileID: 1788134143}
+  m_Layer: 0
+  m_Name: ShipEvent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1788134143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1788134142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f3dd9444ef4368448299b62beb4fc4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ignitionTime: 500
+--- !u!114 &1788134144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1788134142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b0f2d345f38f014bbbf3b01af4d47ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ship: {fileID: 1913312376314274, guid: 0b4b2acefbc6aca4a82665a478befa7e, type: 2}
+  _spawn: {fileID: 1788134145}
+  _target: {fileID: 394299717}
+  _enemyNum: 1
+--- !u!4 &1788134145
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1788134142}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -198, y: 17.322624, z: -397}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1790683369
 GameObject:
   m_ObjectHideFlags: 0
@@ -5183,53 +5242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a9f783169b343f6b83ab2bfe7cd5ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2046896142
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2046896144}
-  - component: {fileID: 2046896143}
-  m_Layer: 0
-  m_Name: ResourceManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2046896143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2046896142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89de59a45ebf7ae4a81c27379296df29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _curve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _scoreText: {fileID: 1389012704}
---- !u!4 &2046896144
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2046896142}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2050266866
 Prefab:
   m_ObjectHideFlags: 0
@@ -5243,7 +5255,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4801980867486354, guid: cb14134f026449447820ebae54b3e168, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 145.942
+      value: 152.9
       objectReference: {fileID: 0}
     - target: {fileID: 4801980867486354, guid: cb14134f026449447820ebae54b3e168, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5277,6 +5289,44 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb14134f026449447820ebae54b3e168, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2091971572 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 1889b58615e666e42a250762cc5744f7, type: 3}
+  m_PrefabInternal: {fileID: 371966945}
+--- !u!114 &2091971576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2091971572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea76a157962f7254aa91dcc02dbb1b38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interval: 3
+  _allyPrefab: {fileID: 1633974971772768, guid: cb14134f026449447820ebae54b3e168,
+    type: 2}
+  _baseIsland: {fileID: 1176046942}
+--- !u!114 &2091971577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2091971572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89de59a45ebf7ae4a81c27379296df29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resource: 0
+  _curve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _scoreText: {fileID: 1389012704}
 --- !u!1 &2108917239
 GameObject:
   m_ObjectHideFlags: 0

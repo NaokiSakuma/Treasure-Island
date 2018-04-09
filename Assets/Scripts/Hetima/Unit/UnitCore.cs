@@ -178,11 +178,22 @@ public class UnitCore : MonoBehaviour {
 	public void DeadEnter() {
 		// 死亡ステート
 		Debug.Log(_stateDead.GetStateName());
+
 		// 死亡した時につかめなくする
 		var unit = GetComponent<GucchiCS.Unit>();
+
 		if(unit){
+            unit.Ground.RemoveUnit(unit);
 			Destroy(unit);
 		}
+        else
+        {
+            var enemy = GetComponent<Konji.LandingEnemy>();
+            if(enemy)
+            {
+                enemy.Ground.RemoveEnemy(enemy);
+            }
+        }
 	}
 
 	/// <summary>

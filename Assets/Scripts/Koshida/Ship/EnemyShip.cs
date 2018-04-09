@@ -13,13 +13,11 @@ namespace Konji
         private BoolReactiveProperty _atkRP = new BoolReactiveProperty(false);
 
         //敵の数
-        private int _enemyNum = 0;
+        public int _enemyNum = 0;
 
         protected override void Awake()
         {
             base.Awake();
-
-            _enemyNum = 6;
         }
 
         protected override void Start()

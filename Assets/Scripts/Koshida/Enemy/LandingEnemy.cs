@@ -34,7 +34,7 @@ namespace Konji
 
             if (_nearObj)
             {
-                gameObject.transform.DOJump(_nearObj.position, 5, 1, 0.8f);
+                gameObject.transform.DOJump(_nearObj.position + new Vector3(0,40,0), 5, 1, 0.8f);
             }
         }
 

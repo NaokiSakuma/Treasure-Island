@@ -217,7 +217,7 @@ MonoBehaviour:
   _attackSpeed: 1
   _attackReach: 10
   _searchRange: 10
-  _moveSpeed: 0.5
+  _moveSpeed: 2
   _team: 0
   _target: {fileID: 0}
 --- !u!114 &114744372674358940

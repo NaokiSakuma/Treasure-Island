@@ -9,6 +9,7 @@ namespace Konji
     public class ResourceManager : SingletonMonoBehaviour<ResourceManager>
     {
         //資源
+        [SerializeField]
         private int _resource = 0;
         public int Resource
         {

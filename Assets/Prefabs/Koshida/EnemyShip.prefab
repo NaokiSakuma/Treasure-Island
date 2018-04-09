@@ -102,10 +102,11 @@ MonoBehaviour:
     value: 0
   _isOccupyRP:
     value: 0
-  _enemyPrefab: {fileID: 1095874768981164, guid: e968e1c83bb1be6498cb4875aeb336e0,
+  _enemyPrefab: {fileID: 1621643894440440, guid: 44513aed15cde194b90ea1147afee6a7,
     type: 2}
   _atkRP:
     value: 0
+  _enemyNum: 0
 --- !u!195 &195839432553523172
 NavMeshAgent:
   m_ObjectHideFlags: 1

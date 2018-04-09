@@ -14,6 +14,7 @@ namespace Konji
         public GameObject _ship = null;    //船のタイプ
         public Transform _spawn = null;    //スポーンポイント
         public Transform _target = null;   //行き先
+        public int _enemyNum = 0;
 
         // Use this for initialization
         void Start()
@@ -30,8 +31,18 @@ namespace Konji
             {
                 //船出現
                 GameObject ship = Instantiate(_ship, _spawn.position, Quaternion.identity);
-                Ship eShip = ship.GetComponent<Ship>();
-                eShip._target = _target;
+                EnemyShip eShip = ship.GetComponent<EnemyShip>();
+
+                if(eShip)
+                {
+                    eShip._target = _target;
+                    eShip._enemyNum = _enemyNum;
+                }
+                else
+                {
+                    CommercialShip cShip = ship.GetComponent<CommercialShip>();
+                    cShip._target = _target;
+                }
 
                 //イベント終了
                 _timerEvent.End = true;
