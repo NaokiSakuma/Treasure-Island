@@ -25,7 +25,7 @@ public class RelicCollection : MonoBehaviour {
 		}
 
 		// ひとまず全部更新
-		this.ObserveEveryValueChanged(_ => rm._relicList)
+		this.ObserveEveryValueChanged(_ => rm.RelicList)
 			.Subscribe(x => {
 				SetAllRelicInfo();
 			});
@@ -33,9 +33,9 @@ public class RelicCollection : MonoBehaviour {
 
 	void SetAllRelicInfo(){
 		// TODO: レリックの最大数を取れるようにしてもらう
-		for (int i = 0; i < _manager._relicList.Count; i++){
+		for (int i = 0; i < _manager.RelicList.Count; i++){
 			//_icons[i].GetComponent<Image>().sprite = _manager._relicList[i]._image;
-			_icons[i].RelicInfo = _manager._relicList[i];
+			_icons[i].RelicInfo = _manager.RelicList[i];
 		}
 	}
 }
