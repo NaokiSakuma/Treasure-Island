@@ -5,12 +5,13 @@ using UnityEngine;
 namespace Konji
 {
     //シングルトンにします
-    public class RelicManager : MonoBehaviour
+    public class RelicManager : SingletonMonoBehaviour<RelicManager>
     {
         //Relicリストの最大数
         public const int MAX_RELIC_NUM = 6;
 
         //レリック管理リスト
+        [SerializeField]
         private List<CO.RelicInfo> _relicList = new List<CO.RelicInfo>();
         public List<CO.RelicInfo> RelicList
         {

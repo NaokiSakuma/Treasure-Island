@@ -7,7 +7,7 @@ using UniRx.Triggers;
 
 public class RelicIcon : ButtonClicker {
 
-	[SerializeField]
+	//[SerializeField]
 	private Konji.CO.RelicInfo _relicInfo;
 	public Konji.CO.RelicInfo RelicInfo{
 		get { return _relicInfo; }
