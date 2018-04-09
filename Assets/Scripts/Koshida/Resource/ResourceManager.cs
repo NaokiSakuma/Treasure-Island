@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Konji
 {
-    public class ResourceManager : MonoBehaviour
+    public class ResourceManager : SingletonMonoBehaviour<ResourceManager>
     {
         //資源
         private int _resource = 0;
