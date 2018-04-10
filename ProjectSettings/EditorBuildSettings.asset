@@ -9,5 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Gucchi/IslandTest.unity
     guid: 710dfd4a2c3f5481fbc520b9de4a9ba7
   - enabled: 1
-    path: Assets/Scenes/Koshida/proto_KK.unity
+    path: Assets/Scenes/MapTest/Title.unity
+    guid: c771296e9e3054e419bb4b706c51a3bf
+  - enabled: 1
+    path: Assets/Scenes/Koshida/ProtoType.unity
     guid: 6692ca650d027b042a6cf59489b512bb
+  - enabled: 1
+    path: Assets/Scenes/Hetima/Clear.unity
+    guid: 8e2bda42c07144d60a305ecf56e49c9e

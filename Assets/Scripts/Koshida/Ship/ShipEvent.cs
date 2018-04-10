@@ -21,6 +21,8 @@ namespace Konji
         {
             _timerEvent = this.gameObject.GetComponent<TimerEventTrigger>();
 
+            AudioManager.Instance.PlaySE(AUDIO.SE_SHIP);
+
             _timerEvent.Count = true;
         }
 

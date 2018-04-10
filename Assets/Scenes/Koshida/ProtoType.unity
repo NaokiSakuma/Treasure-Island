@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: 4768a6161aa4967449d5d0e3a0e76c99,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -122,6 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9256757}
   - component: {fileID: 9256756}
+  - component: {fileID: 9256758}
   m_Layer: 0
   m_Name: Water4SimpleReflectionMain Camera
   m_TagString: Untagged
@@ -171,13 +173,21 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 9256755}
-  m_LocalRotation: {x: 0.5030129, y: 0.028509993, z: 0.01660492, w: -0.86364895}
-  m_LocalPosition: {x: 280.7913, y: -403.47525, z: -192.79755}
+  m_LocalRotation: {x: -0.4836401, y: 0.015753852, z: 0.008706916, w: 0.8750819}
+  m_LocalPosition: {x: -293.4162, y: -115.06878, z: 195.43399}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!45 &9256758
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 9256755}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 0}
 --- !u!1 &22100895
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,6 +480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 97591358}
   - component: {fileID: 97591357}
+  - component: {fileID: 97591359}
   m_Layer: 0
   m_Name: Water4SimpleReflectionSceneCamera
   m_TagString: Untagged
@@ -526,6 +537,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!45 &97591359
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 97591356}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 0}
 --- !u!1 &106615313 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1371161994850526, guid: 3efc706b9f96bf7429c96c7b4312142c,
@@ -794,6 +813,46 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 133902745}
+--- !u!1 &140797253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 140797255}
+  - component: {fileID: 140797254}
+  m_Layer: 0
+  m_Name: Esc
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &140797254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140797253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d3da462f9993304487da7be7ade6353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &140797255
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140797253}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -290.78235, y: -1.2487259, z: 268.56183}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &151956693
 Prefab:
   m_ObjectHideFlags: 0
@@ -3005,7 +3064,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b114b6e21a1014f62b05e4fb086c9e4a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3515,7 +3574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1024850926
 Transform:
   m_ObjectHideFlags: 0
@@ -3759,7 +3818,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 5bb4ab05ef1fe46099352ec973fa152c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5616,7 +5675,7 @@ Prefab:
     - target: {fileID: 20287655393560098, guid: d1373db8ba956bb4086ded40fbabe79e,
         type: 2}
       propertyPath: m_CullingMask.m_Bits
-      value: 4294967295
+      value: 4294967039
       objectReference: {fileID: 0}
     - target: {fileID: 114053709186860768, guid: d1373db8ba956bb4086ded40fbabe79e,
         type: 2}
@@ -6097,7 +6156,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 174b9ab3e1e694b03bb5b9d69159c1d9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6204,7 +6263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04a21f947f601428fb393db5a5589eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _remainingTime: 60
+  _remainingTime: 300
 --- !u!4 &1742177384 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4801980867486354, guid: cb14134f026449447820ebae54b3e168,
@@ -6375,7 +6434,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 2b3738c621d2347ccbb5dbd4a348c1ca, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

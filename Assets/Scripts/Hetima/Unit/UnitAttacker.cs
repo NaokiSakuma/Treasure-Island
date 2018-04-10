@@ -30,8 +30,12 @@ public class UnitAttacker : MonoBehaviour {
 	}
 
 	void Attack(){
-		// TODO: アニメーションの追加もしくは連動
-		// 対象にダメージ
-		_core.Target.Health -= _core.Strength + _core.AdditionalStrength;
+
+        //攻撃SE
+        AudioManager.Instance.PlaySE(AUDIO.SE_BATTLE);
+
+        // TODO: アニメーションの追加もしくは連動
+        // 対象にダメージ
+        _core.Target.Health -= _core.Strength + _core.AdditionalStrength;
 	}
 }

@@ -19,9 +19,16 @@ public class TitleScene : MonoBehaviour {
     private float _fadeSpeed = 0f;
 	// Use this for initialization
 	void Start () {
+        AudioManager.Instance.PlayBGM(AUDIO.BGM_TITLEBGM);
+
         this._button.onClick.AsObservable()
             .First()
-            .Subscribe(_ => StartCoroutine(FadeOut()));
+            .Subscribe(_ =>
+            {
+                //タイトルボタンSE
+                AudioManager.Instance.PlaySE(AUDIO.SE_TITLEBUTTON);
+                StartCoroutine(FadeOut());
+            });
 	}
 
     /// <summary>
@@ -36,7 +43,10 @@ public class TitleScene : MonoBehaviour {
             yield return null;
             yield return StartCoroutine(FadeOut());
         }
-        // SceneManager.LoadScene("名前");
+        SceneManager.LoadScene("ProtoType");
+
+        AudioManager.Instance.PlayBGM(AUDIO.BGM_PLAYBGM,0.5f);
+
         yield break;
     }
 

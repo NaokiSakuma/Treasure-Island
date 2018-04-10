@@ -279,6 +279,7 @@ namespace GucchiCS
                 // 占領状況に応じてマテリアルを変更
                 if (_islandState != ISLAND_OCCUPATION.NULL)
                 {
+
                     OccupationFlag flag = transform.GetComponentInChildren<OccupationFlag>();
 
                     // 旗がすでに存在している場合
@@ -299,6 +300,12 @@ namespace GucchiCS
                     // 味方の占領なら資源とスコアを取得
                     if (_islandState == ISLAND_OCCUPATION.UNIT)
                     {
+                        if(_resource > 0)
+                        {
+                            //占領時のSE
+                            AudioManager.Instance.PlaySE(AUDIO.SE_OCCUPATION);
+                        }
+
                         // 資源を取得
                         Konji.ResourceManager.Instance.Resource += _resource;
                         _resource = 0;

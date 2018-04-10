@@ -123,12 +123,16 @@ namespace GucchiCS
                     _relic = relic;
                     _relic.IsPut = false;
 					_catchMode = false;
+                    //掴むSE
+                    AudioManager.Instance.PlaySE(AUDIO.SE_GRAB);
                 }
             }
             // クリックを離したとき
             else if (Input.GetMouseButtonUp(0))
             {
                 _catchMode = false;
+                //掴むSE
+                AudioManager.Instance.PlaySE(AUDIO.SE_GRAB);
             }
         }
 
@@ -171,6 +175,9 @@ namespace GucchiCS
                         }
                     }
 
+                    //離すSE
+                    AudioManager.Instance.PlaySE(AUDIO.SE_SEPARATE);
+
 					_unitList.Clear();
                 }
             }
@@ -210,6 +217,9 @@ namespace GucchiCS
                             _unitList[0].IsClutched = false;
                             _unitList[0].Ground = hit.GetComponent<IGround>();
                             _unitList.RemoveAt(0);
+
+                            //離すSE
+                            AudioManager.Instance.PlaySE(AUDIO.SE_SEPARATE);
                         }
                     }
                 }
@@ -235,6 +245,8 @@ namespace GucchiCS
                         _relic.transform.position = new Vector3(hit.transform.position.x, 18f, hit.transform.position.z);
                         _relic.IsPut = true;
                         _relic = null;
+                        //離すSE
+                        AudioManager.Instance.PlaySE(AUDIO.SE_SEPARATE);
                     }
                 }
             }
