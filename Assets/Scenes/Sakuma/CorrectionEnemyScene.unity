@@ -122,7 +122,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4801980867486354, guid: cb14134f026449447820ebae54b3e168, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.1
+      value: 3.76
       objectReference: {fileID: 0}
     - target: {fileID: 4801980867486354, guid: cb14134f026449447820ebae54b3e168, type: 2}
       propertyPath: m_LocalPosition.y
@@ -175,7 +175,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1633974971772768, guid: cb14134f026449447820ebae54b3e168, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114365444830710024, guid: cb14134f026449447820ebae54b3e168,
+        type: 2}
+      propertyPath: _attackReach
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114365444830710024, guid: cb14134f026449447820ebae54b3e168,
+        type: 2}
+      propertyPath: _maxHealth.value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb14134f026449447820ebae54b3e168, type: 2}
@@ -484,7 +494,7 @@ GameObject:
   - component: {fileID: 1163484722}
   - component: {fileID: 1163484721}
   m_Layer: 0
-  m_Name: Master (1)
+  m_Name: Master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -587,7 +597,13 @@ Prefab:
       propertyPath: _attackReach
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114034199200436166, guid: 2e3da4dbdb11b664d96552819b622458,
+        type: 2}
+      propertyPath: _base
+      value: 
+      objectReference: {fileID: 1571169566}
+    m_RemovedComponents:
+    - {fileID: 114867626642884170, guid: 2e3da4dbdb11b664d96552819b622458, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2e3da4dbdb11b664d96552819b622458, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1571169565 stripped
@@ -602,30 +618,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1571169565}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89de59a45ebf7ae4a81c27379296df29, type: 3}
+  m_Script: {fileID: 11500000, guid: b4ceb85ca6b4155419b0a8e4b980f813, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resource: 0
-  _resourceText: {fileID: 0}
-  _curve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _scoreText: {fileID: 0}
---- !u!114 &1571169567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1571169565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea76a157962f7254aa91dcc02dbb1b38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _interval: 3
-  _allyPrefab: {fileID: 1633974971772768, guid: cb14134f026449447820ebae54b3e168,
-    type: 2}
-  _baseIsland: {fileID: 0}
+  _hp: 10

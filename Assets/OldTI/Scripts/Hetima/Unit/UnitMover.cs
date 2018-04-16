@@ -40,7 +40,7 @@ public class UnitMover : MonoBehaviour {
 
         // 移動中の処理を2つ書くのはおばかちん
         this.UpdateAsObservable()
-		    .Where(_ => !_isMoving.Value && IsTooNearIsland() &&  _core.Target == null)
+		    .Where(_ => IsTooNearIsland() &&  _core.Target == null)
 			.Subscribe(_ => {
                 transform.LookAt(new Vector3(_basePos.x,_basePos.y,_basePos.z));
                 _velocity = transform.forward * _core.MoveSpeed * Time.deltaTime;

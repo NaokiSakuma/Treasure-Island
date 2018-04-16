@@ -12,6 +12,10 @@ public class UnitAttacker : MonoBehaviour {
     // 拠点の位置
     private Vector3 _basePos = Vector3.zero;
 
+    // 島
+    [SerializeField]
+    private BaseHp _base;
+     
     // Use this for initialization
     void Start () {
 		_core = GetComponent<UnitCore>();
@@ -46,7 +50,7 @@ public class UnitAttacker : MonoBehaviour {
             // 攻撃 拠点がわからんからとりあえずコンソールで表示
             .Subscribe(_ => {
                 // 処理
-                print("attack");
+                _base.Hp -= _core.Strength + _core.AdditionalStrength;
             });
 
     }
@@ -54,7 +58,7 @@ public class UnitAttacker : MonoBehaviour {
     void Attack(){
 
         //攻撃SE
-        AudioManager.Instance.PlaySE(AUDIO.SE_BATTLE);
+        //AudioManager.Instance.PlaySE(AUDIO.SE_BATTLE);
 
         // TODO: アニメーションの追加もしくは連動
         // 対象にダメージ
