@@ -7,14 +7,26 @@ namespace Konji
     public class WaveEmitter : MonoBehaviour
     {
         // Waveプレハブを格納する
-        public GameObject[] _waves;
+        [SerializeField]
+        private GameObject[] _waves;
 
         // 現在のWave
-        public int _currentWave;
+        private int _currentWave;
+        public int CurrentWave
+        {
+            get { return _currentWave; }
+        }
 
         //クールタイム
-        public int _coolTime = 10;
+        [SerializeField]
+        private int _coolTime = 10;
+
+        //クールタイマー
         private int _coolTimer = 0;
+        public int CoolTimer
+        {
+            get { return _coolTimer; }
+        }
 
         void Start()
         {
