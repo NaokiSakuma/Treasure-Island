@@ -13,15 +13,15 @@ public class TestModeChange : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Q))
         {
-            GetComponent<GucchiCS.ModeChanger>().Mode = GucchiCS.ModeChanger.MODE.GAME;
+            GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.GAME;
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
-            GetComponent<GucchiCS.ModeChanger>().Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
+            GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            GetComponent<GucchiCS.ModeChanger>().Mode = GucchiCS.ModeChanger.MODE.SPOTLIGHT_CONTROL;
+            GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.SPOTLIGHT_CONTROL;
         }
     }
 }
