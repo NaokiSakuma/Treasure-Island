@@ -19,8 +19,9 @@ namespace GucchiCS
         // オブジェクトスクリーン（これをつけないなら別の方法を考える）
         public Transform _objectSetter;
 
-        // スポットライトの移動時の座標
-        Vector3 _beginPos;
+        // ライトの移動スピード
+        [SerializeField]
+        float _moveSpeed = 0.02f;
 
         void Awake()
         {
@@ -33,55 +34,23 @@ namespace GucchiCS
                     transform.Rotate(new Vector3(0f, 180f, 0f));
                 });
 
-            // クリックイベント
-            var controlBegin = Observable
-                .EveryUpdate()
-                .Where(_ => Input.GetMouseButton(0))
-                .Where(_ => CheckRaycastHit());
-
-            // クリックを離した時
-            var controlEnd = Observable
-                .EveryUpdate()
-                .Where(_ => Input.GetMouseButtonUp(0));
-
             // スポットライトの移動
             this.UpdateAsObservable()
-                .SkipUntil(controlBegin)
-                .Do(_ => { _beginPos = transform.position; })
-                .TakeUntil(controlEnd)
-                .Repeat()
+                .Where(_ => Input.anyKey)
                 .Subscribe(_ =>
                 {
-                    // マウスに追従
-                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                    RaycastHit hit;
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-                    {
-                        var newPos = new Vector3(hit.point.x, hit.point.y, -_distance);
-                        // クランプがゴミなので一旦if文
-                        if (newPos.x < -_limit.x) newPos.x = -_limit.x;     if (newPos.x > _limit.x) newPos.x = _limit.x;
-                        if (newPos.y < -_limit.y) newPos.y = -_limit.y;     if (newPos.y > _limit.y) newPos.y = _limit.y;
-                        transform.position = newPos;
-                    }
+                    // キー操作によってライトの位置を変える
+                    var newPos = transform.position;
+                    if      (Input.GetKey(KeyCode.LeftArrow))   newPos.x += -_moveSpeed;
+                    else if (Input.GetKey(KeyCode.RightArrow))  newPos.x += _moveSpeed;
+                    else if (Input.GetKey(KeyCode.UpArrow))     newPos.y += _moveSpeed;
+                    else if (Input.GetKey(KeyCode.DownArrow))   newPos.y += -_moveSpeed;
+
+                    // クランプがゴミなので一旦if文
+                    if (newPos.x < -_limit.x) newPos.x = -_limit.x;     if (newPos.x > _limit.x) newPos.x = _limit.x;
+                    if (newPos.y < -_limit.y) newPos.y = -_limit.y;     if (newPos.y > _limit.y) newPos.y = _limit.y;
+                    transform.position = newPos;
                 });
-        }
-
-        // マウスのレイキャストが自身に触れたかどうか
-        bool CheckRaycastHit()
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            RaycastHit hit = new RaycastHit();
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-            {
-                if (hit.collider.gameObject == this.gameObject)
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
 
         /* プロパティ */
