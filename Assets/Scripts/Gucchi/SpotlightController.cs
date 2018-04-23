@@ -12,10 +12,6 @@ namespace GucchiCS
         [SerializeField]
         Vector2 _limit = new Vector2(0.7f, 0.4f);
 
-        // 距離
-        [SerializeField]
-        float _distance = 10f;
-
         // オブジェクトスクリーン（これをつけないなら別の方法を考える）
         public Transform _objectSetter;
 
