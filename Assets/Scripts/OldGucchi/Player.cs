@@ -166,9 +166,10 @@ namespace GucchiCS
         }
 
         /* プロパティ */
+
+        // ワームホールが展開されている状態かどうか
         public bool IsExistWormhole
         {
-            // ワームホールが展開されている状態かどうか
             get { return _isExistWormhole; }
         }
     }
