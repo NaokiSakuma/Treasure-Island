@@ -46,6 +46,10 @@ public class RotateManager : MonoBehaviour
     [SerializeField]
     private GameObject _buttonManager = null;
 
+    // レイヤー
+    [SerializeField]
+    private LayerMask layerMask;
+
     void Awake()
     {
         _canvas.gameObject.SetActive(false);
@@ -56,14 +60,14 @@ public class RotateManager : MonoBehaviour
         // 左クリックされた時の処理
         this.UpdateAsObservable()
             .Where(_ => Input.GetMouseButton(0))
+            .Where(_ => !_isRotate)
             .Subscribe(_ =>
             {
-                if (_isRotate == true) return;
                 // マウスの位置からrayを飛ばす
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit = new RaycastHit();
                 // オブジェクトがあれば登録
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity,layerMask.value))
                 {
                     _hitObj = hit.collider.gameObject;
                     print("当たったオブジェクト：" + _hitObj.transform.position);
@@ -75,9 +79,16 @@ public class RotateManager : MonoBehaviour
                 }
             });
 
-        // わからん
+        this.UpdateAsObservable()
+            .Subscribe(_ => print("roteta：" + _isRotate));
+        // TODO 40fズレる
         this.UpdateAsObservable()
             .Where(_ => _hitObj != null)
-            .Subscribe(_ => _buttonManager.transform.position = Camera.main.WorldToScreenPoint(_hitObj.transform.position));
+            .Subscribe(_ => 
+            {
+                var cameraPos = Camera.main.WorldToScreenPoint(_hitObj.transform.position);
+                _buttonManager.transform.position = new Vector3(cameraPos.x, cameraPos.y + 40f, cameraPos.z);
+
+            });
     }
 }

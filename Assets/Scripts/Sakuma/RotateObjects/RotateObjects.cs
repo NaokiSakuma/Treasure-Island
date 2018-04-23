@@ -70,6 +70,9 @@ public class RotateObjects : MonoBehaviour {
         _rotateManager.IsRotate = false;
     }
 
+    /// <summary>
+    /// ボタンを表示・非表示する
+    /// </summary>
     private void HideButton()
     {
         _button.gameObject.SetActive(!_button.IsActive());
