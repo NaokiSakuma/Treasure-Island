@@ -17,7 +17,11 @@ public class UnitMover : MonoBehaviour {
 
 	// 移動中か
 	private BoolReactiveProperty _isMoving = new BoolReactiveProperty(false);
-	public BoolReactiveProperty IsMoving{
+
+    // 拠点の位置
+    private Vector3 _basePos = Vector3.zero;
+
+    public BoolReactiveProperty IsMoving{
 		get { return _isMoving; }
 	}
 
@@ -25,11 +29,24 @@ public class UnitMover : MonoBehaviour {
 	void Start() {
 		_core = GetComponent<UnitCore>();
 
+        // inspecterでやった方がいいかもしれん　baseが動く可能性有なら修正しないと
+        _basePos = GameObject.Find("base").transform.position;
+
 		// 移動中かどうかを更新する
 		this.UpdateAsObservable()
 		    // ターゲットがいなくなったら停止
 		    .Select(x => _core.Target != null)
 		    .Subscribe(x => _isMoving.SetValueAndForceNotify(x));
+
+        // 移動中の処理を2つ書くのはおばかちん
+        this.UpdateAsObservable()
+		    .Where(_ => IsTooNearIsland() &&  _core.Target == null)
+			.Subscribe(_ => {
+                transform.LookAt(new Vector3(_basePos.x,_basePos.y,_basePos.z));
+                _velocity = transform.forward * _core.MoveSpeed * Time.deltaTime;
+                transform.position += _velocity;
+
+            });
 
 		// 移動
 		this.UpdateAsObservable()
@@ -48,10 +65,19 @@ public class UnitMover : MonoBehaviour {
 		return _limitDistance < Vector3.Distance(transform.position, _core.Target.transform.position);
 	}
 
-	/// <summary>
-	/// 一番近くの敵に向かって移動する
-	/// </summary>
-	public void MoveToNearestEnemy() {
+    /// <summary>
+    /// targetに出来るようにした方がいいかもしれん
+    /// </summary>
+    /// <returns></returns>
+    bool IsTooNearIsland()
+    {
+        return _limitDistance < Vector3.Distance(transform.position, _basePos);
+    }
+
+    /// <summary>
+    /// 一番近くの敵に向かって移動する
+    /// </summary>
+    public void MoveToNearestEnemy() {
 		// ターゲットのほうを向く
 		transform.LookAt(_core.Target.transform.position);
 		if(IsTooNear()){

@@ -276,8 +276,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 999021070}
   _gameScreen: {fileID: 418836262}
+  _objectScreen: {fileID: 1567068894}
   _spotlight: {fileID: 1742242003}
   _gameScreenDistance: 5
+  _objectScreenDistance: 1
   _spotlightDistance: 1
   _changeTime: 2
 --- !u!4 &608845682

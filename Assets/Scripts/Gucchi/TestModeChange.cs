@@ -11,9 +11,17 @@ public class TestModeChange : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Q))
         {
-            GetComponent<GucchiCS.ModeChanger>().ChangeMode();
+            GetComponent<GucchiCS.ModeChanger>().Mode = GucchiCS.ModeChanger.MODE.GAME;
         }
-	}
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            GetComponent<GucchiCS.ModeChanger>().Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            GetComponent<GucchiCS.ModeChanger>().Mode = GucchiCS.ModeChanger.MODE.SPOTLIGHT_CONTROL;
+        }
+    }
 }

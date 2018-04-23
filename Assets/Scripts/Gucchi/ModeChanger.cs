@@ -6,13 +6,14 @@ using UnityEngine;
 
 namespace GucchiCS
 {
-    public class ModeChanger : MonoBehaviour        // 後々シングルトンにしたほうがよさげ
+    public class ModeChanger : SingletonMonoBehaviour<ModeChanger>
     {
         // モード
         public enum MODE
         {
             GAME,
-            CONTROL
+            OBJECT_CONTROL,
+            SPOTLIGHT_CONTROL
         }
         MODE _mode = MODE.GAME;
 
@@ -22,12 +23,19 @@ namespace GucchiCS
         // ゲームスクリーン
         public Transform _gameScreen;
 
+        // オブジェクトスクリーン
+        public Transform _objectScreen;
+
         // ハイブリッドスポットライト
         public Transform _spotlight;
 
         // ゲームスクリーンまでの距離
         [SerializeField]
         float _gameScreenDistance = 5f;
+
+        // オブジェクトスクリーンまでの距離
+        [SerializeField]
+        float _objectScreenDistance = 1f;
 
         // ハイブリッドスポットライトまでの距離
         [SerializeField]
@@ -37,43 +45,27 @@ namespace GucchiCS
         [SerializeField]
         float _changeTime = 2f;
 
-        void Awake()
+        void Start()
         {
-            // ゲームモード時のカメラの座標
-            Vector3 gameModePos = new Vector3(_camera.transform.position.x, _camera.transform.position.y, _gameScreen.position.z - _gameScreenDistance);
-
-            // コントロールモード時のカメラの座標
-            Vector3 controlModePos = new Vector3(_camera.transform.position.x, _camera.transform.position.y, _spotlight.position.z - _spotlightDistance);
-
             this.ObserveEveryValueChanged(_ => _mode)
                 .Subscribe(_ =>
                 {
                     // 移動中ならアニメーションをやめる
                     _camera.transform.DOComplete();
 
-                    // 移動
+                    // z軸補正
+                    var newPos = _camera.transform.position;
                     switch (_mode)
                     {
-                        // ゲームモード
-                        case MODE.GAME:
-                            _camera.transform.DOMove(gameModePos, _changeTime);
-                            break;
-
-                        // コントロールモード
-                        case MODE.CONTROL:
-                            _camera.transform.DOMove(controlModePos, _changeTime);
-                            break;
-
-                        default:
-                            break;
+                        case MODE.GAME:                 newPos.z = _gameScreen.position.z + -_gameScreenDistance;       break;      // ゲームモード
+                        case MODE.OBJECT_CONTROL:       newPos.z = _objectScreen.position.z + -_objectScreenDistance;   break;      // オブジェクトコントロールモード
+                        case MODE.SPOTLIGHT_CONTROL:    newPos.z = _spotlight.position.z + -_spotlightDistance;         break;      // スポットライトコントロールモード
+                        default: break;
                     }
-                });
-        }
 
-        // モード変更
-        public void ChangeMode()
-        {
-            _mode = _mode == MODE.GAME ? MODE.CONTROL : MODE.GAME;
+                    // 移動
+                    _camera.transform.DOMove(newPos, _changeTime);
+                });
         }
 
         /* プロパティ */
@@ -82,6 +74,7 @@ namespace GucchiCS
         public MODE Mode
         {
             get { return _mode; }
+            set { _mode = value; }
         }
     }
 }
