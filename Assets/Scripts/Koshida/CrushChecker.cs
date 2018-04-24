@@ -18,7 +18,7 @@ namespace Konji
         void Start()
         {
             //壁にめり込んだ
-            this.OnTriggerEnterAsObservable()
+            this.OnCollisionEnterAsObservable()
                 .Subscribe(col =>
                 {
                     Debug.Log("Enter" + name);
@@ -26,7 +26,7 @@ namespace Konji
                 });
 
             //壁から離れた
-            this.OnTriggerExitAsObservable()
+            this.OnCollisionExitAsObservable()
                 .Subscribe(col =>
                 {
                     Debug.Log("Exit" + name);

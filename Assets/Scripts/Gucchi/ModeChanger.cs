@@ -14,8 +14,10 @@ namespace GucchiCS
             GAME,
             OBJECT_CONTROL,
             OBJECT_CONTROL_SELECTED,
-            SPOTLIGHT_CONTROL
+            SPOTLIGHT_CONTROL,
+            CLEAR
         }
+        [SerializeField]        // デバッグ用
         MODE _mode = MODE.GAME;
 
         // カメラ
@@ -30,6 +32,9 @@ namespace GucchiCS
         // ハイブリッドスポットライト
         public Transform _spotlight;
 
+        // プレイヤー
+        public Transform _player;
+
         // ゲームスクリーンまでの距離
         [SerializeField]
         float _gameScreenDistance = 5f;
@@ -41,6 +46,10 @@ namespace GucchiCS
         // ハイブリッドスポットライトまでの距離
         [SerializeField]
         float _spotlightDistance = 1f;
+
+        // プレイヤーまでの距離
+        [SerializeField]
+        float _playerDistance = 3f;
 
         // モードを変えるときの変更時間
         [SerializeField]
@@ -99,6 +108,10 @@ namespace GucchiCS
                     newPos.z = _spotlight.position.z + -_spotlightDistance;
                     break;
 
+                case MODE.CLEAR:                        // クリアモード
+                    newPos = new Vector3(_player.position.x, _player.position.y, _gameScreen.position.z + -_playerDistance);
+                    break;
+
                 default:
                     break;
             }
@@ -114,8 +127,7 @@ namespace GucchiCS
             _camera.transform.DOComplete();
 
             // 選択したオブジェクトの手前に座標を設定
-            var newPos = _camera.transform.position;
-            newPos = new Vector3(_selectedObject.transform.position.x, _selectedObject.transform.position.y, _objectScreen.position.z - _objectScreenDistance);
+            var newPos = new Vector3(_selectedObject.transform.position.x, _selectedObject.transform.position.y, _objectScreen.position.z - _objectScreenDistance);
 
             // 移動
             _camera.transform.DOMove(newPos, _changeTime);

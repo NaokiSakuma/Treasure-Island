@@ -38,10 +38,10 @@ namespace GucchiCS
                 {
                     // キー操作によってライトの位置を変える
                     var newPos = transform.position;
-                    if      (Input.GetKey(KeyCode.LeftArrow))   newPos.x += -_moveSpeed;
-                    else if (Input.GetKey(KeyCode.RightArrow))  newPos.x += _moveSpeed;
-                    else if (Input.GetKey(KeyCode.UpArrow))     newPos.y += _moveSpeed;
-                    else if (Input.GetKey(KeyCode.DownArrow))   newPos.y += -_moveSpeed;
+                    if (Input.GetKey(KeyCode.LeftArrow))   newPos.x += -_moveSpeed;
+                    if (Input.GetKey(KeyCode.RightArrow))  newPos.x += _moveSpeed;
+                    if (Input.GetKey(KeyCode.UpArrow))     newPos.y += _moveSpeed;
+                    if (Input.GetKey(KeyCode.DownArrow))   newPos.y += -_moveSpeed;
 
                     // クランプがゴミなので一旦if文
                     if (newPos.x < -_limit.x) newPos.x = -_limit.x;     if (newPos.x > _limit.x) newPos.x = _limit.x;
@@ -68,8 +68,8 @@ namespace GucchiCS
                 float coefY = 1f / _limit.y;
 
                 // 係数によって補完させる
-                float compX = transform.position.x / coefX;
-                float compY = transform.position.y / coefY;
+                float compX = transform.position.x * coefX;
+                float compY = transform.position.y * coefY;
 
                 return new Vector2(compX, compY);
             }
