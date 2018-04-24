@@ -39,7 +39,7 @@ public class TransformationShadow : MonoBehaviour
             });
 
         //ライトの方向によって影の判定をずらす
-        this.ObserveEveryValueChanged(_ => _light.transform.localEulerAngles)
+        this.ObserveEveryValueChanged(_ => _light.GetComponent<GucchiCS.SpotlightController>().ReflectedGameViewPosition)
             .Subscribe(rotate =>
             {
                 UpdateShadow(rotate);
@@ -50,20 +50,20 @@ public class TransformationShadow : MonoBehaviour
     void UpdateShadow(Vector3 objRot)
     {
         //ライトの変更を係数に
-        float rotX = (objRot.x >= _maxRot ? objRot.x - 360 : objRot.x) / _maxRot;
-        float rotY = (objRot.y >= _maxRot ? objRot.y - 360 : objRot.y) / _maxRot;
+        //float rotX = (objRot.x >= _maxRot ? objRot.x - 360 : objRot.x) / _maxRot;
+        //float rotY = (objRot.y >= _maxRot ? objRot.y - 360 : objRot.y) / _maxRot;
 
-        float absX = Mathf.Abs(rotX);
-        float absY = Mathf.Abs(rotY);
+        float absX = Mathf.Abs(objRot.x);
+        float absY = Mathf.Abs(objRot.y);
 
         //影のサイズ変更
         if (absX <= 1.0f && absY <= 1.0f)
         {
-            UpdateScale(_collisonSize * absY, _collisonSize * absX);
+            UpdateScale(_collisonSize * absX, _collisonSize * absY);
         }
 
         //影の移動
-        transform.position = _startPosition + new Vector3(_moveamo * rotY, -_moveamo * rotX, 0);
+        transform.position = _startPosition + new Vector3(_moveamo * -objRot.x, _moveamo * -objRot.y, 0);
     }
 
     //軸の角度によって拡縮する軸の変更
