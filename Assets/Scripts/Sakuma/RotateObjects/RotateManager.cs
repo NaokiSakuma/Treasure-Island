@@ -48,7 +48,11 @@ public class RotateManager : MonoBehaviour
 
     // レイヤー
     [SerializeField]
-    private LayerMask layerMask;
+    private LayerMask layerMask = 0;
+
+    // test
+    [SerializeField]
+    private RectTransform _canvasRect = null;
 
     void Awake()
     {
@@ -63,6 +67,8 @@ public class RotateManager : MonoBehaviour
             .Where(_ => !_isRotate)
             .Subscribe(_ =>
             {
+                // uGUIと重なっていたらreturn
+                if (EventSystem.current.IsPointerOverGameObject()) return;
                 // マウスの位置からrayを飛ばす
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit = new RaycastHit();
@@ -70,25 +76,42 @@ public class RotateManager : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity,layerMask.value))
                 {
                     _hitObj = hit.collider.gameObject;
-                    print("当たったオブジェクト：" + _hitObj.transform.position);
+                    var rect = _buttonManager.GetComponent<RectTransform>();
+                    rect.sizeDelta = buttonManagerRect();
                     _canvas.gameObject.SetActive(true);
                 }
                 else
                 {
-                    // _canvas.gameObject.SetActive(false);
+                     _canvas.gameObject.SetActive(false);
                 }
             });
 
-        this.UpdateAsObservable()
-            .Subscribe(_ => print("roteta：" + _isRotate));
         // TODO 40fズレる
         this.UpdateAsObservable()
             .Where(_ => _hitObj != null)
             .Subscribe(_ => 
             {
-                var cameraPos = Camera.main.WorldToScreenPoint(_hitObj.transform.position);
-                _buttonManager.transform.position = new Vector3(cameraPos.x, cameraPos.y + 40f, cameraPos.z);
+                //var rect = _hitObj.GetComponent<RectTransform>();
+                //var target = _buttonManager.GetComponent<RectTransform>();
+                //_buttonManager.transform.position = canvasPosition(_hitObj.transform.position.x, _hitObj.transform.position.y);
+                var cameraPos = Camera.main.WorldToViewportPoint(_hitObj.transform.position);
+                var cameraPos2 = Camera.main.WorldToScreenPoint(_hitObj.transform.position);
+                var CanvasRect = _canvas.GetComponent<RectTransform>();
+                Vector2 WorldObject_ScreenPosition = new Vector2(
+                    ((cameraPos2.x)),
+                    ((cameraPos.y * CanvasRect.sizeDelta.y)));
+                _buttonManager.transform.position = WorldObject_ScreenPosition;//new Vector3(cameraPos.x, cameraPos.y, cameraPos.z);
 
             });
+    }
+    /// <summary>
+    /// ボタンマネージャーのrectTransform
+    /// </summary>
+    /// <returns>x：width、y：height</returns>
+    private Vector2 buttonManagerRect()
+    {
+        return new Vector2(100.0f - 30.0f * (_hitObj.gameObject.GetComponent<Renderer>().bounds.size.x - 1.0f),
+                                100.0f - 40.0f * (_hitObj.gameObject.GetComponent<Renderer>().bounds.size.y - 1.0f));
+
     }
 }
