@@ -1,34 +1,92 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.CrossPlatformInput;
+using UniRx;
+using UniRx.Triggers;
 
 namespace Konji
 {
     [RequireComponent(typeof(PlayerMove))]
     public class PlayerControl : MonoBehaviour
     {
+        //プレイヤー
         private PlayerMove _player;
+        //ジャンプ
         private bool _jump;
+
+        //移動方向
+        private int _move = 0;
+
+        //死亡フラグ
+        private bool _isDead = false;
+        public bool IsDead
+        {
+            get { return _isDead; }
+        }
+
+        //衝突チャック
+        private CrushChecker[] _crushCheck;
 
         private void Awake()
         {
             _player = GetComponent<PlayerMove>();
+            _crushCheck = GetComponentsInChildren<CrushChecker>();
         }
 
-        private void Update()
+        void Start()
         {
-            if (!_jump)
+            //いい書き方がわかりません
+
+            this.UpdateAsObservable()
+                .Subscribe(_ =>
+                {
+                    InputMove(Input.GetKey(KeyCode.D), Input.GetKey(KeyCode.A));
+                });
+
+            //挟まれたら死亡
+            this.UpdateAsObservable()
+                .Where(_ => (_crushCheck[0].IsCrush && _crushCheck[1].IsCrush) || (_crushCheck[2].IsCrush && _crushCheck[3].IsCrush))
+                .Take(1)
+                .Subscribe(_ =>
+                {
+                    Dead();
+                });
+
+            //プレイヤーの移動
+            this.FixedUpdateAsObservable()
+                .Where(_ => !_isDead)
+                .Subscribe(_ =>
+                {
+                    _player.Move(_move, _jump);
+                    _jump = false;
+                });
+        }
+
+        //死亡処理
+        void Dead()
+        {
+            Debug.Log("死にました～");
+
+            _isDead = true;
+        }
+
+        //移動入力
+        void InputMove(bool D,bool A)
+        {
+            //D入力
+            if(D)
             {
-                _jump = CrossPlatformInputManager.GetButtonDown("Jump");
+                _move = 1;
             }
-        }
-
-        private void FixedUpdate()
-        {
-            float h = CrossPlatformInputManager.GetAxis("Horizontal");
-            _player.Move(h, _jump);
-            _jump = false;
+            //A入力
+            else if(A)
+            {
+                _move = -1;
+            }
+            else
+            {
+                _move = 0;
+            }
         }
     }
 }

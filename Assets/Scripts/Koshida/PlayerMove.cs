@@ -1,55 +1,70 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UniRx;
+using UniRx.Triggers;
 
-public class PlayerMove : MonoBehaviour
+namespace Konji
 {
-    //移動速度
-    [SerializeField]
-    private float _maxSpeed = 10.0f;
-
-    //ジャンプ力ぅ
-    [SerializeField]
-    private float _jumpForce = 400.0f;
-
-    //接地
-    private bool _grounded;
-    public bool isGrounded
+    public class PlayerMove : MonoBehaviour
     {
-        get { return _grounded; }
-    }
+        //移動速度
+        [SerializeField]
+        private float _maxSpeed = 0.01f;
 
-    //重力
-    private float _gravity;
+        //右向き
+        private bool _facingRight = true;
 
-    private Rigidbody _rigit;
+        private Rigidbody _rigit;
 
-    void Awake()
-    {
-        _rigit = GetComponent<Rigidbody>();
-    }
+        //重力
+        [SerializeField]
+        private Vector3 _localGravity;
 
-    // Use this for initialization
-    void Start()
-    {
-        _grounded = false;
-    }
-
-    //壁に当たってもジャンプできるから後で修正
-    void OnCollisionEnter(Collision col)
-    {
-        _grounded = true;
-    }
-
-    //移動
-    public void Move(float move, bool jump)
-    {
-        _rigit.velocity = new Vector2(move * _maxSpeed, _rigit.velocity.y);
-
-        if (_grounded && jump)
+        void Awake()
         {
-            _grounded = false;
-            _rigit.AddForce(new Vector2(0f, _jumpForce));
+            _rigit = GetComponent<Rigidbody>();
+            _rigit.useGravity = false;
         }
+
+        // Use this for initialization
+        void Start()
+        {
+            //重力
+            this.FixedUpdateAsObservable()
+                .Subscribe(_ =>
+                {
+                    _rigit.AddForce(_localGravity, ForceMode.Acceleration);
+                });
+        }
+
+        //移動
+        public void Move(float move, bool jump)
+        {
+            _rigit.velocity = new Vector2(move * _maxSpeed, _rigit.velocity.y);
+
+            //振り返り
+            if (move > 0 && !_facingRight)
+            {
+                Flip();
+            }
+            else if (move < 0 && _facingRight)
+            {
+                Flip();
+            }
+        }
+
+        //振り向く
+        private void Flip()
+        {
+            _facingRight = !_facingRight;
+
+            float rot = transform.localEulerAngles.y;
+
+            rot += 180;
+
+            transform.localEulerAngles = new Vector3(0, rot, 0);
+        }
+
     }
 }
