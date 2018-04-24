@@ -23,5 +23,20 @@ public class TestModeChange : MonoBehaviour {
         {
             GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.SPOTLIGHT_CONTROL;
         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            GucchiCS.ModeChanger.MODE mode = GucchiCS.ModeChanger.Instance.Mode;
+            if (mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL || mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                {
+                    GucchiCS.ModeChanger.Instance.SelectedObject = hit.collider.gameObject;
+                    GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED;
+                }
+            }
+        }
     }
 }
