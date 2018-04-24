@@ -33,6 +33,7 @@ namespace GucchiCS
             // スポットライトの移動
             this.UpdateAsObservable()
                 .Where(_ => Input.anyKey)
+                .Where(_ => ModeChanger.Instance.Mode == ModeChanger.MODE.SPOTLIGHT_CONTROL)
                 .Subscribe(_ =>
                 {
                     // キー操作によってライトの位置を変える
