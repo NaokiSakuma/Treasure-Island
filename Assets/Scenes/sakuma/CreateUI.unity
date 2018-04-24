@@ -1545,7 +1545,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 2048
-  _canvasRect: {fileID: 1810078507}
 --- !u!4 &1423795279
 Transform:
   m_ObjectHideFlags: 0
