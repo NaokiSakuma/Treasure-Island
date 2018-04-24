@@ -56,7 +56,7 @@ public class RotateManager : MonoBehaviour
     }
     void Start()
     {
-        
+
         // 左クリックされた時の処理
         this.UpdateAsObservable()
             .Where(_ => Input.GetMouseButton(0))
@@ -87,7 +87,7 @@ public class RotateManager : MonoBehaviour
         // ボタンを回転させるUIの表示位置
         this.UpdateAsObservable()
             .Where(_ => _hitObj != null)
-            .Subscribe(_ => 
+            .Subscribe(_ =>
             {
                 // カメラのビューポート座標
                 var cameraView = Camera.main.WorldToViewportPoint(_hitObj.transform.position);
@@ -96,10 +96,16 @@ public class RotateManager : MonoBehaviour
                 // canvasのrectTransform
                 var canvasRect = _canvas.GetComponent<RectTransform>();
                 // buttonManagerの場所
-                Vector2 objectPosition = new Vector2(((cameraScreen.x)),((cameraView.y * canvasRect.sizeDelta.y)));
+                Vector2 objectPosition = new Vector2(((cameraScreen.x)),((/*cameraView.y * canvasRect.sizeDelta.y*/cameraScreen.y)));
                 _buttonManager.transform.position = objectPosition;
 
             });
+
+        // ゲームモードによってbuttonManagerを消す
+        this.UpdateAsObservable()
+            .Where(_ => GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL)
+            .Where(_ => GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
+            .Subscribe(_ => _buttonManager.gameObject.SetActive(false));
     }
     /// <summary>
     /// ボタンマネージャーのrectTransform
@@ -112,7 +118,7 @@ public class RotateManager : MonoBehaviour
         // オブジェクトのxyzで一番大きいサイズ
         var maxSize = Mathf.Max(objSize.x, objSize.y, objSize.z);
         // buttonManagerのデフォルトのwidth,hitght
-        const float defaultWH = 100.0f;
+        const float defaultWH = 20.0f;
         // いい感じの位置に配置
         // 30.0f,40.0fは良い感じのUIの配置位置
         // 1.0fはscaleを1.0fを基準に作っているため引いている
