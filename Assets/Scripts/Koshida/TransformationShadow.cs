@@ -10,10 +10,10 @@ public class TransformationShadow : MonoBehaviour
     private Transform _appearObj;
 
     [SerializeField]
-    private float _collisonSize = 1;
+    private Vector2 _collisonSize = new Vector2(1,1);
 
     [SerializeField]
-    private float _moveamo = 3.5f;
+    private Vector2 _moveamo = new Vector2(3.5f,3.5f);
 
     [SerializeField]
     private GameObject _light;
@@ -39,11 +39,11 @@ public class TransformationShadow : MonoBehaviour
             });
 
         //ライトの方向によって影の判定をずらす
-        this.ObserveEveryValueChanged(_ => _light.GetComponent<GucchiCS.SpotlightController>().ReflectedGameViewPosition)
-            .Subscribe(rotate =>
-            {
-                UpdateShadow(rotate);
-            });
+        //this.ObserveEveryValueChanged(_ => _light.GetComponent<GucchiCS.SpotlightController>().ReflectedGameViewPosition)
+        //    .Subscribe(rotate =>
+        //    {
+        //        UpdateShadow(rotate);
+        //    });
     }
 
     //影判定の変形
@@ -56,14 +56,16 @@ public class TransformationShadow : MonoBehaviour
         float absX = Mathf.Abs(objRot.x);
         float absY = Mathf.Abs(objRot.y);
 
+        Debug.Log(objRot);
+
         //影のサイズ変更
         if (absX <= 1.0f && absY <= 1.0f)
         {
-            UpdateScale(_collisonSize * absX, _collisonSize * absY);
+            UpdateScale(_collisonSize.x * absX, _collisonSize.y * absY);
         }
 
         //影の移動
-        transform.position = _startPosition + new Vector3(_moveamo * -objRot.x, _moveamo * -objRot.y, 0);
+        transform.position = _startPosition + new Vector3(_moveamo.x * -objRot.x, _moveamo.y * -objRot.y, 0);
     }
 
     //軸の角度によって拡縮する軸の変更

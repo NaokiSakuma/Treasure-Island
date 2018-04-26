@@ -480,8 +480,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _appearObj: {fileID: 809770447}
-  _collisonSize: 1.2
-  _moveamo: 3.5
+  _collisonSize: {x: 1, y: 1}
+  _moveamo: {x: 3.5, y: 3.5}
   _light: {fileID: 1326802754}
   _maxRot: 10
 --- !u!65 &817987245

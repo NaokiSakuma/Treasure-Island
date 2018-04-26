@@ -68,8 +68,8 @@ namespace GucchiCS
                 float coefY = 1f / _limit.y;
 
                 // 係数によって補完させる
-                float compX = transform.position.x / coefX;
-                float compY = transform.position.y / coefY;
+                float compX = transform.position.x * coefX;
+                float compY = transform.position.y * coefY;
 
                 return new Vector2(compX, compY);
             }

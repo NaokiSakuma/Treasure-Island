@@ -6,13 +6,11 @@ using UniRx.Triggers;
 
 namespace Konji
 {
-    [RequireComponent(typeof(PlayerMove))]
-    public class PlayerControl : MonoBehaviour
+    [RequireComponent(typeof(PlayerMove2D))]
+    public class PlayerControl2D : MonoBehaviour
     {
         //プレイヤー
-        private PlayerMove _player;
-        //ジャンプ
-        private bool _jump;
+        private PlayerMove2D _player;
 
         //移動方向
         private int _move = 0;
@@ -24,13 +22,9 @@ namespace Konji
             get { return _isDead; }
         }
 
-        //衝突チャック
-        private CrushChecker[] _crushCheck;
-
         private void Awake()
         {
-            _player = GetComponent<PlayerMove>();
-            _crushCheck = GetComponentsInChildren<CrushChecker>();
+            _player = GetComponent<PlayerMove2D>();
         }
 
         void Start()
@@ -43,23 +37,13 @@ namespace Konji
                     InputMove(Input.GetKey(KeyCode.D), Input.GetKey(KeyCode.A));
                 });
 
-            //挟まれたら死亡
-            this.UpdateAsObservable()
-                .Where(_ => (_crushCheck[0].IsCrush && _crushCheck[1].IsCrush) || (_crushCheck[2].IsCrush && _crushCheck[3].IsCrush))
-                .Take(1)
-                .Subscribe(_ =>
-                {
-                    Dead();
-                });
-
             //プレイヤーの移動(ゲームモードのみ移動可能)
             this.FixedUpdateAsObservable()
                 .Where(_ => !_isDead)
                 //.Where(_ => GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.GAME)
                 .Subscribe(_ =>
                 {
-                    _player.Move(_move, _jump);
-                    _jump = false;
+                    _player.Move(_move);
                 });
         }
 
