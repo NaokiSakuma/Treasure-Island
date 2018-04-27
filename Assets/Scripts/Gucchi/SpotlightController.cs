@@ -27,7 +27,7 @@ namespace GucchiCS
                 {
                     // オブジェクトスクリーンのほうへ向く
                     transform.LookAt(_objectSetter);
-                    transform.Rotate(new Vector3(0f, 180f, 0f));
+                    //transform.Rotate(new Vector3(0f, 180f, 0f));
                 });
 
             // スポットライトの移動
