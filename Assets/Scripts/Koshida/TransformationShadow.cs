@@ -39,11 +39,11 @@ public class TransformationShadow : MonoBehaviour
             });
 
         //ライトの方向によって影の判定をずらす
-        //this.ObserveEveryValueChanged(_ => _light.GetComponent<GucchiCS.SpotlightController>().ReflectedGameViewPosition)
-        //    .Subscribe(rotate =>
-        //    {
-        //        UpdateShadow(rotate);
-        //    });
+        this.ObserveEveryValueChanged(_ => _light.GetComponent<GucchiCS.SpotlightController>().ReflectedGameViewPosition)
+            .Subscribe(rotate =>
+            {
+                UpdateShadow(rotate);
+            });
     }
 
     //影判定の変形

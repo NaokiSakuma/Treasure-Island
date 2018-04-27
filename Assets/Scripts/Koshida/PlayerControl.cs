@@ -24,13 +24,9 @@ namespace Konji
             get { return _isDead; }
         }
 
-        //衝突チャック
-        private CrushChecker[] _crushCheck;
-
         private void Awake()
         {
             _player = GetComponent<PlayerMove>();
-            _crushCheck = GetComponentsInChildren<CrushChecker>();
         }
 
         void Start()
@@ -45,7 +41,7 @@ namespace Konji
 
             //挟まれたら死亡
             this.UpdateAsObservable()
-                .Where(_ => (_crushCheck[0].IsCrush && _crushCheck[1].IsCrush) || (_crushCheck[2].IsCrush && _crushCheck[3].IsCrush))
+                .Where(_ => (_player.IsNest[0] && _player.IsNest[1]) || (_player.IsNest[2] && _player.IsNest[3]))
                 .Take(1)
                 .Subscribe(_ =>
                 {
