@@ -63,6 +63,10 @@ public class RotateManager : MonoBehaviour
             .Where(_ => !_isRotate)
             .Subscribe(_ =>
             {
+                if (GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL && GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
+                {
+                    return;
+                }
                 // uGUIと重なっていたらreturn
                 if (EventSystem.current.IsPointerOverGameObject()) return;
                 // マウスの位置からrayを飛ばす
@@ -72,6 +76,8 @@ public class RotateManager : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity,layerMask.value))
                 {
                     _hitObj = hit.collider.gameObject;
+                    GucchiCS.ModeChanger.Instance.SelectedObject = _hitObj;
+                    print("登録" + _hitObj);
                     // ボタンのrectTransFormを変更
                     var rect = _buttonManager.GetComponent<RectTransform>();
                     rect.sizeDelta = buttonManagerRect();
@@ -81,6 +87,9 @@ public class RotateManager : MonoBehaviour
                 else
                 {
                     _buttonManager.gameObject.SetActive(false);
+                    print("消えてる");
+                    GucchiCS.ModeChanger.Instance.SelectedObject = null;
+                    GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
                 }
             });
 
@@ -89,6 +98,11 @@ public class RotateManager : MonoBehaviour
             .Where(_ => _hitObj != null)
             .Subscribe(_ =>
             {
+                if (GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL && GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
+                {
+                    return;
+                }
+
                 // カメラのビューポート座標
                 var cameraView = Camera.main.WorldToViewportPoint(_hitObj.transform.position);
                 // カメラのスクリーン座標
@@ -99,6 +113,14 @@ public class RotateManager : MonoBehaviour
                 Vector2 objectPosition = new Vector2(((cameraScreen.x)),((/*cameraView.y * canvasRect.sizeDelta.y*/cameraScreen.y)));
                 _buttonManager.transform.position = objectPosition;
 
+            });
+
+        this.UpdateAsObservable()
+            .Where(_ => _isRotate)
+            .Subscribe(_ =>
+            {
+                GucchiCS.ModeChanger.Instance.SelectedObject = null;
+                GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED;
             });
 
         // ゲームモードによってbuttonManagerを消す

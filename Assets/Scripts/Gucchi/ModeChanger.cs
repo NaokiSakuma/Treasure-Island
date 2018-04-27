@@ -49,6 +49,9 @@ namespace GucchiCS
         // 選択中のオブジェクト
         GameObject _selectedObject = null;
 
+        // sakuma
+        [SerializeField]
+        private RotateManager _isRotate = null;
         void Start()
         {
             // デフォルトカメラ座標
@@ -64,8 +67,10 @@ namespace GucchiCS
             // 選択オブジェクトの変更
             this.ObserveEveryValueChanged(_ => _selectedObject)
                 .Where(_ => _selectedObject != null)
+                .Where(_ => !_isRotate.IsRotate)
                 .Subscribe(_ =>
                 {
+                    print("回転します");
                     ChangeSelectedObject();
                 });
         }
