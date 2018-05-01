@@ -13,11 +13,16 @@ namespace GucchiCS
         float _limit = 10f;
 
         // オブジェクトスクリーン（これをつけないなら別の方法を考える）
-        public Transform _objectSetter;
+        [SerializeField]
+        Transform _objectScreen;
 
         // ライトの移動スピード
         [SerializeField]
         float _moveSpeed = 5f;
+
+        // 見かけ上のライト
+        [SerializeField]
+        GameObject _lightObject;
 
         void Awake()
         {
@@ -30,22 +35,38 @@ namespace GucchiCS
                     // 現在の角度
                     Vector3 eulerAngle = this.EulerAngles;
 
-                    // キー操作で角度を変える
+                    // キー操作でDictional Lightの角度と見かけ上のライトを変える
                     // 左
-                    if (Input.GetKey(KeyCode.LeftArrow) && eulerAngle.y > -_limit)
-                        transform.Rotate(0f, -_moveSpeed * Time.deltaTime, 0f);
+                    if (Input.GetKey(KeyCode.LeftArrow) && eulerAngle.y < _limit)
+                    {
+                        transform.Rotate(0f, _moveSpeed * Time.deltaTime, 0f, Space.World);
+                        _lightObject.transform.Translate((-_moveSpeed * 0.05f) * Time.deltaTime, 0f, 0f, Space.World);
+                    }
 
                     // 右
-                    if (Input.GetKey(KeyCode.RightArrow) && eulerAngle.y < _limit)
-                        transform.Rotate(0f, _moveSpeed * Time.deltaTime, 0f);
+                    if (Input.GetKey(KeyCode.RightArrow) && eulerAngle.y > -_limit)
+                    {
+                        transform.Rotate(0f, -_moveSpeed * Time.deltaTime, 0f, Space.World);
+                        _lightObject.transform.Translate((_moveSpeed * 0.05f) * Time.deltaTime, 0f, 0f, Space.World);
+                    }
 
                     // 上
                     if (Input.GetKey(KeyCode.UpArrow) && eulerAngle.x < _limit)
-                        transform.Rotate(_moveSpeed * Time.deltaTime, 0f, 0f);
+                    {
+                        transform.Rotate(_moveSpeed * Time.deltaTime, 0f, 0f, Space.World);
+                        _lightObject.transform.Translate(0f, (_moveSpeed * 0.05f) * Time.deltaTime, 0f, Space.World);
+                    }
 
                     // 下
                     if (Input.GetKey(KeyCode.DownArrow) && eulerAngle.x > -_limit)
-                        transform.Rotate(-_moveSpeed * Time.deltaTime, 0f, 0f);
+                    {
+                        transform.Rotate(-_moveSpeed * Time.deltaTime, 0f, 0f, Space.World);
+                        _lightObject.transform.Translate(0f, (-_moveSpeed * 0.05f) * Time.deltaTime, 0f, Space.World);
+                    }
+
+                    // 見かけ上のライトをオブジェクトスクリーンの方へ向ける
+                    _lightObject.transform.LookAt(_objectScreen);
+                    _lightObject.transform.Rotate(new Vector3(0f, 180f, 0f));
                 });
         }
 
