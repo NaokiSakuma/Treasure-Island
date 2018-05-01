@@ -33,7 +33,8 @@ public class TestModeChange : MonoBehaviour {
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, Mathf.Infinity))
                 {
-                    GucchiCS.ModeChanger.Instance.SelectedObject = hit.collider.gameObject;
+                    // とりあえずコメントアウト　さくま
+                    // GucchiCS.ModeChanger.Instance.SelectedObject = hit.collider.gameObject;
                     GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED;
                 }
             }

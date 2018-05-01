@@ -70,7 +70,6 @@ namespace GucchiCS
                 .Where(_ => !_isRotate.IsRotate)
                 .Subscribe(_ =>
                 {
-                    print("回転します");
                     ChangeSelectedObject();
                 });
         }
