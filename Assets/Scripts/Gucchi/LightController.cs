@@ -95,5 +95,11 @@ namespace GucchiCS
                 return eulerAngle;
             }
         }
+
+        // 角度の限度（オイラー角）
+        public float LimitAngle
+        {
+            get { return _limit; }
+        }
     }
 }
