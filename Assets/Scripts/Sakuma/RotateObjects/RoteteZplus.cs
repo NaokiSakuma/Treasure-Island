@@ -9,7 +9,9 @@ public class RoteteZplus : RotateObjects {
     protected override void Start()
     {
         base.Start();
-        _button.gameObject.SetActive(false);
+        this.UpdateAsObservable()
+            .Where(_ => !_parent.activeSelf)
+            .Subscribe(_ => _button.gameObject.SetActive(false));
     }
     protected override void OnClickRotate()
     {
