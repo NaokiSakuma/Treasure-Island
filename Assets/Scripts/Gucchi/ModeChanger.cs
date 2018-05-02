@@ -20,19 +20,23 @@ namespace GucchiCS
         MODE _mode = MODE.GAME;
 
         // カメラ
-        public Camera _camera;
+        [SerializeField]
+        Camera _camera = null;
 
         // ゲームスクリーン
-        public Transform _gameScreen;
+        [SerializeField]
+        Transform _gameScreen = null;
 
         // オブジェクトスクリーン
-        public Transform _objectScreen;
+        [SerializeField]
+        Transform _objectScreen = null;
 
         // ハイブリッドスポットライト
-        public Transform _spotlight;
+        [SerializeField]
+        Transform _spotlight = null;
 
         // プレイヤー
-        public Transform _player;
+        Transform _player;
 
         // ゲームスクリーンまでの距離
         [SerializeField]
@@ -103,7 +107,7 @@ namespace GucchiCS
                     newPos.z = _gameScreen.position.z + -_gameScreenDistance;
                     break;
 
-                case MODE.OBJECT_CONTROL:                // オブジェクトコントロールモード
+                case MODE.OBJECT_CONTROL:               // オブジェクトコントロールモード
                     newPos.z = _objectScreen.position.z + -_objectScreenDistance;
                     break;
 
@@ -149,6 +153,12 @@ namespace GucchiCS
         public GameObject SelectedObject
         {
             set { _selectedObject = value; }
+        }
+
+        // プレイヤー設定
+        public Transform Player
+        {
+            set { _player = value; }
         }
     }
 }

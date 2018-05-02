@@ -23,6 +23,10 @@ namespace GucchiCS
                 .Subscribe(col =>
                 {
                     Debug.Log("Clear enter!");
+
+                    // プレイヤーをマスターに設定
+                    ModeChanger.Instance.Player = _player;
+
                     ModeChanger.Instance.Mode = ModeChanger.MODE.CLEAR;
                 });
 
