@@ -8,11 +8,13 @@ namespace GucchiCS
 {
     public class Clear : MonoBehaviour
     {
-        // クリアロゴ
-        public SpriteRenderer _clearLogo;
-
         // プレイヤー
-        public Transform _player;
+        [SerializeField]
+        Transform _player;
+
+        // ロゴを出すまでの時間
+        [SerializeField]
+        float _adventLogoTime = 1f;
 
         void Awake()
         {
@@ -27,11 +29,11 @@ namespace GucchiCS
             // クリアロゴを表示
             this.UpdateAsObservable()
                 .Where(mode => ModeChanger.Instance.Mode == ModeChanger.MODE.CLEAR)
-                .First()
-                .Delay(System.TimeSpan.FromSeconds(2f))
+                .Take(1)
+                .Delay(System.TimeSpan.FromSeconds(_adventLogoTime))
                 .Subscribe(_ =>
                 {
-                    Instantiate(_clearLogo, new Vector3(_player.position.x, _player.position.y, _player.position.z - 1f), Quaternion.identity);
+                    Debug.Log("クリアしました～");
                 });
         }
     }
