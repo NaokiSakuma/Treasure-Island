@@ -24,9 +24,13 @@ public class RotateObjects : MonoBehaviour {
     // 表示・非表示を切り替える
     protected bool _isChangeHide = false;
 
+    // 親オブジェクト
+    protected GameObject _parent = null;
+
     protected virtual void Awake()
     {
         _animationTime = _rotateManager.AnimationTime;
+        _parent = _button.transform.parent.gameObject;
     }
     // Use this for initialization
     protected virtual void Start ()
@@ -49,7 +53,7 @@ public class RotateObjects : MonoBehaviour {
         // Zキーが押された時の処理
         this.UpdateAsObservable()
             .Where(_ => Input.GetKeyDown(KeyCode.Z))
-            .Subscribe(_ => { _isChangeHide = !_isChangeHide; });
+            .Subscribe(_ => { _isChangeHide = !_isChangeHide;});
 
         // _isChangeHideを監視
         this.ObserveEveryValueChanged(x => x._isChangeHide)

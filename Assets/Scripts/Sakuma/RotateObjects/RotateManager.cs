@@ -64,6 +64,7 @@ public class RotateManager : MonoBehaviour
             .Where(_ => !_isRotate)
             .Subscribe(_ =>
             {
+                // ゲームモードによって弾く
                 if (GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL && GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
                 {
                     return;
@@ -82,39 +83,52 @@ public class RotateManager : MonoBehaviour
                     // ボタンのrectTransFormを変更
                     var rect = _buttonManager.GetComponent<RectTransform>();
                     rect.sizeDelta = buttonManagerRect();
-                    _buttonManager.gameObject.SetActive(true);
                 }
                 // 無ければUIを消す
                 else
                 {
+                    _hitObj = null;
                     _buttonManager.gameObject.SetActive(false);
                     GucchiCS.ModeChanger.Instance.SelectedObject = null;
                     GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
                 }
             });
+        　
+        // rayが当たっているオブジェクトを監視
+        this.ObserveEveryValueChanged(x => _hitObj)
+            .Where(_ => _hitObj != null)
+            .Subscribe(_ =>
+            {
+                // 再びつける
+                StartCoroutine(TurnOnAgain());
+            });
+
 
         // ボタンを回転させるUIの表示位置
         this.UpdateAsObservable()
             .Where(_ => _hitObj != null)
             .Subscribe(_ =>
             {
+                // ゲームモードによって弾く
                 if (GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL && GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
                 {
                     return;
                 }
-
+                
+                // カメラの設定に応じて使う必要有
                 // カメラのビューポート座標
-                var cameraView = Camera.main.WorldToViewportPoint(_hitObj.transform.position);
+                // var cameraView = Camera.main.WorldToViewportPoint(_hitObj.transform.position);
                 // カメラのスクリーン座標
                 var cameraScreen = Camera.main.WorldToScreenPoint(_hitObj.transform.position);
                 // canvasのrectTransform
-                var canvasRect = _canvas.GetComponent<RectTransform>();
+                // var canvasRect = _canvas.GetComponent<RectTransform>();
                 // buttonManagerの場所
                 Vector2 objectPosition = new Vector2(((cameraScreen.x)),((/*cameraView.y * canvasRect.sizeDelta.y*/cameraScreen.y)));
                 _buttonManager.transform.position = objectPosition;
 
             });
 
+        // 回転中
         this.UpdateAsObservable()
             .Where(_ => _isRotate)
             .Subscribe(_ =>
@@ -147,5 +161,15 @@ public class RotateManager : MonoBehaviour
         return new Vector2(defaultWH - 30.0f * (maxSize - 1.0f),
                                 defaultWH - 40.0f * (maxSize - 1.0f));
 
+    }
+
+    /// <summary>
+    /// 再びbuttonManagerを付ける
+    /// </summary>
+    IEnumerator TurnOnAgain()
+    {
+        _buttonManager.gameObject.SetActive(false);
+        yield return null;
+        _buttonManager.gameObject.SetActive(true);
     }
 }

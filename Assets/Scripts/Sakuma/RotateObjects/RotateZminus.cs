@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UniRx;
+using UniRx.Triggers;
 
 public class RotateZminus : RotateObjects
 {
     protected override void Start()
     {
         base.Start();
-        _button.gameObject.SetActive(false);
+        this.UpdateAsObservable()
+            .Where(_ => !_parent.activeSelf)
+            .Subscribe(_ => _button.gameObject.SetActive(false));
     }
     protected override void OnClickRotate()
     {
