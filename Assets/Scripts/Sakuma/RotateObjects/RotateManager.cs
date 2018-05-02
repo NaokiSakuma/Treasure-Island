@@ -60,6 +60,7 @@ public class RotateManager : MonoBehaviour
         // 左クリックされた時の処理
         this.UpdateAsObservable()
             .Where(_ => Input.GetMouseButtonDown(0))
+            .Where(_ => { return (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL) || (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED); })
             .Where(_ => !_isRotate)
             .Subscribe(_ =>
             {
@@ -77,6 +78,7 @@ public class RotateManager : MonoBehaviour
                 {
                     _hitObj = hit.collider.gameObject;
                     GucchiCS.ModeChanger.Instance.SelectedObject = _hitObj;
+
                     // ボタンのrectTransFormを変更
                     var rect = _buttonManager.GetComponent<RectTransform>();
                     rect.sizeDelta = buttonManagerRect();

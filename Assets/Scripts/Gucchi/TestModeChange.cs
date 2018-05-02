@@ -11,27 +11,24 @@ public class TestModeChange : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Q))
+        if (GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.CLEAR)
         {
-            GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.GAME;
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.SPOTLIGHT_CONTROL;
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            GucchiCS.ModeChanger.MODE mode = GucchiCS.ModeChanger.Instance.Mode;
-            if (mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL || mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.GAME;
+            }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.SPOTLIGHT_CONTROL;
+            }
+            if (Input.GetMouseButtonDown(0))
+            {
+                GucchiCS.ModeChanger.MODE mode = GucchiCS.ModeChanger.Instance.Mode;
+                if (mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL || mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
                 {
                     // とりあえずコメントアウト　さくま
                     // GucchiCS.ModeChanger.Instance.SelectedObject = hit.collider.gameObject;
