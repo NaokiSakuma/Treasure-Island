@@ -11,8 +11,6 @@ namespace Konji
     {
         //プレイヤー
         private PlayerMove _player;
-        //ジャンプ
-        private bool _jump;
 
         //移動方向
         private int _move = 0;
@@ -54,8 +52,7 @@ namespace Konji
                 //.Where(_ => GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.GAME)
                 .Subscribe(_ =>
                 {
-                    _player.Move(_move, _jump);
-                    _jump = false;
+                    _player.Move(_move);
                 });
         }
 

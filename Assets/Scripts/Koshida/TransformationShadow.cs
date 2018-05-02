@@ -19,7 +19,7 @@ public class TransformationShadow : MonoBehaviour
     private GameObject _light;
 
     //最大角度
-    public float _maxRot = 10.0f;
+    private float _maxRot = 10.0f;
 
     //初期地点
     private Vector3 _startPosition;
@@ -30,6 +30,7 @@ public class TransformationShadow : MonoBehaviour
     {
         _startPosition = transform.position;
         _startCollisionSize = transform.localScale;
+        _maxRot = _light.GetComponent<GucchiCS.LightController>().LimitAngle;
 
         //回転させるオブジェクトと同期
         this.UpdateAsObservable()
@@ -39,24 +40,22 @@ public class TransformationShadow : MonoBehaviour
             });
 
         //ライトの方向によって影の判定をずらす
-        //this.ObserveEveryValueChanged(_ => _light.GetComponent<GucchiCS.LightController>().ReflectedGameViewPosition)
-        //    .Subscribe(rotate =>
-        //    {
-        //        UpdateShadow(rotate);
-        //    });
+        this.ObserveEveryValueChanged(_ => _light.GetComponent<GucchiCS.LightController>().EulerAngles)
+            .Subscribe(rotate =>
+            {
+                UpdateShadow(rotate);
+            });
     }
 
     //影判定の変形
     void UpdateShadow(Vector3 objRot)
     {
         //ライトの変更を係数に
-        //float rotX = (objRot.x >= _maxRot ? objRot.x - 360 : objRot.x) / _maxRot;
-        //float rotY = (objRot.y >= _maxRot ? objRot.y - 360 : objRot.y) / _maxRot;
+        float shadowXAmo = objRot.y / _maxRot;
+        float shadowYAmo = objRot.x / _maxRot;
 
-        float absX = Mathf.Abs(objRot.x);
-        float absY = Mathf.Abs(objRot.y);
-
-        Debug.Log(objRot);
+        float absX = Mathf.Abs(shadowXAmo);
+        float absY = Mathf.Abs(shadowYAmo);
 
         //影のサイズ変更
         if (absX <= 1.0f && absY <= 1.0f)
@@ -65,7 +64,7 @@ public class TransformationShadow : MonoBehaviour
         }
 
         //影の移動
-        transform.position = _startPosition + new Vector3(_moveamo.x * -objRot.x, _moveamo.y * -objRot.y, 0);
+        transform.position = _startPosition + new Vector3(_moveamo.x * shadowXAmo, _moveamo.y * -shadowYAmo, 0);
     }
 
     //軸の角度によって拡縮する軸の変更

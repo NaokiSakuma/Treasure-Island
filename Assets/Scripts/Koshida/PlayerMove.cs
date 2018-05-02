@@ -53,7 +53,7 @@ namespace Konji
         }
 
         //移動
-        public void Move(float move, bool jump)
+        public void Move(float move)
         {
             //重力初期化
             Vector3 grv = _localGravity;
