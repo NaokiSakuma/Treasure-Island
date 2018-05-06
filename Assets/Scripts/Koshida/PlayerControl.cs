@@ -18,6 +18,7 @@ namespace Konji
         private int _move = 0;
 
         //死亡フラグ
+        [SerializeField]
         private bool _isDead = false;
         public bool IsDead
         {
