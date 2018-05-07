@@ -33,9 +33,18 @@ namespace Konji
             //いい書き方がわかりません
 
             this.UpdateAsObservable()
+                .Where(_ => GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.GAME)
                 .Subscribe(_ =>
                 {
                     InputMove(Input.GetKey(KeyCode.D), Input.GetKey(KeyCode.A));
+                });
+
+            //モードが変わったら速度0(突貫)
+            GucchiCS.ModeChanger.Instance
+                .ObserveEveryValueChanged(mode => mode.Mode)
+                .Subscribe(_ =>
+                {
+                    _move = 0;
                 });
 
             //挟まれたら死亡
@@ -50,7 +59,6 @@ namespace Konji
             //プレイヤーの移動(ゲームモードのみ移動可能)
             this.FixedUpdateAsObservable()
                 .Where(_ => !_isDead)
-                .Where(_ => GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.GAME)
                 .Subscribe(_ =>
                 {
                     _player.Move(_move);

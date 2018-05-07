@@ -814,7 +814,6 @@ MonoBehaviour:
   _gameScreen: {fileID: 88439785}
   _objectScreen: {fileID: 239752076}
   _spotlight: {fileID: 736970417}
-  _player: {fileID: 0}
   _gameScreenDistance: 9
   _objectScreenDistance: 12
   _spotlightDistance: 1

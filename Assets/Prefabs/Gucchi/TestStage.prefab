@@ -479,6 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d639791f79ebe5c4ca51c7dbc3566703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isDead: 0
 --- !u!114 &114443897089786972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -493,7 +494,7 @@ MonoBehaviour:
   _appearObj: {fileID: 4782021752591376}
   _collisonSize: {x: 1, y: 1}
   _moveamo: {x: 3.5, y: 3.5}
-  _light: {fileID: 0}
+  _light: {fileID: 1608947418457822, guid: cc3b72bc0ad5a384db9ee0e932693424, type: 2}
 --- !u!135 &135240965852443014
 SphereCollider:
   m_ObjectHideFlags: 1
