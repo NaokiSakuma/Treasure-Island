@@ -814,7 +814,6 @@ MonoBehaviour:
   _gameScreen: {fileID: 88439785}
   _objectScreen: {fileID: 239752076}
   _spotlight: {fileID: 736970417}
-  _player: {fileID: 0}
   _gameScreenDistance: 9
   _objectScreenDistance: 12
   _spotlightDistance: 1
@@ -900,6 +899,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114895654145598106, guid: cc3b72bc0ad5a384db9ee0e932693424,
+        type: 2}
+      propertyPath: _lightObject
+      value: 
+      objectReference: {fileID: 2112212387}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc3b72bc0ad5a384db9ee0e932693424, type: 2}
   m_IsPrefabParent: 0
@@ -3753,6 +3757,11 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0e6acc2e22a68d44ea5f921cfba06fc8, type: 3}
   m_PrefabInternal: {fileID: 2096777462}
+--- !u!1 &2112212387 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1017336143936478, guid: cc3b72bc0ad5a384db9ee0e932693424,
+    type: 2}
+  m_PrefabInternal: {fileID: 387636046}
 --- !u!1 &2112718535
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,10 +9,9 @@ namespace GucchiCS
     public class Clear : MonoBehaviour
     {
         // プレイヤー
-        [SerializeField]
         Transform _player;
 
-        // ロゴを出すまでの時間
+        // クリアエフェクトなどを出すまでの時間
         [SerializeField]
         float _adventLogoTime = 1f;
 
@@ -39,6 +38,14 @@ namespace GucchiCS
                 {
                     Debug.Log("クリアしました～");
                 });
+        }
+
+        /* プロパティ */
+
+        // プレイヤーを設定
+        public Transform Player
+        {
+            set { _player = value; }
         }
     }
 }

@@ -9,7 +9,7 @@ namespace GucchiCS
     {
         // ステージリスト
         [SerializeField]
-        List<GameObject> _stageList = new List<GameObject>();
+        List<Stage> _stageList = new List<Stage>();
 
         // 選択したステージID
         int _stageNo = -1;
@@ -30,6 +30,12 @@ namespace GucchiCS
         {
             get { return _stageNo; }
             set { _stageNo = value; }
+        }
+
+        // 現在のステージのプレイヤーを取得
+        public Transform Player
+        {
+            get { return _stageList[_stageNo].Player.transform; }
         }
     }
 }
