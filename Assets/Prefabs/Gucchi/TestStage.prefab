@@ -55,8 +55,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4587162458232438}
+  - component: {fileID: 114010904531696152}
   m_Layer: 0
-  m_Name: TestStage 1
+  m_Name: TestStage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,6 +180,23 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 2dffc9f17c7306449948f1b636023b3b, type: 3}
+--- !u!114 &114010904531696152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1634706861288016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b41ec2c43ad723d419c174ecd8b434c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerPrefab: {fileID: 114602292215447382, guid: 1f5436715d966b145996cdc64a6f59f6,
+    type: 2}
+  _playerPos: {x: -1.55, y: 2.43, z: 8.8}
+  _clearPrefab: {fileID: 114838826061640404, guid: 97c130f398445724c982cd8efcdd1953,
+    type: 2}
+  _clearObjPos: {x: 1.2, y: 1, z: 9}
 --- !u!114 &114682463458610146
 MonoBehaviour:
   m_ObjectHideFlags: 1
