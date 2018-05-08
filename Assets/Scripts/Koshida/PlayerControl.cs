@@ -48,6 +48,7 @@ namespace Konji
 
             //プレイヤーの移動(ゲームモードのみ移動可能)
             this.FixedUpdateAsObservable()
+                .Where(_ => GucchiCS.GameManagerKakkoKari.Instance.IsPlay)          // ぐっち追記（プレイ中のみ通る）
                 .Where(_ => !_isDead)
                 .Where(_ => GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.GAME)
                 .Subscribe(_ =>

@@ -36,6 +36,7 @@ namespace GucchiCS
         Transform _spotlight = null;
 
         // プレイヤー
+        [SerializeField]
         Transform _player;
 
         // ゲームスクリーンまでの距離
@@ -153,12 +154,6 @@ namespace GucchiCS
         public GameObject SelectedObject
         {
             set { _selectedObject = value; }
-        }
-
-        // プレイヤー設定
-        public Transform Player
-        {
-            set { _player = value; }
         }
     }
 }
