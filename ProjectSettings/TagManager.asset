@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Object
+  - ClearGuard
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - RotateObject
   - BackGround
   - Shadow
-  - 
+  - DummyLight
   - 
   - 
   - 

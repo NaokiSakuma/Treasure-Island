@@ -37,7 +37,7 @@ namespace GucchiCS
 
         // プレイヤー
         [SerializeField]
-        Transform _player;
+        Transform _player = null;
 
         // ゲームスクリーンまでの距離
         [SerializeField]

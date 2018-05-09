@@ -29,12 +29,32 @@ namespace GucchiCS
             Sequence seq = DOTween.Sequence()
                 .OnStart(() =>
                 {
-                    clear.GetComponentInChildren<Clear>().Player = _player;
+                    // プレイヤーの透明度を０にする
+                    Color playerColor = _player.GetComponent<SpriteRenderer>().material.color;
+                    playerColor.a = 0f;
+                    _player.GetComponent<SpriteRenderer>().material.color = playerColor;
+
+                    // クリアガードを非表示にする
+                    clear.transform.Find("ClearGuard").gameObject.SetActive(false);
                 })
                 .Append(clear.transform.DOScale(Vector3.one, 1f))
-                .Append(_player.DOScale(Vector3.one, 1f))
+                .AppendCallback(() =>
+                {
+                    // プレイヤーの透明度を最大にする
+                    DOTween.ToAlpha(
+                        () => _player.GetComponent<SpriteRenderer>().material.color,
+                        color => _player.GetComponent<SpriteRenderer>().material.color = color,
+                        1f,
+                        1f
+                    );
+                })
+                .Join(_player.DOScale(Vector3.one, 1f))
                 .Append(clear.transform.DOScale(Vector3.zero, 1f))
-                .AppendCallback(() => { clear.transform.position = _goalPos; })
+                .AppendCallback(() => 
+                {
+                    clear.transform.position = _goalPos;
+                    clear.transform.Find("ClearGuard").gameObject.SetActive(true);
+                })
                 .Join(clear.transform.DOScale(Vector3.one, 1f))
                 .AppendCallback(() => 
                 {

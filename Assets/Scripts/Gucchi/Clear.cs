@@ -10,7 +10,8 @@ namespace GucchiCS
     public class Clear : MonoBehaviour
     {
         // プレイヤー
-        Transform _player;
+        [SerializeField]
+        Transform _player = null;
 
         // クリアガード
         [SerializeField]
@@ -23,6 +24,14 @@ namespace GucchiCS
         // アニメーション待機時間
         [SerializeField]
         float _animationTime = 4f;
+
+        // Canvas
+        [SerializeField]
+        Canvas _canvas = null;
+
+        // クリアUI
+        [SerializeField]
+        GameObject _clearUI = null;
 
         void Awake()
         {
@@ -53,20 +62,32 @@ namespace GucchiCS
                     Vector3 clearPos = new Vector3(transform.position.x, transform.position.y, _player.transform.position.z);
                     Vector3 endPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.3f);
                     Sequence seq = DOTween.Sequence()
-                        .OnStart(() => 
+                        .OnStart(() =>
                         {
+                            // クリアガードの削除
                             Destroy(_guard);
                         })
-                        .Append(_player.DOMove(clearPos, _animationTime / 2))                        
-                        .Append(_player.DOScale(0f, _animationTime / 2))
-                        .Join(_player.DOMove(endPos, _animationTime / 2));
+                        .Append(_player.DOMove(clearPos, _animationTime / 2))
+                        .AppendCallback(() =>
+                        {
+                            // プレイヤーの透明度を０にする
+                            DOTween.ToAlpha(
+                                () => _player.GetComponent<SpriteRenderer>().material.color,
+                                color => _player.GetComponent<SpriteRenderer>().material.color = color,
+                                0f,
+                                _animationTime / 2
+                            );
+                        })
+                        .Join(_player.DOScale(0.8f, _animationTime / 2))
+                        .Join(_player.DOMove(endPos, _animationTime / 2))
+                        .AppendCallback(() => AppearClearUI());
                 });
         }
 
-        // プレイヤー設定
-        public Transform Player
+        // クリア時のUIを出す
+        void AppearClearUI()
         {
-            set { _player = value; }
+            Debug.Log("ここでクリアUI出すよ");
         }
     }
 }
