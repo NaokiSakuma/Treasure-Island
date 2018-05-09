@@ -6,9 +6,9 @@ public class TestModeChange : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        transform.GetComponent<GucchiCS.StageLoader>().StageNo = 0;
+        //transform.GetComponent<GucchiCS.StageLoader>().StageNo = 0;
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         if (GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.CLEAR)
