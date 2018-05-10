@@ -858,7 +858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762885e0430d2544a857616b225e3fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 1587811275}
   _gameScreen: {fileID: 88439785}
   _objectScreen: {fileID: 239752076}
   _spotlight: {fileID: 736970417}
@@ -907,6 +906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9354757202541f245b7cc8263b390ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stageNo: 1
 --- !u!1001 &387636046
 Prefab:
   m_ObjectHideFlags: 0
@@ -3048,7 +3048,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1587811272}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3304,6 +3304,23 @@ Prefab:
       propertyPath: _player
       value: 
       objectReference: {fileID: 801978710}
+    - target: {fileID: 114459475190286372, guid: c65cc30af06351b4283a21b46880090c,
+        type: 2}
+      propertyPath: _fadePanel
+      value: 
+      objectReference: {fileID: 114513921362502304, guid: fc9aa82e04d4df24aa3fd97205404f27,
+        type: 2}
+    - target: {fileID: 114459475190286372, guid: c65cc30af06351b4283a21b46880090c,
+        type: 2}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 1587811275}
+    - target: {fileID: 114459475190286372, guid: c65cc30af06351b4283a21b46880090c,
+        type: 2}
+      propertyPath: _clearUI
+      value: 
+      objectReference: {fileID: 1386135466459980, guid: 4805d8bfa47de03418fc9e29355bea42,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c65cc30af06351b4283a21b46880090c, type: 2}
   m_IsPrefabParent: 0

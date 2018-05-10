@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace GucchiCS
 {
@@ -88,6 +90,11 @@ namespace GucchiCS
         void AppearClearUI()
         {
             Debug.Log("ここでクリアUI出すよ");
+
+            // クリアUIの生成
+            GameObject clearUI = Instantiate(_clearUI);
+            clearUI.transform.SetParent(_canvas.transform, false);
+            clearUI.GetComponentInChildren<ButtonNextStage>().ClearObject = this;
         }
     }
 }

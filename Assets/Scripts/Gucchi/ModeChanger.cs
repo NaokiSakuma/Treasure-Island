@@ -19,10 +19,6 @@ namespace GucchiCS
         }
         MODE _mode = MODE.GAME;
 
-        // カメラ
-        [SerializeField]
-        Camera _camera = null;
-
         // ゲームスクリーン
         [SerializeField]
         Transform _gameScreen = null;
@@ -68,7 +64,7 @@ namespace GucchiCS
         void Start()
         {
             // デフォルトカメラ座標
-            var defaultPos = _camera.transform.position;
+            var defaultPos = Camera.main.transform.position;
 
             // モード変更
             this.ObserveEveryValueChanged(_ => _mode)
@@ -94,10 +90,10 @@ namespace GucchiCS
                 return;
 
             // 移動中ならアニメーションをやめる
-            _camera.transform.DOComplete();
+            Camera.main.transform.DOComplete();
 
             // 軸を安定させる
-            var newPos = _camera.transform.position;
+            var newPos = Camera.main.transform.position;
             newPos.x = defaultPos.x;
             newPos.y = defaultPos.y;
 
@@ -125,20 +121,20 @@ namespace GucchiCS
             }
 
             // 移動
-            _camera.transform.DOMove(newPos, _changeTime);
+            Camera.main.transform.DOMove(newPos, _changeTime);
         }
 
         // 選択オブジェクト変更処理
         void ChangeSelectedObject()
         {
             // 移動中ならアニメーションをやめる
-            _camera.transform.DOComplete();
+            Camera.main.transform.DOComplete();
 
             // 選択したオブジェクトの手前に座標を設定
             var newPos = new Vector3(_selectedObject.transform.position.x, _selectedObject.transform.position.y, _objectScreen.position.z - _objectScreenDistance);
 
             // 移動
-            _camera.transform.DOMove(newPos, _changeTime);
+            Camera.main.transform.DOMove(newPos, _changeTime);
         }
 
         /* プロパティ */
