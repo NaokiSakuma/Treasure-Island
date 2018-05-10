@@ -62,15 +62,17 @@ public class RotateManager : MonoBehaviour
             .Where(_ => Input.GetMouseButtonDown(0))
             .Where(_ => { return (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL) || (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED); })
             .Where(_ => !_isRotate)
+            .Where(_ => !EventSystem.current.IsPointerOverGameObject())
             .Subscribe(_ =>
             {
-                // ゲームモードによって弾く
-                if (GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL && GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
-                {
-                    return;
-                }
-                // uGUIと重なっていたらreturn
-                if (EventSystem.current.IsPointerOverGameObject()) return;
+                // バグったらスマン
+                //// ゲームモードによって弾く
+                //if (GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL && GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
+                //{
+                //    return;
+                //}
+                //// uGUIと重なっていたらreturn
+                //if (EventSystem.current.IsPointerOverGameObject()) return;
                 // マウスの位置からrayを飛ばす
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit = new RaycastHit();
@@ -107,13 +109,14 @@ public class RotateManager : MonoBehaviour
         // ボタンを回転させるUIの表示位置
         this.UpdateAsObservable()
             .Where(_ => _hitObj != null)
+            .Where(_ => { return (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL) || (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED); })
             .Subscribe(_ =>
             {
                 // ゲームモードによって弾く
-                if (GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL && GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
-                {
-                    return;
-                }
+                //if (GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL && GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
+                //{
+                //    return;
+                //}
                 
                 // カメラの設定に応じて使う必要有
                 // カメラのビューポート座標
@@ -141,7 +144,11 @@ public class RotateManager : MonoBehaviour
         this.UpdateAsObservable()
             .Where(_ => GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL)
             .Where(_ => GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
-            .Subscribe(_ => _buttonManager.gameObject.SetActive(false));
+            .Subscribe(_ =>
+            {
+                _buttonManager.gameObject.SetActive(false);
+                _hitObj = null;
+            });
     }
     /// <summary>
     /// ボタンマネージャーのrectTransform
