@@ -84,7 +84,7 @@ public class RotateManager : MonoBehaviour
 
                     // ボタンのrectTransFormを変更
                     var rect = _buttonManager.GetComponent<RectTransform>();
-                    rect.sizeDelta = buttonManagerRect();
+                    //rect.sizeDelta = buttonManagerRect();
                 }
                 // 無ければUIを消す
                 else
