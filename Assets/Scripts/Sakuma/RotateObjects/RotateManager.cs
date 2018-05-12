@@ -82,9 +82,9 @@ public class RotateManager : MonoBehaviour
                     _hitObj = hit.collider.gameObject;
                     GucchiCS.ModeChanger.Instance.SelectedObject = _hitObj;
 
-                    // ボタンのrectTransFormを変更
-                    var rect = _buttonManager.GetComponent<RectTransform>();
-                    //rect.sizeDelta = buttonManagerRect();
+                    // ボタンのrectTransFormを変更 必要になったら復旧
+                    // var rect = _buttonManager.GetComponent<RectTransform>();
+                    // rect.sizeDelta = buttonManagerRect();
                 }
                 // 無ければUIを消す
                 else

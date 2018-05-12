@@ -28,6 +28,15 @@ public class GameOverManager : MonoBehaviour {
     [SerializeField]
     private Konji.PlayerControl _player = null;
 
+    // canvas
+    [SerializeField]
+    private GameObject _canvas = null;
+
+    // ゲームオーバーUIのプレハブ
+    [SerializeField]
+    private GameObject _overPrefab = null;
+
+    private 
 	// Use this for initialization
 	void Start () {
 
@@ -35,7 +44,7 @@ public class GameOverManager : MonoBehaviour {
         this.UpdateAsObservable()
             .Where(_ => _player.IsDead)
             .Take(1)
-            .Subscribe(_ => StartCoroutine(Blink()));
+            .Subscribe(_ => BlinkCoroutine());
 	}
 	
 
@@ -55,5 +64,19 @@ public class GameOverManager : MonoBehaviour {
         // 最後に長めに光らせる
         yield return new WaitForSeconds(_lastRight);
         _blinkObj.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// ライトの点滅のコルーチン
+    /// </summary>
+    private void BlinkCoroutine()
+    {
+        Observable.FromCoroutine(Blink)
+            .DelayFrame(10)
+            .Subscribe(_ =>
+            {
+                GameObject prefab = (GameObject)Instantiate(_overPrefab);
+                prefab.transform.SetParent(_canvas.transform, false);
+            });
     }
 }
