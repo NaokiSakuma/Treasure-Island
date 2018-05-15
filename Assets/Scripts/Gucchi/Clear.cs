@@ -94,7 +94,7 @@ namespace GucchiCS
             // クリアUIの生成
             GameObject clearUI = Instantiate(_clearUI);
             clearUI.transform.SetParent(_canvas.transform, false);
-            clearUI.GetComponentInChildren<ButtonNextStage>().ClearObject = this;
+            clearUI.GetComponentInChildren<ButtonOfClear>().ClearObject = this;
         }
     }
 }

@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 222294047842699256}
   - component: {fileID: 114054685272707410}
   - component: {fileID: 114047549068209072}
-  - component: {fileID: 114670719952779914}
+  - component: {fileID: 114257836107878880}
   m_Layer: 5
   m_Name: ButtonNextStage
   m_TagString: Untagged
@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 222328122774257230}
   - component: {fileID: 114086202502638750}
   - component: {fileID: 114982380030728348}
+  - component: {fileID: 114421696437550994}
   m_Layer: 5
   m_Name: ButtonStageSelect
   m_TagString: Untagged
@@ -204,7 +205,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114670719952779914}
+      - m_Target: {fileID: 114257836107878880}
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -304,6 +305,40 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Next Stage
+--- !u!114 &114257836107878880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405626541596420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1730c7e34d03ff846bda1ef61c2bed70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fadeInCanvas: {fileID: 223628890806407304, guid: e1208baa300eadc4088a3754245ade48,
+    type: 2}
+  _clearText: {fileID: 114806745908504882}
+  _stageSelectButton: {fileID: 114982380030728348}
+  _nextStageButton: {fileID: 114047549068209072}
+  _sceneName: stage
+--- !u!114 &114421696437550994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697280528036006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1730c7e34d03ff846bda1ef61c2bed70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fadeInCanvas: {fileID: 223628890806407304, guid: e1208baa300eadc4088a3754245ade48,
+    type: 2}
+  _clearText: {fileID: 114806745908504882}
+  _stageSelectButton: {fileID: 114982380030728348}
+  _nextStageButton: {fileID: 114047549068209072}
+  _sceneName: Scenes/Gucchi/StageSelect
 --- !u!114 &114501905390206446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -337,21 +372,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Stage Select
---- !u!114 &114670719952779914
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1405626541596420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44aa9a402f99dad4fb8e035396960ddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fadeInCanvas: {fileID: 223628890806407304, guid: e1208baa300eadc4088a3754245ade48,
-    type: 2}
-  clearText: {fileID: 114806745908504882}
-  stageSelectButton: {fileID: 114982380030728348}
 --- !u!114 &114806745908504882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -423,7 +443,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114086202502638750}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114421696437550994}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!222 &222028034923716900
