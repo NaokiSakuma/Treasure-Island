@@ -35,6 +35,10 @@ namespace GucchiCS
         [SerializeField]
         GameObject _clearUI = null;
 
+        // ステージセレクトするボタン
+        [SerializeField]
+        ButtonOfClear _stageSelectButton = null;
+
         void Awake()
         {
             // プレイヤーがクリアオブジェクトに触れたとき
@@ -89,12 +93,21 @@ namespace GucchiCS
         // クリア時のUIを出す
         void AppearClearUI()
         {
-            Debug.Log("ここでクリアUI出すよ");
+            // タイトルシーンだった場合
+            if (SceneManager.GetActiveScene().name == SingletonName.TITLE_SCENE)
+            {
+                _stageSelectButton.ClearObject = this;
+                _stageSelectButton.OnClick();
+            }
+            else
+            {
+                Debug.Log("ここでクリアUI出すよ");
 
-            // クリアUIの生成
-            GameObject clearUI = Instantiate(_clearUI);
-            clearUI.transform.SetParent(_canvas.transform, false);
-            clearUI.GetComponentInChildren<ButtonOfClear>().ClearObject = this;
+                // クリアUIの生成
+                GameObject clearUI = Instantiate(_clearUI);
+                clearUI.transform.SetParent(_canvas.transform, false);
+                clearUI.GetComponentInChildren<ButtonOfClear>().ClearObject = this;
+            }
         }
     }
 }
