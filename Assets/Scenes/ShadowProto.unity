@@ -597,11 +597,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 18
       objectReference: {fileID: 0}
-    - target: {fileID: 212678933091871544, guid: 1f5436715d966b145996cdc64a6f59f6,
-        type: 2}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f5436715d966b145996cdc64a6f59f6, type: 2}
   m_IsPrefabParent: 0
