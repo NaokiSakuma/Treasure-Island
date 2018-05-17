@@ -17,9 +17,6 @@ namespace GucchiCS
         [SerializeField]
         float _posInterval = 20f;
 
-        // 表示しているブロック番号
-        int _displayingBlockNo = 0;
-
         // ライト変更中かどうか
         bool _isChanging = false;
 
@@ -64,21 +61,6 @@ namespace GucchiCS
                 .Where(_ => _isChanging)
                 .Delay(System.TimeSpan.FromSeconds(1f))
                 .Subscribe(_ => { _isChanging = false; });
-        }
-
-        // 番号変更
-        int ChangeNo()
-        {
-            if (Input.GetAxis("Mouse ScrollWheel") < 0)
-            {
-                _displayingBlockNo--;
-            }
-            else if (Input.GetAxis("Mouse ScrollWheel") > 0)
-            {
-                _displayingBlockNo++;
-            }
-
-            return _displayingBlockNo;
         }
 
         // ライト回転
