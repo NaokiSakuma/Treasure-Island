@@ -21,5 +21,68 @@ EditorBuildSettings:
     path: Assets/Scenes/ShadowProto.unity
     guid: 635497f5b4c5e0043a5121ac9559e78e
   - enabled: 1
+    path: Assets/Scenes/Sakuma/TitleScene.unity
+    guid: 50c38146bce88f14ab5571230f5f6193
+  - enabled: 1
     path: Assets/Scenes/Gucchi/StageSelect.unity
     guid: dd26158c5904f8247abee7323c6b5865
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage1.unity
+    guid: cb57ec8b34d12174397a585491c8d58b
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage2.unity
+    guid: 1a66b2387df12a8468d2995c1d12d9d2
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage3.unity
+    guid: 89262f747225fc647902eadd05314e33
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage4.unity
+    guid: a3732b258b0874d41932a8cbf1a61de4
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage5.unity
+    guid: 3218d6506dc232740b110f94facb63cd
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage6.unity
+    guid: c65c4bf1b0cab9f4890e7270b30028f9
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage7.unity
+    guid: cc32e88a095c73d45ba49e6fb7a5c0b8
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage8.unity
+    guid: 84293543670d2ac4da00fd890a1d350c
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage9.unity
+    guid: 540f224d1659b864f8c4611248b9af3d
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage10.unity
+    guid: 7e64fb89e27be244a8d2c630c3a6dc3a
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage11.unity
+    guid: d3596a1799518df478f5e9a276bb4dd3
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage12.unity
+    guid: 4dd4e5d685148294d91e686f8683006e
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage13.unity
+    guid: e21dde5bf3bf62c4ab156d0978c862ff
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage14.unity
+    guid: 36c027f573f415340aabaab9913f716f
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage15.unity
+    guid: 633eb4ecaa43d4f4ea227fc05493e145
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage16.unity
+    guid: 6f0d265981f3f4f4387cd908a88651c9
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage17.unity
+    guid: 2ca8be5574011e540beb3a79dd761235
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage18.unity
+    guid: 666ebc3284f8fb2418939edb0e255422
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage19.unity
+    guid: c2baf6bb8d47b3d4cba81b8b80e564ca
+  - enabled: 1
+    path: Assets/Scenes/Stage/stage20.unity
+    guid: 0c4b649119dc32e4692307efeaf45630

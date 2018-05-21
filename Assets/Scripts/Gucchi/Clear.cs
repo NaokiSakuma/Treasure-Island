@@ -43,14 +43,14 @@ namespace GucchiCS
         {
             // プレイヤーがクリアオブジェクトに触れたとき
             this.OnCollisionEnterAsObservable()
-                .Where(_ => GameManagerKakkoKari.Instance.IsPlay)
+                .Where(_ => StageManager.Instance.IsPlay)
                 .Subscribe(col =>
                 {
                     Debug.Log("Clear enter!");
 
                     ModeChanger.Instance.Mode = ModeChanger.MODE.CLEAR;
 
-                    GameManagerKakkoKari.Instance.IsPlay = false;
+                    StageManager.Instance.IsPlay = false;
                 });
 
             // クリアロゴを表示

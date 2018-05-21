@@ -61,7 +61,7 @@ namespace GucchiCS
                 .Join(_clear.transform.DOScale(Vector3.one, 1f))
                 .AppendCallback(() => 
                 {
-                    GameManagerKakkoKari.Instance.IsPlay = true;
+                    StageManager.Instance.IsPlay = true;
                 });
 
             seq.Play();

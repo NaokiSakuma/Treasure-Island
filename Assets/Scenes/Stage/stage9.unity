@@ -524,7 +524,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1115571383}
-  _adventLogoTime: 1
+  _guard: {fileID: 0}
+  _goNextTime: 2
+  _animationTime: 4
+  _canvas: {fileID: 0}
+  _clearUI: {fileID: 0}
+  _stageSelectButton: {fileID: 0}
 --- !u!135 &208464083
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1592,10 +1597,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762885e0430d2544a857616b225e3fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 1519303981}
   _gameScreen: {fileID: 315731361}
   _objectScreen: {fileID: 1838466043}
   _spotlight: {fileID: 1750112982}
+  _player: {fileID: 0}
   _gameScreenDistance: 9
   _objectScreenDistance: 12
   _spotlightDistance: 1

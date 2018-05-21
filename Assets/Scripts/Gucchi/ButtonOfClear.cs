@@ -64,6 +64,8 @@ namespace GucchiCS
                 })
                 .AppendCallback(() =>
                 {
+                    Debug.Log(_clearObject.transform.position.x);
+
                     // フェード用パネルのアルファ値を半分まで上げる
                     DOTween.ToAlpha(
                         () => fadePanel.material.color,
@@ -75,18 +77,17 @@ namespace GucchiCS
                 .Join(Camera.main.transform.DOMove(new Vector3(_clearObject.transform.position.x, _clearObject.transform.position.y, _clearObject.transform.position.z - 0.5f), 2f))
                 .AppendCallback(() =>
                 {
-                    if (_sceneName == "stage")
+                    if (_sceneName == SingletonName.STAGE_NAME)
                     {
                         // 現在のステージ番号を取得
-                        int stageNo = GameManagerKakkoKari.Instance.StageNo;
+                        int stageNo = StageManager.Instance.StageNo;
 
-                        if (stageNo >= GameManagerKakkoKari.MAX_STAGE_NUM)
+                        if (stageNo + 1 >= StageManager.MAX_STAGE_NUM)
                             stageNo = 0;
 
                         // 次のステージへ遷移
-                        //string stageName = _sceneName + (++stageNo).ToString();
-                        //SceneManager.LoadScene(stageName);
-                        SceneManager.LoadScene("Scenes/ShadowProto");
+                        string stageName = _sceneName + (++stageNo).ToString();
+                        SceneManager.LoadScene(stageName);
                     }
                     else
                     {

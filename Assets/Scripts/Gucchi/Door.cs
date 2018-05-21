@@ -64,7 +64,7 @@ namespace GucchiCS
                         .AppendCallback(() =>
                         {
                             // ステージへ遷移
-                            string stageSceneName = "Scenes/Stage" + (_doorID + 1).ToString();
+                            string stageSceneName = SingletonName.STAGE_NAME + (_doorID + 1).ToString();
                             SceneManager.LoadScene(stageSceneName);
                         });
 

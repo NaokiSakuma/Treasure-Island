@@ -72,35 +72,6 @@ namespace GucchiCS
 
         /* プロパティ */
 
-        //// 現在の座標
-        //public Vector3 Position
-        //{
-        //    get { return transform.position; }
-        //}
-
-        //// ゲームスクリーンに反映させるための座標
-        //public Vector2 ReflectedGameViewPosition
-        //{
-        //    get
-        //    {
-        //        // 係数
-        //        float coefX = 1f / _limit.x;
-        //        float coefY = 1f / _limit.y;
-
-        //        // 係数によって補完させる
-        //        float compX = transform.position.x * coefX;
-        //        float compY = transform.position.y * coefY;
-
-        //        return new Vector2(compX, compY);
-        //    }
-        //}
-
-        //// 現在の角度（Quaternion）
-        //public Quaternion Rotate
-        //{
-        //    get { return transform.rotation; }
-        //}
-
         // 現在の角度（オイラー角）
         public Vector3 EulerAngles
         {

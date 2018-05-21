@@ -321,7 +321,7 @@ MonoBehaviour:
   _clearText: {fileID: 114806745908504882}
   _stageSelectButton: {fileID: 114982380030728348}
   _nextStageButton: {fileID: 114047549068209072}
-  _sceneName: stage
+  _sceneName: Scenes/Stage/stage
 --- !u!114 &114421696437550994
 MonoBehaviour:
   m_ObjectHideFlags: 1
