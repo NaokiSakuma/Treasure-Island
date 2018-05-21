@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TestModeChange : MonoBehaviour {
 	
@@ -18,7 +19,8 @@ public class TestModeChange : MonoBehaviour {
                 {
                     GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
                 }
-                if (Input.GetKeyDown(KeyCode.E))
+                // タイトルシーンではスポットライトを移動できないようにする　さくま
+                if (Input.GetKeyDown(KeyCode.E) && SceneManager.GetActiveScene().name != "TitleScene")
                 {
                     GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.SPOTLIGHT_CONTROL;
                 }
