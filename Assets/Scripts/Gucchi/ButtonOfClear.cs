@@ -82,7 +82,7 @@ namespace GucchiCS
                         // 現在のステージ番号を取得
                         int stageNo = StageManager.Instance.StageNo;
 
-                        if (stageNo + 1 >= StageManager.MAX_STAGE_NUM)
+                        if (stageNo + 1 > StageManager.MAX_STAGE_NUM)
                             stageNo = 0;
 
                         // 次のステージへ遷移

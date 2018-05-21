@@ -43,7 +43,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -89,7 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: 515ff723d3663624d943276a31550bb4,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -415,6 +416,31 @@ Prefab:
       propertyPath: _button
       value: 
       objectReference: {fileID: 2097941399}
+    - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _gameScreen
+      value: 
+      objectReference: {fileID: 315731361}
+    - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _objectScreen
+      value: 
+      objectReference: {fileID: 1838466043}
+    - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _spotlight
+      value: 
+      objectReference: {fileID: 1292493086}
+    - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1115571383}
+    - target: {fileID: 114852595466005466, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _stageNo
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8a66db713553a7408a8874d01f25197, type: 2}
   m_IsPrefabParent: 0
@@ -1311,6 +1337,11 @@ CanvasRenderer:
 --- !u!1 &1292493085 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1256611115686206, guid: cc3b72bc0ad5a384db9ee0e932693424,
+    type: 2}
+  m_PrefabInternal: {fileID: 1750112981}
+--- !u!4 &1292493086 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4337273685045702, guid: cc3b72bc0ad5a384db9ee0e932693424,
     type: 2}
   m_PrefabInternal: {fileID: 1750112981}
 --- !u!1 &1316780772

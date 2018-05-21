@@ -1542,61 +1542,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _blinkObj
-      value: 
-      objectReference: {fileID: 1952703833}
-    - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 1115571378}
-    - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _canvas
-      value: 
-      objectReference: {fileID: 802046588}
-    - target: {fileID: 114341049581691638, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 1115571383}
-    - target: {fileID: 114341049581691638, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _clear
-      value: 
-      objectReference: {fileID: 1703086202}
-    - target: {fileID: 114084338998974284, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _button
-      value: 
-      objectReference: {fileID: 1441263286}
-    - target: {fileID: 114760754812740344, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _button
-      value: 
-      objectReference: {fileID: 665538626}
-    - target: {fileID: 114311373645106082, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _button
-      value: 
-      objectReference: {fileID: 2005838998}
-    - target: {fileID: 114956342744635700, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _button
-      value: 
-      objectReference: {fileID: 697235763}
-    - target: {fileID: 114676502738419954, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _button
-      value: 
-      objectReference: {fileID: 1281805619}
-    - target: {fileID: 114586200250804390, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _button
-      value: 
-      objectReference: {fileID: 2097941399}
     - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _gameScreen
@@ -1617,6 +1562,36 @@ Prefab:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1115571383}
+    - target: {fileID: 114586200250804390, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _button
+      value: 
+      objectReference: {fileID: 2097941399}
+    - target: {fileID: 114676502738419954, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _button
+      value: 
+      objectReference: {fileID: 1281805619}
+    - target: {fileID: 114956342744635700, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _button
+      value: 
+      objectReference: {fileID: 697235763}
+    - target: {fileID: 114311373645106082, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _button
+      value: 
+      objectReference: {fileID: 2005838998}
+    - target: {fileID: 114760754812740344, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _button
+      value: 
+      objectReference: {fileID: 665538626}
+    - target: {fileID: 114084338998974284, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _button
+      value: 
+      objectReference: {fileID: 1441263286}
     - target: {fileID: 114096028921530774, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _canvas
@@ -1627,6 +1602,31 @@ Prefab:
       propertyPath: _buttonManager
       value: 
       objectReference: {fileID: 1064719975}
+    - target: {fileID: 114341049581691638, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1115571383}
+    - target: {fileID: 114341049581691638, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _clear
+      value: 
+      objectReference: {fileID: 1703086202}
+    - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _blinkObj
+      value: 
+      objectReference: {fileID: 1952703833}
+    - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1115571378}
+    - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 802046588}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8a66db713553a7408a8874d01f25197, type: 2}
   m_IsPrefabParent: 0

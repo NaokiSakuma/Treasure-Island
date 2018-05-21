@@ -108,7 +108,10 @@ namespace GucchiCS
                 clearUI.transform.SetParent(_canvas.transform, false);
                 foreach (Transform button in clearUI.transform)
                 {
-                    button.GetComponent<ButtonOfClear>().ClearObject = this;
+                    if (button.GetComponent<ButtonOfClear>() != null)
+                    {
+                        button.GetComponent<ButtonOfClear>().ClearObject = this;
+                    }
                 }
             }
         }
