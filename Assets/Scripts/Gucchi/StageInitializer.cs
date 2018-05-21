@@ -29,6 +29,9 @@ namespace GucchiCS
             Sequence seq = DOTween.Sequence()
                 .OnStart(() =>
                 {
+                    // クリアオブジェクトのスケールを０にする
+                    _clear.transform.localScale = Vector3.zero;
+
                     // プレイヤーの透明度を０にする
                     Color playerColor = _player.GetComponent<SpriteRenderer>().material.color;
                     playerColor.a = 0f;
