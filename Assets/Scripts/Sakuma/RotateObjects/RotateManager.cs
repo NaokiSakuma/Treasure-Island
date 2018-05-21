@@ -62,14 +62,17 @@ public class RotateManager : MonoBehaviour
             .Where(_ => Input.GetMouseButtonDown(0))
             .Where(_ => { return (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL) || (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED); })
             .Where(_ => !_isRotate)
+            .Where(_ => !EventSystem.current.IsPointerOverGameObject())
             .Subscribe(_ =>
             {
-                if (GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL && GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
-                {
-                    return;
-                }
-                // uGUIと重なっていたらreturn
-                if (EventSystem.current.IsPointerOverGameObject()) return;
+                // バグったらスマン
+                //// ゲームモードによって弾く
+                //if (GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL && GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
+                //{
+                //    return;
+                //}
+                //// uGUIと重なっていたらreturn
+                //if (EventSystem.current.IsPointerOverGameObject()) return;
                 // マウスの位置からrayを飛ばす
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit = new RaycastHit();
@@ -79,42 +82,56 @@ public class RotateManager : MonoBehaviour
                     _hitObj = hit.collider.gameObject;
                     GucchiCS.ModeChanger.Instance.SelectedObject = _hitObj;
 
-                    // ボタンのrectTransFormを変更
-                    var rect = _buttonManager.GetComponent<RectTransform>();
-                    rect.sizeDelta = buttonManagerRect();
-                    _buttonManager.gameObject.SetActive(true);
+                    // ボタンのrectTransFormを変更 必要になったら復旧
+                    // var rect = _buttonManager.GetComponent<RectTransform>();
+                    // rect.sizeDelta = buttonManagerRect();
                 }
                 // 無ければUIを消す
                 else
                 {
+                    _hitObj = null;
                     _buttonManager.gameObject.SetActive(false);
                     GucchiCS.ModeChanger.Instance.SelectedObject = null;
                     GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
                 }
             });
+        　
+        // rayが当たっているオブジェクトを監視
+        this.ObserveEveryValueChanged(x => _hitObj)
+            .Where(_ => _hitObj != null)
+            .Subscribe(_ =>
+            {
+                // 再びつける
+                StartCoroutine(TurnOnAgain());
+            });
+
 
         // ボタンを回転させるUIの表示位置
         this.UpdateAsObservable()
             .Where(_ => _hitObj != null)
+            .Where(_ => { return (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL) || (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED); })
             .Subscribe(_ =>
             {
-                if (GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL && GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
-                {
-                    return;
-                }
-
+                // ゲームモードによって弾く
+                //if (GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL && GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
+                //{
+                //    return;
+                //}
+                
+                // カメラの設定に応じて使う必要有
                 // カメラのビューポート座標
-                var cameraView = Camera.main.WorldToViewportPoint(_hitObj.transform.position);
+                // var cameraView = Camera.main.WorldToViewportPoint(_hitObj.transform.position);
                 // カメラのスクリーン座標
                 var cameraScreen = Camera.main.WorldToScreenPoint(_hitObj.transform.position);
                 // canvasのrectTransform
-                var canvasRect = _canvas.GetComponent<RectTransform>();
+                // var canvasRect = _canvas.GetComponent<RectTransform>();
                 // buttonManagerの場所
                 Vector2 objectPosition = new Vector2(((cameraScreen.x)),((/*cameraView.y * canvasRect.sizeDelta.y*/cameraScreen.y)));
                 _buttonManager.transform.position = objectPosition;
 
             });
 
+        // 回転中
         this.UpdateAsObservable()
             .Where(_ => _isRotate)
             .Subscribe(_ =>
@@ -127,7 +144,11 @@ public class RotateManager : MonoBehaviour
         this.UpdateAsObservable()
             .Where(_ => GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL)
             .Where(_ => GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
-            .Subscribe(_ => _buttonManager.gameObject.SetActive(false));
+            .Subscribe(_ =>
+            {
+                _buttonManager.gameObject.SetActive(false);
+                _hitObj = null;
+            });
     }
     /// <summary>
     /// ボタンマネージャーのrectTransform
@@ -147,5 +168,15 @@ public class RotateManager : MonoBehaviour
         return new Vector2(defaultWH - 30.0f * (maxSize - 1.0f),
                                 defaultWH - 40.0f * (maxSize - 1.0f));
 
+    }
+
+    /// <summary>
+    /// 再びbuttonManagerを付ける
+    /// </summary>
+    IEnumerator TurnOnAgain()
+    {
+        _buttonManager.gameObject.SetActive(false);
+        yield return null;
+        _buttonManager.gameObject.SetActive(true);
     }
 }

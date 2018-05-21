@@ -146,6 +146,7 @@ namespace Konji
             {
                 Flip();
             }
+
             _rigit.AddForce(grv, ForceMode.Acceleration);
         }
 

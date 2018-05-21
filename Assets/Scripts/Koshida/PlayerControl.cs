@@ -16,6 +16,7 @@ namespace Konji
         private int _move = 0;
 
         //死亡フラグ
+        [SerializeField]
         private bool _isDead = false;
         public bool IsDead
         {
@@ -32,9 +33,18 @@ namespace Konji
             //いい書き方がわかりません
 
             this.UpdateAsObservable()
+                .Where(_ => GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.GAME)
                 .Subscribe(_ =>
                 {
                     InputMove(Input.GetKey(KeyCode.D), Input.GetKey(KeyCode.A));
+                });
+
+            //モードが変わったら速度0(突貫)
+            GucchiCS.ModeChanger.Instance
+                .ObserveEveryValueChanged(mode => mode.Mode)
+                .Subscribe(_ =>
+                {
+                    _move = 0;
                 });
 
             //挟まれたら死亡
@@ -50,7 +60,6 @@ namespace Konji
             this.FixedUpdateAsObservable()
                 .Where(_ => GucchiCS.GameManagerKakkoKari.Instance.IsPlay)          // ぐっち追記（プレイ中のみ通る）
                 .Where(_ => !_isDead)
-                .Where(_ => GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.GAME)
                 .Subscribe(_ =>
                 {
                     _player.Move(_move);
