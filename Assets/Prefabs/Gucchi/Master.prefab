@@ -317,7 +317,7 @@ MonoBehaviour:
   _spotlightDistance: 1
   _playerDistance: 3
   _changeTime: 1
-  _isRotate: {fileID: 0}
+  _isRotate: {fileID: 114096028921530774}
 --- !u!114 &114760754812740344
 MonoBehaviour:
   m_ObjectHideFlags: 1
