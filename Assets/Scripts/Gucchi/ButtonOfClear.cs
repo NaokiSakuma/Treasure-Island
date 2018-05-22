@@ -64,8 +64,6 @@ namespace GucchiCS
                 })
                 .AppendCallback(() =>
                 {
-                    Debug.Log(_clearObject.transform.position.x);
-
                     // フェード用パネルのアルファ値を半分まで上げる
                     DOTween.ToAlpha(
                         () => fadePanel.material.color,

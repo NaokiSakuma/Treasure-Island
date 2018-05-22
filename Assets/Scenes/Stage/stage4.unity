@@ -1207,7 +1207,7 @@ MonoBehaviour:
   _spotlightDistance: 1
   _playerDistance: 3
   _changeTime: 1
-  _isRotate: {fileID: 0}
+  _isRotate: {fileID: 1863689960}
 --- !u!1 &1281805617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2057,6 +2057,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1863689960 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114096028921530774, guid: c8a66db713553a7408a8874d01f25197,
+    type: 2}
+  m_PrefabInternal: {fileID: 1142165927}
+  m_Script: {fileID: 11500000, guid: d0e29b0e91625cb4fa54a73dd30060b8, type: 3}
 --- !u!1 &1968129242
 GameObject:
   m_ObjectHideFlags: 0
@@ -2067,7 +2073,6 @@ GameObject:
   - component: {fileID: 1968129246}
   - component: {fileID: 1968129245}
   - component: {fileID: 1968129244}
-  - component: {fileID: 1968129243}
   m_Layer: 0
   m_Name: Camera (1)
   m_TagString: Untagged
@@ -2075,13 +2080,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1968129243
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1968129242}
-  m_Enabled: 1
 --- !u!124 &1968129244
 Behaviour:
   m_ObjectHideFlags: 0

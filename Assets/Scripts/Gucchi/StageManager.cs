@@ -47,9 +47,9 @@ namespace GucchiCS
 
                 // ライトモード
                 this.FixedUpdateAsObservable()
-                    .Where(__ => Input.GetKeyDown(KeyCode.W))
+                    .Where(__ => Input.GetKeyDown(KeyCode.E))
                     .Where(__ => SceneManager.GetActiveScene().name != SingletonName.TITLE_SCENE)
-                    .Subscribe(__ => mode = ModeChanger.MODE.OBJECT_CONTROL);
+                    .Subscribe(__ => mode = ModeChanger.MODE.SPOTLIGHT_CONTROL);
 
                 // コントロールモード（オブジェクト選択時）
                 this.FixedUpdateAsObservable()
