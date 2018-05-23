@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using System;
 
@@ -65,8 +66,7 @@ public class Pausable : SingletonMonoBehaviour<Pausable>{
 	/// <summary>
 	/// 中断
 	/// </summary>
-	void Pause ()
-	{
+	void Pause (){
 		// Rigidbodyの停止
 		// 子要素から、スリープ中でなく、IgnoreGameObjectsに含まれていないRigidbodyを抽出
 		Predicate<Rigidbody> rigidbodyPredicate =
@@ -86,18 +86,16 @@ public class Pausable : SingletonMonoBehaviour<Pausable>{
 			obj => obj.enabled &&
 				   obj != this &&
 				   Array.FindIndex(ignoreGameObjects, gameObject => gameObject == obj.gameObject) < 0;
-		_pausingMonoBehaviours = Array.FindAll(transform.GetComponentsInChildren<MonoBehaviour>(), monoBehaviourPredicate);
+		_pausingMonoBehaviours = Array.FindAll(transform.GetComponentsInChildren<MonoBehaviour>().Where(obj => obj.gameObject != this.gameObject).ToArray(), monoBehaviourPredicate);
 		foreach (var monoBehaviour in _pausingMonoBehaviours){
 			monoBehaviour.enabled = false;
 		}
-
 	}
 
 	/// <summary>
 	/// 再開
 	/// </summary>
-	void Resume ()
-	{
+	void Resume (){
 		// Rigidbodyの再開
 		for (int i = 0; i < _pausingRigidbodies.Length; i++){
 			_pausingRigidbodies[i].WakeUp();
