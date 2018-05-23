@@ -23,9 +23,17 @@ namespace GucchiCS
 
             // 移動処理
             if (scroll > 0)
-                transform.DORotate(new Vector3(0f, 0f, (360f / numBlock)), 1f, RotateMode.WorldAxisAdd).SetRelative();
+            {
+                transform.DORotate(new Vector3(0f, 0f, (360f / numBlock)), 1f, RotateMode.WorldAxisAdd)
+                    .SetRelative()
+                    .OnComplete(() => StageSelectManager.Instance.AnimationCompleteNotify());
+            }
             else if (scroll < 0)
-                transform.DORotate(new Vector3(0f, 0f, -(360f / numBlock)), 1f, RotateMode.WorldAxisAdd).SetRelative();
+            {
+                transform.DORotate(new Vector3(0f, 0f, -(360f / numBlock)), 1f, RotateMode.WorldAxisAdd)
+                    .SetRelative()
+                    .OnComplete(() => StageSelectManager.Instance.AnimationCompleteNotify());
+            }
         }
 
         // ID設定

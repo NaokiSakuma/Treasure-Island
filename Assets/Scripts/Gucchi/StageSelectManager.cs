@@ -48,19 +48,21 @@ namespace GucchiCS
             this.UpdateAsObservable()
                 .Where(_ => Input.GetAxis("Mouse ScrollWheel") < 0)
                 .Where(_ => !_isChanging)
-                .Subscribe(_ => ChangeLightAction(numBlock));
+                .Subscribe(_ =>
+                {
+                    ChangeLightAction(numBlock);
+                    return;
+                });
 
             // ホイール操作（奥）でライト変更
             this.UpdateAsObservable()
                 .Where(_ => Input.GetAxis("Mouse ScrollWheel") > 0)
                 .Where(_ => !_isChanging)
-                .Subscribe(_ => ChangeLightAction(numBlock));
-
-            // 回転完了で再び動かせる
-            this.ObserveEveryValueChanged(_ => _isChanging)
-                .Where(_ => _isChanging)
-                .Delay(System.TimeSpan.FromSeconds(1f))
-                .Subscribe(_ => { _isChanging = false; });
+                .Subscribe(_ =>
+                {
+                    ChangeLightAction(numBlock);
+                    return;
+                });
         }
 
         // ライト回転
@@ -73,6 +75,12 @@ namespace GucchiCS
             {
                 block.ChangeLightAction(numBlock);
             }
+        }
+
+        // 回転終了通知を受け取る
+        public void AnimationCompleteNotify()
+        {
+            _isChanging = false;
         }
     }
 }

@@ -87,6 +87,8 @@ namespace GucchiCS
                         .Join(_player.DOScale(0.8f, _animationTime / 2))
                         .Join(_player.DOMove(endPos, _animationTime / 2))
                         .AppendCallback(() => AppearClearUI());
+
+                    seq.Play();
                 });
         }
 
