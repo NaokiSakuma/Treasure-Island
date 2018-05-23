@@ -11,6 +11,7 @@ namespace GucchiCS
         // モード
         public enum MODE
         {
+            NONE,
             GAME,
             OBJECT_CONTROL,
             OBJECT_CONTROL_SELECTED,
@@ -18,6 +19,10 @@ namespace GucchiCS
             CLEAR
         }
         MODE _mode = MODE.GAME;
+
+        // モードアイコン
+        [SerializeField]
+        ModeIcons _modeIcon = null;
 
         // ゲームスクリーン
         [SerializeField]
@@ -102,18 +107,22 @@ namespace GucchiCS
             {
                 case MODE.GAME:                         // ゲームモード
                     newPos.z = _gameScreen.position.z + -_gameScreenDistance;
+                    _modeIcon.CurrentMode = ModeIcons.Mode.Character;
                     break;
 
                 case MODE.OBJECT_CONTROL:               // オブジェクトコントロールモード
                     newPos.z = _objectScreen.position.z + -_objectScreenDistance;
+                    _modeIcon.CurrentMode = ModeIcons.Mode.Object;
                     break;
 
                 case MODE.SPOTLIGHT_CONTROL:            // スポットライトコントロールモード
                     newPos.z = _spotlight.position.z + -_spotlightDistance;
+                    _modeIcon.CurrentMode = ModeIcons.Mode.Light;
                     break;
 
                 case MODE.CLEAR:                        // クリアモード
                     newPos = new Vector3(_player.position.x, _player.position.y, _gameScreen.position.z + -_playerDistance);
+                    _modeIcon.CurrentMode = ModeIcons.Mode.None;
                     break;
 
                 default:

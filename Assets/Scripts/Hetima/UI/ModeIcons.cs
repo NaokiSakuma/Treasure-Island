@@ -50,4 +50,12 @@ public class ModeIcons : MonoBehaviour {
 				break;
 		}
 	}
+
+    /* プロパティ */
+
+    public Mode CurrentMode
+    {
+        get { return _currentMode; }
+        set { _currentMode = value; }
+    }
 }
