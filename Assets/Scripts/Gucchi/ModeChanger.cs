@@ -56,6 +56,9 @@ namespace GucchiCS
         [SerializeField]
         float _playerDistance = 3f;
 
+        // モード変更中かどうか
+        bool _isChanging = false;
+
         // モードを変えるときの変更時間
         [SerializeField]
         float _changeTime = 2f;
@@ -66,6 +69,7 @@ namespace GucchiCS
         // sakuma
         [SerializeField]
         private RotateManager _isRotate = null;
+
         void Start()
         {
             // デフォルトカメラ座標
@@ -129,8 +133,12 @@ namespace GucchiCS
                     break;
             }
 
+            // モード変更開始
+            _isChanging = true;
+
             // 移動
-            Camera.main.transform.DOMove(newPos, _changeTime);
+            Camera.main.transform.DOMove(newPos, _changeTime)
+                .OnComplete(() => { _isChanging = false; });
         }
 
         // 選択オブジェクト変更処理
@@ -142,8 +150,12 @@ namespace GucchiCS
             // 選択したオブジェクトの手前に座標を設定
             var newPos = new Vector3(_selectedObject.transform.position.x, _selectedObject.transform.position.y, _objectScreen.position.z - _objectScreenDistance);
 
+            // モード変更開始
+            _isChanging = true;
+
             // 移動
-            Camera.main.transform.DOMove(newPos, _changeTime);
+            Camera.main.transform.DOMove(newPos, _changeTime)
+                .OnComplete(() => { _isChanging = false; });
         }
 
         /* プロパティ */
@@ -159,6 +171,12 @@ namespace GucchiCS
         public GameObject SelectedObject
         {
             set { _selectedObject = value; }
+        }
+
+        // モード変更中かどうか
+        public bool IsChanging
+        {
+            get { return _isChanging; }
         }
     }
 }

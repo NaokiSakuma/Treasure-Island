@@ -61,6 +61,7 @@ public class RotateManager : MonoBehaviour
         this.UpdateAsObservable()
             .Where(_ => Input.GetMouseButtonDown(0))
             .Where(_ => { return (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL) || (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED); })
+            .Where(_ => !GucchiCS.ModeChanger.Instance.IsChanging)
             .Where(_ => !_isRotate)
             .Where(_ => !EventSystem.current.IsPointerOverGameObject())
             .Subscribe(_ =>

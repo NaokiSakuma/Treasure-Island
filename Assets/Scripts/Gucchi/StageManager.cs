@@ -36,23 +36,23 @@ namespace GucchiCS
                 ModeChanger.MODE mode = ModeChanger.Instance.Mode;
 
                 // ゲームモード
-                this.FixedUpdateAsObservable()
+                this.LateUpdateAsObservable()
                     .Where(__ => Input.GetKeyDown(KeyCode.Q))
                     .Subscribe(__ => mode = ModeChanger.MODE.GAME);
 
                 // コントロールモード（オブジェクト選択なし）
-                this.FixedUpdateAsObservable()
+                this.LateUpdateAsObservable()
                     .Where(__ => Input.GetKeyDown(KeyCode.W))
                     .Subscribe(__ => mode = ModeChanger.MODE.OBJECT_CONTROL);
 
                 // ライトモード
-                this.FixedUpdateAsObservable()
+                this.LateUpdateAsObservable()
                     .Where(__ => Input.GetKeyDown(KeyCode.E))
                     .Where(__ => SceneManager.GetActiveScene().name != SingletonName.TITLE_SCENE)
                     .Subscribe(__ => mode = ModeChanger.MODE.SPOTLIGHT_CONTROL);
 
                 // コントロールモード（オブジェクト選択時）
-                this.FixedUpdateAsObservable()
+                this.LateUpdateAsObservable()
                     .Where(__ => Input.GetMouseButtonDown(0))
                     .Where(__ => (mode == ModeChanger.MODE.OBJECT_CONTROL || mode == ModeChanger.MODE.OBJECT_CONTROL_SELECTED))
                     .Subscribe(__ => mode = ModeChanger.MODE.OBJECT_CONTROL_SELECTED);
