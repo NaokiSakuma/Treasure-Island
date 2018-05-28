@@ -97,6 +97,9 @@ namespace GucchiCS
             // 移動中ならアニメーションをやめる
             Camera.main.transform.DOComplete();
 
+            // カメラのNearを戻す
+            Camera.main.nearClipPlane = 5f;
+
             // 軸を安定させる
             var newPos = Camera.main.transform.position;
             newPos.x = defaultPos.x;
@@ -117,11 +120,13 @@ namespace GucchiCS
 
                 case MODE.SPOTLIGHT_CONTROL:            // スポットライトコントロールモード
                     newPos.z = _spotlight.position.z + -_spotlightDistance;
+                    Camera.main.nearClipPlane = 0.3f;
                     _modeIcon.CurrentMode = ModeIcons.Mode.Light;
                     break;
 
                 case MODE.CLEAR:                        // クリアモード
                     newPos = new Vector3(_player.position.x, _player.position.y, _gameScreen.position.z + -_playerDistance);
+                    Camera.main.nearClipPlane = 0.3f;
                     _modeIcon.CurrentMode = ModeIcons.Mode.None;
                     break;
 

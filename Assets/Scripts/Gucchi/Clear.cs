@@ -39,6 +39,10 @@ namespace GucchiCS
         [SerializeField]
         ButtonOfClear _stageSelectButton = null;
 
+        // 扉に入るアニメーションのときのカメラの距離
+        [SerializeField]
+        float _clearOutDistance = 0.8f;
+
         void Awake()
         {
             // プレイヤーがクリアオブジェクトに触れたとき
@@ -66,7 +70,7 @@ namespace GucchiCS
 
                     // 中に入っていくように見せる（z軸とスケールを変える）
                     Vector3 clearPos = new Vector3(transform.position.x, transform.position.y, _player.transform.position.z);
-                    Vector3 endPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.3f);
+                    Vector3 endPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + _clearOutDistance);
                     Sequence seq = DOTween.Sequence()
                         .OnStart(() =>
                         {

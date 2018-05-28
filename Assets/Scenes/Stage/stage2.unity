@@ -378,22 +378,27 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114156386297719394, guid: c8a66db713553a7408a8874d01f25197,
+    - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _modeIcon
+      value: 
+      objectReference: {fileID: 1106432380}
+    - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _gameScreen
       value: 
       objectReference: {fileID: 315731361}
-    - target: {fileID: 114156386297719394, guid: c8a66db713553a7408a8874d01f25197,
+    - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _objectScreen
       value: 
       objectReference: {fileID: 1838466043}
-    - target: {fileID: 114156386297719394, guid: c8a66db713553a7408a8874d01f25197,
+    - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _spotlight
       value: 
       objectReference: {fileID: 1750112982}
-    - target: {fileID: 114156386297719394, guid: c8a66db713553a7408a8874d01f25197,
+    - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _player
       value: 
@@ -413,26 +418,6 @@ Prefab:
       propertyPath: _canvas
       value: 
       objectReference: {fileID: 802046588}
-    - target: {fileID: 114341049581691638, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _player
-      value: 
-      objectReference: {fileID: 1115571383}
-    - target: {fileID: 114341049581691638, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _clear
-      value: 
-      objectReference: {fileID: 1055209455}
-    - target: {fileID: 114096028921530774, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _canvas
-      value: 
-      objectReference: {fileID: 802046591}
-    - target: {fileID: 114096028921530774, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _buttonManager
-      value: 
-      objectReference: {fileID: 1064719975}
     - target: {fileID: 114084338998974284, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _button
@@ -463,41 +448,26 @@ Prefab:
       propertyPath: _button
       value: 
       objectReference: {fileID: 2097941399}
-    - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
+    - target: {fileID: 114096028921530774, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
-      propertyPath: _gameScreen
+      propertyPath: _canvas
       value: 
-      objectReference: {fileID: 315731361}
-    - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
+      objectReference: {fileID: 802046591}
+    - target: {fileID: 114096028921530774, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
-      propertyPath: _objectScreen
+      propertyPath: _buttonManager
       value: 
-      objectReference: {fileID: 1838466043}
-    - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _spotlight
-      value: 
-      objectReference: {fileID: 1292493086}
-    - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
+      objectReference: {fileID: 1064719975}
+    - target: {fileID: 114341049581691638, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _player
       value: 
       objectReference: {fileID: 1115571383}
-    - target: {fileID: 114852595466005466, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _stageNo
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 114341049581691638, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
-      propertyPath: _goalPos.x
-      value: 1.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197,
-        type: 2}
-      propertyPath: _modeIcon
+      propertyPath: _clear
       value: 
-      objectReference: {fileID: 1106432380}
+      objectReference: {fileID: 1055209455}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8a66db713553a7408a8874d01f25197, type: 2}
   m_IsPrefabParent: 0
@@ -1554,11 +1524,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1256611115686206, guid: cc3b72bc0ad5a384db9ee0e932693424,
     type: 2}
   m_PrefabInternal: {fileID: 1750112981}
---- !u!4 &1292493086 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4337273685045702, guid: cc3b72bc0ad5a384db9ee0e932693424,
-    type: 2}
-  m_PrefabInternal: {fileID: 1750112981}
 --- !u!1 &1316780772
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,15 +2105,6 @@ Prefab:
       propertyPath: _objectScreen
       value: 
       objectReference: {fileID: 1838466043}
-    - target: {fileID: 108080132158886488, guid: cc3b72bc0ad5a384db9ee0e932693424,
-        type: 2}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1017336143936478, guid: cc3b72bc0ad5a384db9ee0e932693424, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc3b72bc0ad5a384db9ee0e932693424, type: 2}
   m_IsPrefabParent: 0
@@ -2377,7 +2333,7 @@ Camera:
     y: -0.7
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 5
   far clip plane: 1000
   field of view: 60
   orthographic: 0
