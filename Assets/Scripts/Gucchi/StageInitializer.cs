@@ -52,6 +52,10 @@ namespace GucchiCS
                     );
                 })
                 .Join(_player.DOScale(Vector3.one, 1f))
+                .AppendCallback(() =>
+                {
+                    StageManager.Instance.IsPlay = true;
+                })
                 .Append(_clear.transform.DOScale(Vector3.zero, 1f))
                 .AppendCallback(() =>
                 {
@@ -61,7 +65,7 @@ namespace GucchiCS
                 .Join(_clear.transform.DOScale(Vector3.one, 1f))
                 .AppendCallback(() =>
                 {
-                    StageManager.Instance.IsPlay = true;
+                    _clear.transform.GetComponentInChildren<BoxCollider>().isTrigger = true;
                 });
 
             seq.Play();

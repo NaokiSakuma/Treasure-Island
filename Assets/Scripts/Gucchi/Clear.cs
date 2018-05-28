@@ -46,7 +46,7 @@ namespace GucchiCS
         void Awake()
         {
             // プレイヤーがクリアオブジェクトに触れたとき
-            this.OnCollisionEnterAsObservable()
+            this.OnTriggerEnterAsObservable()
                 .Where(_ => StageManager.Instance.IsPlay)
                 .Subscribe(col =>
                 {
