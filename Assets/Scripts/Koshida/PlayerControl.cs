@@ -34,6 +34,7 @@ namespace Konji
 
             this.UpdateAsObservable()
                 .Where(_ => GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.GAME)
+                .Where(_ => !GucchiCS.ModeChanger.Instance.IsChanging)
                 .Subscribe(_ =>
                 {
                     InputMove(Input.GetKey(KeyCode.D), Input.GetKey(KeyCode.A));
