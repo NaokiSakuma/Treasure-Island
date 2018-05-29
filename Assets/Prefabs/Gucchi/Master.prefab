@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4565327214334760}
-  - component: {fileID: 114713250298305644}
+  - component: {fileID: 114495575328868704}
   m_Layer: 0
   m_Name: ModeChanger
   m_TagString: Untagged
@@ -270,7 +270,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   _clear: {fileID: 0}
-  _goalPos: {x: 1.85, y: -0.05, z: 8.9}
+  _goalPos: {x: 3.6, y: -2, z: 8.9}
+--- !u!114 &114495575328868704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1440785668519526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 762885e0430d2544a857616b225e3fbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _modeIcon: {fileID: 0}
+  _gameScreen: {fileID: 0}
+  _objectScreen: {fileID: 0}
+  _spotlight: {fileID: 0}
+  _player: {fileID: 0}
+  _gameScreenDistance: 9
+  _objectScreenDistance: 12
+  _spotlightDistance: 1
+  _playerDistance: 3
+  _changeTime: 1
+  _isRotate: {fileID: 114096028921530774}
 --- !u!114 &114586200250804390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,28 +319,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 0}
   _rotateManager: {fileID: 114096028921530774}
---- !u!114 &114713250298305644
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1440785668519526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 762885e0430d2544a857616b225e3fbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _modeIcon: {fileID: 0}
-  _gameScreen: {fileID: 0}
-  _objectScreen: {fileID: 0}
-  _spotlight: {fileID: 0}
-  _player: {fileID: 0}
-  _gameScreenDistance: 9
-  _objectScreenDistance: 12
-  _spotlightDistance: 1
-  _playerDistance: 3
-  _changeTime: 1
-  _isRotate: {fileID: 114096028921530774}
 --- !u!114 &114760754812740344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -343,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9db47c1d44e324a9ca0d4ae7774969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stageNo: 2
+  _stageNo: 6
 --- !u!114 &114956342744635700
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -60,6 +60,7 @@ public class RotateManager : MonoBehaviour
         // 左クリックされた時の処理
         this.UpdateAsObservable()
             .Where(_ => Input.GetMouseButtonDown(0))
+            .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
             .Where(_ => { return (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL) || (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED); })
             .Where(_ => !GucchiCS.ModeChanger.Instance.IsChanging)
             .Where(_ => !_isRotate)
