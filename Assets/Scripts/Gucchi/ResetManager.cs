@@ -13,6 +13,7 @@ namespace GucchiCS
         {
             PLAYER,
             LIGHT,
+            DUMMY_LIGHT,
             ROTATE_OBJECT
         }
 
@@ -22,7 +23,11 @@ namespace GucchiCS
 
         // ライト
         [SerializeField]
-        GameObject _light = null;
+        Light _light = null;
+
+        // 見かけ上のライト
+        [SerializeField]
+        GameObject _dummyLight = null;
 
         // オブジェクト
         [SerializeField]
@@ -40,6 +45,9 @@ namespace GucchiCS
             // ライトの初期地点・初期回転角を保存
             _temp.Add(Tuple.Create(_light.transform.position, _light.transform.rotation));
 
+            // 見かけ上のライトの初期地点・初期回転角を保存
+            _temp.Add(Tuple.Create(_dummyLight.transform.position, _dummyLight.transform.rotation));
+
             // 各オブジェクトの初期地点・初期回転角を保存
             foreach (GameObject obj in _rotateObjects)
             {
@@ -52,6 +60,7 @@ namespace GucchiCS
                 {
                     if (!StageManager.Instance.IsPlay   ||
                         ModeChanger.Instance.IsChanging ||
+                        ModeChanger.Instance.IsRotate   ||
                         Pausable.Instance.pausing)
                     {
                         transform.GetComponent<Button>().interactable = false;
@@ -74,6 +83,10 @@ namespace GucchiCS
             // ライト
             _light.transform.position = _temp[(int)OBJECT.LIGHT].Item1;
             _light.transform.rotation = _temp[(int)OBJECT.LIGHT].Item2;
+
+            // 見かけ上のライト
+            _dummyLight.transform.position = _temp[(int)OBJECT.DUMMY_LIGHT].Item1;
+            _dummyLight.transform.rotation = _temp[(int)OBJECT.DUMMY_LIGHT].Item2;
 
             // 各オブジェクト
             int i = (int)OBJECT.ROTATE_OBJECT;
