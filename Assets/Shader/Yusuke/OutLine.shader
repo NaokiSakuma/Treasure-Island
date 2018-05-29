@@ -2,14 +2,67 @@
 {
 	Properties
 	{
-		_MainTex ("Texture", 2D) = "white" {}
+        _SelectEffectColor("EffectColor(RGB)", Color) = (1.0,1.0,1.0,1.0)
+		_OutLineWidth("OutLineWidth",Range(0.0,1)) = 0.1
+		_SelectEffectWidth("SelectEffectWidth",Range(0.0,1)) = 0.1
+		[Enum(ON,0,OFF,1)]_IsSelectEffect("IsSelectEffect",Float) = 1
 	}
+
 	SubShader
 	{
-		Tags { "RenderType"="Opaque" }
-		LOD 100
-	
-        Pass
+		Tags { 
+		"RenderType"="Opaque"
+		"Queue"="AlphaTest"
+		 }
+        Blend SrcAlpha OneMinusSrcAlpha
+        LOD 100
+ Pass
+        {
+            Cull Front
+
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+
+            #include "UnityCG.cginc"
+
+			fixed4 _SelectEffectColor;
+			float _SelectEffectWidth;
+			float _IsSelectEffect;
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+                float3 normal : NORMAL;
+            };
+
+            struct v2f
+            {
+                float4 vertex : SV_POSITION;
+            };
+
+            v2f vert (appdata v)
+            {
+                v2f o;
+               	v.vertex += float4(v.normal * _SelectEffectWidth, 0);   
+                o.vertex = UnityObjectToClipPos(v.vertex); 
+                return o;
+            }
+            
+            fixed4 frag (v2f i) : SV_Target
+			{
+				if(_IsSelectEffect)
+				{
+					discard;
+				}
+                fixed4 col = _SelectEffectColor;
+				col.w = abs(sin(_Time.y)) * 0.8;                
+                return col;
+            }
+            ENDCG
+        }
+
+		Pass
         {
             Cull Front
 
@@ -33,15 +86,14 @@
             v2f vert (appdata v)
             {
                 v2f o;
-                v.vertex += float4(v.normal * 0.04f, 0);   
+               
                 o.vertex = UnityObjectToClipPos(v.vertex); 
                 return o;
             }
             
             fixed4 frag (v2f i) : SV_Target
-            {
-                fixed4 col = fixed4(0.1,0.1,0.1,1);                
-                return col;
+			{
+                return fixed4(0,0,0,1);
             }
             ENDCG
         }
@@ -55,6 +107,9 @@
             #pragma fragment frag
 
             #include "UnityCG.cginc"
+
+			float _OutLineWidth;
+
 
             struct appdata
             {
@@ -71,6 +126,7 @@
             v2f vert (appdata v)
             {
                 v2f o;
+				v.vertex -= float4(v.normal * _OutLineWidth, 0);   
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.normal = UnityObjectToWorldNormal(v.normal);
                 return o;
