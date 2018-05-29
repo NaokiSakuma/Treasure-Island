@@ -52,9 +52,12 @@ namespace GucchiCS
                 {
                     Debug.Log("Clear enter!");
 
+                    // クリア状態にする（ゲームプレイ状態を解除）
                     ModeChanger.Instance.Mode = ModeChanger.MODE.CLEAR;
-
                     StageManager.Instance.IsPlay = false;
+
+                    // Colliderバグ防止用
+                    transform.GetComponent<BoxCollider>().isTrigger = false;
                 });
 
             // クリアロゴを表示

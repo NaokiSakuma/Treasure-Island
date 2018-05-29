@@ -183,5 +183,11 @@ namespace GucchiCS
         {
             get { return _isChanging; }
         }
+
+        // オブジェクト回転中かどうか
+        public bool IsRotate
+        {
+            get { return _isRotate.IsRotate; }
+        }
     }
 }
