@@ -20,6 +20,13 @@ namespace GucchiCS
         // ゲームプレイ状態
         bool _isPlay = false;
 
+        // 起動設定
+        [RuntimeInitializeOnLoadMethod]
+        static void OnRuntimeMethodLoad()
+        {
+            Screen.SetResolution(1024, 600, false);
+        }
+
         // Use this for initialization
         void Start()
         {

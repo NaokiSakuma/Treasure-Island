@@ -45,6 +45,9 @@ namespace GucchiCS
 
         void Awake()
         {
+            // クリアUIを始めは非表示にする
+            _clearUI.SetActive(false);
+
             // プレイヤーがクリアオブジェクトに触れたとき
             this.OnTriggerEnterAsObservable()
                 .Where(_ => StageManager.Instance.IsPlay)
@@ -113,9 +116,19 @@ namespace GucchiCS
                 Debug.Log("ここでクリアUI出すよ");
 
                 // クリアUIの生成
-                GameObject clearUI = Instantiate(_clearUI);
-                clearUI.transform.SetParent(_canvas.transform, false);
-                foreach (Transform button in clearUI.transform)
+                //GameObject clearUI = Instantiate(_clearUI);
+                //clearUI.transform.SetParent(_canvas.transform, false);
+                //foreach (Transform button in clearUI.transform)
+                //{
+                //    if (button.GetComponent<ButtonOfClear>() != null)
+                //    {
+                //        button.GetComponent<ButtonOfClear>().ClearObject = this;
+                //    }
+                //}
+
+                // クリアUIの表示
+                _clearUI.SetActive(true);
+                foreach (Transform button in _clearUI.transform)
                 {
                     if (button.GetComponent<ButtonOfClear>() != null)
                     {

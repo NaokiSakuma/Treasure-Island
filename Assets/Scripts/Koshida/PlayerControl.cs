@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UniRx;
 using UniRx.Triggers;
 
@@ -72,6 +73,15 @@ namespace Konji
                 .Where(_ => !_isDead)
                 .Subscribe(_ =>
                 {
+                    // タイトルシーンは左画面外に行かないようにする
+                    if (SceneManager.GetActiveScene().name == SingletonName.TITLE_SCENE &&
+                        Input.GetKey(KeyCode.A)                                         &&
+                        transform.position.x < -8.5f)
+                    {
+                        transform.position = new Vector3(-8.5f, transform.position.y, transform.position.z);
+                        _move = 0;
+                    }
+
                     _player.Move(_move);
                 });
         }

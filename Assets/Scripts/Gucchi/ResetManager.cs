@@ -96,6 +96,9 @@ namespace GucchiCS
                 obj.transform.rotation = _temp[i].Item2;
                 i++;
             }
+
+            // オブジェクトの選択
+            ModeChanger.Instance.SelectedObject = null;
         }
     }
 }

@@ -60,7 +60,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   _light: {fileID: 0}
-  _rotateObjects: []
+  _dummyLight: {fileID: 0}
+  _rotateObjects:
+  - {fileID: 0}
 --- !u!114 &114709025002505828
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -104,6 +104,9 @@ namespace GucchiCS
             // カメラのNearを戻す
             Camera.main.nearClipPlane = 5f;
 
+            // オブジェクトの選択を解除する
+            _selectedObject = null;
+
             // 軸を安定させる
             var newPos = Camera.main.transform.position;
             newPos.x = defaultPos.x;
