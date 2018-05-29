@@ -57,6 +57,15 @@ namespace Konji
                     Dead();
                 });
 
+            //下の方に落ちたら死亡
+            this.UpdateAsObservable()
+                .Where(_ => _player.transform.position.y <= -10.0f)
+                .Take(1)
+                .Subscribe(_ =>
+                {
+                    Dead();
+                });
+
             //プレイヤーの移動(ゲームモードのみ移動可能)
             this.FixedUpdateAsObservable()
                 .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
