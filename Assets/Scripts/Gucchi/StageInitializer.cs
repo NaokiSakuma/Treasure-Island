@@ -52,16 +52,20 @@ namespace GucchiCS
                     );
                 })
                 .Join(_player.DOScale(Vector3.one, 1f))
+                .AppendCallback(() =>
+                {
+                    StageManager.Instance.IsPlay = true;
+                })
                 .Append(_clear.transform.DOScale(Vector3.zero, 1f))
-                .AppendCallback(() => 
+                .AppendCallback(() =>
                 {
                     _clear.transform.position = _goalPos;
                     _clear.transform.Find("ClearGuard").gameObject.SetActive(true);
                 })
                 .Join(_clear.transform.DOScale(Vector3.one, 1f))
-                .AppendCallback(() => 
+                .AppendCallback(() =>
                 {
-                    StageManager.Instance.IsPlay = true;
+                    _clear.transform.GetComponentInChildren<BoxCollider>().isTrigger = true;
                 });
 
             seq.Play();

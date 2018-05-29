@@ -29,6 +29,7 @@ namespace GucchiCS
             // スポットライトの角度変更
             this.UpdateAsObservable()
                 .Where(_ => ModeChanger.Instance.Mode == ModeChanger.MODE.SPOTLIGHT_CONTROL)
+                .Where(_ => !ModeChanger.Instance.IsChanging)
                 .Where(_ => Input.anyKey)
                 .Subscribe(_ =>
                 {

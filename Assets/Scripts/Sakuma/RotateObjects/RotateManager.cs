@@ -61,6 +61,7 @@ public class RotateManager : MonoBehaviour
         this.UpdateAsObservable()
             .Where(_ => Input.GetMouseButtonDown(0))
             .Where(_ => { return (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL) || (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED); })
+            .Where(_ => !GucchiCS.ModeChanger.Instance.IsChanging)
             .Where(_ => !_isRotate)
             .Where(_ => !EventSystem.current.IsPointerOverGameObject())
             .Subscribe(_ =>
@@ -81,6 +82,7 @@ public class RotateManager : MonoBehaviour
                 {
                     _hitObj = hit.collider.gameObject;
                     GucchiCS.ModeChanger.Instance.SelectedObject = _hitObj;
+                    GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED;
 
                     // ボタンのrectTransFormを変更 必要になったら復旧
                     // var rect = _buttonManager.GetComponent<RectTransform>();
@@ -132,13 +134,12 @@ public class RotateManager : MonoBehaviour
             });
 
         // 回転中
-        this.UpdateAsObservable()
-            .Where(_ => _isRotate)
-            .Subscribe(_ =>
-            {
-                GucchiCS.ModeChanger.Instance.SelectedObject = null;
-                GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED;
-            });
+        //this.UpdateAsObservable()
+        //    .Where(_ => _isRotate)
+        //    .Subscribe(_ =>
+        //    {
+        //        GucchiCS.ModeChanger.Instance.SelectedObject = null;
+        //    });
 
         // ゲームモードによってbuttonManagerを消す
         this.UpdateAsObservable()

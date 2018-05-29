@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 222233122119980446}
   - component: {fileID: 114723049454737554}
   - component: {fileID: 114535504348091250}
+  - component: {fileID: 114040566574952166}
   - component: {fileID: 95299127876509322}
   m_Layer: 5
   m_Name: Retry
@@ -92,6 +93,7 @@ GameObject:
   - component: {fileID: 222117896592908060}
   - component: {fileID: 114874052607498510}
   - component: {fileID: 114477292426126604}
+  - component: {fileID: 114955898273351510}
   - component: {fileID: 95995887918950830}
   m_Layer: 5
   m_Name: StageSelect
@@ -134,6 +136,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114040566574952166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1229921334369572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182afd66e74d3e04d8566838e35df5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneName: Scenes/Stage/stage
 --- !u!114 &114097369080543996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,7 +221,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114874052607498510}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114955898273351510}
+        m_MethodName: OnClickStageSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114535504348091250
@@ -248,7 +273,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114723049454737554}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114040566574952166}
+        m_MethodName: OnClickRetry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114604461116952290
@@ -350,6 +386,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114955898273351510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1441901831499296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 182afd66e74d3e04d8566838e35df5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneName: Scenes/Gucchi/StageSelect
 --- !u!222 &222056338895755116
 CanvasRenderer:
   m_ObjectHideFlags: 1

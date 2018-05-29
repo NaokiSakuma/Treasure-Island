@@ -2542,12 +2542,6 @@ Prefab:
       propertyPath: _canvas
       value: 
       objectReference: {fileID: 802046591}
-    - target: {fileID: 114459475190286372, guid: c65cc30af06351b4283a21b46880090c,
-        type: 2}
-      propertyPath: _clearUI
-      value: 
-      objectReference: {fileID: 1386135466459980, guid: 4805d8bfa47de03418fc9e29355bea42,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c65cc30af06351b4283a21b46880090c, type: 2}
   m_IsPrefabParent: 0

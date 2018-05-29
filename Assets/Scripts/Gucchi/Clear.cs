@@ -39,18 +39,25 @@ namespace GucchiCS
         [SerializeField]
         ButtonOfClear _stageSelectButton = null;
 
+        // 扉に入るアニメーションのときのカメラの距離
+        [SerializeField]
+        float _clearOutDistance = 0.8f;
+
         void Awake()
         {
             // プレイヤーがクリアオブジェクトに触れたとき
-            this.OnCollisionEnterAsObservable()
+            this.OnTriggerEnterAsObservable()
                 .Where(_ => StageManager.Instance.IsPlay)
                 .Subscribe(col =>
                 {
                     Debug.Log("Clear enter!");
 
+                    // クリア状態にする（ゲームプレイ状態を解除）
                     ModeChanger.Instance.Mode = ModeChanger.MODE.CLEAR;
-
                     StageManager.Instance.IsPlay = false;
+
+                    // Colliderバグ防止用
+                    transform.GetComponent<BoxCollider>().isTrigger = false;
                 });
 
             // クリアロゴを表示
@@ -66,7 +73,7 @@ namespace GucchiCS
 
                     // 中に入っていくように見せる（z軸とスケールを変える）
                     Vector3 clearPos = new Vector3(transform.position.x, transform.position.y, _player.transform.position.z);
-                    Vector3 endPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.3f);
+                    Vector3 endPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + _clearOutDistance);
                     Sequence seq = DOTween.Sequence()
                         .OnStart(() =>
                         {

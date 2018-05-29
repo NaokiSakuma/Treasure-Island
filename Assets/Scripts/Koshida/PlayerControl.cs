@@ -34,6 +34,7 @@ namespace Konji
 
             this.UpdateAsObservable()
                 .Where(_ => GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.GAME)
+                .Where(_ => !GucchiCS.ModeChanger.Instance.IsChanging)
                 .Subscribe(_ =>
                 {
                     InputMove(Input.GetKey(KeyCode.D), Input.GetKey(KeyCode.A));
@@ -58,7 +59,7 @@ namespace Konji
 
             //プレイヤーの移動(ゲームモードのみ移動可能)
             this.FixedUpdateAsObservable()
-                .Where(_ => GucchiCS.StageManager.Instance.IsPlay)          // ぐっち追記（プレイ中のみ通る）
+                .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
                 .Where(_ => !_isDead)
                 .Subscribe(_ =>
                 {
@@ -72,6 +73,9 @@ namespace Konji
             Debug.Log("死にました～");
 
             _isDead = true;
+
+            // プレイ状態解除
+            GucchiCS.StageManager.Instance.GameoverEnter();
         }
 
         //移動入力

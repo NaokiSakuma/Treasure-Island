@@ -1791,6 +1791,16 @@ Prefab:
       propertyPath: _modeIcon
       value: 
       objectReference: {fileID: 712739679}
+    - target: {fileID: 114341049581691638, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _goalPos.x
+      value: 2.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 114852595466005466, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _stageNo
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8a66db713553a7408a8874d01f25197, type: 2}
   m_IsPrefabParent: 0
