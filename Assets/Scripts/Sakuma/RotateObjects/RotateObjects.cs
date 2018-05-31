@@ -36,8 +36,8 @@ public class RotateObjects : MonoBehaviour {
     protected virtual void Start ()
     {
         // マウスのrayにhitしたオブジェクトを監視
-        _rotateManager.ObserveEveryValueChanged(x => x.HitObj)
-            .Subscribe(_ => _rotateObj = _rotateManager.HitObj);
+        _rotateManager.ObserveEveryValueChanged(x => x.SelectedObj)
+            .Subscribe(_ => _rotateObj = _rotateManager.SelectedObj);
 
         // ボタンが押された時の処理
         _button.onClick.AsObservable()
