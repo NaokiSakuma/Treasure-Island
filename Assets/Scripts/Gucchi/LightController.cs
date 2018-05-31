@@ -38,28 +38,28 @@ namespace GucchiCS
 
                     // キー操作でDictional Lightの角度と見かけ上のライトを変える
                     // 左
-                    if (Input.GetKey(KeyCode.LeftArrow) && eulerAngle.y < _limit)
+                    if (Input.GetKey(KeyCode.A) && eulerAngle.y < _limit)
                     {
                         transform.Rotate(0f, _moveSpeed * Time.deltaTime, 0f, Space.World);
                         _lightObject.transform.Translate((-_moveSpeed * 0.05f) * Time.deltaTime, 0f, 0f, Space.World);
                     }
 
                     // 右
-                    if (Input.GetKey(KeyCode.RightArrow) && eulerAngle.y > -_limit)
+                    if (Input.GetKey(KeyCode.D) && eulerAngle.y > -_limit)
                     {
                         transform.Rotate(0f, -_moveSpeed * Time.deltaTime, 0f, Space.World);
                         _lightObject.transform.Translate((_moveSpeed * 0.05f) * Time.deltaTime, 0f, 0f, Space.World);
                     }
 
                     // 上
-                    if (Input.GetKey(KeyCode.UpArrow) && eulerAngle.x < _limit)
+                    if (Input.GetKey(KeyCode.W) && eulerAngle.x < _limit)
                     {
                         transform.Rotate(_moveSpeed * Time.deltaTime, 0f, 0f, Space.World);
                         _lightObject.transform.Translate(0f, (_moveSpeed * 0.05f) * Time.deltaTime, 0f, Space.World);
                     }
 
                     // 下
-                    if (Input.GetKey(KeyCode.DownArrow) && eulerAngle.x > -_limit)
+                    if (Input.GetKey(KeyCode.S) && eulerAngle.x > -_limit)
                     {
                         transform.Rotate(-_moveSpeed * Time.deltaTime, 0f, 0f, Space.World);
                         _lightObject.transform.Translate(0f, (-_moveSpeed * 0.05f) * Time.deltaTime, 0f, Space.World);
@@ -67,7 +67,6 @@ namespace GucchiCS
 
                     // 見かけ上のライトをオブジェクトスクリーンの方へ向ける
                     _lightObject.transform.LookAt(_objectScreen);
-                    _lightObject.transform.Rotate(new Vector3(0f, 180f, 0f));
                 });
         }
 
