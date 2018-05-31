@@ -30,6 +30,10 @@ public class RotateManager : MonoBehaviour
         get { return _hitObj; }
     }
 
+    // 初期で仮選択させたいオブジェクト
+    [SerializeField]
+    GameObject _defaultTempSelectObj = null;
+
     // 選択したオブジェクト
     private GameObject _selectedObj = null;
     public GameObject SelectedObj
@@ -80,7 +84,7 @@ public class RotateManager : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     // オブジェクトがあれば登録
-                    if (_hitObj != null)
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask.value) && _hitObj)
                     {
                         _selectedObj = _hitObj;
                         GucchiCS.ModeChanger.Instance.SelectedObject = _selectedObj;
@@ -98,16 +102,26 @@ public class RotateManager : MonoBehaviour
                 else
                 {
                     // 選択していない状態でオブジェクトがあれば仮選択
-                    if (!_selectedObj && Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask.value))
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask.value))
                     {
                         _hitObj = hit.collider.gameObject;
                     }
                     else
                     {
-                        _hitObj = null;
+                        if (!_hitObj)
+                        {
+                            _hitObj = _defaultTempSelectObj;
+                        }
                     }
                 }
             });
+
+        //this.UpdateAsObservable()
+        //    .Subscribe(_ =>
+        //    {
+        //        Debug.Log("hitObj = " + (_hitObj ? _hitObj.name : "null"));
+        //        Debug.Log("selectedObj = " + (_selectedObj ? _selectedObj.name : "null"));
+        //    });
 
         // rayが当たっているオブジェクトを監視
         this.ObserveEveryValueChanged(x => _selectedObj)
