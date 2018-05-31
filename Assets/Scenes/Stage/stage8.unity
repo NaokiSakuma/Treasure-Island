@@ -1872,7 +1872,7 @@ Prefab:
     - target: {fileID: 108080132158886488, guid: cc3b72bc0ad5a384db9ee0e932693424,
         type: 2}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1017336143936478, guid: cc3b72bc0ad5a384db9ee0e932693424, type: 2}
       propertyPath: m_IsActive

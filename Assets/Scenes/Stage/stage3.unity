@@ -1722,15 +1722,6 @@ Prefab:
       propertyPath: _objectScreen
       value: 
       objectReference: {fileID: 1838466043}
-    - target: {fileID: 108080132158886488, guid: cc3b72bc0ad5a384db9ee0e932693424,
-        type: 2}
-      propertyPath: m_Shadows.m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1017336143936478, guid: cc3b72bc0ad5a384db9ee0e932693424, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc3b72bc0ad5a384db9ee0e932693424, type: 2}
   m_IsPrefabParent: 0
