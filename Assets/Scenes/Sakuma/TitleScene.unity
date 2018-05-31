@@ -557,16 +557,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &508538077 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1017336143936478, guid: cc3b72bc0ad5a384db9ee0e932693424,
-    type: 2}
-  m_PrefabInternal: {fileID: 1387295970}
---- !u!4 &508538081 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4688132307334338, guid: cc3b72bc0ad5a384db9ee0e932693424,
-    type: 2}
-  m_PrefabInternal: {fileID: 1387295970}
 --- !u!1 &508635716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,6 +1174,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1521863355}
   m_Script: {fileID: 11500000, guid: d639791f79ebe5c4ca51c7dbc3566703, type: 3}
+--- !u!4 &1127598844 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4557529560029210, guid: cc3b72bc0ad5a384db9ee0e932693424,
+    type: 2}
+  m_PrefabInternal: {fileID: 1387295970}
 --- !u!4 &1133619315 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: aabd5b29bc868664b89e6095dfbf4088, type: 3}
@@ -1563,7 +1558,7 @@ Prefab:
         type: 2}
       propertyPath: _lightObject
       value: 
-      objectReference: {fileID: 508538077}
+      objectReference: {fileID: 0}
     - target: {fileID: 108080132158886488, guid: cc3b72bc0ad5a384db9ee0e932693424,
         type: 2}
       propertyPath: m_Intensity
@@ -1656,7 +1651,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1462581734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -12}
+  m_LocalPosition: {x: 0, y: 0, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1864,6 +1859,7 @@ Prefab:
       objectReference: {fileID: 134700269}
     m_RemovedComponents:
     - {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197, type: 2}
+    - {fileID: 114495575328868704, guid: c8a66db713553a7408a8874d01f25197, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: c8a66db713553a7408a8874d01f25197, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1529420592 stripped
@@ -1885,7 +1881,7 @@ MonoBehaviour:
   _modeIcon: {fileID: 1884883849}
   _gameScreen: {fileID: 1930936550}
   _objectScreen: {fileID: 1236612535}
-  _spotlight: {fileID: 508538081}
+  _spotlight: {fileID: 1127598844}
   _player: {fileID: 160879906}
   _gameScreenDistance: 9
   _objectScreenDistance: 12

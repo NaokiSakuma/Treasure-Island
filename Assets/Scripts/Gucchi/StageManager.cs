@@ -29,19 +29,19 @@ namespace GucchiCS
             // ゲームモード
             this.LateUpdateAsObservable()
                 .Where(_ => CheckState())
-                .Where(_ => Input.GetKeyDown(KeyCode.Q))
+                .Where(_ => Input.GetKeyDown(KeyCode.Alpha1))
                 .Subscribe(_ => mode = ModeChanger.MODE.GAME);
 
             // コントロールモード（オブジェクト選択なし）
             this.LateUpdateAsObservable()
                 .Where(_ => CheckState())
-                .Where(_ => Input.GetKeyDown(KeyCode.W))
+                .Where(_ => Input.GetKeyDown(KeyCode.Alpha2))
                 .Subscribe(_ => mode = ModeChanger.MODE.OBJECT_CONTROL);
 
             // ライトモード
             this.LateUpdateAsObservable()
                 .Where(_ => CheckState())
-                .Where(_ => Input.GetKeyDown(KeyCode.E))
+                .Where(_ => Input.GetKeyDown(KeyCode.Alpha3))
                 .Where(_ => SceneManager.GetActiveScene().name != SingletonName.TITLE_SCENE)
                 .Subscribe(_ => mode = ModeChanger.MODE.SPOTLIGHT_CONTROL);
 
