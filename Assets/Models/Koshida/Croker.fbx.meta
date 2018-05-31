@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: fba8f6835ef40d84da2851c57898d695
-timeCreated: 1527296338
+guid: 5ca9d123ee951854eb401d667be08661
+timeCreated: 1527759887
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -8,9 +8,11 @@ ModelImporter:
     100000: //RootNode
     400000: //RootNode
     2100000: Material
+    2100002: Material.001
+    2100004: Material.002
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cube
+    4300000: Cube.001
   externalObjects: {}
   materials:
     importMaterials: 1

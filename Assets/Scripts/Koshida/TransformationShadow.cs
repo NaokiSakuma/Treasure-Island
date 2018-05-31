@@ -40,10 +40,10 @@ public class TransformationShadow : MonoBehaviour
             });
 
         //ライトの方向によって影の判定をずらす
-        this.ObserveEveryValueChanged(_ => _light.GetComponent<GucchiCS.LightController>().EulerAngles)
-            .Subscribe(rotate =>
+        this.UpdateAsObservable(/*_ => _light.GetComponent<GucchiCS.LightController>().EulerAngles*/)
+            .Subscribe(_ =>
             {
-                UpdateShadow(rotate);
+                UpdateShadow(_light.GetComponent<GucchiCS.LightController>().EulerAngles);
             });
     }
 
@@ -58,7 +58,7 @@ public class TransformationShadow : MonoBehaviour
         float absY = Mathf.Abs(shadowYAmo);
 
         //影のサイズ変更
-        if (absX <= 1.0f && absY <= 1.0f)
+        if (absX <= 1.0f || absY <= 1.0f)
         {
             UpdateScale(_collisonSize.x * absX, _collisonSize.y * absY);
         }
@@ -73,41 +73,47 @@ public class TransformationShadow : MonoBehaviour
         Vector3 offsetSize = _startCollisionSize;
 
         //オブジェクトの前がX軸方向
-        if (Mathf.Abs(_appearObj.transform.forward.x) >= 0.98f)
-        {
-            offsetSize += new Vector3(0,   0, sizeX);
-        }
+        float directionRatio = Mathf.Abs(_appearObj.transform.forward.x);
+        //if (directionRatio >= 0.98f)
+        //{
+            offsetSize += new Vector3(0, 0, sizeX * directionRatio);
+        //}
 
         //オブジェクトの右がX軸方向
-        if (Mathf.Abs(_appearObj.transform.right.x) >= 0.98f)
-        {
-            offsetSize += new Vector3(sizeX, 0, 0);
-        }
+        directionRatio = Mathf.Abs(_appearObj.transform.right.x);
+        //if (Mathf.Abs(_appearObj.transform.right.x) >= 0.98f)
+        //{
+            offsetSize += new Vector3(sizeX * directionRatio, 0, 0);
+        //}
 
         //オブジェクトの上がX軸方向
-        if (Mathf.Abs(_appearObj.transform.up.x) >= 0.98f)
-        {
-            offsetSize += new Vector3(0, sizeX, 0);
-        }
+        directionRatio = Mathf.Abs(_appearObj.transform.up.x);
+        //if (Mathf.Abs(_appearObj.transform.up.x) >= 0.98f)
+        //{
+            offsetSize += new Vector3(0, sizeX * directionRatio, 0);
+        //}
 
 
         //オブジェクトの前がY軸方向
-        if (Mathf.Abs(_appearObj.transform.forward.y) >= 0.98f)
-        {
-            offsetSize += new Vector3(0, 0, sizeY);
-        }
+        directionRatio = Mathf.Abs(_appearObj.transform.forward.y);
+        //if (Mathf.Abs(_appearObj.transform.forward.y) >= 0.98f)
+        //{
+            offsetSize += new Vector3(0, 0, sizeY * directionRatio);
+        //}
 
         //オブジェクトの右がY軸方向
-        if (Mathf.Abs(_appearObj.transform.right.y) >= 0.98f)
-        {
-            offsetSize += new Vector3(sizeY, 0, 0);
-        }
+        directionRatio = Mathf.Abs(_appearObj.transform.right.y);
+        //if (Mathf.Abs(_appearObj.transform.right.y) >= 0.98f)
+        //{
+            offsetSize += new Vector3(sizeY * directionRatio, 0, 0);
+        //}
 
         //オブジェクトの上がY軸方向
-        if (Mathf.Abs(_appearObj.transform.up.y) >= 0.98f)
-        {
-            offsetSize += new Vector3(0, sizeY, 0);
-        }
+        directionRatio = Mathf.Abs(_appearObj.transform.up.y);
+        //if (Mathf.Abs(_appearObj.transform.up.y) >= 0.98f)
+        //{
+            offsetSize += new Vector3(0, sizeY * directionRatio, 0);
+        //}
 
         //差分の分変更
         transform.transform.localScale = offsetSize;

@@ -551,11 +551,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 29c11ecf1ceb22149afdf42a1c8495cc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 29c11ecf1ceb22149afdf42a1c8495cc, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 29c11ecf1ceb22149afdf42a1c8495cc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1419,8 +1419,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _appearObj: {fileID: 628612908}
-  _collisonSize: {x: 1, y: 1}
-  _moveamo: {x: 1.7, y: 1.55}
+  _collisonSize: {x: 8, y: 8}
+  _moveamo: {x: 1.3, y: 1.3}
   _light: {fileID: 976020159}
 --- !u!64 &1569474524
 MeshCollider:
@@ -1523,11 +1523,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 29c11ecf1ceb22149afdf42a1c8495cc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 29c11ecf1ceb22149afdf42a1c8495cc, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 29c11ecf1ceb22149afdf42a1c8495cc, type: 3}
       propertyPath: m_LocalRotation.w
