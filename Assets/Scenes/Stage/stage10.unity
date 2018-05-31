@@ -1090,6 +1090,11 @@ Prefab:
       propertyPath: _canvas
       value: 
       objectReference: {fileID: 802046588}
+    - target: {fileID: 114096028921530774, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _defaultTempSelectObj
+      value: 
+      objectReference: {fileID: 690964347}
     m_RemovedComponents:
     - {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197, type: 2}
     - {fileID: 114495575328868704, guid: c8a66db713553a7408a8874d01f25197, type: 2}
