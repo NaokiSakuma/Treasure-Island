@@ -15,7 +15,6 @@ namespace GucchiCS
             GAME,
             OBJECT_CONTROL,
             OBJECT_CONTROL_SELECTED,
-            SPOTLIGHT_CONTROL,
             CLEAR
         }
         MODE _mode = MODE.GAME;
@@ -32,10 +31,6 @@ namespace GucchiCS
         [SerializeField]
         Transform _objectScreen = null;
 
-        // ハイブリッドスポットライト
-        [SerializeField]
-        Transform _spotlight = null;
-
         // プレイヤー
         [SerializeField]
         Transform _player = null;
@@ -47,10 +42,6 @@ namespace GucchiCS
         // オブジェクトスクリーンまでの距離
         [SerializeField]
         float _objectScreenDistance = 1f;
-
-        // ハイブリッドスポットライトまでの距離
-        [SerializeField]
-        float _spotlightDistance = 1f;
 
         // プレイヤーまでの距離
         [SerializeField]
@@ -123,12 +114,6 @@ namespace GucchiCS
                 case MODE.OBJECT_CONTROL:               // オブジェクトコントロールモード
                     newPos.z = _objectScreen.position.z + -_objectScreenDistance;
                     _modeIcon.CurrentMode = ModeIcons.Mode.Object;
-                    break;
-
-                case MODE.SPOTLIGHT_CONTROL:            // スポットライトコントロールモード
-                    newPos.z = _spotlight.position.z + -_spotlightDistance;
-                    Camera.main.nearClipPlane = 0.3f;
-                    _modeIcon.CurrentMode = ModeIcons.Mode.Light;
                     break;
 
                 case MODE.CLEAR:                        // クリアモード

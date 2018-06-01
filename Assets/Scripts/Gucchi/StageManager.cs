@@ -45,13 +45,6 @@ namespace GucchiCS
                 .Where(_ => Input.GetKeyDown(KeyCode.Alpha2))
                 .Subscribe(_ => mode = ModeChanger.MODE.OBJECT_CONTROL);
 
-            // ライトモード
-            this.LateUpdateAsObservable()
-                .Where(_ => CheckState())
-                .Where(_ => Input.GetKeyDown(KeyCode.Alpha3))
-                .Where(_ => SceneManager.GetActiveScene().name != SingletonName.TITLE_SCENE)
-                .Subscribe(_ => mode = ModeChanger.MODE.SPOTLIGHT_CONTROL);
-
             // モード変更時通知
             this.ObserveEveryValueChanged(newMode => mode)
                 .Subscribe(newMode => ModeChanger.Instance.Mode = newMode);

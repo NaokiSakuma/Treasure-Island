@@ -30,20 +30,12 @@ public class TransformationShadow : MonoBehaviour
     {
         _startPosition = transform.position;
         _startCollisionSize = transform.localScale;
-        _maxRot = _light.GetComponent<GucchiCS.LightController>().LimitAngle;
 
         //回転させるオブジェクトと同期
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
                 transform.localRotation = _appearObj.localRotation;
-            });
-
-        //ライトの方向によって影の判定をずらす
-        this.ObserveEveryValueChanged(_ => _light.GetComponent<GucchiCS.LightController>().EulerAngles)
-            .Subscribe(rotate =>
-            {
-                UpdateShadow(rotate);
             });
     }
 

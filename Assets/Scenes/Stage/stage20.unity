@@ -268,11 +268,9 @@ MonoBehaviour:
   _modeIcon: {fileID: 279040383}
   _gameScreen: {fileID: 315731361}
   _objectScreen: {fileID: 1838466043}
-  _spotlight: {fileID: 1750112984}
   _player: {fileID: 1115571383}
   _gameScreenDistance: 9
   _objectScreenDistance: 12
-  _spotlightDistance: 1
   _playerDistance: 3
   _changeTime: 1
   _isRotate: {fileID: 29063473}
@@ -2317,20 +2315,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114895654145598106, guid: cc3b72bc0ad5a384db9ee0e932693424,
-        type: 2}
-      propertyPath: _objectScreen
-      value: 
-      objectReference: {fileID: 1838466043}
-    - target: {fileID: 108080132158886488, guid: cc3b72bc0ad5a384db9ee0e932693424,
-        type: 2}
-      propertyPath: m_Shadows.m_Type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1017336143936478, guid: cc3b72bc0ad5a384db9ee0e932693424, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc3b72bc0ad5a384db9ee0e932693424, type: 2}
   m_IsPrefabParent: 0
@@ -2342,11 +2326,6 @@ GameObject:
 --- !u!1 &1750112983 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1256611115686206, guid: cc3b72bc0ad5a384db9ee0e932693424,
-    type: 2}
-  m_PrefabInternal: {fileID: 1750112981}
---- !u!4 &1750112984 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4557529560029210, guid: cc3b72bc0ad5a384db9ee0e932693424,
     type: 2}
   m_PrefabInternal: {fileID: 1750112981}
 --- !u!108 &1750112985 stripped
