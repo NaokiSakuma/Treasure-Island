@@ -885,6 +885,11 @@ Prefab:
       propertyPath: _canvas
       value: 
       objectReference: {fileID: 802046588}
+    - target: {fileID: 114096028921530774, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _defaultTempSelectObj
+      value: 
+      objectReference: {fileID: 2076836884}
     m_RemovedComponents:
     - {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197, type: 2}
     - {fileID: 114495575328868704, guid: c8a66db713553a7408a8874d01f25197, type: 2}
@@ -1854,7 +1859,7 @@ Prefab:
     - target: {fileID: 108080132158886488, guid: cc3b72bc0ad5a384db9ee0e932693424,
         type: 2}
       propertyPath: m_Shadows.m_Type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1017336143936478, guid: cc3b72bc0ad5a384db9ee0e932693424, type: 2}
       propertyPath: m_IsActive
@@ -1865,7 +1870,7 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!4 &1750112982 stripped
 Transform:
-  m_PrefabParentObject: {fileID: 4688132307334338, guid: cc3b72bc0ad5a384db9ee0e932693424,
+  m_PrefabParentObject: {fileID: 4557529560029210, guid: cc3b72bc0ad5a384db9ee0e932693424,
     type: 2}
   m_PrefabInternal: {fileID: 1750112981}
 --- !u!1 &1750112983 stripped
@@ -1875,7 +1880,7 @@ GameObject:
   m_PrefabInternal: {fileID: 1750112981}
 --- !u!1 &1750112984 stripped
 GameObject:
-  m_PrefabParentObject: {fileID: 1017336143936478, guid: cc3b72bc0ad5a384db9ee0e932693424,
+  m_PrefabParentObject: {fileID: 1463117120807050, guid: cc3b72bc0ad5a384db9ee0e932693424,
     type: 2}
   m_PrefabInternal: {fileID: 1750112981}
 --- !u!108 &1750112985 stripped

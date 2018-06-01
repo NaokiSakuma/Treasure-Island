@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationTime: 3
+  _defaultTempSelectObj: {fileID: 0}
   _canvas: {fileID: 0}
   _buttonManager: {fileID: 0}
   layerMask:
@@ -270,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   _clear: {fileID: 0}
-  _goalPos: {x: 3.6, y: -2, z: 8.9}
+  _goalPos: {x: 1.85, y: 0, z: 8.9}
 --- !u!114 &114495575328868704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -343,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d9db47c1d44e324a9ca0d4ae7774969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stageNo: 6
+  _stageNo: 2
 --- !u!114 &114956342744635700
 MonoBehaviour:
   m_ObjectHideFlags: 1
