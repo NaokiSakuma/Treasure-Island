@@ -28,8 +28,8 @@ namespace GucchiCS
         float _animationTime = 4f;
 
         // Canvas
-        [SerializeField]
-        Canvas _canvas = null;
+        //[SerializeField]
+        //Canvas _canvas = null;
 
         // クリアUI
         [SerializeField]

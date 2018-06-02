@@ -20,9 +20,11 @@ public class PauseMenu : MonoBehaviour {
 	void Start () {
 
 		_startPos = Camera.main.transform.position;
+        _tweener = Camera.main.transform.DOMove(Pausable.Instance.pausing ? _goalPos : _startPos, _duration);
 
-		// カメラを規定の座標に移動させる
-		this.ObserveEveryValueChanged(x => Pausable.Instance.pausing)
+        // カメラを規定の座標に移動させる
+        this.ObserveEveryValueChanged(x => Pausable.Instance.pausing)
+            .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
 			.Subscribe(x => {
 				if(x && !_tweener.IsPlaying()){
 					_startPos = Camera.main.transform.position;

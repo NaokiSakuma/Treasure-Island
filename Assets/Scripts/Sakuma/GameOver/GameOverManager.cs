@@ -18,7 +18,7 @@ public class GameOverManager : MonoBehaviour {
 
     // 最後に光る時間
     [SerializeField]
-    private float _lastRight = 0;
+    private float _lastLight = 0;
 
     // 点滅するオブジェクト
     [SerializeField]
@@ -62,7 +62,7 @@ public class GameOverManager : MonoBehaviour {
             yield return new WaitForSeconds(_blinkTime);
         }
         // 最後に長めに光らせる
-        yield return new WaitForSeconds(_lastRight);
+        yield return new WaitForSeconds(_lastLight);
         _blinkObj.gameObject.SetActive(false);
     }
 

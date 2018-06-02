@@ -50,8 +50,8 @@ public class RotateManager : MonoBehaviour
     }
 
     // canvas
-    [SerializeField]
-    private Canvas _canvas = null;
+    //[SerializeField]
+    //private Canvas _canvas = null;
 
     // ボタンマネージャー
     [SerializeField]

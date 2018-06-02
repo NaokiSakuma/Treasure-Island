@@ -1,7 +1,10 @@
 ﻿using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GucchiCS
 {
@@ -15,23 +18,143 @@ namespace GucchiCS
         [SerializeField]
         GameObject _clear = null;
 
+        // ライト
+        [SerializeField]
+        GameObject _light = null;
+
+        // 点滅時間
+        [SerializeField]
+        float _blinkTime = 0.1f;
+
+        // 点滅回数
+        [SerializeField]
+        int _blinkNum = 3;
+
+        // 最後長めに暗くする時間
+        [SerializeField]
+        float _lastLight = 0.5f;
+
+        // 開始カメラ座標
+        [SerializeField]
+        Vector3 _startCameraPos = new Vector3(9f, 8f, -8f);
+
+        // 開始カメラ回転角
+        [SerializeField]
+        Vector3 _startCameraRotation = new Vector3(30f, -30f, 0f);
+
         // ゴール地点
         [SerializeField]
         Vector3 _goalPos = new Vector3(0f, 0f, 8.9f);
+
+        // シーケンス
+        enum SEQUENCE : int
+        {
+            START,
+            LIGHTED,
+            CAMERA_SETTED,
+            CORRECTED
+        }
+        SEQUENCE _sequence = SEQUENCE.START;
+
+        // スキップボタン
+        [SerializeField]
+        Button _skipButton = null;
 
         // Use this for initialization
         void Awake()
         {
             _player.localScale = Vector3.zero;
-
-            // プレイヤーとゴールを出現させる
+            _clear.transform.localScale = Vector3.zero;
             _clear.transform.position = new Vector3(_player.position.x, _player.position.y, 8.9f);
+
+            // カメラの初期化
+            Camera.main.transform.position = _startCameraPos;
+            Camera.main.transform.localRotation = Quaternion.Euler(_startCameraRotation);
+
+            // ライトの点滅でスタート
+            _light.gameObject.SetActive(false);
+            this.UpdateAsObservable()
+                .Take(1)
+                .Subscribe(_ => Blink());
+
+            // ライト点灯後カメラを移動させる
+            this.ObserveEveryValueChanged(_ => _sequence)
+                .Where(_ => _sequence == SEQUENCE.LIGHTED)
+                .Take(1)
+                .Subscribe(_ => SetCamera());
+
+            // カメラ移動後プレイヤーとゴールを出現させる
+            this.ObserveEveryValueChanged(_ => _sequence)
+                .Where(_ => _sequence == SEQUENCE.CAMERA_SETTED)
+                .Take(1)
+                .Subscribe(_ => SetGame());
+
+            // Sキーが押されたらスキップ
+            this.LateUpdateAsObservable()
+                .Where(_ => Input.GetKeyDown(KeyCode.S))
+                .Take(1)
+                .Subscribe(_ => Skip());
+        }
+
+        // 点滅
+        void Blink()
+        {
+            Observable.FromCoroutine(BlinkCoroutine)
+                .DelayFrame(10)
+                .Where(_ => _sequence == SEQUENCE.START)        // スキップ時の遅延実行防止
+                .Subscribe(_ =>
+                {
+                    _sequence = SEQUENCE.LIGHTED;
+                });
+        }
+
+        // 点滅コルーチン
+        IEnumerator BlinkCoroutine()
+        {
+            // 指定回数点滅する
+            for (int i = 0; i < _blinkNum; i++)
+            {
+                _light.gameObject.SetActive(true);
+                yield return new WaitForSeconds(_blinkTime);
+
+                // スキップ時の遅延実行防止
+                if (_sequence != SEQUENCE.START)
+                {
+                    break;
+                }
+
+                _light.gameObject.SetActive(false);
+                yield return new WaitForSeconds(_blinkTime);
+            }
+
+            // 最後に長めに暗くする
+            yield return new WaitForSeconds(_lastLight);
+            _light.gameObject.SetActive(true);
+        }
+
+        // カメラ移動
+        void SetCamera()
+        {
+            // オブジェクトの正面に寄ってからゲーム画面の正面に寄る
+            Sequence seq = DOTween.Sequence()
+                .OnStart(() => {})
+                .Append(Camera.main.transform.DOLocalRotate(Vector3.zero, 2f))
+                .Join(Camera.main.transform.DOMove(new Vector3(_light.transform.position.x, _light.transform.position.y, _light.transform.position.z - 9f), 2f).SetEase(Ease.InSine))
+                .Append(Camera.main.transform.DOMove(ModeChanger.Instance.GetGameModeCameraPos, 2f))
+                .AppendCallback(() => _sequence = SEQUENCE.CAMERA_SETTED);
+
+            seq.Play();
+        }
+
+        // プレイヤーとゴールを出現させる
+        void SetGame()
+        {
+            // スキップボタンを削除
+            Destroy(_skipButton.gameObject);
+
             Sequence seq = DOTween.Sequence()
                 .OnStart(() =>
                 {
-                    // クリアオブジェクトのスケールを０にする
-                    _clear.transform.localScale = Vector3.zero;
-
                     // プレイヤーの透明度を０にする
                     Color playerColor = _player.GetComponent<SpriteRenderer>().material.color;
                     playerColor.a = 0f;
@@ -66,9 +189,27 @@ namespace GucchiCS
                 .AppendCallback(() =>
                 {
                     _clear.transform.GetComponentInChildren<BoxCollider>().isTrigger = true;
+                    _sequence = SEQUENCE.CORRECTED;
                 });
 
             seq.Play();
+        }
+
+        // スタート演出スキップ
+        public void Skip()
+        {
+            // アニメーション中であればアニメーションをやめる
+            DOTween.KillAll(true);
+
+            // ライト点灯
+            _light.gameObject.SetActive(true);
+
+            // ゲームモード用にカメラを合わせる
+            Camera.main.transform.position = ModeChanger.Instance.GetGameModeCameraPos;
+            Camera.main.transform.localRotation = Quaternion.identity;
+
+            // シーケンス更新
+            _sequence = SEQUENCE.CAMERA_SETTED;
         }
     }
 }

@@ -63,14 +63,12 @@ namespace GucchiCS
 
         void Start()
         {
-            // デフォルトカメラ座標
-            var defaultPos = Camera.main.transform.position;
-
             // モード変更
             this.ObserveEveryValueChanged(_ => _mode)
+                .Where(_ => StageManager.Instance.IsPlay)
                 .Subscribe(_ =>
                 {
-                    ChangeMode(defaultPos);
+                    ChangeMode();
                 });
 
             // 選択オブジェクトの変更
@@ -84,7 +82,7 @@ namespace GucchiCS
         }
 
         // モード変更処理
-        void ChangeMode(Vector3 defaultPos)
+        void ChangeMode()
         {
             if (_mode == MODE.OBJECT_CONTROL_SELECTED)
                 return;
@@ -99,9 +97,9 @@ namespace GucchiCS
             _selectedObject = null;
 
             // 軸を安定させる
-            var newPos = Camera.main.transform.position;
-            newPos.x = defaultPos.x;
-            newPos.y = defaultPos.y;
+            Vector3 newPos = Camera.main.transform.position;
+            newPos.x = 0f;
+            newPos.y = 0f;
 
             // z軸補正
             switch (_mode)
@@ -176,6 +174,18 @@ namespace GucchiCS
         public bool IsRotate
         {
             get { return _isRotate.IsRotate; }
+        }
+
+        // ゲームモードのカメラ座標
+        public Vector3 GetGameModeCameraPos
+        {
+            get { return new Vector3(0f, 0f, _gameScreen.position.z + -_gameScreenDistance); }
+        }
+
+        // オブジェクトコントロールモードのカメラ座標
+        public Vector3 GetObjectControlModeCameraPos
+        {
+            get { return new Vector3(0f, 0f, _objectScreen.position.z + -_objectScreenDistance); }
         }
     }
 }
