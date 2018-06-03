@@ -22,7 +22,7 @@ public class GameOverManager : MonoBehaviour {
 
     // 点滅するオブジェクト
     [SerializeField]
-    private GameObject _blinkObj = null;
+    private GameObject[] _blinkObjs = null;
 
     // プレイヤー
     [SerializeField]
@@ -53,17 +53,17 @@ public class GameOverManager : MonoBehaviour {
     /// </summary>
     IEnumerator Blink()
     {
-        // _blinkNum回点滅する
-        for (int i = 0; i < _blinkNum; i++)
-        {
-            _blinkObj.gameObject.SetActive(false);
-            yield return new WaitForSeconds(_blinkTime);
-            _blinkObj.gameObject.SetActive(true);
-            yield return new WaitForSeconds(_blinkTime);
-        }
-        // 最後に長めに光らせる
-        yield return new WaitForSeconds(_lastRight);
-        _blinkObj.gameObject.SetActive(false);
+            // _blinkNum回点滅する
+            for (int i = 0; i < _blinkNum; i++)
+            {
+                yield return new WaitForSeconds(_blinkTime);
+                foreach (var blinkObj in _blinkObjs)
+                    blinkObj.gameObject.SetActive(!blinkObj.gameObject.activeSelf);
+            }
+            // 最後に長めに光らせる
+            yield return new WaitForSeconds(_lastRight);
+            foreach (var blinkObj in _blinkObjs)
+                blinkObj.gameObject.SetActive(false);
     }
 
     /// <summary>
