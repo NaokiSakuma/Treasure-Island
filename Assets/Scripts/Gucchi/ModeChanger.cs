@@ -151,14 +151,14 @@ namespace GucchiCS
             Camera.main.transform.DOComplete();
 
             // 選択したオブジェクトの手前に座標を設定
-            //var newPos = new Vector3(_selectedObject.transform.position.x, _selectedObject.transform.position.y, _objectScreen.position.z - _objectScreenDistance);
+            var newPos = new Vector3(_selectedObject.transform.position.x + 1f, Camera.main.transform.position.y, Camera.main.transform.position.z);
 
             // モード変更開始
             _isChanging = true;
 
-            //// 移動
-            //Camera.main.transform.DOMove(newPos, _changeTime)
-            //    .OnComplete(() => { _isChanging = false; });
+            // 移動
+            Camera.main.transform.DOMove(newPos, _changeTime)
+                .OnComplete(() => { _isChanging = false; });
         }
 
         /* プロパティ */

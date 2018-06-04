@@ -220,9 +220,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationTime: 3
-  _defaultTempSelectObj: {fileID: 0}
-  _canvas: {fileID: 0}
+  _stageObject: {fileID: 0}
   _buttonManager: {fileID: 0}
+  _rotateObj: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 2048
@@ -239,8 +239,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blinkTime: 0.1
   _blinkNum: 3
-  _lastLight: 0
-  _blinkObj: {fileID: 0}
+  _lastRight: 0
+  _blinkObjs: []
   _player: {fileID: 0}
   _canvas: {fileID: 0}
   _overPrefab: {fileID: 1012941462199900, guid: 0a5985e59c1e430408cf841a011e9dd3,
@@ -275,7 +275,10 @@ MonoBehaviour:
   _blinkTime: 0.1
   _blinkNum: 3
   _lastLight: 0.5
+  _startCameraPos: {x: 9, y: 8, z: -8}
+  _startCameraRotation: {x: 42, y: -18, z: 0}
   _goalPos: {x: 2.85, y: -0.05, z: 8.9}
+  _skipButton: {fileID: 0}
 --- !u!114 &114495575328868704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -289,10 +292,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _modeIcon: {fileID: 0}
   _gameScreen: {fileID: 0}
-  _objectScreen: {fileID: 0}
+  _objRotateCamera: {fileID: 0}
   _player: {fileID: 0}
   _gameScreenDistance: 9
-  _objectScreenDistance: 12
   _playerDistance: 3
   _changeTime: 1
   _isRotate: {fileID: 114096028921530774}
