@@ -180,9 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Retry
-
-'
+  m_Text: Retry
 --- !u!114 &114477292426126604
 MonoBehaviour:
   m_ObjectHideFlags: 1
