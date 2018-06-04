@@ -27,9 +27,13 @@ namespace GucchiCS
         [SerializeField]
         Transform _gameScreen = null;
 
-        // オブジェクトスクリーン
+        //オブジェクト回転モードのカメラプレビュー
         [SerializeField]
-        Transform _objectScreen = null;
+        Transform _objRotateCamera = null;
+
+        //// オブジェクトスクリーン
+        //[SerializeField]
+        //Transform _objectScreen = null;
 
         // プレイヤー
         [SerializeField]
@@ -39,9 +43,9 @@ namespace GucchiCS
         [SerializeField]
         float _gameScreenDistance = 5f;
 
-        // オブジェクトスクリーンまでの距離
-        [SerializeField]
-        float _objectScreenDistance = 1f;
+        //// オブジェクトスクリーンまでの距離
+        //[SerializeField]
+        //float _objectScreenDistance = 1f;
 
         // プレイヤーまでの距離
         [SerializeField]
@@ -101,6 +105,9 @@ namespace GucchiCS
             newPos.x = 0f;
             newPos.y = 0f;
 
+            //カメラの角度
+            var newRot = Vector3.zero;
+
             // z軸補正
             switch (_mode)
             {
@@ -110,7 +117,8 @@ namespace GucchiCS
                     break;
 
                 case MODE.OBJECT_CONTROL:               // オブジェクトコントロールモード
-                    newPos.z = _objectScreen.position.z + -_objectScreenDistance;
+                    newPos = _objRotateCamera.position;
+                    newRot = _objRotateCamera.localEulerAngles;
                     _modeIcon.CurrentMode = ModeIcons.Mode.Object;
                     break;
 
@@ -131,6 +139,9 @@ namespace GucchiCS
             // 移動
             Camera.main.transform.DOMove(newPos, _changeTime)
                 .OnComplete(() => { _isChanging = false; });
+
+            // 回転
+            Camera.main.transform.DOLocalRotate(newRot, _changeTime);
         }
 
         // 選択オブジェクト変更処理
@@ -140,14 +151,14 @@ namespace GucchiCS
             Camera.main.transform.DOComplete();
 
             // 選択したオブジェクトの手前に座標を設定
-            var newPos = new Vector3(_selectedObject.transform.position.x, _selectedObject.transform.position.y, _objectScreen.position.z - _objectScreenDistance);
+            //var newPos = new Vector3(_selectedObject.transform.position.x, _selectedObject.transform.position.y, _objectScreen.position.z - _objectScreenDistance);
 
             // モード変更開始
             _isChanging = true;
 
-            // 移動
-            Camera.main.transform.DOMove(newPos, _changeTime)
-                .OnComplete(() => { _isChanging = false; });
+            //// 移動
+            //Camera.main.transform.DOMove(newPos, _changeTime)
+            //    .OnComplete(() => { _isChanging = false; });
         }
 
         /* プロパティ */

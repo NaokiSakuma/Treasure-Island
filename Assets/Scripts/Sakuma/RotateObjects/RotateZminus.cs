@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -12,7 +12,7 @@ public class RotateZminus : RotateObjects
         base.Start();
         this.UpdateAsObservable()
             .Where(_ => !_parent.activeSelf)
-            .Subscribe(_ => _button.gameObject.SetActive(false));
+            .Subscribe(_ => _button.gameObject.SetActive(true));
     }
     protected override void OnClickRotate()
     {

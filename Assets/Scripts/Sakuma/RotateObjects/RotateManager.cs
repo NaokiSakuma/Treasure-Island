@@ -63,6 +63,10 @@ public class RotateManager : MonoBehaviour
     [SerializeField]
     private GameObject _buttonManager = null;
 
+    // 回転軸オブジェクト
+    [SerializeField]
+    private GameObject _rotateObj = null;
+
     // rayと当たるレイヤーマスク
     [SerializeField]
     private LayerMask layerMask = 0;
@@ -106,6 +110,7 @@ public class RotateManager : MonoBehaviour
                     {
                         _selectedObj = null;
                         _buttonManager.gameObject.SetActive(false);
+                        _rotateObj.SetActive(false);
                         GucchiCS.ModeChanger.Instance.SelectedObject = null;
                         GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
                     }
@@ -173,9 +178,12 @@ public class RotateManager : MonoBehaviour
                 // カメラのスクリーン座標
                 var cameraScreen = Camera.main.WorldToScreenPoint(_selectedObj.transform.position);
 
-                // buttonManagerの場所
-                Vector2 objectPosition = new Vector2(cameraScreen.x, cameraScreen.y);
-                _buttonManager.transform.position = objectPosition;
+                //回転軸の位置調整
+                _rotateObj.transform.position = _selectedObj.transform.position;
+
+                //// buttonManagerの場所
+                //Vector2 objectPosition = new Vector2(cameraScreen.x, cameraScreen.y);
+                //_buttonManager.transform.position = objectPosition;
 
             });
 
@@ -187,6 +195,9 @@ public class RotateManager : MonoBehaviour
             {
                 _buttonManager.gameObject.SetActive(false);
                 _selectedObj = null;
+
+                //回転軸の非表示
+                _rotateObj.SetActive(false);
             });
 
         // ポーズ画面に行ったとき
@@ -226,5 +237,6 @@ public class RotateManager : MonoBehaviour
         _buttonManager.gameObject.SetActive(false);
         yield return null;
         _buttonManager.gameObject.SetActive(true);
+        _rotateObj.SetActive(true);
     }
 }
