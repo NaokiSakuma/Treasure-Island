@@ -23,11 +23,28 @@ public class RotateManager : MonoBehaviour
         get { return _animationTime; }
     }
 
-    // マウスのrayにhitしたオブジェクト
+    // マウスのrayにhitしたオブジェクト（仮選択状態）
     private GameObject _hitObj = null;
     public GameObject HitObj
     {
         get { return _hitObj; }
+    }
+
+    // ステージ上のオブジェクト全体
+    [SerializeField]
+    private Transform _stageObject = null;
+
+    // ステージ上のオブジェクト
+    private List<Transform> _stageChildObjs = new List<Transform>();
+
+    // 仮選択オブジェクトの要素番号
+    private int _indexStageNum = 0;
+
+    // 選択したオブジェクト
+    private GameObject _selectedObj = null;
+    public GameObject SelectedObj
+    {
+        get { return _selectedObj; }
     }
 
     // オブジェクトが回転中か
@@ -39,8 +56,8 @@ public class RotateManager : MonoBehaviour
     }
 
     // canvas
-    [SerializeField]
-    private Canvas _canvas = null;
+    //[SerializeField]
+    //private Canvas _canvas = null;
 
     // ボタンマネージャー
     [SerializeField]
@@ -53,13 +70,16 @@ public class RotateManager : MonoBehaviour
     void Awake()
     {
         _buttonManager.gameObject.SetActive(false);
+        // ステージ上のオブジェクトを取得
+        foreach (Transform child in _stageObject)
+        {
+            _stageChildObjs.Add(child);
+        }
     }
     void Start()
     {
-
-        // 左クリックされた時の処理
+        // オブジェクトコントロールモードでの処理
         this.UpdateAsObservable()
-            .Where(_ => Input.GetMouseButtonDown(0))
             .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
             .Where(_ => { return (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL) || (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED); })
             .Where(_ => !GucchiCS.ModeChanger.Instance.IsChanging)
@@ -70,30 +90,73 @@ public class RotateManager : MonoBehaviour
                 // マウスの位置からrayを飛ばす
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit = new RaycastHit();
-                // オブジェクトがあれば登録
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity,layerMask.value))
-                {
-                    _hitObj = hit.collider.gameObject;
-                    GucchiCS.ModeChanger.Instance.SelectedObject = _hitObj;
-                    GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED;
 
-                    // ボタンのrectTransFormを変更 必要になったら復旧
-                    // var rect = _buttonManager.GetComponent<RectTransform>();
-                    // rect.sizeDelta = buttonManagerRect();
+                // 左クリック時
+                if (Input.GetMouseButtonDown(0))
+                {
+                    // オブジェクトがあれば登録
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask.value) && _hitObj)
+                    {
+                        _selectedObj = _hitObj;
+                        GucchiCS.ModeChanger.Instance.SelectedObject = _selectedObj;
+                        GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED;
+                    }
+                    // 無ければUIを消す
+                    else
+                    {
+                        _selectedObj = null;
+                        _buttonManager.gameObject.SetActive(false);
+                        GucchiCS.ModeChanger.Instance.SelectedObject = null;
+                        GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
+                    }
                 }
-                // 無ければUIを消す
                 else
                 {
-                    _hitObj = null;
-                    _buttonManager.gameObject.SetActive(false);
-                    GucchiCS.ModeChanger.Instance.SelectedObject = null;
-                    GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
+                    // 選択していない状態でオブジェクトがあれば仮選択
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask.value))
+                    {
+                        _hitObj = hit.collider.gameObject;
+                    }
+                    else
+                    {
+                        if (!_hitObj)
+                        {
+                            // 最初に仮選択されるオブジェクト
+                            _hitObj = _stageChildObjs[0].gameObject;
+                        }
+                    }
+
+                    // WASD仮選択
+                    // 次の要素
+                    if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A))
+                    {
+                        _indexStageNum = (_indexStageNum + 1 >= _stageChildObjs.Count) ? 0 : ++_indexStageNum;
+                        _hitObj = _stageChildObjs[_indexStageNum].gameObject;
+                    }
+                    // 前の要素
+                    else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+                    {
+                        _indexStageNum = (_indexStageNum - 1 < 0) ? _stageChildObjs.Count - 1 : --_indexStageNum;
+                        _hitObj = _stageChildObjs[_indexStageNum].gameObject;
+                    }
                 }
             });
-        　
+
+        // debug用
+        this.UpdateAsObservable()
+            .Subscribe(_ =>
+            {
+                Debug.Log("hitObj = " + (_hitObj ? _hitObj.name : "null"));
+                Debug.Log("selectedObj = " + (_selectedObj ? _selectedObj.name : "null"));
+                for (int i = 0; i < _stageChildObjs.Count; i++)
+                {
+                    print(_stageChildObjs[i]);
+                }
+            });
+
         // rayが当たっているオブジェクトを監視
-        this.ObserveEveryValueChanged(x => _hitObj)
-            .Where(_ => _hitObj != null)
+        this.ObserveEveryValueChanged(x => _selectedObj)
+            .Where(_ => _selectedObj != null)
             .Subscribe(_ =>
             {
                 // 再びつける
@@ -103,19 +166,15 @@ public class RotateManager : MonoBehaviour
 
         // ボタンを回転させるUIの表示位置
         this.UpdateAsObservable()
-            .Where(_ => _hitObj != null)
+            .Where(_ => _selectedObj != null)
             .Where(_ => { return (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL) || (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED); })
             .Subscribe(_ =>
-            {                
-                // カメラの設定に応じて使う必要有
-                // カメラのビューポート座標
-                // var cameraView = Camera.main.WorldToViewportPoint(_hitObj.transform.position);
+            {
                 // カメラのスクリーン座標
-                var cameraScreen = Camera.main.WorldToScreenPoint(_hitObj.transform.position);
-                // canvasのrectTransform
-                // var canvasRect = _canvas.GetComponent<RectTransform>();
+                var cameraScreen = Camera.main.WorldToScreenPoint(_selectedObj.transform.position);
+
                 // buttonManagerの場所
-                Vector2 objectPosition = new Vector2(((cameraScreen.x)),((/*cameraView.y * canvasRect.sizeDelta.y*/cameraScreen.y)));
+                Vector2 objectPosition = new Vector2(cameraScreen.x, cameraScreen.y);
                 _buttonManager.transform.position = objectPosition;
 
             });
@@ -127,16 +186,7 @@ public class RotateManager : MonoBehaviour
             .Subscribe(_ =>
             {
                 _buttonManager.gameObject.SetActive(false);
-                _hitObj = null;
-            });
-
-        // ポーズ画面に行ったとき
-        this.UpdateAsObservable()
-            .Where(_ => Input.GetKeyDown(KeyCode.Escape))
-            .Subscribe(_ =>
-            {
-                _buttonManager.gameObject.SetActive(false);
-                _hitObj = null;
+                _selectedObj = null;
             });
 
         // ポーズ画面に行ったとき
@@ -155,7 +205,7 @@ public class RotateManager : MonoBehaviour
     private Vector2 buttonManagerRect()
     {
         // オブジェクトのサイズ
-        var objSize = _hitObj.gameObject.GetComponent<Renderer>().bounds.size;
+        var objSize = _selectedObj.gameObject.GetComponent<Renderer>().bounds.size;
         // オブジェクトのxyzで一番大きいサイズ
         var maxSize = Mathf.Max(objSize.x, objSize.y, objSize.z);
         // buttonManagerのデフォルトのwidth,hitght
