@@ -30,9 +30,15 @@ public class RotateManager : MonoBehaviour
         get { return _hitObj; }
     }
 
-    // 初期で仮選択させたいオブジェクト
+    // ステージ上のオブジェクト全体
     [SerializeField]
-    GameObject _defaultTempSelectObj = null;
+    private Transform _stageObject = null;
+
+    // ステージ上のオブジェクト
+    private List<Transform> _stageChildObjs = new List<Transform>();
+
+    // 仮選択オブジェクトの要素番号
+    private int _indexStageNum = 0;
 
     // 選択したオブジェクト
     private GameObject _selectedObj = null;
@@ -64,6 +70,11 @@ public class RotateManager : MonoBehaviour
     void Awake()
     {
         _buttonManager.gameObject.SetActive(false);
+        // ステージ上のオブジェクトを取得
+        foreach(Transform child in _stageObject)
+        {
+            _stageChildObjs.Add(child);
+        }
     }
     void Start()
     {
@@ -110,18 +121,38 @@ public class RotateManager : MonoBehaviour
                     {
                         if (!_hitObj)
                         {
-                            _hitObj = _defaultTempSelectObj;
+                            // 最初に仮選択されるオブジェクト
+                            _hitObj = _stageChildObjs[0].gameObject;
                         }
+                    }
+
+                    // WASD仮選択
+                    // 次の要素
+                    if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A))
+                    {
+                        _indexStageNum = (_indexStageNum + 1 >= _stageChildObjs.Count) ? 0 : ++_indexStageNum;
+                        _hitObj = _stageChildObjs[_indexStageNum].gameObject;
+                    }
+                    // 前の要素
+                    else if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+                    {
+                        _indexStageNum = (_indexStageNum - 1 < 0) ? _stageChildObjs.Count - 1 : --_indexStageNum;
+                        _hitObj = _stageChildObjs[_indexStageNum].gameObject;
                     }
                 }
             });
 
-        //this.UpdateAsObservable()
-        //    .Subscribe(_ =>
-        //    {
-        //        Debug.Log("hitObj = " + (_hitObj ? _hitObj.name : "null"));
-        //        Debug.Log("selectedObj = " + (_selectedObj ? _selectedObj.name : "null"));
-        //    });
+        // debug用
+        this.UpdateAsObservable()
+            .Subscribe(_ =>
+            {
+                Debug.Log("hitObj = " + (_hitObj ? _hitObj.name : "null"));
+                Debug.Log("selectedObj = " + (_selectedObj ? _selectedObj.name : "null"));
+                for (int i = 0; i < _stageChildObjs.Count; i++)
+                {
+                    print(_stageChildObjs[i]);
+                }
+            });
 
         // rayが当たっているオブジェクトを監視
         this.ObserveEveryValueChanged(x => _selectedObj)
