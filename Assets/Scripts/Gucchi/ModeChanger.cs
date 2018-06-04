@@ -195,9 +195,9 @@ namespace GucchiCS
         }
 
         // オブジェクトコントロールモードのカメラ座標
-        public Vector3 GetObjectControlModeCameraPos
-        {
-            get { return new Vector3(0f, 0f, _objectScreen.position.z + -_objectScreenDistance); }
-        }
+        //public Vector3 GetObjectControlModeCameraPos
+        //{
+        //    get { return new Vector3(0f, 0f, _objectScreen.position.z + -_objectScreenDistance); }
+        //}
     }
 }
