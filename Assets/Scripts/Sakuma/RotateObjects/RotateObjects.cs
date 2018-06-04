@@ -50,14 +50,14 @@ public class RotateObjects : MonoBehaviour {
                 OnClickRotate();
             });
 
-        // Zキーが押された時の処理
-        this.UpdateAsObservable()
-            .Where(_ => Input.GetKeyDown(KeyCode.Z))
-            .Subscribe(_ => { _isChangeHide = !_isChangeHide;});
+        //// Zキーが押された時の処理
+        //this.UpdateAsObservable()
+        //    .Where(_ => Input.GetKeyDown(KeyCode.Z))
+        //    .Subscribe(_ => { _isChangeHide = !_isChangeHide;});
 
-        // _isChangeHideを監視
-        this.ObserveEveryValueChanged(x => x._isChangeHide)
-            .Subscribe(_ => HideButton());
+        //// _isChangeHideを監視
+        //this.ObserveEveryValueChanged(x => x._isChangeHide)
+        //    .Subscribe(_ => HideButton());
 
     }
 
