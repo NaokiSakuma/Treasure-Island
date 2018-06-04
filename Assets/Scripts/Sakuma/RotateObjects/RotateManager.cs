@@ -188,6 +188,15 @@ public class RotateManager : MonoBehaviour
                 _buttonManager.gameObject.SetActive(false);
                 _selectedObj = null;
             });
+
+        // ポーズ画面に行ったとき
+        this.UpdateAsObservable()
+            .Where(_ => Input.GetKeyDown(KeyCode.Escape))
+            .Subscribe(_ =>
+            {
+                _buttonManager.gameObject.SetActive(false);
+                _hitObj = null;
+            });
     }
     /// <summary>
     /// ボタンマネージャーのrectTransform
