@@ -115,6 +115,7 @@ namespace GucchiCS
                     break;
 
                 case MODE.CLEAR:                        // クリアモード
+                    StageManager.Instance.IsPlay = false;
                     newPos = new Vector3(_player.position.x, _player.position.y, _gameScreen.position.z + -_playerDistance);
                     Camera.main.nearClipPlane = 0.3f;
                     _modeIcon.CurrentMode = ModeIcons.Mode.None;

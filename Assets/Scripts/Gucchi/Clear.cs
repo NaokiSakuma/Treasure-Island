@@ -48,6 +48,9 @@ namespace GucchiCS
             // クリアUIを始めは非表示にする
             _clearUI.SetActive(false);
 
+            // Colliderバグ防止用
+            transform.GetComponent<BoxCollider>().isTrigger = false;
+
             // プレイヤーがクリアオブジェクトに触れたとき
             this.OnTriggerEnterAsObservable()
                 .Where(_ => StageManager.Instance.IsPlay)
@@ -55,9 +58,8 @@ namespace GucchiCS
                 {
                     Debug.Log("Clear enter!");
 
-                    // クリア状態にする（ゲームプレイ状態を解除）
+                    // クリア状態にする
                     ModeChanger.Instance.Mode = ModeChanger.MODE.CLEAR;
-                    StageManager.Instance.IsPlay = false;
 
                     // Colliderバグ防止用
                     transform.GetComponent<BoxCollider>().isTrigger = false;
