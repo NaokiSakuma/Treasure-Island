@@ -123,7 +123,7 @@ public class RotateManager : MonoBehaviour
                 else
                 {
                     // 選択していない状態でオブジェクトがあれば仮選択
-                    if (GucchiCS.StageManager.Instance.IsStateMouse)
+                    if (GucchiCS.ControlState.Instance.IsStateMouse)
                     {
                         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask.value))
                         {

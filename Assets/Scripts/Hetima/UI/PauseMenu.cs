@@ -70,7 +70,8 @@ public class PauseMenu : MonoBehaviour {
 
 		// 垂直方向の入力をIntに変換する
 		this.UpdateAsObservable()
-			.Select(_ => {
+            .Where(_ => !GucchiCS.ControlState.Instance.IsStateMouse)
+            .Select(_ => {
 				var x = Input.GetAxisRaw("Vertical");
 				int result = 0;
 				// 入力がしきい値を越えていたら入力されたことにする
@@ -104,6 +105,7 @@ public class PauseMenu : MonoBehaviour {
 		_mousePosition
 			// ポーズされている
 			.Where(_ => Pausable.Instance.pausing)
+            .Where(_ => GucchiCS.ControlState.Instance.IsStateMouse)
 			.Subscribe(x => {
 				// スクリーン上のマウス座標からのレイ
 				Ray ray = Camera.main.ScreenPointToRay(x);
