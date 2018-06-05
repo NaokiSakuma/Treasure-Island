@@ -20,6 +20,9 @@ namespace GucchiCS
         // ゲームプレイ状態
         bool _isPlay = false;
 
+        // 操作モード（マウスならtrue、キーボードならfalse）
+        bool _isStateMouse = false;
+
         // 起動設定
         [RuntimeInitializeOnLoadMethod]
         static void OnRuntimeMethodLoad()
@@ -32,6 +35,9 @@ namespace GucchiCS
         {
             // モード
             ModeChanger.MODE mode = ModeChanger.Instance.Mode;
+
+            // 始めはマウスカーソルを隠す
+            Cursor.visible = false;
 
             // ゲームモード
             this.LateUpdateAsObservable()
@@ -48,6 +54,26 @@ namespace GucchiCS
             // モード変更時通知
             this.ObserveEveryValueChanged(newMode => mode)
                 .Subscribe(newMode => ModeChanger.Instance.Mode = newMode);
+
+            // 何らかのキーが押されたら
+            this.UpdateAsObservable()
+                .Where(_ => _isStateMouse)
+                .Where(_ => Input.anyKeyDown && !Input.GetMouseButtonDown(0))
+                .Subscribe(_ =>
+                {
+                    Cursor.visible = false;
+                    _isStateMouse = false;
+                });
+
+            // マウスが動かされたらマウスステートにする
+            this.UpdateAsObservable()
+                .Where(_ => !_isStateMouse)
+                .Where(_ => Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+                .Subscribe(_ =>
+                {
+                    Cursor.visible = true;
+                    _isStateMouse = true;
+                });
         }
 
         // ゲーム操作可能状態チェック
@@ -62,7 +88,7 @@ namespace GucchiCS
             // オブジェクト回転中かどうか
             bool isRotate = ModeChanger.Instance.IsRotate;
 
-            return IsPlay && !isClear && !isChanging && !isRotate;
+            return IsPlay && !_isStateMouse && !isClear && !isChanging && !isRotate;
         }
 
         // ゲームプレイ状態かどうか
@@ -70,6 +96,12 @@ namespace GucchiCS
         {
             get { return _isPlay; }
             set { _isPlay = value; }
+        }
+
+        // マウス操作状態かどうか
+        public bool IsStateMouse
+        {
+            get { return _isStateMouse; }
         }
 
         // 現在のステージ番号の取得

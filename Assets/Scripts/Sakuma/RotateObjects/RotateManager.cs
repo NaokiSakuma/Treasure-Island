@@ -118,31 +118,36 @@ public class RotateManager : MonoBehaviour
                 else
                 {
                     // 選択していない状態でオブジェクトがあれば仮選択
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask.value))
+                    if (GucchiCS.StageManager.Instance.IsStateMouse)
                     {
-                        _hitObj = hit.collider.gameObject;
-                    }
-                    else
-                    {
-                        if (!_hitObj)
+                        if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask.value))
                         {
-                            // 最初に仮選択されるオブジェクト
-                            _hitObj = _stageChildObjs[0].gameObject;
+                            _hitObj = hit.collider.gameObject;
+                        }
+                        else
+                        {
+                            if (!_hitObj)
+                            {
+                                // 最初に仮選択されるオブジェクト
+                                _hitObj = _stageChildObjs[0].gameObject;
+                            }
                         }
                     }
-
                     // WASD仮選択
                     // 次の要素
-                    if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A))
+                    else
                     {
-                        _indexStageNum = (_indexStageNum + 1 >= _stageChildObjs.Count) ? 0 : ++_indexStageNum;
-                        _hitObj = _stageChildObjs[_indexStageNum].gameObject;
-                    }
-                    // 前の要素
-                    else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
-                    {
-                        _indexStageNum = (_indexStageNum - 1 < 0) ? _stageChildObjs.Count - 1 : --_indexStageNum;
-                        _hitObj = _stageChildObjs[_indexStageNum].gameObject;
+                        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A))
+                        {
+                            _indexStageNum = (_indexStageNum + 1 >= _stageChildObjs.Count) ? 0 : ++_indexStageNum;
+                            _hitObj = _stageChildObjs[_indexStageNum].gameObject;
+                        }
+                        // 前の要素
+                        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+                        {
+                            _indexStageNum = (_indexStageNum - 1 < 0) ? _stageChildObjs.Count - 1 : --_indexStageNum;
+                            _hitObj = _stageChildObjs[_indexStageNum].gameObject;
+                        }
                     }
                 }
             });
