@@ -93,7 +93,7 @@ public class PauseMenu : MonoBehaviour {
 			
 		// クリックされた時の処理
 		this.UpdateAsObservable()
-			.Where(_ => Input.GetMouseButtonDown(0))
+			.Where(_ => Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
 			.Where(_ => _item != null)
 			.Subscribe(_ => {
 				// 対象のアイテムのアクションを実行
