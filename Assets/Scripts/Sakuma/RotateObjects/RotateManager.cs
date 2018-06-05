@@ -59,6 +59,11 @@ public class RotateManager : MonoBehaviour
     //[SerializeField]
     //private Canvas _canvas = null;
 
+
+    // player
+    [SerializeField]
+    private Konji.PlayerControl _player = null;
+
     // ボタンマネージャー
     [SerializeField]
     private GameObject _buttonManager = null;
@@ -207,7 +212,7 @@ public class RotateManager : MonoBehaviour
 
         // ポーズ画面に行ったとき
         this.UpdateAsObservable()
-            .Where(_ => Input.GetKeyDown(KeyCode.Escape))
+            .Where(_ => Input.GetKeyDown(KeyCode.Escape) || _player.IsDead)
             .Subscribe(_ =>
             {
                 _buttonManager.gameObject.SetActive(false);
