@@ -73,6 +73,10 @@ namespace GucchiCS
                 .Subscribe(_ =>
                 {
                     ChangeMode();
+
+                    // ゲームモード以外ならオブジェクトの影設定を行う
+                    if (_mode != MODE.GAME)
+                        StageManager.Instance.SetObjectShadowMode();
                 });
 
             // 選択オブジェクトの変更
@@ -138,7 +142,13 @@ namespace GucchiCS
 
             // 移動
             Camera.main.transform.DOMove(newPos, _changeTime)
-                .OnComplete(() => { _isChanging = false; });
+                .OnComplete(() =>
+                {
+                    _isChanging = false;
+
+                    // オブジェクトの影設定
+                    StageManager.Instance.SetObjectShadowMode();
+                });
 
             // 回転
             Camera.main.transform.DOLocalRotate(newRot, _changeTime);

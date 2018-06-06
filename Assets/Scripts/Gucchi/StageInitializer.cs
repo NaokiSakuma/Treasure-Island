@@ -141,7 +141,13 @@ namespace GucchiCS
                 .Append(Camera.main.transform.DOLocalRotate(Vector3.zero, 2f))
                 .Join(Camera.main.transform.DOMove(new Vector3(_light.transform.position.x, _light.transform.position.y, _light.transform.position.z - 9f), 2f).SetEase(Ease.InSine))
                 .Append(Camera.main.transform.DOMove(ModeChanger.Instance.GetGameModeCameraPos, 2f))
-                .AppendCallback(() => _sequence = SEQUENCE.CAMERA_SETTED);
+                .AppendCallback(() =>
+                {
+                    // オブジェクトの影設定
+                    StageManager.Instance.SetObjectShadowMode();
+
+                    _sequence = SEQUENCE.CAMERA_SETTED;
+                });
 
             seq.Play();
         }

@@ -20,6 +20,10 @@ namespace GucchiCS
         // ゲームプレイ状態
         bool _isPlay = false;
 
+        // ステージオブジェクト
+        [SerializeField]
+        Transform _stageObjects = null;
+
         // 起動設定
         [RuntimeInitializeOnLoadMethod]
         static void OnRuntimeMethodLoad()
@@ -67,6 +71,21 @@ namespace GucchiCS
 
             return IsPlay && !ControlState.Instance.IsStateMouse && !isClear && !isChanging && !isRotate;
         }
+
+        // オブジェクトの影モード設定
+        public void SetObjectShadowMode()
+        {
+            foreach (Transform obj in _stageObjects)
+            {
+                // ゲームモードならShadowOnlyにし、それ以外はOnにする
+                if (ModeChanger.Instance.Mode == ModeChanger.MODE.GAME)
+                    obj.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
+                else
+                    obj.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+            }
+        }
+
+        /* プロパティ */
 
         // ゲームプレイ状態かどうか
         public bool IsPlay
