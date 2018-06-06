@@ -41,10 +41,15 @@ namespace Konji
             get { return _isNest; }
         }
 
+        //アニメーター
+        Animator _animator;
+
         void Awake()
         {
             _rigit = GetComponent<Rigidbody>();
             _rigit.useGravity = false;
+
+            _animator = GetComponent<Animator>();
         }
 
         // Use this for initialization
@@ -53,11 +58,12 @@ namespace Konji
         }
 
         //移動
-        public void Move(float move)
+        public void Move(int move)
         {
             //重力初期化
             Vector3 grv = _localGravity;
             _rigit.velocity = new Vector2(move * _maxSpeed, _rigit.velocity.y);
+            _animator.SetBool("Ground", false);
 
             RaycastHit hit;
             LayerMask layermask = 1 << LayerMask.NameToLayer("Shadow");
@@ -71,6 +77,8 @@ namespace Konji
                 //Y軸の移動制限
                 grv = Vector3.zero;
                 _rigit.velocity = new Vector2(_rigit.velocity.x, 0);
+
+                _animator.SetBool("Ground", true);
             }
 
             //4方向全部
@@ -147,6 +155,7 @@ namespace Konji
                 Flip();
             }
 
+            _animator.SetInteger("Move", move);
             _rigit.AddForce(grv, ForceMode.Acceleration);
         }
 
@@ -162,5 +171,18 @@ namespace Konji
             transform.localEulerAngles = new Vector3(0, rot, 0);
         }
 
+        public void ClearMove()
+        {
+            //クリアアニメーション
+            _animator.SetBool("Clear", true);
+        }
+
+        public void DeadMove()
+        {
+            _rigit.velocity = Vector2.zero;
+
+            //死亡アニメーション
+            _animator.SetBool("Dead", true);
+        }
     }
 }

@@ -84,6 +84,14 @@ namespace Konji
 
                     _player.Move(_move);
                 });
+
+            //クリアしたらクリアモーション
+            this.ObserveEveryValueChanged(_ => GucchiCS.ModeChanger.Instance.Mode)
+                .Where(x => x == GucchiCS.ModeChanger.MODE.CLEAR)
+                .Subscribe(_ =>
+                {
+                    _player.ClearMove();
+                });
         }
 
         //死亡処理
@@ -92,6 +100,8 @@ namespace Konji
             Debug.Log("死にました～");
 
             _isDead = true;
+
+            _player.DeadMove();
 
             // プレイ状態解除
             GucchiCS.StageManager.Instance.GameoverEnter();
