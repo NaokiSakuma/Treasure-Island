@@ -109,6 +109,10 @@ public class RotateManager : MonoBehaviour
                         _selectedObj = _hitObj;
                         GucchiCS.ModeChanger.Instance.SelectedObject = _selectedObj;
                         GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED;
+
+                        // オブジェクトのエフェクトをONにする
+                        _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 0.0f);
+                        _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetColor("_SelectEffectColor", Color.yellow);
                     }
                     // 無ければUIを消す
                     else
