@@ -60,6 +60,9 @@ namespace GucchiCS
         [SerializeField]
         Button _skipButton = null;
 
+        // スキップは１回だけ呼べるようにする
+        bool _isSkiped = false;
+
         // Use this for initialization
         void Awake()
         {
@@ -181,6 +184,7 @@ namespace GucchiCS
                 .AppendCallback(() =>
                 {
                     StageManager.Instance.IsPlay = true;
+                    _isSkiped = true;
                 })
                 .Append(_clear.transform.DOScale(Vector3.zero, 1f))
                 .AppendCallback(() =>
@@ -201,6 +205,9 @@ namespace GucchiCS
         // スタート演出スキップ
         public void Skip()
         {
+            if (_isSkiped)
+                return;
+
             // アニメーション中であればアニメーションをやめる
             DOTween.KillAll(true);
 
@@ -213,6 +220,8 @@ namespace GucchiCS
 
             // シーケンス更新
             _sequence = SEQUENCE.CAMERA_SETTED;
+
+            _isSkiped = true;
         }
     }
 }

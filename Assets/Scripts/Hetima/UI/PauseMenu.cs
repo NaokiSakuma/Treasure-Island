@@ -70,6 +70,7 @@ public class PauseMenu : MonoBehaviour {
 
 		// 垂直方向の入力をIntに変換する
 		this.UpdateAsObservable()
+            .Where(_ => Pausable.Instance.pausing)
             .Where(_ => !GucchiCS.ControlState.Instance.IsStateMouse)
             .Select(_ => {
 				var x = Input.GetAxisRaw("Vertical");
@@ -94,7 +95,7 @@ public class PauseMenu : MonoBehaviour {
 			
 		// クリックされた時の処理
 		this.UpdateAsObservable()
-			.Where(_ => Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
+            .Where(_ => Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
 			.Where(_ => _item != null)
 			.Subscribe(_ => {
 				// 対象のアイテムのアクションを実行
