@@ -84,6 +84,7 @@ Shader "Unlit/NewUnlitShader"
 		 }
 
 			//輪郭
+		Ztest Always
 		Pass
         {
             Cull Front
@@ -183,7 +184,7 @@ Shader "Unlit/NewUnlitShader"
 
 		
 		//深度値出力Pass
-		//UsePass "Legacy Shaders/VertexLit/SHADOWCASTER"
+		UsePass "Legacy Shaders/VertexLit/SHADOWCASTER"
 	}
 
 }
