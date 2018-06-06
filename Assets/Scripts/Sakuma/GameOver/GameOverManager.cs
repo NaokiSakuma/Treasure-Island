@@ -46,24 +46,30 @@ public class GameOverManager : MonoBehaviour {
             .Take(1)
             .Subscribe(_ => BlinkCoroutine());
 	}
-	
+
 
     /// <summary>
     /// ライトの点滅
     /// </summary>
     IEnumerator Blink()
     {
-            // _blinkNum回点滅する
-            for (int i = 0; i < _blinkNum; i++)
-            {
-                yield return new WaitForSeconds(_blinkTime);
-                foreach (var blinkObj in _blinkObjs)
-                    blinkObj.gameObject.SetActive(!blinkObj.gameObject.activeSelf);
-            }
-            // 最後に長めに光らせる
-            yield return new WaitForSeconds(_lastRight);
+        // _blinkNum回点滅する
+        for (int i = 0; i < _blinkNum; i++)
+        {
+            yield return new WaitForSeconds(_blinkTime);
             foreach (var blinkObj in _blinkObjs)
-                blinkObj.gameObject.SetActive(false);
+            {
+                if (blinkObj == null) continue;
+                blinkObj.gameObject.SetActive(!blinkObj.gameObject.activeSelf);
+            }
+        }
+        // 最後に長めに光らせる
+        yield return new WaitForSeconds(_lastRight);
+        foreach (var blinkObj in _blinkObjs)
+        {
+            if (blinkObj == null) continue;
+            blinkObj.gameObject.SetActive(false);
+        }
     }
 
     /// <summary>
