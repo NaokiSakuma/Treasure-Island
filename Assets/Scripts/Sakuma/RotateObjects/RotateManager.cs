@@ -84,6 +84,9 @@ public class RotateManager : MonoBehaviour
                     _hitObj = hit.collider.gameObject;
                     GucchiCS.ModeChanger.Instance.SelectedObject = _hitObj;
                     GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED;
+                    // オブジェクトのエフェクトをONにする
+                    _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 0.0f);
+                    _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetColor("_SelectEffectColor", Color.yellow);
 
                     // ボタンのrectTransFormを変更 必要になったら復旧
                     // var rect = _buttonManager.GetComponent<RectTransform>();
@@ -169,7 +172,6 @@ public class RotateManager : MonoBehaviour
         // 1.0fはscaleを1.0fを基準に作っているため引いている
         return new Vector2(defaultWH - 30.0f * (maxSize - 1.0f),
                                 defaultWH - 40.0f * (maxSize - 1.0f));
-
     }
 
     /// <summary>

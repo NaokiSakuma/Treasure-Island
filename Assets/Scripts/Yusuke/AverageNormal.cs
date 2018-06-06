@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OutLineWVP : MonoBehaviour {
+public class AverageNormal : MonoBehaviour {
 
     [SerializeField]
     private const float scale = 0.8f; 
