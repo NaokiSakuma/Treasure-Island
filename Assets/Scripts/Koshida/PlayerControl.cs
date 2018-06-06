@@ -103,6 +103,15 @@ namespace Konji
 
             _player.DeadMove();
 
+            //rigitbody削除
+            Destroy(_player.GetComponent<Rigidbody>());
+            //Collider削除
+            Collider[] colliders = _player.GetComponents<Collider>();
+            foreach(Collider col in colliders)
+            {
+                Destroy(col);
+            }
+
             // プレイ状態解除
             GucchiCS.StageManager.Instance.GameoverEnter();
         }
