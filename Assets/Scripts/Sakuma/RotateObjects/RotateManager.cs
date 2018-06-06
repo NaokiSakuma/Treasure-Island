@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine.EventSystems;
@@ -221,6 +222,17 @@ public class RotateManager : MonoBehaviour
             {
                 _buttonManager.gameObject.SetActive(false);
                 _hitObj = null;
+            });
+
+        // 回転中はボタンを押せなくする（グレーアウト）
+        this.ObserveEveryValueChanged(_ => _isRotate)
+            .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
+            .Subscribe(_ =>
+            {
+                foreach (Transform button in _buttonManager.transform)
+                {
+                    button.GetComponent<Button>().interactable = !button.GetComponent<Button>().interactable;
+                }
             });
     }
     /// <summary>
