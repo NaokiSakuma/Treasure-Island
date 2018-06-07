@@ -174,7 +174,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &156245205
 Prefab:
@@ -703,7 +703,7 @@ Transform:
   - {fileID: 2013106192}
   - {fileID: 1779535491}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &499496836
 GameObject:
@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 499496839}
   - component: {fileID: 499496838}
   - component: {fileID: 499496837}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Rakugaki2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -946,7 +946,7 @@ GameObject:
   - component: {fileID: 675951516}
   - component: {fileID: 675951515}
   - component: {fileID: 675951514}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Rakugaki4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1150,7 +1150,7 @@ RectTransform:
   - {fileID: 1145696633}
   - {fileID: 1935471870}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1373,7 +1373,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4635390725882138, guid: 5150689e31535b5458b56656ae96e367, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5150689e31535b5458b56656ae96e367, type: 2}
@@ -1735,34 +1735,6 @@ Transform:
   m_Father: {fileID: 1115571383}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1494302315
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1494302316}
-  m_Layer: 12
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1494302316
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1494302315}
-  m_LocalRotation: {x: -0.7092157, y: 0.0023392984, z: -0.00011977961, w: 0.7049877}
-  m_LocalPosition: {x: 3.7000003, y: 1.4000001, z: 9.290004}
-  m_LocalScale: {x: 31.173714, y: 11.722318, z: 25.192898}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1496498707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,7 +1807,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294959103
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1911,7 +1883,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4662741109185652, guid: c65cc30af06351b4283a21b46880090c, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114459475190286372, guid: c65cc30af06351b4283a21b46880090c,
         type: 2}
@@ -1947,7 +1919,7 @@ GameObject:
   - component: {fileID: 1658709767}
   - component: {fileID: 1658709766}
   - component: {fileID: 1658709765}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Rakugaki1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2167,7 +2139,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1779535491}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Others
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2293,7 +2265,7 @@ Transform:
   m_LocalScale: {x: 15, y: 10, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1848335927
 GameObject:
@@ -2336,7 +2308,7 @@ GameObject:
   - component: {fileID: 1921304783}
   - component: {fileID: 1921304782}
   - component: {fileID: 1921304781}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Rakugaki3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2562,7 +2534,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4273787636980188, guid: f5f986a361e915941859d1fffeb2df9c, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5f986a361e915941859d1fffeb2df9c, type: 2}
