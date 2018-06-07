@@ -1349,7 +1349,7 @@ Prefab:
     - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _blinkObjs.Array.size
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4568373185641880, guid: c8a66db713553a7408a8874d01f25197, type: 2}
       propertyPath: m_LocalPosition.x
@@ -1492,17 +1492,17 @@ Prefab:
         type: 2}
       propertyPath: _blinkObjs.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1478691905}
     - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _blinkObjs.Array.data[2]
       value: 
-      objectReference: {fileID: 1478691905}
+      objectReference: {fileID: 1767913887}
     - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _blinkObjs.Array.data[3]
       value: 
-      objectReference: {fileID: 793641426}
+      objectReference: {fileID: 347294215}
     - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _blinkObjs.Array.data[4]
