@@ -18,6 +18,8 @@ namespace GucchiCS
             this.UpdateAsObservable()
                 .Where(_ => _isStateMouse)
                 .Where(_ => Input.anyKeyDown && !Input.GetMouseButtonDown(0))
+                .Where(_ => !ModeChanger.Instance.IsChanging)
+                .Where(_ => !ModeChanger.Instance.IsRotate)
                 .Subscribe(_ =>
                 {
                     Cursor.visible = false;
@@ -28,6 +30,8 @@ namespace GucchiCS
             this.UpdateAsObservable()
                 .Where(_ => !_isStateMouse)
                 .Where(_ => Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+                .Where(_ => !ModeChanger.Instance.IsChanging)
+                .Where(_ => !ModeChanger.Instance.IsRotate)
                 .Subscribe(_ =>
                 {
                     Cursor.visible = true;

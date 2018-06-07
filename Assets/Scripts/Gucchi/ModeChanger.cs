@@ -61,6 +61,10 @@ namespace GucchiCS
         // 選択中のオブジェクト
         GameObject _selectedObject = null;
 
+        // オブジェクト選択時のカメラのx補正値
+        [SerializeField]
+        float _correctionXPos = 10f;
+
         // sakuma
         [SerializeField]
         private RotateManager _isRotate = null;
@@ -73,6 +77,10 @@ namespace GucchiCS
                 .Subscribe(_ =>
                 {
                     ChangeMode();
+
+                    // ゲームモード以外ならオブジェクトの影設定を行う
+                    if (_mode != MODE.GAME)
+                        StageManager.Instance.SetObjectShadowMode();
                 });
 
             // 選択オブジェクトの変更
@@ -138,7 +146,13 @@ namespace GucchiCS
 
             // 移動
             Camera.main.transform.DOMove(newPos, _changeTime)
-                .OnComplete(() => { _isChanging = false; });
+                .OnComplete(() =>
+                {
+                    _isChanging = false;
+
+                    // オブジェクトの影設定
+                    StageManager.Instance.SetObjectShadowMode();
+                });
 
             // 回転
             Camera.main.transform.DOLocalRotate(newRot, _changeTime);
@@ -150,8 +164,8 @@ namespace GucchiCS
             // 移動中ならアニメーションをやめる
             Camera.main.transform.DOComplete();
 
-            // 選択したオブジェクトの手前に座標を設定
-            var newPos = new Vector3(_selectedObject.transform.position.x + 1f, Camera.main.transform.position.y, Camera.main.transform.position.z);
+            // 選択したオブジェクトのx座標を設定
+            var newPos = new Vector3(_selectedObject.transform.position.x + _correctionXPos, Camera.main.transform.position.y, Camera.main.transform.position.z);
 
             // モード変更開始
             _isChanging = true;

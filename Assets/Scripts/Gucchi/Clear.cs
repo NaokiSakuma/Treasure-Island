@@ -54,6 +54,7 @@ namespace GucchiCS
             // プレイヤーがクリアオブジェクトに触れたとき
             this.OnTriggerEnterAsObservable()
                 .Where(_ => StageManager.Instance.IsPlay)
+                .Where(_ => !_player.GetComponent<Konji.PlayerControl>().IsDead)
                 .Subscribe(col =>
                 {
                     Debug.Log("Clear enter!");

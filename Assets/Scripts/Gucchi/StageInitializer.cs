@@ -34,13 +34,9 @@ namespace GucchiCS
         [SerializeField]
         float _lastLight = 0.5f;
 
-        // 開始カメラ座標
+        // 開始時のカメラ設定
         [SerializeField]
-        Vector3 _startCameraPos = new Vector3(9f, 8f, -8f);
-
-        // 開始カメラ回転角
-        [SerializeField]
-        Vector3 _startCameraRotation = new Vector3(30f, -30f, 0f);
+        Camera _defaultCamera = null;
 
         // ゴール地点
         [SerializeField]
@@ -60,6 +56,9 @@ namespace GucchiCS
         [SerializeField]
         Button _skipButton = null;
 
+        // スキップは１回だけ呼べるようにする
+        bool _isSkiped = false;
+
         // Use this for initialization
         void Awake()
         {
@@ -68,8 +67,8 @@ namespace GucchiCS
             _clear.transform.position = new Vector3(_player.position.x, _player.position.y, 8.9f);
 
             // カメラの初期化
-            Camera.main.transform.position = _startCameraPos;
-            Camera.main.transform.localRotation = Quaternion.Euler(_startCameraRotation);
+            Camera.main.transform.position = _defaultCamera.transform.position;
+            Camera.main.transform.localRotation = _defaultCamera.transform.localRotation;
 
             // ライトの点滅でスタート
             _light.gameObject.SetActive(false);
@@ -152,6 +151,9 @@ namespace GucchiCS
             // スキップボタンを削除
             Destroy(_skipButton.gameObject);
 
+            // オブジェクトの影設定
+            StageManager.Instance.SetObjectShadowMode();
+
             Sequence seq = DOTween.Sequence()
                 .OnStart(() =>
                 {
@@ -178,6 +180,7 @@ namespace GucchiCS
                 .AppendCallback(() =>
                 {
                     StageManager.Instance.IsPlay = true;
+                    _isSkiped = true;
                 })
                 .Append(_clear.transform.DOScale(Vector3.zero, 1f))
                 .AppendCallback(() =>
@@ -198,6 +201,9 @@ namespace GucchiCS
         // スタート演出スキップ
         public void Skip()
         {
+            if (_isSkiped)
+                return;
+
             // アニメーション中であればアニメーションをやめる
             DOTween.KillAll(true);
 
@@ -210,6 +216,8 @@ namespace GucchiCS
 
             // シーケンス更新
             _sequence = SEQUENCE.CAMERA_SETTED;
+
+            _isSkiped = true;
         }
     }
 }
