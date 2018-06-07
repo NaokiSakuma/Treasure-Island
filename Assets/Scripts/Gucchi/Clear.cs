@@ -68,6 +68,7 @@ namespace GucchiCS
             // クリアロゴを表示
             this.UpdateAsObservable()
                 .Where(mode => ModeChanger.Instance.Mode == ModeChanger.MODE.CLEAR)
+                .Where(_ => !_player.GetComponent<Konji.PlayerControl>().IsDead)
                 .Take(1)
                 .Delay(System.TimeSpan.FromSeconds(_goNextTime))
                 .Subscribe(_ =>

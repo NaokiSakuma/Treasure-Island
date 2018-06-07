@@ -43,6 +43,7 @@ public class GameOverManager : MonoBehaviour {
         // ライトの点滅
         this.UpdateAsObservable()
             .Where(_ => _player.IsDead)
+            .Where(_ => GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.CLEAR)
             .Take(1)
             .Subscribe(_ => BlinkCoroutine());
 	}
