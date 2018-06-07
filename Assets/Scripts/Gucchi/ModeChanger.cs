@@ -61,6 +61,10 @@ namespace GucchiCS
         // 選択中のオブジェクト
         GameObject _selectedObject = null;
 
+        // オブジェクト選択時のカメラのx補正値
+        [SerializeField]
+        float _correctionXPos = 10f;
+
         // sakuma
         [SerializeField]
         private RotateManager _isRotate = null;
@@ -160,8 +164,8 @@ namespace GucchiCS
             // 移動中ならアニメーションをやめる
             Camera.main.transform.DOComplete();
 
-            // 選択したオブジェクトの手前に座標を設定
-            var newPos = new Vector3(_selectedObject.transform.position.x + 1f, Camera.main.transform.position.y, Camera.main.transform.position.z);
+            // 選択したオブジェクトのx座標を設定
+            var newPos = new Vector3(_selectedObject.transform.position.x + _correctionXPos, Camera.main.transform.position.y, Camera.main.transform.position.z);
 
             // モード変更開始
             _isChanging = true;
