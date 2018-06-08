@@ -88,6 +88,7 @@ namespace Konji
             //クリアしたらクリアモーション
             this.ObserveEveryValueChanged(_ => GucchiCS.ModeChanger.Instance.Mode)
                 .Where(x => x == GucchiCS.ModeChanger.MODE.CLEAR)
+                .Take(1)
                 .Subscribe(_ =>
                 {
                     _player.ClearMove();
@@ -102,15 +103,6 @@ namespace Konji
             _isDead = true;
 
             _player.DeadMove();
-
-            //rigitbody削除
-            Destroy(_player.GetComponent<Rigidbody>());
-            //Collider削除
-            Collider[] colliders = _player.GetComponents<Collider>();
-            foreach(Collider col in colliders)
-            {
-                Destroy(col);
-            }
 
             // プレイ状態解除
             GucchiCS.StageManager.Instance.GameoverEnter();
