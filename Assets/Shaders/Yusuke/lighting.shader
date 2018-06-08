@@ -127,7 +127,6 @@ Shader "Unlit/lighting"{
 
 
         Pass {
-				ZTest Always 
 
             Tags { "LightMode"="ForwardBase" }
             CGPROGRAM

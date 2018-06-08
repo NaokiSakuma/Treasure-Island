@@ -37,6 +37,7 @@ public class RotateManager : MonoBehaviour
 
     // ステージ上のオブジェクト
     private List<Transform> _stageChildObjs = new List<Transform>();
+   // private List<StageObject> stageObject;
 
     // 仮選択オブジェクトの要素番号
     private int _indexStageNum = 0;
@@ -84,6 +85,8 @@ public class RotateManager : MonoBehaviour
         foreach (Transform child in _stageObject)
         {
             _stageChildObjs.Add(child);
+            //stageObject.Add(child.GetComponent<StageObject>());
+
         }
     }
     void Start()
@@ -107,20 +110,20 @@ public class RotateManager : MonoBehaviour
                     // オブジェクトがあれば登録
                     if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask.value) && _hitObj)
                     {
+                        if(_selectedObj)
+                        _selectedObj.GetComponent<StageObject>().IsSelect = false;
                         _selectedObj = _hitObj;
                         GucchiCS.ModeChanger.Instance.SelectedObject = _selectedObj;
                         GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED;
 
                         // オブジェクトのエフェクトをONにする
-                        _selectedObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 0.0f);
-                        _selectedObj.gameObject.GetComponent<MeshRenderer>().material.SetColor("_SelectEffectColor", Color.yellow);
+                        _selectedObj.GetComponent<StageObject>().IsSelect = true;
                     }
                     // 無ければUIを消す
                     else
                     {
-                        // オブジェクトのエフェクトをOFFにする
                         if(_selectedObj)
-                        _selectedObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 1.0f);
+                        _selectedObj.GetComponent<StageObject>().IsSelect = false;
                         _selectedObj = null;
                         _buttonManager.gameObject.SetActive(false);
                         _rotateObj.SetActive(false);
@@ -135,15 +138,18 @@ public class RotateManager : MonoBehaviour
                     {
                         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask.value))
                         {
+                            if(_hitObj)
+                            _hitObj.GetComponent<StageObject>().IsTemporary = false;
                             _hitObj = hit.collider.gameObject;
+                            _hitObj.GetComponent<StageObject>().IsTemporary = true;
                         }
                         else
                         {
-                            if (!_hitObj)
-                            {
-                                // 最初に仮選択されるオブジェクト
-                                _hitObj = _stageChildObjs[0].gameObject;
-                            }
+                            if (_hitObj)
+                              _hitObj.GetComponent<StageObject>().IsTemporary = false;
+                              // 最初に仮選択されるオブジェクト
+                              _hitObj = _stageChildObjs[0].gameObject;
+                              //_hitObj.GetComponent<StageObject>().IsTemporary = true;
                         }
                     }
                     // WASD仮選択
@@ -152,14 +158,18 @@ public class RotateManager : MonoBehaviour
                     {
                         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A))
                         {
+                            _hitObj.GetComponent<StageObject>().IsTemporary = false;
                             _indexStageNum = (_indexStageNum + 1 >= _stageChildObjs.Count) ? 0 : ++_indexStageNum;
                             _hitObj = _stageChildObjs[_indexStageNum].gameObject;
+                            _hitObj.GetComponent<StageObject>().IsTemporary = true;
                         }
                         // 前の要素
                         else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
                         {
+                            _hitObj.GetComponent<StageObject>().IsTemporary = false;
                             _indexStageNum = (_indexStageNum - 1 < 0) ? _stageChildObjs.Count - 1 : --_indexStageNum;
                             _hitObj = _stageChildObjs[_indexStageNum].gameObject;
+                            _hitObj.GetComponent<StageObject>().IsTemporary = true;
                         }
                     }
                 }
@@ -212,15 +222,11 @@ public class RotateManager : MonoBehaviour
             .Where(_ => GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
             .Subscribe(_ =>
             {
-                // オブジェクトのエフェクトをOFFにする
-                if (_selectedObj)
-                {
-                    _selectedObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 1.0f);
-                }
-                if (_hitObj)
-                {
-                    _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 1.0f);
-                }
+                if(_hitObj)
+                _hitObj.GetComponent<StageObject>().IsTemporary = false;
+                if(_selectedObj)
+                _selectedObj.GetComponent<StageObject>().IsSelect = false;
+
                 _buttonManager.gameObject.SetActive(false);
                 _selectedObj = null;
 
@@ -234,9 +240,11 @@ public class RotateManager : MonoBehaviour
             .Subscribe(_ =>
             {
                 _buttonManager.gameObject.SetActive(false);
+                if(_hitObj)
+                _hitObj.GetComponent<StageObject>().IsTemporary = false;
+                if(_selectedObj)
+                _selectedObj.GetComponent<StageObject>().IsSelect = false;
                 _hitObj = null;
-                // オブジェクトのエフェクトをOFFにする
-                _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 1.0f);
 
             });
 
@@ -283,11 +291,35 @@ public class RotateManager : MonoBehaviour
     }
 
 
-    private void  HitEffectOn()
-    {
-        // オブジェクトのエフェクトをONにする
-        _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 0.0f);
-        _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetColor("_SelectEffectColor", Color.blue);
+    //// 仮選択オブジェクトのエフェクトをONにする
+    //private void  HitEffectOn()
+    //{
+    //    if (_selectedObj == _hitObj)
+    //        return;
+    //    _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 0.0f);
+    //    _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetColor("_SelectEffectColor", Color.blue);
+    //}
 
-    }
+    //// 選択オブジェクトのエフェクトをONにする
+    //private void SelectEffectOn()
+    //{
+    //    _selectedObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 0.0f);
+    //    _selectedObj.gameObject.GetComponent<MeshRenderer>().material.SetColor("_SelectEffectColor", Color.yellow);
+    //}
+
+    //// 仮選択オブジェクトのエフェクトをOFFにする
+    //private void HitEffectOff()
+    //{
+    //    if (!_hitObj&& !_selectedObj || _hitObj == _selectedObj)
+    //        return;
+    //    _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 1.0f);
+    //}
+   
+    //// 選択オブジェクトのエフェクトをOFFにする
+    //private void SelectEffectOff()
+    //{
+    //    if (!_selectedObj && !_hitObj)
+    //        return;
+    //    _selectedObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 1.0f);
+    //}
 }
