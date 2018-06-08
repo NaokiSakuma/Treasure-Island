@@ -69,6 +69,21 @@ namespace Konji
             LayerMask layermask = 1 << LayerMask.NameToLayer("Shadow");
             int distance = 30;
 
+            Vector3 spherePos = this.transform.position + new Vector3(0, -0.25f, 0);
+            Debug.Log(spherePos);
+            Collider[] colliders = Physics.OverlapSphere(spherePos, 0.27f, layermask);
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                if(colliders[i].gameObject != gameObject)
+                {
+                    //Y軸の移動制限
+                    grv = Vector3.zero;
+                    _rigit.velocity = new Vector2(_rigit.velocity.x, 0);
+
+                    _animator.SetBool("Ground", true);
+                }
+            }
+
             //地面判定
             Ray groundRay = new Ray(_nestCheck[(int)NEST.BUTTOM].position + new Vector3(0,0,distance / 2), new Vector3(0, 0, -1));
             Debug.DrawRay(groundRay.origin, groundRay.direction * distance);
