@@ -94,10 +94,12 @@ namespace GucchiCS
                 .Where(_ => Input.GetKeyDown(KeyCode.S))
                 .Take(1)
                 .Subscribe(_ => Skip());
+        }
 
+        void Start()
+        {
             // BGMを再生
-            AudioManager.Instance.PlayBGM(AUDIO.BGM_TITLE, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
-            //PlaybackBGM();
+            PlaybackBGM();
         }
 
         // 点滅
