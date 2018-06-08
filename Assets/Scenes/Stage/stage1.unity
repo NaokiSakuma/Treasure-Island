@@ -1634,7 +1634,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a0806e68903c44e4db6dcc18d4920b40, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a0806e68903c44e4db6dcc18d4920b40, type: 3}
       propertyPath: m_LocalScale.x
@@ -1652,6 +1652,10 @@ Prefab:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: a0806e68903c44e4db6dcc18d4920b40, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8be226a4d4c46824c9690359b0df5645, type: 2}
     m_RemovedComponents:
     - {fileID: 9500000, guid: a0806e68903c44e4db6dcc18d4920b40, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: a0806e68903c44e4db6dcc18d4920b40, type: 3}
@@ -1875,6 +1879,17 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a0806e68903c44e4db6dcc18d4920b40, type: 3}
+--- !u!114 &1614640749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1614640747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14a1335b20cac144b55b77143770b8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1687237610
 GameObject:
   m_ObjectHideFlags: 0

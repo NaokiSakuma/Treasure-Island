@@ -1632,6 +1632,10 @@ Prefab:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: a4b0c4b4cae17c1458ed3b6e54b1064a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8be226a4d4c46824c9690359b0df5645, type: 2}
     m_RemovedComponents:
     - {fileID: 9500000, guid: a4b0c4b4cae17c1458ed3b6e54b1064a, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: a4b0c4b4cae17c1458ed3b6e54b1064a, type: 3}
@@ -1658,6 +1662,17 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a4b0c4b4cae17c1458ed3b6e54b1064a, type: 3}
+--- !u!114 &1222291253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1222291249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14a1335b20cac144b55b77143770b8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1253548220
 GameObject:
   m_ObjectHideFlags: 0

@@ -112,12 +112,15 @@ public class RotateManager : MonoBehaviour
                         GucchiCS.ModeChanger.Instance.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED;
 
                         // オブジェクトのエフェクトをONにする
-                        _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 0.0f);
-                        _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetColor("_SelectEffectColor", Color.yellow);
+                        _selectedObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 0.0f);
+                        _selectedObj.gameObject.GetComponent<MeshRenderer>().material.SetColor("_SelectEffectColor", Color.yellow);
                     }
                     // 無ければUIを消す
                     else
                     {
+                        // オブジェクトのエフェクトをOFFにする
+                        if(_selectedObj)
+                        _selectedObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 1.0f);
                         _selectedObj = null;
                         _buttonManager.gameObject.SetActive(false);
                         _rotateObj.SetActive(false);
@@ -160,6 +163,7 @@ public class RotateManager : MonoBehaviour
                         }
                     }
                 }
+
             });
 
         // debug用
@@ -208,6 +212,15 @@ public class RotateManager : MonoBehaviour
             .Where(_ => GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
             .Subscribe(_ =>
             {
+                // オブジェクトのエフェクトをOFFにする
+                if (_selectedObj)
+                {
+                    _selectedObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 1.0f);
+                }
+                if (_hitObj)
+                {
+                    _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 1.0f);
+                }
                 _buttonManager.gameObject.SetActive(false);
                 _selectedObj = null;
 
@@ -222,6 +235,9 @@ public class RotateManager : MonoBehaviour
             {
                 _buttonManager.gameObject.SetActive(false);
                 _hitObj = null;
+                // オブジェクトのエフェクトをOFFにする
+                _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 1.0f);
+
             });
 
         // 回転中はボタンを押せなくする（グレーアウト）
@@ -264,5 +280,14 @@ public class RotateManager : MonoBehaviour
         yield return null;
         _buttonManager.gameObject.SetActive(true);
         _rotateObj.SetActive(true);
+    }
+
+
+    private void  HitEffectOn()
+    {
+        // オブジェクトのエフェクトをONにする
+        _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetFloat("_IsSelectEffect", 0.0f);
+        _hitObj.gameObject.GetComponent<MeshRenderer>().material.SetColor("_SelectEffectColor", Color.blue);
+
     }
 }

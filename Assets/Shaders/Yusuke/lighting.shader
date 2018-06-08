@@ -26,12 +26,21 @@ Shader "Unlit/lighting"{
 
         Blend SrcAlpha OneMinusSrcAlpha
         LOD 100
+		
 
-		//選択時エフェクト
-		pass
+				Tags { 
+		"RenderType"="Transparent"
+		"Queue"="Background"
+		 }
+
+        Alphatest Greater [_Cutoff]
+
+        Tags { "Queue"="Geometry" "RenderType"="Opaque"}
+
+				pass
         {
-            Cull Front
-
+            Cull Front  
+			ZWrite Off
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -78,23 +87,17 @@ Shader "Unlit/lighting"{
             ENDCG
         }
 
-				Tags { 
-		"RenderType"="Transparent"
-		"Queue"="Background"
-		 }
 
-			//輪郭
+		//輪郭
 		Pass
         {
-
-            Cull Front
-
+		    Cull Front
+			ZWrite Off  
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
 
             #include "UnityCG.cginc"
-
             struct appdata
             {
                 float4 vertex : POSITION;
@@ -122,16 +125,11 @@ Shader "Unlit/lighting"{
             ENDCG
         }
 
-        ZWrite On
-        Blend SrcAlpha OneMinusSrcAlpha
-        Alphatest Greater [_Cutoff]
-
-        Tags { "Queue"="Geometry" "RenderType"="Opaque"}
 
         Pass {
-            Tags { "LightMode"="ForwardBase" }
-			Ztest Always
+				ZTest Always 
 
+            Tags { "LightMode"="ForwardBase" }
             CGPROGRAM
 
             float4 _LightColor0;
@@ -204,7 +202,7 @@ Shader "Unlit/lighting"{
                 color.rgb  = UNITY_LIGHTMODEL_AMBIENT.rgb * 2 * tex.rgb;
                 color.rgb += (tex.rgb * _LightColor0.rgb * diff + _LightColor0.rgb * _SpecColor.rgb * spec) * (atten * 2);
                 color.a    = tex.a + (_LightColor0.a * _SpecColor.a * spec * atten);
-
+				color.a = 1;
                 return color;
             }
 
@@ -216,7 +214,6 @@ Shader "Unlit/lighting"{
    //         Tags { "LightMode"="ForwardAdd" }
 
    //         Blend One One
-			//Ztest Always
 
    //         CGPROGRAM
 
@@ -288,6 +285,8 @@ Shader "Unlit/lighting"{
 
    //         ENDCG
    //     }
+				//選択時エフェクト
+
     }
     FallBack "Diffuse"
 }
