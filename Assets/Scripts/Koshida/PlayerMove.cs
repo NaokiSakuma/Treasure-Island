@@ -173,16 +173,40 @@ namespace Konji
 
         public void ClearMove()
         {
+            DeleteRigitBody();
+
+            _animator.speed = 0;
+
             //クリアアニメーション
-            _animator.SetBool("Clear", true);
+            Observable.Timer(System.TimeSpan.FromSeconds(4))
+                .Subscribe(_ =>
+                {
+                    _animator.speed = 1;
+                    _animator.SetBool("Clear", true);
+                })
+                .AddTo(this);
         }
 
         public void DeadMove()
         {
-            _rigit.velocity = Vector2.zero;
+            DeleteRigitBody();
 
             //死亡アニメーション
             _animator.SetBool("Dead", true);
         }
+
+        public void DeleteRigitBody()
+        {
+            //rigitbody削除
+            Destroy(GetComponent<Rigidbody>());
+            //Collider削除
+            Collider[] colliders = GetComponents<Collider>();
+            foreach (Collider col in colliders)
+            {
+                Destroy(col);
+            }
+
+        }
+
     }
 }
