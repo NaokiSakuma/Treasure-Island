@@ -12,9 +12,6 @@ public class ModeIcons : MonoBehaviour {
 	[SerializeField, Tooltip("オブジェクト操作アイコン")]
 	private Sprite _objectIcon;
 
-	[SerializeField, Tooltip("ライト操作アイコン")]
-	private Sprite _lightIcon;
-
 	// 操作モード
 	public enum Mode{
 		None,
@@ -29,12 +26,14 @@ public class ModeIcons : MonoBehaviour {
 	private Mode _currentMode = Mode.Character;
 
 	void Start () {
-		var image = GetComponentInChildren<Image>();
+		var image = gameObject.GetComponentInChildrenWithoutSelf<Image>();
 
 		this.ObserveEveryValueChanged(x => _currentMode)
 			.Subscribe(mode => {
 				IconChange(image, mode);
 			});
+
+		_currentMode = Mode.Character;
 	}
 
 	void IconChange(Image image, Mode mode){
@@ -44,9 +43,6 @@ public class ModeIcons : MonoBehaviour {
 				break;
 			case Mode.Object:
 				image.sprite = _objectIcon;
-				break;
-			case Mode.Light:
-				image.sprite = _lightIcon;
 				break;
 		}
 	}
