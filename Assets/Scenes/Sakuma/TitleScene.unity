@@ -169,6 +169,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: aabd5b29bc868664b89e6095dfbf4088, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: aabd5b29bc868664b89e6095dfbf4088, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: aabd5b29bc868664b89e6095dfbf4088, type: 3}
@@ -647,6 +651,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: fccdd4f70fd51164db2b1d5d8e0bd281, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: fccdd4f70fd51164db2b1d5d8e0bd281, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: fccdd4f70fd51164db2b1d5d8e0bd281, type: 3}
@@ -855,6 +863,10 @@ Prefab:
     - target: {fileID: 400000, guid: f8ba9ec2bc81ebc4fbb8513ccc43b6df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f8ba9ec2bc81ebc4fbb8513ccc43b6df, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: f8ba9ec2bc81ebc4fbb8513ccc43b6df, type: 3}
@@ -1217,6 +1229,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f04cef88d712e204bad6a408c0b3ccf4, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: f04cef88d712e204bad6a408c0b3ccf4, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: f04cef88d712e204bad6a408c0b3ccf4, type: 3}
@@ -1496,7 +1512,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1491170785}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: StageObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2278,7 +2294,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 6d011311b32113b489ebe8ec42efdb02, type: 3}
       propertyPath: m_Layer
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2300008, guid: 6d011311b32113b489ebe8ec42efdb02, type: 3}
       propertyPath: m_Enabled
