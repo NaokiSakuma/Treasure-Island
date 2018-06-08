@@ -82,6 +82,10 @@ public class GameOverManager : MonoBehaviour {
             .DelayFrame(10)
             .Subscribe(_ =>
             {
+                // SEを鳴らす
+                AudioManager.Instance.StopBGM();
+                AudioManager.Instance.PlaySE(AUDIO.SE_GAMEOVER);
+
                 GameObject prefab = (GameObject)Instantiate(_overPrefab);
                 prefab.transform.SetParent(_canvas.transform, false);
             });

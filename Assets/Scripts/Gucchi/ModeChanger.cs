@@ -81,6 +81,9 @@ namespace GucchiCS
                     // ゲームモード以外ならオブジェクトの影設定を行う
                     if (_mode != MODE.GAME)
                         StageManager.Instance.SetObjectShadowMode();
+
+                    // SEを鳴らす
+                    AudioManager.Instance.PlaySE(AUDIO.SE_VIEWCHANGE);
                 });
 
             // 選択オブジェクトの変更

@@ -118,6 +118,10 @@ namespace GucchiCS
             {
                 Debug.Log("ここでクリアUI出すよ");
 
+                // SEを鳴らす
+                AudioManager.Instance.StopBGM();
+                AudioManager.Instance.PlaySE(AUDIO.SE_CLEAR);
+
                 // クリアUIの生成
                 //GameObject clearUI = Instantiate(_clearUI);
                 //clearUI.transform.SetParent(_canvas.transform, false);

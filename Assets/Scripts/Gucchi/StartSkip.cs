@@ -12,6 +12,9 @@ namespace GucchiCS
 
         public void OnClick()
         {
+            // SEを鳴らす
+            AudioManager.Instance.PlaySE(AUDIO.SE_BUTTON);
+
             _initializer.GetComponent<StageInitializer>().Skip();
         }
     }

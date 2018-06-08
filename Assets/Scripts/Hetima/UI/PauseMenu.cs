@@ -98,8 +98,8 @@ public class PauseMenu : MonoBehaviour {
             .Where(_ => Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
 			.Where(_ => _item != null)
 			.Subscribe(_ => {
-				// 対象のアイテムのアクションを実行
-				_item.OnClick();
+                // 対象のアイテムのアクションを実行
+                _item.OnClick();
 			});
 
 		// マウス座標が変更された時にレイを飛ばす
