@@ -219,8 +219,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e29b0e91625cb4fa54a73dd30060b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationTime: 3
+  _animationTime: 1.5
   _stageObject: {fileID: 0}
+  _player: {fileID: 0}
   _buttonManager: {fileID: 0}
   _rotateObj: {fileID: 0}
   layerMask:
@@ -275,8 +276,7 @@ MonoBehaviour:
   _blinkTime: 0.1
   _blinkNum: 3
   _lastLight: 0.5
-  _startCameraPos: {x: 9, y: 8, z: -8}
-  _startCameraRotation: {x: 42, y: -18, z: 0}
+  _defaultCamera: {fileID: 0}
   _goalPos: {x: 2.85, y: -0.05, z: 8.9}
   _skipButton: {fileID: 0}
 --- !u!114 &114495575328868704
@@ -297,6 +297,7 @@ MonoBehaviour:
   _gameScreenDistance: 9
   _playerDistance: 3
   _changeTime: 1
+  _correctionXPos: 1
   _isRotate: {fileID: 114096028921530774}
 --- !u!114 &114586200250804390
 MonoBehaviour:
@@ -349,6 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stageNo: 1
+  _stageObjects: {fileID: 0}
 --- !u!114 &114956342744635700
 MonoBehaviour:
   m_ObjectHideFlags: 1
