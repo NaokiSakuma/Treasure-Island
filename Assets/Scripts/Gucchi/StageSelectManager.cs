@@ -63,6 +63,9 @@ namespace GucchiCS
                     ChangeLightAction(numBlock);
                     return;
                 });
+
+            // BGMを再生
+            //AudioManager.Instance.PlayBGM(AUDIO.BGM_STAGESELECT, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
         }
 
         // ライト回転

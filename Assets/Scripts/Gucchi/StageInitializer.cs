@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace GucchiCS
@@ -93,6 +94,10 @@ namespace GucchiCS
                 .Where(_ => Input.GetKeyDown(KeyCode.S))
                 .Take(1)
                 .Subscribe(_ => Skip());
+
+            // BGMを再生
+            AudioManager.Instance.PlayBGM(AUDIO.BGM_TITLE, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
+            //PlaybackBGM();
         }
 
         // 点滅
@@ -218,6 +223,18 @@ namespace GucchiCS
             _sequence = SEQUENCE.CAMERA_SETTED;
 
             _isSkiped = true;
+        }
+
+        // BGMを再生
+        void PlaybackBGM()
+        {
+            if (SceneManager.GetActiveScene().name == SingletonName.TITLE_SCENE)
+            {
+                AudioManager.Instance.PlayBGM(AUDIO.BGM_TITLE, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
+                return;
+            }
+
+            AudioManager.Instance.PlayBGM(AUDIO.BGM_STAGE, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
         }
     }
 }
