@@ -50,8 +50,8 @@ public class ModeIcons : MonoBehaviour {
 	/// モード切り替え
 	/// </summary>
 	public void SwitchMode(){
-		// ポーズ中は処理しない
-		if(Pausable.Instance.pausing){
+		// プレイ状態ではないとき、ポーズ中、モード切り替え中、オブジェクト回転中は処理しない
+		if(!GucchiCS.StageManager.Instance.IsPlay || Pausable.Instance.pausing || GucchiCS.ModeChanger.Instance.IsChanging || GucchiCS.ModeChanger.Instance.IsRotate){
 			return;
 		}
 		var mc = GucchiCS.ModeChanger.Instance;
