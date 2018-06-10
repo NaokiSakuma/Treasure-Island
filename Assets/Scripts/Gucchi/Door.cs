@@ -41,6 +41,9 @@ namespace GucchiCS
                             // ガードの削除
                             Destroy(_guard);
 
+                            // SEを鳴らす
+                            AudioManager.Instance.PlaySE(AUDIO.SE_DOORZOOM);
+
                             // フェード用パネルの生成
                             fadeInCanvas = Instantiate(_fadeInCanvas);
                             fadePanel = fadeInCanvas.GetComponentInChildren<Image>();

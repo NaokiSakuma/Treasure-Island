@@ -73,6 +73,9 @@ namespace GucchiCS
         {
             _isChanging = true;
 
+            // SEを鳴らす
+            AudioManager.Instance.PlaySE(AUDIO.SE_OBJECTROTATE);
+
             // すべてのブロックを移動
             foreach (SelectLight block in _blockList)
             {

@@ -100,6 +100,9 @@ namespace GucchiCS
         {
             // BGMを再生
             PlaybackBGM();
+
+            // ボリュームを最大にする
+            AudioManager.Instance.ChangeVolume(1f, 1f);
         }
 
         // 点滅

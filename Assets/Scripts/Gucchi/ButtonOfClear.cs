@@ -61,6 +61,9 @@ namespace GucchiCS
                     Color fadePanelColor = fadePanel.material.color;
                     fadePanelColor.a = 0f;
                     fadePanel.material.color = fadePanelColor;
+
+                    // SEを鳴らす
+                    AudioManager.Instance.PlaySE(AUDIO.SE_DOORZOOM);
                 })
                 .AppendCallback(() =>
                 {

@@ -45,6 +45,9 @@ public class RotateObjects : MonoBehaviour {
             .Where(_ => !_rotateManager.IsRotate)
             .Subscribe(_ =>
             {
+                // SEを鳴らす
+                AudioManager.Instance.PlaySE(AUDIO.SE_OBJECTROTATE);
+
                 // 回転する
                 _rotateManager.IsRotate = true;
                 OnClickRotate();

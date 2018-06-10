@@ -14,6 +14,9 @@ namespace GucchiCS
         // クリック時
         public void OnClickRetry()
         {
+            // SEを鳴らす
+            AudioManager.Instance.PlaySE(AUDIO.SE_BUTTON);
+
             // 現在のステージ番号を取得
             int stageNo = StageManager.Instance.StageNo;
 
@@ -23,6 +26,9 @@ namespace GucchiCS
         // クリック時
         public void OnClickStageSelect()
         {
+            // SEを鳴らす
+            AudioManager.Instance.PlaySE(AUDIO.SE_BUTTON);
+
             SceneManager.LoadScene(_sceneName);
         }
     }
