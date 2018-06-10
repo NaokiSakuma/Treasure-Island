@@ -9,11 +9,13 @@ public class SimplePauseItem : MonoBehaviour, IPauseItem {
 		
 	}
 
-	public void OnClick(){
+	virtual public void OnClick(){
 	}
+
 	public void OnEnter(){
 		transform.GetComponent<Renderer>().material.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
 	}
+	
 	public void OnExit(){
 		transform.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 	}

@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 33299018825593616}
   - component: {fileID: 65463261017378132}
   - component: {fileID: 23385131923537526}
-  - component: {fileID: 114860510266095868}
+  - component: {fileID: 114003799255382848}
   m_Layer: 15
   m_Name: Item 1
   m_TagString: Untagged
@@ -729,6 +729,18 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &114003799255382848
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1824358131284408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ecc5b5a100aa3a418941501c7bab7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: "\u30B2\u30FC\u30E0\u306B\u623B\u308B"
 --- !u!114 &114552326215603846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -773,14 +785,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71a485ee7b4a2c44fa043d9d2a135c36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114860510266095868
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1824358131284408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46591041ddac85c42900e8667cdefbf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _throttleSeconds: 0.1
+  _selectNum: 0

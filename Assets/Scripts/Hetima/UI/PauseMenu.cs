@@ -26,7 +26,8 @@ public class PauseMenu : MonoBehaviour {
 	// 入力のしきい値
 	private float _threshold = 0.9f;
 	// 連続入力を許容する時間
-	private float _throttleSeconds = 200.0f;
+	[SerializeField, Range(0.0f, 1.0f)]
+	private float _throttleSeconds = 0.1f;
 	// 項目の数
 	private int _itemNum;
 
@@ -88,15 +89,16 @@ public class PauseMenu : MonoBehaviour {
 
 		// 入力方向が変更されたら選択項目を移動する
 		_inputDirection
-			.ThrottleFirst(TimeSpan.FromMilliseconds(_throttleSeconds))
+			.ThrottleFirst(TimeSpan.FromSeconds(_throttleSeconds))
 			.Subscribe(x => {
 				SelectNum += x;
 			});
 			
-		// クリックされた時の処理
+		// 決定された時の処理
 		this.UpdateAsObservable()
             .Where(_ => Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
 			.Where(_ => _item != null)
+			.Where(_ => Pausable.Instance.pausing)
 			.Subscribe(_ => {
                 // 対象のアイテムのアクションを実行
                 _item.OnClick();
