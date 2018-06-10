@@ -96,13 +96,34 @@ public class PauseMenu : MonoBehaviour {
 			
 		// 決定された時の処理
 		this.UpdateAsObservable()
-            .Where(_ => Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
+            .Where(_ => Input.GetKeyDown(KeyCode.Return))
 			.Where(_ => _item != null)
 			.Where(_ => Pausable.Instance.pausing)
 			.Subscribe(_ => {
                 // 対象のアイテムのアクションを実行
                 _item.OnClick();
 			});
+
+		this.UpdateAsObservable()
+			.Where(_ => Input.GetMouseButtonDown(0))
+			.Where(_ => _item != null)
+			.Where(_ => Pausable.Instance.pausing)
+			.Subscribe(_ => {
+				Ray ray = Camera.main.ScreenPointToRay(_mousePosition.Value);
+				// 衝突したオブジェクトを全て取得
+				// TODO: レイの長さを制限する
+				RaycastHit[] hits = Physics.RaycastAll(ray, Mathf.Infinity);
+
+				foreach(var obj in hits){
+					// 対象のコンポーネントを特定
+					var component = obj.transform.GetComponent<IPauseItem>();
+					if(component != null){
+						component.OnClick();
+						break;
+					}
+				}
+			});
+
 
 		// マウス座標が変更された時にレイを飛ばす
 		_mousePosition
