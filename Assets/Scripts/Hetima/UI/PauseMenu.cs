@@ -11,11 +11,12 @@ public class PauseMenu : MonoBehaviour {
 	// 選択中の項目
 	private IPauseItem _item = null;
 
+	// Tweenに使用する変数
+	private Vector3 _startPos;
+	private Vector3 _startRot;
 	private Vector3 _goalPos = new Vector3(-6.0f, 1.0f, -20.0f);
 	private Vector3 _goalRot = new Vector3(0.0f, -75.0f, 0.0f);
 	private float _duration = 1.0f;
-
-	private Vector3 _startPos;
 
 	private Tweener _tweener;
 
@@ -57,11 +58,13 @@ public class PauseMenu : MonoBehaviour {
         this.ObserveEveryValueChanged(x => Pausable.Instance.pausing)
             .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
 			.Subscribe(x => {
+				// 停止中で再生中でないなら基点の更新
 				if(x && !_tweener.IsPlaying()){
 					_startPos = Camera.main.transform.position;
+					_startRot = Camera.main.transform.rotation.eulerAngles;
 				}
 				_tweener = Camera.main.transform.DOMove(x ? _goalPos : _startPos, _duration);
-				Camera.main.transform.DORotate(x ? _goalRot : Vector3.zero, _duration);
+				Camera.main.transform.DORotate(x ? _goalRot : _startRot, _duration);
 			});
 
 		// マウスカーソル移動を取得
