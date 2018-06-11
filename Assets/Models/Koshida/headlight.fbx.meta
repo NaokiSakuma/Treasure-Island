@@ -1,40 +1,28 @@
 fileFormatVersion: 2
-guid: d56d839a3efe5d444b0f49cf11c97f5c
-timeCreated: 1528550431
+guid: ac3a8b5a30ee82040b0ee1273e4c5d5b
+timeCreated: 1528550812
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Foot
-    2100002: sityuu
-    2100004: Foot.001
-    2100006: Foot.002
+    2100000: HeadLight
+    2100002: Lenz
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Cylinder.003
+    4300000: Circle
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Foot
+      name: HeadLight
     second: {fileID: 2100000, guid: d34cd3a0113222c4d8ea2a54ca848c98, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Foot.001
-    second: {fileID: 2100000, guid: d34cd3a0113222c4d8ea2a54ca848c98, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Foot.002
-    second: {fileID: 2100000, guid: d34cd3a0113222c4d8ea2a54ca848c98, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: sityuu
-    second: {fileID: 2100000, guid: a242adf627f11084eb3586aa51697e1a, type: 2}
+      name: Lenz
+    second: {fileID: 2100000, guid: 9347824cba7a9284ab84a44e1d53c44d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
