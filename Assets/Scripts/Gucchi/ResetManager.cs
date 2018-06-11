@@ -49,10 +49,10 @@ namespace GucchiCS
             _player.rotation = _temp[(int)OBJECT.PLAYER].Item2;
 
             // 各オブジェクト
-            for (int i = (int)OBJECT.ROTATE_OBJECT; i < _rotateObjects.Count; i++)
+            for (int i = (int)OBJECT.ROTATE_OBJECT; i <= _rotateObjects.Count; i++)
             {
-                _rotateObjects[i].transform.position = _temp[i].Item1;
-                _rotateObjects[i].transform.rotation = _temp[i].Item2;
+                _rotateObjects[i - 1].transform.position = _temp[i].Item1;
+                _rotateObjects[i - 1].transform.rotation = _temp[i].Item2;
             }
 
             // オブジェクトの選択

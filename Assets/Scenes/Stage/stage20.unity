@@ -214,6 +214,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8be226a4d4c46824c9690359b0df5645, type: 2}
+    - target: {fileID: 100000, guid: 6385b5c1c3b1118488c527c17b57cdaa, type: 3}
+      propertyPath: m_TagString
+      value: RotateObject
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 6385b5c1c3b1118488c527c17b57cdaa, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 6385b5c1c3b1118488c527c17b57cdaa, type: 3}
@@ -947,6 +951,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8be226a4d4c46824c9690359b0df5645, type: 2}
+    - target: {fileID: 100000, guid: 3285212da78617a48bd96fdd1433af2c, type: 3}
+      propertyPath: m_TagString
+      value: RotateObject
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 3285212da78617a48bd96fdd1433af2c, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 3285212da78617a48bd96fdd1433af2c, type: 3}
@@ -2659,12 +2667,12 @@ Prefab:
     - target: {fileID: 224262717363046618, guid: 2f3008b54c738e44dacdfff3df34f269,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 10
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 224262717363046618, guid: 2f3008b54c738e44dacdfff3df34f269,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 10
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 224262717363046618, guid: 2f3008b54c738e44dacdfff3df34f269,
         type: 2}
