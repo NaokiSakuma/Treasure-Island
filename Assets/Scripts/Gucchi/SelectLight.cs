@@ -22,13 +22,13 @@ namespace GucchiCS
             var scroll = Input.GetAxis("Mouse ScrollWheel");
 
             // 移動処理
-            if (scroll > 0)
+            if (scroll > 0 || Input.GetKeyDown(KeyCode.W))
             {
                 transform.DORotate(new Vector3(0f, 0f, (360f / numBlock)), 1f, RotateMode.WorldAxisAdd)
                     .SetRelative()
                     .OnComplete(() => StageSelectManager.Instance.AnimationCompleteNotify());
             }
-            else if (scroll < 0)
+            else if (scroll < 0 || Input.GetKeyDown(KeyCode.S))
             {
                 transform.DORotate(new Vector3(0f, 0f, -(360f / numBlock)), 1f, RotateMode.WorldAxisAdd)
                     .SetRelative()

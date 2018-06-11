@@ -20,6 +20,13 @@ namespace GucchiCS
         // ライト変更中かどうか
         bool _isChanging = false;
 
+        // 扉
+        List<Door> _doors = new List<Door>();
+
+        // 仮選択中の扉（初期選択を指定）
+        [SerializeField]
+        Door _selectedDoor = null;
+
         // Use this for initialization
         void Start()
         {
@@ -40,13 +47,61 @@ namespace GucchiCS
                         child.position = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle) * _posInterval, Mathf.Sin(Mathf.Deg2Rad * angle) * _posInterval, -10f);
                         child.LookAt(child.root);
                         child.rotation = Quaternion.Euler(-angle, -angle, 0f);
+
+                        _doors.Add(child.GetComponent<Door>());
                     }
                 }
             }
 
+            // 初期の仮選択を設定
+            _selectedDoor.OnSelectEnter();
+
+            // 仮選択
+            this.FixedUpdateAsObservable()
+                .Subscribe(_ =>
+                {
+                    // マウスステート
+                    if (ControlState.Instance.IsStateMouse)
+                    {
+                        // マウスの位置からrayを飛ばす
+                        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                        RaycastHit hit = new RaycastHit();
+
+                        if (Physics.Raycast(ray, out hit, LayerMask.NameToLayer("Door")))
+                        {
+                            Door door = hit.collider.GetComponent<Door>();
+
+                            if (door != null && door != _selectedDoor)
+                            {
+                                _selectedDoor.OnSelectExit();
+                                _selectedDoor = door;
+                                _selectedDoor.OnSelectEnter();
+                            }
+                        }
+                    }
+                    // キーステート
+                    else
+                    {
+                        //// 選択中の扉番号
+                        //int doorID = _selectedDoor.DoorID;
+
+                        //// ブロック内の扉数
+                        //int doorNum = _blockList[0].transform.childCount;
+
+                        //// 横列の扉数
+                        //int doorColumnNum = _blockList[0].transform.childCount / 2;
+
+                        //if (Input.GetKeyDown(KeyCode.A))
+                        //{
+                            
+                        //}
+                    }
+                });
+
             // ホイール操作（手前）でライト変更
             this.UpdateAsObservable()
                 .Where(_ => Input.GetAxis("Mouse ScrollWheel") < 0)
+                .Where(_ => ControlState.Instance.IsStateMouse)
                 .Where(_ => !_isChanging)
                 .Subscribe(_ =>
                 {
@@ -57,12 +112,24 @@ namespace GucchiCS
             // ホイール操作（奥）でライト変更
             this.UpdateAsObservable()
                 .Where(_ => Input.GetAxis("Mouse ScrollWheel") > 0)
+                .Where(_ => ControlState.Instance.IsStateMouse)
                 .Where(_ => !_isChanging)
                 .Subscribe(_ =>
                 {
                     ChangeLightAction(numBlock);
                     return;
                 });
+
+            // WSキーでライト変更
+            this.UpdateAsObservable()
+                .Where(_ => Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
+                .Where(_ => !ControlState.Instance.IsStateMouse)
+                .Where(_ => !_isChanging)
+                .Subscribe(_ =>
+                {
+                    ChangeLightAction(numBlock);
+                    return;
+                }); 
 
             // BGMを再生
             AudioManager.Instance.PlayBGM(AUDIO.BGM_STAGESELECT, AudioManager.BGM_FADE_SPEED_RATE_HIGH);

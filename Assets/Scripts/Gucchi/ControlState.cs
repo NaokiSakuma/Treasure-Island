@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GucchiCS
 {
@@ -18,8 +19,7 @@ namespace GucchiCS
             this.UpdateAsObservable()
                 .Where(_ => _isStateMouse)
                 .Where(_ => Input.anyKeyDown && !Input.GetMouseButtonDown(0))
-                .Where(_ => !ModeChanger.Instance.IsChanging)
-                .Where(_ => !ModeChanger.Instance.IsRotate)
+                .Where(_ => CheckState())
                 .Subscribe(_ =>
                 {
                     Cursor.visible = false;
@@ -30,14 +30,27 @@ namespace GucchiCS
             this.UpdateAsObservable()
                 .Where(_ => !_isStateMouse)
                 .Where(_ => Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
-                .Where(_ => !ModeChanger.Instance.IsChanging)
-                .Where(_ => !ModeChanger.Instance.IsRotate)
+                .Where(_ => CheckState())
                 .Subscribe(_ =>
                 {
                     Cursor.visible = true;
                     _isStateMouse = true;
                 });
         }
+
+        // ステートチェック
+        bool CheckState()
+        {
+            // ステージ選択画面なら通す
+            if (SceneManager.GetActiveScene().name == "StageSelect")
+            {
+                return true;
+            }
+
+            return !ModeChanger.Instance.IsChanging && !ModeChanger.Instance.IsRotate;
+        }
+
+        /* プロパティ */
 
         // マウス操作状態かどうか
         public bool IsStateMouse
