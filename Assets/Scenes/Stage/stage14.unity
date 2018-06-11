@@ -1630,6 +1630,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 831724646}
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &831724649 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1506864565540196, guid: 53fa22dbe32d2d448996945db4f6bbe4,
+    type: 2}
+  m_PrefabInternal: {fileID: 831724646}
 --- !u!1001 &841404917
 Prefab:
   m_ObjectHideFlags: 0
@@ -2759,6 +2764,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114966446619321518, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: _rotateObjects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4273787636980188, guid: f5f986a361e915941859d1fffeb2df9c, type: 2}
       propertyPath: m_LocalPosition.x
       value: -13
@@ -2791,6 +2801,41 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114481722530873590, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 802046591}
+    - target: {fileID: 114481722530873590, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: _skipButton
+      value: 
+      objectReference: {fileID: 831724649}
+    - target: {fileID: 114966446619321518, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: _rotateObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 610225414}
+    - target: {fileID: 114966446619321518, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: _rotateObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 2069397044}
+    - target: {fileID: 114966446619321518, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: _rotateObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 632365295}
+    - target: {fileID: 114966446619321518, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: _rotateObjects.Array.data[3]
+      value: 
+      objectReference: {fileID: 1290061099}
+    - target: {fileID: 114966446619321518, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1115571383}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5f986a361e915941859d1fffeb2df9c, type: 2}
   m_IsPrefabParent: 0

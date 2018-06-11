@@ -2115,6 +2115,11 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224594704974848224, guid: 53fa22dbe32d2d448996945db4f6bbe4,
     type: 2}
   m_PrefabInternal: {fileID: 1402184673}
+--- !u!1 &1402184675 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1506864565540196, guid: 53fa22dbe32d2d448996945db4f6bbe4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1402184673}
 --- !u!1001 &1412755332
 Prefab:
   m_ObjectHideFlags: 0
@@ -2158,6 +2163,31 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114481722530873590, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 802046591}
+    - target: {fileID: 114481722530873590, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: _skipButton
+      value: 
+      objectReference: {fileID: 1402184675}
+    - target: {fileID: 114966446619321518, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1115571383}
+    - target: {fileID: 114966446619321518, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: _rotateObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 84431086}
+    - target: {fileID: 114966446619321518, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: _rotateObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 550880103}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5f986a361e915941859d1fffeb2df9c, type: 2}
   m_IsPrefabParent: 0
