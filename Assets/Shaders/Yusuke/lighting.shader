@@ -39,7 +39,7 @@ Shader "Unlit/lighting"{
 
 				pass
         {
-            Cull Front  
+            Cull Back   
 			ZWrite Off
             CGPROGRAM
             #pragma vertex vert
@@ -67,6 +67,7 @@ Shader "Unlit/lighting"{
             v2f vert (appdata v)
             {
                 v2f o;
+				v.normal = normalize(v.normal);
 				v.vertex += float4(v.normal * _SelectEffectWidth, 0);
 				o.vertex = UnityObjectToClipPos(v.vertex); 
 
@@ -91,7 +92,7 @@ Shader "Unlit/lighting"{
 		//輪郭
 		Pass
         {
-		    Cull Front
+		    Cull Back 
 			ZWrite Off  
             CGPROGRAM
             #pragma vertex vert
@@ -166,6 +167,7 @@ Shader "Unlit/lighting"{
             // Vertex shader function.
             v2f vert(appdata_tan v) {
                 v2f o;
+				v.normal = normalize(v.normal);
 				v.vertex  -= float4(v.normal * _OutLineWidth, 0);
                 o.pos = UnityObjectToClipPos(v.vertex);
                 o.uv  = v.texcoord.xy;
@@ -208,83 +210,7 @@ Shader "Unlit/lighting"{
             ENDCG
         }
 
-        // For forward add rendering pass.
-   //     Pass {
-   //         Tags { "LightMode"="ForwardAdd" }
 
-   //         Blend One One
-
-   //         CGPROGRAM
-
-   //         #pragma vertex vert
-   //         #pragma fragment frag
-   //         #pragma multi_compile_fwdadd
-   //         #pragma fragmentoption ARB_fog_exp2
-   //         #pragma fragmentoption ARB_precision_hint_fastest
-   //         #pragma target 3.0
-
-   //         #include "UnityCG.cginc"
-   //         #include "AutoLight.cginc"
-
-			//uniform float _OutLineWidth;
-
-   //         struct v2f {
-   //             float4  pos         : SV_POSITION;
-   //             float2  uv          : TEXCOORD0;
-   //             float3  viewDir     : TEXCOORD1;
-   //             float3  lightDir    : TEXCOORD2;
-   //             LIGHTING_COORDS(3, 4)
-   //         };
-
-   //         // Vertes shader function.
-   //         v2f vert(appdata_tan v) {
-   //             v2f o;
-			//	v.vertex  -= float4(v.normal * _OutLineWidth, 0);
-   //             o.pos = UnityObjectToClipPos(v.vertex);
-
-   //             o.uv  = v.texcoord.xy;
-
-   //             TANGENT_SPACE_ROTATION;
-
-   //             return o;
-   //         }
-
-   //         sampler2D _MainTex;
-   //         sampler2D _BumpMap;
-   //         fixed4 _Color;
-   //         half _Shininess;
-
-   //         fixed4 _SpecColor;
-   //         fixed4 _LightColor0;
-
-   //         float4 frag(v2f i) : COLOR {
-   //             i.viewDir  = normalize(i.viewDir);
-   //             i.lightDir = normalize(i.lightDir);
-
-   //             fixed atten = LIGHT_ATTENUATION(i);
-
-   //             fixed4 tex = tex2D(_MainTex, i.uv);
-   //             fixed gloss = tex.a;
-   //             tex *= _Color;
-   //             fixed3 normal = UnpackNormal(tex2D(_BumpMap, i.uv));
-
-   //             half3 h = normalize(i.lightDir + i.viewDir);
-
-   //             fixed diff = saturate(dot(normal, i.lightDir));
-
-   //             float nh = saturate(dot(normal, h));
-   //             float spec = pow(nh, _Shininess * 128.0) * gloss;
-
-   //             fixed4 color;
-   //             color.rgb = (tex.rgb * _LightColor0.rgb * diff + _LightColor0.rgb * _SpecColor.rgb * spec) * (atten * 2);
-   //             color.a   = tex.a + _LightColor0.a * _SpecColor.a * spec * atten;
-
-   //             return color;
-   //         }
-
-   //         ENDCG
-   //     }
-				//選択時エフェクト
 
     }
     FallBack "Diffuse"

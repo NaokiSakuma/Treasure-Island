@@ -28,8 +28,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _IsSelectEffect: 1
-    - _OutLineWidth: 0.003
-    - _SelectEffectWidth: 0.003
+    - _OutLineWidth: 0.004
+    - _SelectEffectWidth: 0.004
     - _Shininess: 0.052
     - _Spec1Power: 0
     m_Colors:
