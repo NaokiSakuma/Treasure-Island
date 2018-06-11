@@ -555,31 +555,31 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 9.755966
+      value: 4.88
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 7.912915
+      value: 3.56734
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -8.442439
+      value: -6.790959
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.22814581
+      value: -0.15433955
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.34218323
+      value: 0.18612106
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.08603088
+      value: -0.02961874
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.9074464
+      value: -0.9698768
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_RootOrder
@@ -587,7 +587,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1866239503996376, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 81586236450505230, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
@@ -908,7 +908,7 @@ MonoBehaviour:
   _gameScreenDistance: 9
   _playerDistance: 3
   _changeTime: 1
-  _correctionXPos: 6
+  _correctionXPos: 3
   _isRotate: {fileID: 775664966}
 --- !u!1 &775664969 stripped
 GameObject:

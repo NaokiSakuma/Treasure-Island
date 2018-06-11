@@ -363,7 +363,7 @@ Transform:
   m_GameObject: {fileID: 315731360}
   m_LocalRotation: {x: -0.7092157, y: 0.0023392984, z: -0.00011977961, w: 0.7049877}
   m_LocalPosition: {x: 3.7, y: 1.4, z: 9}
-  m_LocalScale: {x: 31.173704, y: 11.722312, z: 25.192888}
+  m_LocalScale: {x: 100, y: 11.722312, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -1843,31 +1843,31 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.851908
+      value: 6.889838
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 8.178663
+      value: 4.7567
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -7.9563155
+      value: -9.576109
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.27570122
+      value: -0.16659917
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.28348687
+      value: 0.20887387
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.085465305
+      value: -0.036137033
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.91450524
+      value: -0.9629697
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_RootOrder
