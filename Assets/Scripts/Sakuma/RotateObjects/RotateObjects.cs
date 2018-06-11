@@ -41,27 +41,12 @@ public class RotateObjects : MonoBehaviour {
 
         // ボタンが押された時の処理
         _button.onClick.AsObservable()
-            .Where(_ => _rotateObj != null)
-            .Where(_ => !_rotateManager.IsRotate)
+            .Where(_ => CanRotate())
+            //.Where(_ => !_rotateManager.IsRotate)
             .Subscribe(_ =>
             {
-                // SEを鳴らす
-                AudioManager.Instance.PlaySE(AUDIO.SE_OBJECTROTATE);
-
-                // 回転する
-                _rotateManager.IsRotate = true;
-                OnClickRotate();
+                RotateMethod();
             });
-
-        //// Zキーが押された時の処理
-        //this.UpdateAsObservable()
-        //    .Where(_ => Input.GetKeyDown(KeyCode.Z))
-        //    .Subscribe(_ => { _isChangeHide = !_isChangeHide;});
-
-        //// _isChangeHideを監視
-        //this.ObserveEveryValueChanged(x => x._isChangeHide)
-        //    .Subscribe(_ => HideButton());
-
     }
 
     /// <summary>
@@ -83,5 +68,23 @@ public class RotateObjects : MonoBehaviour {
     private void HideButton()
     {
         _button.gameObject.SetActive(!_button.IsActive());
+    }
+
+    /// <summary>
+    /// オブジェクト回転の一連の流れ
+    /// </summary>
+    protected void RotateMethod()
+    {
+        // SEを鳴らす
+        AudioManager.Instance.PlaySE(AUDIO.SE_OBJECTROTATE);
+
+        // 回転する
+        _rotateManager.IsRotate = true;
+        OnClickRotate();
+    }
+
+    protected bool CanRotate()
+    {
+        return _rotateObj != null && !_rotateManager.IsRotate;
     }
 }

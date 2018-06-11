@@ -12,6 +12,12 @@ public class RotateXplus : RotateObjects {
         this.UpdateAsObservable()
             .Where(_ => !_parent.activeSelf)
             .Subscribe(_ => _button.gameObject.SetActive(true));
+
+        this.UpdateAsObservable()
+            .Where(_ => Input.GetKeyDown(KeyCode.W))
+            .Where(_ => CanRotate())
+            .Subscribe(_ => this.RotateMethod());
+
     }
 
     protected override void OnClickRotate()
