@@ -34,7 +34,7 @@ public class LightSpot : MonoBehaviour {
             return;
 
         Vector3 pos = transform.position;
-        pos = new Vector3(pos.x, pos.y, Mathf.Lerp((startPosZ - moveDistance / 2) , (startPosZ - moveDistance) ,(time / moveTime)));
+        pos = new Vector3(pos.x, pos.y, Mathf.Lerp((startPosZ - moveDistance) , (startPosZ - moveDistance / 2) ,(time / moveTime)));
         transform.position = pos;
 
         TimeUpdate();
