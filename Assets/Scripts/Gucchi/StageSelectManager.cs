@@ -47,8 +47,12 @@ namespace GucchiCS
                         child.position = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle) * _posInterval, Mathf.Sin(Mathf.Deg2Rad * angle) * _posInterval, -10f);
                         child.LookAt(child.root);
                         child.rotation = Quaternion.Euler(-angle, -angle, 0f);
-
-                        _doors.Add(child.GetComponent<Door>());
+                        
+                        // 子のドアを取り出す
+                        foreach (Transform door in child.GetChild(1).transform)
+                        {
+                            _doors.Add(door.GetComponent<Door>());
+                        }
                     }
                 }
             }
@@ -56,45 +60,75 @@ namespace GucchiCS
             // 初期の仮選択を設定
             _selectedDoor.OnSelectEnter();
 
-            // 仮選択
-            this.FixedUpdateAsObservable()
+            // 仮選択（マウス）
+            this.LateUpdateAsObservable()
+                .Where(_ => ControlState.Instance.IsStateMouse)
                 .Subscribe(_ =>
                 {
-                    // マウスステート
-                    if (ControlState.Instance.IsStateMouse)
+                    // マウスの位置からrayを飛ばす
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit = new RaycastHit();
+
+                    if (Physics.Raycast(ray, out hit, LayerMask.NameToLayer("Door")))
                     {
-                        // マウスの位置からrayを飛ばす
-                        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                        RaycastHit hit = new RaycastHit();
+                        Door door = hit.collider.GetComponent<Door>();
 
-                        if (Physics.Raycast(ray, out hit, LayerMask.NameToLayer("Door")))
+                        if (door != null && door != _selectedDoor)
                         {
-                            Door door = hit.collider.GetComponent<Door>();
-
-                            if (door != null && door != _selectedDoor)
-                            {
-                                _selectedDoor.OnSelectExit();
-                                _selectedDoor = door;
-                                _selectedDoor.OnSelectEnter();
-                            }
+                            _selectedDoor.OnSelectExit();
+                            _selectedDoor = door;
+                            _selectedDoor.OnSelectEnter();
                         }
                     }
-                    // キーステート
-                    else
+                });
+
+            // 仮選択（キー）
+            this.LateUpdateAsObservable()
+                .Where(_ => !ControlState.Instance.IsStateMouse)
+                .Where(_ => Input.anyKeyDown)
+                .Subscribe(_ =>
+                {
+                    // 選択中の扉ID
+                    int doorID = _selectedDoor.DoorID;
+
+                    // ブロックの扉数
+                    int doorNum = _doors.Count / _blockList.Count;
+
+                    // 現在の行
+                    int row = doorID / (doorNum / 2);
+
+                    // キーチェック
+                    bool check = false;
+
+                    if (Input.GetKeyDown(KeyCode.A))
                     {
-                        //// 選択中の扉番号
-                        //int doorID = _selectedDoor.DoorID;
+                        doorID--;
+                        if (doorID < 0)
+                            doorID = doorNum * _blockList.Count - 1;
 
-                        //// ブロック内の扉数
-                        //int doorNum = _blockList[0].transform.childCount;
+                        // 同じ行内でラップ
+                        doorID = ((doorID % (doorNum / 2)) + (doorNum / 2) * row);
 
-                        //// 横列の扉数
-                        //int doorColumnNum = _blockList[0].transform.childCount / 2;
+                        check = true;
+                    }
+                    else if (Input.GetKeyDown(KeyCode.D))
+                    {
+                        doorID++;
+                        if (doorID >= doorNum * _blockList.Count)
+                            doorID = 0;
 
-                        //if (Input.GetKeyDown(KeyCode.A))
-                        //{
-                            
-                        //}
+                        // 同じ行内でラップ
+                        doorID = ((doorID % (doorNum / 2)) + (doorNum / 2) * row);
+
+                        check = true;
+                    }
+
+                    // 選択扉を変更
+                    if (check)
+                    {
+                        _selectedDoor.OnSelectExit();
+                        _selectedDoor = _doors[doorID];
+                        _selectedDoor.OnSelectEnter();
                     }
                 });
 
@@ -127,9 +161,56 @@ namespace GucchiCS
                 .Where(_ => !_isChanging)
                 .Subscribe(_ =>
                 {
-                    ChangeLightAction(numBlock);
+                    // 選択中の扉ID
+                    int doorID = _selectedDoor.DoorID;
+
+                    // ブロックの扉数
+                    int doorNum = _doors.Count / _blockList.Count;
+
+                    // 現在の行
+                    int row = 0;
+
+                    // 上方向
+                    if (Input.GetKeyDown(KeyCode.W))
+                    {
+                        doorID -= doorNum / 2;
+                        if (doorID < 0)
+                            doorID = doorNum * _blockList.Count + doorID;
+
+                        row = doorID / (doorNum / 2);
+
+                        if (row % 2 == 1)
+                            ChangeLightAction(numBlock);
+                    }
+                    // 下方向
+                    if (Input.GetKeyDown(KeyCode.S))
+                    {
+                        doorID += doorNum / 2;
+                        if (doorID >= doorNum * _blockList.Count)
+                            doorID = doorID - doorNum * _blockList.Count;
+
+                        row = doorID / (doorNum / 2);
+
+                        if (row % 2 == 0)
+                            ChangeLightAction(numBlock);
+                    }
+
+                    _selectedDoor.OnSelectExit();
+                    _selectedDoor = _doors[doorID];
+                    _selectedDoor.OnSelectEnter();
+
                     return;
-                }); 
+                });
+
+            // Enterキーで扉決定
+            this.LateUpdateAsObservable()
+                .Where(_ => Input.GetKeyDown(KeyCode.Return))
+                .Where(_ => !ControlState.Instance.IsStateMouse)
+                .Where(_ => !_isChanging)
+                .Subscribe(_ =>
+                {
+                    _selectedDoor.OnClick();
+                });
 
             // BGMを再生
             AudioManager.Instance.PlayBGM(AUDIO.BGM_STAGESELECT, AudioManager.BGM_FADE_SPEED_RATE_HIGH);
