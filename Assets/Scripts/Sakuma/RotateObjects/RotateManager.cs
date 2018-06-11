@@ -13,7 +13,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(RoteteZplus))]
 [RequireComponent(typeof(RotateZminus))]
 
-public class RotateManager : MonoBehaviour
+public class RotateManager : SingletonMonoBehaviour<RotateManager>
 {
 
     // アニメーションする時間
@@ -78,7 +78,7 @@ public class RotateManager : MonoBehaviour
     [SerializeField]
     private LayerMask layerMask = 0;
 
-    void Awake()
+    protected override void Awake()
     {
         _buttonManager.gameObject.SetActive(false);
         // ステージ上のオブジェクトを取得
@@ -265,16 +265,10 @@ public class RotateManager : MonoBehaviour
 
         // ポーズ画面に行ったとき
         this.UpdateAsObservable()
-            .Where(_ => Input.GetKeyDown(KeyCode.Escape) || _player.IsDead)
+            .Where(_ => Pausable.Instance.pausing || _player.IsDead)
             .Subscribe(_ =>
             {
-                _buttonManager.gameObject.SetActive(false);
-                if(_hitObj)
-                _hitObj.GetComponent<StageObject>().IsTemporary = false;
-                if(_selectedObj)
-                _selectedObj.GetComponent<StageObject>().IsSelect = false;
-                _hitObj = null;
-
+                HideObject();
             });
 
         // 回転中はボタンを押せなくする（グレーアウト）
@@ -298,5 +292,15 @@ public class RotateManager : MonoBehaviour
         yield return null;
         _buttonManager.gameObject.SetActive(true);
         _rotateObj.SetActive(true);
+    }
+
+    public void HideObject()
+    {
+        _buttonManager.gameObject.SetActive(false);
+        if (_hitObj)
+            _hitObj.GetComponent<StageObject>().IsTemporary = false;
+        if (_selectedObj)
+            _selectedObj.GetComponent<StageObject>().IsSelect = false;
+        _hitObj = null;
     }
 }
