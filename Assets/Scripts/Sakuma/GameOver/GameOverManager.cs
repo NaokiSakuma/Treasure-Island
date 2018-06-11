@@ -5,7 +5,7 @@ using UniRx;
 using UniRx.Triggers;
 using System;
 
-public class GameOverManager : MonoBehaviour {
+public class GameOverManager : SingletonMonoBehaviour<GameOverManager> {
 
     // inspecter見にくいかも
     // オブジェクトが点滅する時間
@@ -22,7 +22,7 @@ public class GameOverManager : MonoBehaviour {
 
     // 点滅するオブジェクト
     [SerializeField]
-    private GameObject[] _blinkObjs = null;
+    private List<GameObject> _blinkObjs = new List<GameObject>();
 
     // プレイヤー
     [SerializeField]
@@ -89,5 +89,10 @@ public class GameOverManager : MonoBehaviour {
                 GameObject prefab = (GameObject)Instantiate(_overPrefab);
                 prefab.transform.SetParent(_canvas.transform, false);
             });
+    }
+
+    public void AddBlinkObject(GameObject obj)
+    {
+        _blinkObjs.Add(obj);
     }
 }

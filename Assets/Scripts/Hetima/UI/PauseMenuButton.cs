@@ -13,6 +13,7 @@ public class PauseMenuButton : MonoBehaviour {
 	public void ToggleMenu() {
         if(GucchiCS.StageManager.Instance.IsPlay && !GucchiCS.ModeChanger.Instance.IsChanging){
             Pausable.Instance.pausing = !Pausable.Instance.pausing;
+            RotateManager.Instance.HideObject();
         }
 	}
 }

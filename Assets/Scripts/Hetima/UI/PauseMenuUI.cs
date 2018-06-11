@@ -23,7 +23,8 @@ public class PauseMenuUI : MonoBehaviour {
 		_skipButton.OnDestroyAsObservable()
 			.Subscribe(_ => {
 				// ボタンを生成
-				Instantiate(_pauseButton, _canvas.transform);
+				var obj = Instantiate(_pauseButton, _canvas.transform);
+                GameOverManager.Instance.AddBlinkObject(obj);
 			});
 	}
 
