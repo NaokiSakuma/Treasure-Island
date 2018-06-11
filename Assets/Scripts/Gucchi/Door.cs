@@ -75,6 +75,18 @@ namespace GucchiCS
                 });
         }
 
+        // マウスポインタが触れたらガードを消す
+        public void OnSelectEnter()
+        {
+            _guard.SetActive(false);
+        }
+
+        // マウスポインタが離れたらガードを出す
+        public void OnSelectExit()
+        {
+            _guard.SetActive(true);
+        }
+
         // 扉IDを設定
         public int DoorID
         {

@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4265407092036204}
   - component: {fileID: 212843622991484536}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearGuard
   m_TagString: ClearGuard
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 65958076397600738}
   - component: {fileID: 114540187679058900}
   - component: {fileID: 114310225669698604}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageDoor (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 65750131134667816}
   - component: {fileID: 114840891701597622}
   - component: {fileID: 114399406668659808}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageDoor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4828803861398156}
   - component: {fileID: 212928074711278670}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearGuard
   m_TagString: ClearGuard
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4239733926539062}
   - component: {fileID: 212180815561806328}
   - component: {fileID: 65921896289441582}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4095369624379394}
   - component: {fileID: 212736554444547622}
   - component: {fileID: 65530779024203166}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 65889582957824478}
   - component: {fileID: 114194918681515818}
   - component: {fileID: 114022743428305598}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageDoor (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4933103802778908}
   - component: {fileID: 212313874995994686}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearGuard
   m_TagString: ClearGuard
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 4690769076168530}
   - component: {fileID: 23333672748520100}
   - component: {fileID: 102551345111480452}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4727315916186424}
   - component: {fileID: 212345045918220858}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearGuard
   m_TagString: ClearGuard
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 4451843233468254}
   - component: {fileID: 23746457548051560}
   - component: {fileID: 102691560318479348}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 4363013877118798}
   - component: {fileID: 23824230638139660}
   - component: {fileID: 102862651716761976}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4580027862554786}
   - component: {fileID: 212869750982714428}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearGuard
   m_TagString: ClearGuard
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 65865863673481712}
   - component: {fileID: 114729031931321120}
   - component: {fileID: 114210310982893026}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageDoor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 4073793542983938}
   - component: {fileID: 23192399119758352}
   - component: {fileID: 102386902919635334}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 4088906439305560}
   - component: {fileID: 212681624308076510}
   - component: {fileID: 65319811742933396}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   - component: {fileID: 65543196898055542}
   - component: {fileID: 114775224192800656}
   - component: {fileID: 114505513713219462}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageDoor (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 4210845120157426}
   - component: {fileID: 212653754838528148}
   - component: {fileID: 65330206232264372}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 4250244882473392}
   - component: {fileID: 212686733245026276}
   - component: {fileID: 65273016104355926}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 4460072591413464}
   - component: {fileID: 23453031404642670}
   - component: {fileID: 102950242423454272}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4366777000214344}
   - component: {fileID: 212336869133350532}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearGuard
   m_TagString: ClearGuard
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4512891832614992}
   - component: {fileID: 212488385595805492}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearGuard
   m_TagString: ClearGuard
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 4540094402832408}
   - component: {fileID: 212841541598153542}
   - component: {fileID: 65490433915971322}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 4660185852669190}
   - component: {fileID: 23605635985388704}
   - component: {fileID: 102926845384328308}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 4621583117605792}
   - component: {fileID: 23498779028052112}
   - component: {fileID: 102390848617619530}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 65247749528298094}
   - component: {fileID: 114042984768202622}
   - component: {fileID: 114328576768212532}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageDoor (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4098202422649918}
   - component: {fileID: 212468402853055468}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearGuard
   m_TagString: ClearGuard
   m_Icon: {fileID: 0}
@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 4681642232573704}
   - component: {fileID: 212350252307901682}
   - component: {fileID: 65810423681237774}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 4308045392815200}
   - component: {fileID: 23753191699885428}
   - component: {fileID: 102638957317488904}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 4670472481414236}
   - component: {fileID: 212827882825163722}
   - component: {fileID: 65651986450936190}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 4396044828616702}
   - component: {fileID: 23911257110674652}
   - component: {fileID: 102643251626389512}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 4381608041988910}
   - component: {fileID: 212115370980187530}
   - component: {fileID: 65305197236005588}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 65196655654893706}
   - component: {fileID: 114654747295472932}
   - component: {fileID: 114791306232075514}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageDoor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 65771459417339956}
   - component: {fileID: 114532151567757978}
   - component: {fileID: 114693056259229082}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageDoor (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4398835279748052}
   - component: {fileID: 212312471161768368}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearGuard
   m_TagString: ClearGuard
   m_Icon: {fileID: 0}
@@ -614,7 +614,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4832701215178456}
   - component: {fileID: 212328371837459396}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearGuard
   m_TagString: ClearGuard
   m_Icon: {fileID: 0}
@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 4808560875421720}
   - component: {fileID: 212894059037829166}
   - component: {fileID: 65648802182997568}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ClearObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -649,7 +649,7 @@ GameObject:
   - component: {fileID: 65683268201787128}
   - component: {fileID: 114850399778055940}
   - component: {fileID: 114524548997693176}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageDoor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 65460283774750978}
   - component: {fileID: 114377418096098338}
   - component: {fileID: 114118556783276766}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -699,7 +699,7 @@ GameObject:
   - component: {fileID: 4015982999299640}
   - component: {fileID: 23300685604387750}
   - component: {fileID: 102400903013577936}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: StageNo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2850,7 +2850,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2894,7 +2894,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2938,7 +2938,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2982,7 +2982,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3026,7 +3026,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3114,7 +3114,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3158,7 +3158,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3466,7 +3466,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3510,7 +3510,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3598,7 +3598,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
