@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114917389714363818}
   - component: {fileID: 114325873200482458}
   - component: {fileID: 114670143119368916}
-  - component: {fileID: 95420352119626000}
+  - component: {fileID: 114171548419534316}
   m_Layer: 5
   m_Name: StageSelect
   m_TagString: Untagged
@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 224496194492415922}
   - component: {fileID: 225459129484209722}
   - component: {fileID: 114080701894033846}
+  - component: {fileID: 114805661083978800}
   m_Layer: 5
   m_Name: GameOverUI
   m_TagString: Untagged
@@ -77,7 +78,7 @@ GameObject:
   - component: {fileID: 114327338107623956}
   - component: {fileID: 114471193028420026}
   - component: {fileID: 114685572792171816}
-  - component: {fileID: 95098672150967426}
+  - component: {fileID: 114638384479090442}
   m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged
@@ -102,40 +103,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &95098672150967426
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892160964806350}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9071d90c2dfcd824f9e61e38945bd702, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!95 &95420352119626000
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1333691832743760}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9071d90c2dfcd824f9e61e38945bd702, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114080701894033846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,6 +115,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addAlpha: 0.05
+--- !u!114 &114171548419534316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1333691832743760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf024ed2e2955b346b7d8270c638b413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114325873200482458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,12 +138,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 3
+    m_Mode: 4
+    m_SelectOnUp: {fileID: 114471193028420026}
+    m_SelectOnDown: {fileID: 114471193028420026}
+    m_SelectOnLeft: {fileID: 114471193028420026}
+    m_SelectOnRight: {fileID: 114471193028420026}
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -272,12 +250,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 3
+    m_Mode: 4
+    m_SelectOnUp: {fileID: 114325873200482458}
+    m_SelectOnDown: {fileID: 114325873200482458}
+    m_SelectOnLeft: {fileID: 114325873200482458}
+    m_SelectOnRight: {fileID: 114325873200482458}
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -345,6 +323,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u30EA\u30C8\u30E9\u30A4"
+--- !u!114 &114638384479090442
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1892160964806350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf024ed2e2955b346b7d8270c638b413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114670143119368916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -369,6 +358,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Scenes/Stage/stage
+--- !u!114 &114805661083978800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757784725199372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218af115403f318408b3a2704111a851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _forcusNum: 0
 --- !u!114 &114917389714363818
 MonoBehaviour:
   m_ObjectHideFlags: 1
