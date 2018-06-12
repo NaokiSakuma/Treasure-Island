@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
+using UniRx.Triggers;
 
 public class ModeIcons : MonoBehaviour {
 
@@ -27,12 +28,25 @@ public class ModeIcons : MonoBehaviour {
 	void Start () {
 		var image = gameObject.GetComponentInChildrenWithoutSelf<Image>();
 
+		this.ObserveEveryValueChanged(x => Pausable.Instance.pausing)
+			.Subscribe(x => {
+				SetActiveImages(x);
+			});
+
 		this.ObserveEveryValueChanged(x => _currentMode)
 			.Subscribe(mode => {
 				IconChange(image, mode);
 			});
 
 		_currentMode = Mode.Character;
+	}
+
+	void SetActiveImages(bool flg){
+		foreach (var item in GetComponentsInChildren<Image>()){
+			Color color = item.color;
+			color.a = flg ? 0.0f : 1.0f;
+			item.color = color;
+		}
 	}
 
 	void IconChange(Image image, Mode mode){
