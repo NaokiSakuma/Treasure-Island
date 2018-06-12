@@ -6,7 +6,7 @@ using UniRx;
 using DG.Tweening;
 using UnityEngine.EventSystems;
 
-public class UIPop : MonoBehaviour , IPointerEnterHandler, IPointerExitHandler{
+public class UIPop : MonoBehaviour , ISelectHandler, IDeselectHandler{
 
 	private Vector3 _startScale;
 	private Vector3 _endScale;
@@ -20,12 +20,12 @@ public class UIPop : MonoBehaviour , IPointerEnterHandler, IPointerExitHandler{
 		_tweener = transform.DOScale(_startScale, _duration);
 	}
 
-	public void OnPointerEnter(PointerEventData e){
+	public void OnSelect(BaseEventData e){
 		_tweener.Kill();
 		_tweener = transform.DOScale(_endScale, _duration);
 	}
 
-	public void OnPointerExit(PointerEventData e){
+	public void OnDeselect(BaseEventData e){
 		_tweener.Kill();
 		_tweener = transform.DOScale(_startScale, _duration);
 	}

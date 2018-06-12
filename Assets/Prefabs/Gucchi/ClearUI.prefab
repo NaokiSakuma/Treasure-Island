@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4965033630448896}
   - component: {fileID: 23518379929068266}
+  - component: {fileID: 114164000444427872}
   m_Layer: 5
   m_Name: ClearUI
   m_TagString: Untagged
@@ -181,11 +182,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_Mode: 4
+    m_SelectOnUp: {fileID: 114982380030728348}
+    m_SelectOnDown: {fileID: 114982380030728348}
+    m_SelectOnLeft: {fileID: 114982380030728348}
+    m_SelectOnRight: {fileID: 114982380030728348}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -275,6 +276,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114164000444427872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1386135466459980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218af115403f318408b3a2704111a851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _forcusNum: 1
 --- !u!114 &114211864882416174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -456,11 +469,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_Mode: 4
+    m_SelectOnUp: {fileID: 114047549068209072}
+    m_SelectOnDown: {fileID: 114047549068209072}
+    m_SelectOnLeft: {fileID: 114047549068209072}
+    m_SelectOnRight: {fileID: 114047549068209072}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
