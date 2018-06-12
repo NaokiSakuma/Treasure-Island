@@ -4,6 +4,7 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class RotateObjects : MonoBehaviour {
 
@@ -80,6 +81,13 @@ public class RotateObjects : MonoBehaviour {
 
         // 回転する
         _rotateManager.IsRotate = true;
+
+        // 回転している間、ボタンを大きくする
+        Sequence seq = DOTween.Sequence()
+            .Append(_button.GetComponent<RectTransform>().DOScale(new Vector3(1.3f, 1.3f, 1.3f), _animationTime * 0.9f))
+            .Append(_button.GetComponent<RectTransform>().DOScale(new Vector3(1.0f, 1.0f, 1.3f), _animationTime * 0.1f));
+        seq.Play();
+
         OnClickRotate();
     }
 
