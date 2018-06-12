@@ -44,6 +44,8 @@ namespace GucchiCS
         public void ResetObjects()
         {
             // プレイヤー
+            //_player.gameObject.SetActive(false);
+            _player.GetComponent<Rigidbody>().gameObject.SetActive(false);
             _player.position = _temp[(int)OBJECT.PLAYER].Item1;
             _player.rotation = _temp[(int)OBJECT.PLAYER].Item2;
 
@@ -54,6 +56,10 @@ namespace GucchiCS
                 _rotateObjects[i - 1].transform.position = _temp[i].Item1;
                 _rotateObjects[i - 1].transform.rotation = _temp[i].Item2;
             }
+
+            // プレイヤーのアクティブを戻す（死亡防止）
+            //_player.gameObject.SetActive(true);
+            _player.GetComponent<Rigidbody>().gameObject.SetActive(true);
 
             // オブジェクトの選択
             ModeChanger.Instance.SelectedObject = null;
