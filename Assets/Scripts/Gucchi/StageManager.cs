@@ -29,6 +29,7 @@ namespace GucchiCS
         static void OnRuntimeMethodLoad()
         {
             Screen.SetResolution(1024, 600, false);
+            QualitySettings.SetQualityLevel(3);
         }
 
         // Use this for initialization
