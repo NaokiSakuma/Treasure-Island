@@ -48,6 +48,7 @@ namespace GucchiCS
             _player.rotation = _temp[(int)OBJECT.PLAYER].Item2;
 
             // 各オブジェクト
+            Debug.Log(_rotateObjects.Count);
             for (int i = (int)OBJECT.ROTATE_OBJECT; i <= _rotateObjects.Count; i++)
             {
                 _rotateObjects[i - 1].transform.position = _temp[i].Item1;
