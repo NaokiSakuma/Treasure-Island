@@ -206,8 +206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   _guard: {fileID: 1305384727830540}
-  _goNextTime: 2
-  _animationTime: 4
+  _goNextTime: 1
+  _animationTime: 2
   _clearUI: {fileID: 1386135466459980, guid: 4805d8bfa47de03418fc9e29355bea42, type: 2}
   _stageSelectButton: {fileID: 0}
   _clearOutDistance: 0.8
