@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1405626541596420
 GameObject:
   m_ObjectHideFlags: 0
@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 114054685272707410}
   - component: {fileID: 114047549068209072}
   - component: {fileID: 114257836107878880}
+  - component: {fileID: 114834344215225342}
   m_Layer: 5
   m_Name: ButtonNextStage
   m_TagString: Untagged
@@ -75,6 +76,7 @@ GameObject:
   - component: {fileID: 114086202502638750}
   - component: {fileID: 114982380030728348}
   - component: {fileID: 114421696437550994}
+  - component: {fileID: 114830238352636480}
   m_Layer: 5
   m_Name: ButtonStageSelect
   m_TagString: Untagged
@@ -420,6 +422,28 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Clear!!!
+--- !u!114 &114830238352636480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697280528036006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf024ed2e2955b346b7d8270c638b413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114834344215225342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405626541596420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf024ed2e2955b346b7d8270c638b413, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114982380030728348
 MonoBehaviour:
   m_ObjectHideFlags: 1
