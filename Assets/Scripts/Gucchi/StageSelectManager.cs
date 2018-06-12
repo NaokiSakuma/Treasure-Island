@@ -57,8 +57,29 @@ namespace GucchiCS
                 }
             }
 
+            // 前回遊んだステージを仮選択しておく
+            int beforeStageNo = StageNoReader._stageNo;
+            if (beforeStageNo == 0)
+            {
+                beforeStageNo = 1;
+            }
+
             // 初期の仮選択を設定
+            _selectedDoor = _doors[beforeStageNo - 1];
             _selectedDoor.OnSelectEnter();
+
+            // 仮選択ステージによってブロック位置を変更
+            int blockNo = beforeStageNo / (_doors.Count / _blockList.Count);
+            if (blockNo > 0)
+            {
+                _isChanging = true;
+
+                // すべてのブロックを移動
+                foreach (SelectLight block in _blockList)
+                {
+                    block.SetBeforeLightPos(blockNo, _blockList.Count);
+                }
+            }
 
             // 仮選択（マウス）
             this.LateUpdateAsObservable()

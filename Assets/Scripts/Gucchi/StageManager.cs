@@ -38,6 +38,9 @@ namespace GucchiCS
             // モード
             ModeChanger.MODE mode = ModeChanger.Instance.Mode;
 
+            // ステージ番号をリーダーに設定
+            StageNoReader.Instance.ChangeStageNo = _stageNo;
+
             // 始めはマウスカーソルを隠す
             Cursor.visible = false;
 

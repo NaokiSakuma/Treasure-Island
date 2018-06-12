@@ -36,6 +36,18 @@ namespace GucchiCS
             }
         }
 
+        // 初期選択用強制設定（ステージから戻ってきたとき）
+        public void SetBeforeLightPos(int count, int numBlock)
+        {
+            // 指定回数分移動
+            for (int i = 0; i < count; i++)
+            {
+                transform.DORotate(new Vector3(0f, 0f, -(360f / numBlock)), 1f, RotateMode.WorldAxisAdd)
+                    .SetRelative()
+                    .OnComplete(() => StageSelectManager.Instance.AnimationCompleteNotify());
+            }
+        }
+
         // ID設定
         public int BlockID
         {
