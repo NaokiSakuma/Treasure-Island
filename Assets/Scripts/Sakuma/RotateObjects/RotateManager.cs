@@ -10,7 +10,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(RotateXminus))]
 [RequireComponent(typeof(RotateYplus))]
 [RequireComponent(typeof(RotateYminus))]
-[RequireComponent(typeof(RoteteZplus))]
+[RequireComponent(typeof(RotateZplus))]
 [RequireComponent(typeof(RotateZminus))]
 
 public class RotateManager : SingletonMonoBehaviour<RotateManager>
@@ -57,11 +57,6 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
         get { return _isRotate; }
     }
 
-    // canvas
-    //[SerializeField]
-    //private Canvas _canvas = null;
-
-
     // player
     [SerializeField]
     private Konji.PlayerControl _player = null;
@@ -85,12 +80,15 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
         foreach (Transform child in _stageObject)
         {
             _stageChildObjs.Add(child);
-            //stageObject.Add(child.GetComponent<StageObject>());
-
         }
     }
     void Start()
     {
+
+        // デバッグ
+        this.UpdateAsObservable()
+            .Subscribe(_ => print("button SetActive：" + _buttonManager.activeSelf));
+
         // オブジェクトを仮登録する
         this.UpdateAsObservable()
             .Take(1)
@@ -102,6 +100,7 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
         // モードチェンジャー
         var modeChanger = GucchiCS.ModeChanger.Instance;
 
+        
         // オブジェクトコントロールモードでの処理
         this.UpdateAsObservable()
             .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
@@ -168,7 +167,8 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
                     {
                         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A))
                         {
-                            _hitObj.GetComponent<StageObject>().IsTemporary = false;
+                            if (_hitObj)
+                                _hitObj.GetComponent<StageObject>().IsTemporary = false;
                             _indexStageNum = (_indexStageNum + 1 >= _stageChildObjs.Count) ? 0 : ++_indexStageNum;
                             _hitObj = _stageChildObjs[_indexStageNum].gameObject;
                             _hitObj.GetComponent<StageObject>().IsTemporary = true;
@@ -176,7 +176,8 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
                         // 前の要素
                         else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
                         {
-                            _hitObj.GetComponent<StageObject>().IsTemporary = false;
+                            if (_hitObj)
+                                _hitObj.GetComponent<StageObject>().IsTemporary = false;
                             _indexStageNum = (_indexStageNum - 1 < 0) ? _stageChildObjs.Count - 1 : --_indexStageNum;
                             _hitObj = _stageChildObjs[_indexStageNum].gameObject;
                             _hitObj.GetComponent<StageObject>().IsTemporary = true;
@@ -264,12 +265,9 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
                 _rotateObj.SetActive(false);
             });
 
-        this.UpdateAsObservable()
-            .Subscribe(_ => { print("pauseFLAG;" + Pausable.Instance.pausing); });
-
         // ポーズ画面に行ったとき
         this.UpdateAsObservable()
-            .Where(_ => Pausable.Instance.pausing || _player.IsDead)
+            .Where(_ => _player.IsDead)
             .Subscribe(_ =>
             {
                 HideObject();
@@ -294,13 +292,13 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
     {
         _buttonManager.gameObject.SetActive(false);
         yield return null;
+        print("通った");
         _buttonManager.gameObject.SetActive(true);
         _rotateObj.SetActive(true);
     }
 
     public void HideObject()
     {
-        print("hide");
         _buttonManager.gameObject.SetActive(false);
         if (_hitObj)
             _hitObj.GetComponent<StageObject>().IsTemporary = false;
