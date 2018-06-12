@@ -40,17 +40,25 @@ namespace GucchiCS
             // 始めはマウスカーソルを隠す
             Cursor.visible = false;
 
-            // ゲームモード
+            // モード切り替え
             this.LateUpdateAsObservable()
                 .Where(_ => CheckState())
-                .Where(_ => Input.GetKeyDown(KeyCode.Alpha1))
-                .Subscribe(_ => mode = ModeChanger.MODE.GAME);
+                .Where(_ => Input.GetKeyDown(KeyCode.Space))
+                .Subscribe(_ =>
+                {
+                    // 現在のモード
+                    mode = ModeChanger.Instance.Mode;
 
-            // コントロールモード（オブジェクト選択なし）
-            this.LateUpdateAsObservable()
-                .Where(_ => CheckState())
-                .Where(_ => Input.GetKeyDown(KeyCode.Alpha2))
-                .Subscribe(_ => mode = ModeChanger.MODE.OBJECT_CONTROL);
+                    // ゲームモード　⇒　コントロールモード（オブジェクト選択なし）
+                    if (mode == ModeChanger.MODE.GAME)
+                    {
+                        mode = ModeChanger.MODE.OBJECT_CONTROL;
+                    }
+                    else if (mode == ModeChanger.MODE.OBJECT_CONTROL || mode == ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
+                    {
+                        mode = ModeChanger.MODE.GAME;
+                    }
+                });
 
             // モード変更時通知
             this.ObserveEveryValueChanged(newMode => mode)

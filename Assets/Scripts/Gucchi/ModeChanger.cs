@@ -31,10 +31,6 @@ namespace GucchiCS
         [SerializeField]
         Transform _objRotateCamera = null;
 
-        //// オブジェクトスクリーン
-        //[SerializeField]
-        //Transform _objectScreen = null;
-
         // プレイヤー
         [SerializeField]
         Transform _player = null;
@@ -42,10 +38,6 @@ namespace GucchiCS
         // ゲームスクリーンまでの距離
         [SerializeField]
         float _gameScreenDistance = 5f;
-
-        //// オブジェクトスクリーンまでの距離
-        //[SerializeField]
-        //float _objectScreenDistance = 1f;
 
         // プレイヤーまでの距離
         [SerializeField]
