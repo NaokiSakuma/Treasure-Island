@@ -1084,6 +1084,12 @@ Prefab:
       propertyPath: _lightSpot
       value: 
       objectReference: {fileID: 381172148}
+    - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _overPrefab
+      value: 
+      objectReference: {fileID: 1757784725199372, guid: 0a5985e59c1e430408cf841a011e9dd3,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 114713250298305644, guid: c8a66db713553a7408a8874d01f25197, type: 2}
     - {fileID: 114495575328868704, guid: c8a66db713553a7408a8874d01f25197, type: 2}
