@@ -16,7 +16,6 @@ public class PauseBackToSelect : SimplePauseItem
 
     public override void OnClick()
     {
-        Pausable.Instance.pausing = false;
         SceneManager.LoadScene("StageSelect");
     }
 }
