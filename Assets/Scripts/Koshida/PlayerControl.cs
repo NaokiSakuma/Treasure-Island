@@ -76,9 +76,9 @@ namespace Konji
                     // タイトルシーンは左画面外に行かないようにする
                     if (SceneManager.GetActiveScene().name == SingletonName.TITLE_SCENE &&
                         Input.GetKey(KeyCode.A)                                         &&
-                        transform.position.x < -8.5f)
+                        transform.position.x < -7.8f)
                     {
-                        transform.position = new Vector3(-8.5f, transform.position.y, transform.position.z);
+                        transform.position = new Vector3(-7.8f, transform.position.y, transform.position.z);
                         _move = 0;
                     }
 
