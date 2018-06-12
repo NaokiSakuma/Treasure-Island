@@ -207,6 +207,7 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
 
             });
 
+        // プレイヤーが死んだら
         this.UpdateAsObservable()
             .Where(_ => _player.IsDead)
             .Subscribe(_ =>
@@ -263,6 +264,9 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
                 _rotateObj.SetActive(false);
             });
 
+        this.UpdateAsObservable()
+            .Subscribe(_ => { print("pauseFLAG;" + Pausable.Instance.pausing); });
+
         // ポーズ画面に行ったとき
         this.UpdateAsObservable()
             .Where(_ => Pausable.Instance.pausing || _player.IsDead)
@@ -296,11 +300,17 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
 
     public void HideObject()
     {
+        print("hide");
         _buttonManager.gameObject.SetActive(false);
         if (_hitObj)
             _hitObj.GetComponent<StageObject>().IsTemporary = false;
         if (_selectedObj)
             _selectedObj.GetComponent<StageObject>().IsSelect = false;
         _hitObj = null;
+        if (_selectedObj)
+            _selectedObj.GetComponent<StageObject>().IsSelect = false;
+        _selectedObj = null;
+        _rotateObj.SetActive(false);
+        GucchiCS.ModeChanger.Instance.SelectedObject = null;
     }
 }
