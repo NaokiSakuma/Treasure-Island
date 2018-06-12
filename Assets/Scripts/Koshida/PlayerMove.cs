@@ -57,6 +57,14 @@ namespace Konji
         {
         }
 
+        public void Reset(Vector3 pos ,Quaternion rot)
+        {
+            transform.position = pos;
+            transform.rotation = rot;
+
+            _facingRight = true;
+        }
+
         //移動
         public void Move(int move)
         {
@@ -70,8 +78,8 @@ namespace Konji
             int distance = 30;
 
             Vector3 spherePos = this.transform.position + new Vector3(0, -0.25f, 0);
-            Debug.Log(spherePos);
-            Collider[] colliders = Physics.OverlapSphere(spherePos, 0.27f, layermask);
+
+            Collider[] colliders = Physics.OverlapSphere(spherePos, 0.26f, layermask);
             for (int i = 0; i < colliders.Length; i++)
             {
                 if(colliders[i].gameObject != gameObject)
@@ -220,8 +228,6 @@ namespace Konji
             {
                 Destroy(col);
             }
-
         }
-
     }
 }

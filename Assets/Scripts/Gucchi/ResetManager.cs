@@ -46,8 +46,10 @@ namespace GucchiCS
             // プレイヤー
             //_player.gameObject.SetActive(false);
             _player.GetComponent<Rigidbody>().gameObject.SetActive(false);
-            _player.position = _temp[(int)OBJECT.PLAYER].Item1;
-            _player.rotation = _temp[(int)OBJECT.PLAYER].Item2;
+            //_player.position = _temp[(int)OBJECT.PLAYER].Item1;
+            //_player.rotation = _temp[(int)OBJECT.PLAYER].Item2;
+
+            _player.GetComponent<Konji.PlayerMove>().Reset(_temp[(int)OBJECT.PLAYER].Item1, _temp[(int)OBJECT.PLAYER].Item2);
 
             // 各オブジェクト
             Debug.Log(_rotateObjects.Count);

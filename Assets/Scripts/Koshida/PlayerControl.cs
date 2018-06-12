@@ -49,7 +49,7 @@ namespace Konji
                     _move = 0;
                 });
 
-            //挟まれたら死亡
+                //挟まれたら死亡
             this.UpdateAsObservable()
                 .Where(_ => (_player.IsNest[0] && _player.IsNest[1]) || (_player.IsNest[2] && _player.IsNest[3]))
                 .Take(1)
