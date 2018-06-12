@@ -207,7 +207,8 @@ namespace GucchiCS
                 {
                     _clear.transform.GetComponentInChildren<BoxCollider>().isTrigger = true;
                     _sequence = SEQUENCE.CORRECTED;
-                }).OnComplete(() => _lightSpot.GetComponent<LightSpot>().IsStart = true); 
+                })
+                .OnComplete(() => _lightSpot.GetComponent<LightSpot>().IsStart = true); 
 
 
             seq.Play();
