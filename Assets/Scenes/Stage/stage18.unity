@@ -2093,7 +2093,6 @@ GameObject:
   - component: {fileID: 1115571383}
   - component: {fileID: 1115571382}
   - component: {fileID: 1115571381}
-  - component: {fileID: 1115571380}
   - component: {fileID: 1115571379}
   - component: {fileID: 1115571378}
   - component: {fileID: 1115571377}
@@ -2153,19 +2152,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!135 &1115571380
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 135261606100812852, guid: 5527dcb748ee3404d91349ef751cee0f,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1115571376}
-  m_Material: {fileID: 13400000, guid: 0f0a6d094dde1d24599e0ff4c2eda51c, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.26
-  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!65 &1115571381
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2177,8 +2163,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.51, y: 0.67, z: 0.2}
-  m_Center: {x: 0, y: 0.09, z: 0}
+  m_Size: {x: 0.3, y: 0.6, z: 0.2}
+  m_Center: {x: 0, y: -0.05, z: 0}
 --- !u!212 &1115571382
 SpriteRenderer:
   m_ObjectHideFlags: 0
