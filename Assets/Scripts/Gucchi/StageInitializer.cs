@@ -155,8 +155,8 @@ namespace GucchiCS
                 .Join(Camera.main.transform.DOMove(new Vector3(_light.transform.position.x, _light.transform.position.y, _light.transform.position.z - 9f), 2f).SetEase(Ease.InSine))
                 .Append(Camera.main.transform.DOMove(ModeChanger.Instance.GetGameModeCameraPos, 2f))
                 .AppendCallback(() => _sequence = SEQUENCE.CAMERA_SETTED);
-                seq.Play();
-            
+
+            seq.Play();
         }
 
         // プレイヤーとゴールを出現させる
@@ -223,15 +223,31 @@ namespace GucchiCS
             // アニメーション中であればアニメーションをやめる
             DOTween.KillAll(true);
 
+            // スキップボタンを削除
+            Destroy(_skipButton.gameObject);
+
+            // オブジェクトの影設定
+            StageManager.Instance.SetObjectShadowMode();
+
             // ライト点灯
             _light.gameObject.SetActive(true);
+
+            // 各オブジェクト、プレイヤーの初期化
+            _player.localScale = Vector3.one;
+            _clear.transform.localScale = Vector3.one;
+            _clear.transform.position = _goalPos;
+            _clear.transform.GetComponentInChildren<BoxCollider>().isTrigger = true;
 
             // ゲームモード用にカメラを合わせる
             Camera.main.transform.position = ModeChanger.Instance.GetGameModeCameraPos;
             Camera.main.transform.localRotation = Quaternion.identity;
 
+            // ゴールオブジェクトのアニメーションスタート
+            _lightSpot.GetComponent<LightSpot>().IsStart = true;
+
             // シーケンス更新
-            _sequence = SEQUENCE.CAMERA_SETTED;
+            StageManager.Instance.IsPlay = true;
+            _sequence = SEQUENCE.CORRECTED;
 
             _isSkiped = true;
         }

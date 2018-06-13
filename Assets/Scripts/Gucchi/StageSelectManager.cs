@@ -89,12 +89,22 @@ namespace GucchiCS
                     // マウスの位置からrayを飛ばす
                     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit = new RaycastHit();
+                    LayerMask layermask = 1 << LayerMask.NameToLayer("Door");
 
-                    if (Physics.Raycast(ray, out hit, LayerMask.NameToLayer("Door")))
+                    if (Physics.Raycast(ray, out hit, layermask))
                     {
                         Door door = hit.collider.GetComponent<Door>();
 
-                        if (door != null && door != _selectedDoor)
+                        // なぜかレイヤー範囲外のClearObjectを指すときがあるのでそのときは親のDoorを使う
+                        if (door == null)
+                        {
+                            door = hit.collider.transform.parent.GetComponent<Door>();
+
+                            _selectedDoor.OnSelectExit();
+                            _selectedDoor = door;
+                            _selectedDoor.OnSelectEnter();
+                        }
+                        else if (door != _selectedDoor)
                         {
                             _selectedDoor.OnSelectExit();
                             _selectedDoor = door;
