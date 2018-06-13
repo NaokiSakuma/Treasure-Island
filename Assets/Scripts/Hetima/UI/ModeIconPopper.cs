@@ -4,32 +4,28 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 
-public class PauseMenuUI : MonoBehaviour {
+public class ModeIconPopper : MonoBehaviour {
 
 	// ボタンを表示するキャンバス
-	[SerializeField]
 	private Canvas _canvas;
-	public Canvas ScreenCanvas{
-		get { return _canvas; }
-	}
 
 	// キャンバスに表示するボタン
 	[SerializeField]
-	private GameObject _pauseButton;
+	private GameObject _button;
 
 	// 監視対象のボタン
-	[SerializeField]
 	private GameObject _skipButton;
-	public GameObject SkipButton{
-		get { return _skipButton; }
-	}
 
 	void Start () {
+		var menu = GetComponent<PauseMenuUI>();
+		_skipButton = menu.SkipButton;
+		_canvas = menu.ScreenCanvas;
+
 		// 監視対象のボタンが削除されたら
 		_skipButton.OnDestroyAsObservable()
 			.Subscribe(_ => {
 				// ボタンを生成
-				var obj = Instantiate(_pauseButton, _canvas.transform);
+				var obj = Instantiate(_button, _canvas.transform);
                 GameOverManager.Instance.AddBlinkObject(obj);
 			});
 	}
