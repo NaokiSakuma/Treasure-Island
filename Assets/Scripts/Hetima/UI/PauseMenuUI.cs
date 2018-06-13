@@ -30,6 +30,7 @@ public class PauseMenuUI : MonoBehaviour {
 			.Subscribe(_ => {
 				// ボタンを生成
 				var obj = Instantiate(_pauseButton, _canvas.transform);
+				// 生成したオブジェクトをgameovermanagerに登録
                 GameOverManager.Instance.AddBlinkObject(obj);
 			});
 	}
