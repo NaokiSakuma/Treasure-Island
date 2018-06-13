@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
+using DG.Tweening;
 
 public class ModeIcons : MonoBehaviour {
 
@@ -13,8 +14,11 @@ public class ModeIcons : MonoBehaviour {
 	[SerializeField, Tooltip("オブジェクト操作アイコン")]
 	private Sprite _objectIcon;
 
-	// 監視対象のボタン
-	private GameObject _skipButton;
+	// リール画像
+	private Image _reel;
+
+	// リール回転
+	private Sequence _reelRotater;
 
 	// 操作モード
 	public enum Mode{
@@ -29,8 +33,9 @@ public class ModeIcons : MonoBehaviour {
 	private Mode _currentMode;
 
 	void Start () {
-		var image = gameObject.GetComponentInChildrenWithoutSelf<Image>();
-		var frame = GetComponent<Image>();
+		_reel = gameObject.GetComponentInChildrenWithoutSelf<Mask>().gameObject.GetComponent<Image>();
+		var image = _reel.gameObject.GetComponentInChildrenWithoutSelf<Image>();
+		var target = GetComponent<Button>();
 		var skipButton = transform.parent.GetComponentInChildren<GucchiCS.StartSkip>().gameObject;
 
 		// ポーズによって画像の表示非表示を切り替える
@@ -42,7 +47,7 @@ public class ModeIcons : MonoBehaviour {
 		// モードが変更されたら画像を差し替える
 		this.ObserveEveryValueChanged(x => _currentMode)
 			.Subscribe(mode => {
-				IconChange(image, mode);
+				CreateSeqence(image, mode);
 			});
 
 		// スキップボタンが破壊されたら表示する
@@ -53,7 +58,7 @@ public class ModeIcons : MonoBehaviour {
 			});
 
 		// モード切替
-		frame.OnPointerClickAsObservable()
+		target.OnPointerClickAsObservable()
 			.Subscribe(_ => {
 				// プレイ状態ではないとき、ポーズ中、モード切り替え中、オブジェクト回転中は処理しない
 				if(!GucchiCS.StageManager.Instance.IsPlay || Pausable.Instance.pausing || GucchiCS.ModeChanger.Instance.IsChanging || GucchiCS.ModeChanger.Instance.IsRotate){
@@ -78,6 +83,20 @@ public class ModeIcons : MonoBehaviour {
 			color.a = flg ? 1.0f : 0.0f;
 			item.color = color;
 		}
+	}
+
+	void CreateSeqence(Image image, Mode mode){
+		if(_reelRotater != null &&  _reelRotater.IsPlaying()){
+			_reelRotater.Kill();
+		}
+		_reelRotater = DOTween.Sequence()
+			// 半回転と読み込み
+			.Append(transform.DORotate(new Vector3(0.0f,0.0f,-180.0f), 0.5f)
+				.SetEase(Ease.InCubic)
+				.OnComplete(() =>  IconChange(image, mode)))
+			// 元の角度へ
+			.Append(transform.DORotate(new Vector3(0.0f,0.0f,0.0f), 0.5f)
+				.SetEase(Ease.OutQuart));
 	}
 
 	void IconChange(Image image, Mode mode){
