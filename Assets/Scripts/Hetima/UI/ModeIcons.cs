@@ -16,9 +16,11 @@ public class ModeIcons : MonoBehaviour {
 
 	// リール画像
 	private Image _reel;
-
 	// リール回転
 	private Sequence _reelRotater;
+	// 回転に掛ける時間
+	[SerializeField, Range(0.0f, 5.0f)]
+	private float _rotateDuration;
 
 	// 操作モード
 	public enum Mode{
@@ -91,12 +93,12 @@ public class ModeIcons : MonoBehaviour {
 		}
 		_reelRotater = DOTween.Sequence()
 			// 半回転と読み込み
-			.Append(transform.DORotate(new Vector3(0.0f,0.0f,-180.0f), 0.5f)
+			.Append(transform.DORotate(new Vector3(0.0f,0.0f,-180.0f), _rotateDuration * 0.5f)
 				.SetEase(Ease.InCubic)
 				.OnComplete(() =>  IconChange(image, mode)))
 			// 元の角度へ
-			.Append(transform.DORotate(new Vector3(0.0f,0.0f,0.0f), 0.5f)
-				.SetEase(Ease.OutQuart));
+			.Append(transform.DORotate(new Vector3(0.0f,0.0f,0.0f), _rotateDuration * 0.5f)
+				.SetEase(Ease.OutBack));
 	}
 
 	void IconChange(Image image, Mode mode){
