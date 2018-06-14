@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LightSpot : MonoBehaviour {
     //移動領域
@@ -92,6 +93,10 @@ public class LightSpot : MonoBehaviour {
     /// </summary>
     void StopAnimation()
     {
+        // ステージ選択画面なら使わないので無視
+        if (SceneManager.GetActiveScene().name == "StageSelect")
+            return;
+
         if(GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.CLEAR)
         {
             IsStart = false;
