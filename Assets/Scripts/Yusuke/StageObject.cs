@@ -5,7 +5,7 @@ using UnityEngine;
 public class StageObject : MonoBehaviour {
 
     //マテリアル
-    private Material material;
+    private Material material = null;
 
 
     private bool isSelect;
@@ -32,6 +32,7 @@ public class StageObject : MonoBehaviour {
 
         IfNeededEffect();
         ChangeColor();
+
     }
 
     /// <summary>

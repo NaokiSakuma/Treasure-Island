@@ -88,9 +88,13 @@ public class GameOverManager : SingletonMonoBehaviour<GameOverManager> {
 
                 GameObject prefab = (GameObject)Instantiate(_overPrefab);
                 prefab.transform.SetParent(_canvas.transform, false);
-            });
+            }).AddTo(this);
     }
 
+    /// <summary>
+    /// 点滅するオブジェクトを追加する
+    /// </summary>
+    /// <param name="obj">点滅させたいオブジェクト</param>
     public void AddBlinkObject(GameObject obj)
     {
         _blinkObjs.Add(obj);

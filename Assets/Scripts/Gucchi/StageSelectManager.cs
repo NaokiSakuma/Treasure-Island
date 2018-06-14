@@ -52,7 +52,7 @@ namespace GucchiCS
                         child.position = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle) * _posInterval, Mathf.Sin(Mathf.Deg2Rad * angle) * _posInterval, -10f);
                         child.LookAt(child.root);
                         child.rotation = Quaternion.Euler(-angle, -angle, 0f);
-                        
+
                         // 子のドアを取り出す
                         foreach (Transform doorObj in child.GetChild(1).transform)
                         {
@@ -244,9 +244,9 @@ namespace GucchiCS
                     return;
                 });
 
-            // Enterキーで扉決定
+            // Spaceキーで扉決定
             this.LateUpdateAsObservable()
-                .Where(_ => Input.GetKeyDown(KeyCode.Return))
+                .Where(_ => Input.GetKeyDown(KeyCode.Space))
                 .Where(_ => !ControlState.Instance.IsStateMouse)
                 .Where(_ => !_isChanging)
                 .Subscribe(_ =>

@@ -31,14 +31,16 @@ namespace Konji
 
         void Start()
         {
-            //いい書き方がわかりません
-
+            //プレイヤーの左右移動
             this.UpdateAsObservable()
                 .Where(_ => GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.GAME)
                 .Where(_ => !GucchiCS.ModeChanger.Instance.IsChanging)
                 .Subscribe(_ =>
                 {
-                    InputMove(Input.GetKey(KeyCode.D), Input.GetKey(KeyCode.A));
+                    bool right = Input.GetKey(KeyCode.D) | Input.GetKey(KeyCode.RightArrow);
+                    bool left = Input.GetKey(KeyCode.A) | Input.GetKey(KeyCode.LeftArrow);
+
+                    InputMove(right, left);
                 });
 
             //モードが変わったら速度0(突貫)

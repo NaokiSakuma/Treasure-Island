@@ -96,10 +96,10 @@ public class PauseMenu : MonoBehaviour {
 			.Subscribe(x => {
 				SelectNum += x;
 			});
-			
+
 		// 決定された時の処理
 		this.UpdateAsObservable()
-            .Where(_ => Input.GetKeyDown(KeyCode.Return))
+            .Where(_ => Input.GetKeyDown(KeyCode.Space))
 			.Where(_ => _item != null)
 			.Where(_ => Pausable.Instance.pausing)
 			.Subscribe(_ => {

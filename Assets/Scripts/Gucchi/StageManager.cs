@@ -43,10 +43,10 @@ namespace GucchiCS
             // 始めはマウスカーソルを隠す
             Cursor.visible = false;
 
-            // モード切り替え
+            // モード切り替え //ホイールでも切り替えられるようにしました(Koshida)
             this.LateUpdateAsObservable()
                 .Where(_ => CheckState())
-                .Where(_ => Input.GetKeyDown(KeyCode.Space))
+                .Where(_ => Input.GetKeyDown(KeyCode.Z) || Input.GetAxis("Mouse ScrollWheel") != 0.0f)
                 .Subscribe(_ =>
                 {
                     // 現在のモード
@@ -80,7 +80,7 @@ namespace GucchiCS
             // オブジェクト回転中かどうか
             bool isRotate = ModeChanger.Instance.IsRotate;
 
-            return IsPlay && !ControlState.Instance.IsStateMouse && !isClear && !isChanging && !isRotate;
+            return IsPlay && !isClear && !isChanging && !isRotate;
         }
 
         // オブジェクトの影モード設定

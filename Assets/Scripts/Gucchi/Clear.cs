@@ -74,8 +74,6 @@ namespace GucchiCS
                 {
                     Debug.Log("クリアしました～");
 
-                    // プレイヤーの画像を後ろ姿に変える
-
                     // 中に入っていくように見せる（z軸とスケールを変える）
                     Vector3 clearPos = new Vector3(transform.position.x, transform.position.y, _player.transform.position.z);
                     Vector3 endPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + _clearOutDistance);
