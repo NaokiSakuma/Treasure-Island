@@ -17,7 +17,7 @@ namespace GucchiCS
         Transform _doors = null;
 
         // ライト移動処理
-        public void ChangeLightAction(int numBlock)
+        public void ChangeLightAction(int numBlock, bool buttonClick = false)
         {
             var scroll = Input.GetAxis("Mouse ScrollWheel");
 
@@ -28,7 +28,7 @@ namespace GucchiCS
                     .SetRelative()
                     .OnComplete(() => StageSelectManager.Instance.AnimationCompleteNotify());
             }
-            else if (scroll < 0 || Input.GetKeyDown(KeyCode.S))
+            else if (scroll < 0 || Input.GetKeyDown(KeyCode.S) || buttonClick)
             {
                 transform.DORotate(new Vector3(0f, 0f, -(360f / numBlock)), 1f, RotateMode.WorldAxisAdd)
                     .SetRelative()

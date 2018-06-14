@@ -5,7 +5,6 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 namespace GucchiCS
 {
@@ -26,10 +25,6 @@ namespace GucchiCS
         // アニメーション待機時間
         [SerializeField]
         float _animationTime = 4f;
-
-        // Canvas
-        //[SerializeField]
-        //Canvas _canvas = null;
 
         // クリアUI
         [SerializeField]
@@ -61,6 +56,10 @@ namespace GucchiCS
 
                     // クリア状態にする
                     ModeChanger.Instance.Mode = ModeChanger.MODE.CLEAR;
+                    StageNoReader.Instance.Cleared();
+
+                    // クリアを保存
+                    PlayerPrefs.SetString("stage" + StageManager.Instance.StageNo.ToString(), "Clear");
 
                     // Colliderバグ防止用
                     transform.GetComponent<BoxCollider>().isTrigger = false;

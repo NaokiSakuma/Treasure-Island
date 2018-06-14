@@ -2133,6 +2133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guard: {fileID: 1004273354832016}
+  _stageDoor: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
+  _correctStageDoor: {fileID: 21300000, guid: 29a7257952c37a14184bbf7c67cf8c2a, type: 3}
   _fadeInCanvas: {fileID: 223628890806407304, guid: e1208baa300eadc4088a3754245ade48,
     type: 2}
 --- !u!114 &114118556783276766
@@ -2199,6 +2201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guard: {fileID: 1173287578449832}
+  _stageDoor: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
+  _correctStageDoor: {fileID: 21300000, guid: 29a7257952c37a14184bbf7c67cf8c2a, type: 3}
   _fadeInCanvas: {fileID: 223628890806407304, guid: e1208baa300eadc4088a3754245ade48,
     type: 2}
 --- !u!114 &114210310982893026
@@ -2369,6 +2373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guard: {fileID: 1365814821211840}
+  _stageDoor: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
+  _correctStageDoor: {fileID: 21300000, guid: 29a7257952c37a14184bbf7c67cf8c2a, type: 3}
   _fadeInCanvas: {fileID: 223628890806407304, guid: e1208baa300eadc4088a3754245ade48,
     type: 2}
 --- !u!114 &114399406668659808
@@ -2539,6 +2545,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guard: {fileID: 1528750215564638}
+  _stageDoor: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
+  _correctStageDoor: {fileID: 21300000, guid: 29a7257952c37a14184bbf7c67cf8c2a, type: 3}
   _fadeInCanvas: {fileID: 223628890806407304, guid: e1208baa300eadc4088a3754245ade48,
     type: 2}
 --- !u!114 &114540187679058900
@@ -2553,6 +2561,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guard: {fileID: 1536386966809812}
+  _stageDoor: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
+  _correctStageDoor: {fileID: 21300000, guid: 29a7257952c37a14184bbf7c67cf8c2a, type: 3}
   _fadeInCanvas: {fileID: 223628890806407304, guid: e1208baa300eadc4088a3754245ade48,
     type: 2}
 --- !u!114 &114654747295472932
@@ -2567,6 +2577,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guard: {fileID: 1898209331958972}
+  _stageDoor: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
+  _correctStageDoor: {fileID: 21300000, guid: 29a7257952c37a14184bbf7c67cf8c2a, type: 3}
   _fadeInCanvas: {fileID: 223628890806407304, guid: e1208baa300eadc4088a3754245ade48,
     type: 2}
 --- !u!114 &114693056259229082
@@ -2633,6 +2645,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guard: {fileID: 1902227889624884}
+  _stageDoor: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
+  _correctStageDoor: {fileID: 21300000, guid: 29a7257952c37a14184bbf7c67cf8c2a, type: 3}
   _fadeInCanvas: {fileID: 223628890806407304, guid: e1208baa300eadc4088a3754245ade48,
     type: 2}
 --- !u!114 &114775224192800656
@@ -2647,6 +2661,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guard: {fileID: 1233244902346204}
+  _stageDoor: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
+  _correctStageDoor: {fileID: 21300000, guid: 29a7257952c37a14184bbf7c67cf8c2a, type: 3}
   _fadeInCanvas: {fileID: 223628890806407304, guid: e1208baa300eadc4088a3754245ade48,
     type: 2}
 --- !u!114 &114791306232075514
@@ -2713,6 +2729,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guard: {fileID: 1665983371508004}
+  _stageDoor: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
+  _correctStageDoor: {fileID: 21300000, guid: 29a7257952c37a14184bbf7c67cf8c2a, type: 3}
   _fadeInCanvas: {fileID: 223628890806407304, guid: e1208baa300eadc4088a3754245ade48,
     type: 2}
 --- !u!114 &114850399778055940
@@ -2727,6 +2745,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _guard: {fileID: 1305269762079756}
+  _stageDoor: {fileID: 21300000, guid: 0087f2a65df6171468fa80a9c1c3d423, type: 3}
+  _correctStageDoor: {fileID: 21300000, guid: 29a7257952c37a14184bbf7c67cf8c2a, type: 3}
   _fadeInCanvas: {fileID: 223628890806407304, guid: e1208baa300eadc4088a3754245ade48,
     type: 2}
 --- !u!212 &212115370980187530

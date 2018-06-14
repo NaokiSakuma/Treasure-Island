@@ -6,13 +6,27 @@ namespace GucchiCS
 {
     public class StageNoReader : SingletonMonoBehaviour<StageNoReader>
     {
+        // ステージ番号
         public static int _stageNo;
+
+        // クリアフラグ
+        public static bool _isClear;
 
         // Use this for initialization
         void Start()
         {
+            Debug.Log("enter");
             DontDestroyOnLoad(this);
+            _isClear = false;
         }
+
+        // クリア時
+        public void Cleared()
+        {
+            _isClear = true;
+        }
+
+        /* プロパティ */
 
         // ステージ変更時
         public int ChangeStageNo

@@ -18,9 +18,29 @@ namespace GucchiCS
         [SerializeField]
         GameObject _guard = null;
 
+        // 通常のガードスプライト
+        [SerializeField, Tooltip("ガード")]
+        Sprite _stageDoor = null;
+
+        // クリア済み用ガードスプライト
+        [SerializeField, Tooltip("クリア済み扉")]
+        Sprite _correctStageDoor = null;
+
         // フェード用パネル
         [SerializeField]
         Canvas _fadeInCanvas = null;
+
+        void Start()
+        {
+            // クリア情報をリセット
+            this.LateUpdateAsObservable()
+                .Where(_ => Input.GetKeyDown(KeyCode.C))
+                .Subscribe(_ =>
+                {
+                    PlayerPrefs.SetString("stage" + (_doorID + 1).ToString(), "");
+                    _guard.GetComponent<SpriteRenderer>().sprite = _stageDoor;
+                });
+        }
 
         // クリックされたらシーン遷移
         public void OnClick()
@@ -39,7 +59,7 @@ namespace GucchiCS
                         .OnStart(() =>
                         {
                             // ガードの削除
-                            Destroy(_guard);
+                            _guard.SetActive(false);
 
                             // SEを鳴らす
                             AudioManager.Instance.PlaySE(AUDIO.SE_DOORZOOM);
@@ -85,6 +105,15 @@ namespace GucchiCS
         public void OnSelectExit()
         {
             _guard.SetActive(true);
+        }
+
+        // クリア済みのときの処理
+        public void SetClearState()
+        {
+            if (PlayerPrefs.GetString("stage" + (_doorID + 1).ToString()) == "Clear")
+            {
+                _guard.GetComponent<SpriteRenderer>().sprite = _correctStageDoor;
+            }
         }
 
         // 扉IDを設定
