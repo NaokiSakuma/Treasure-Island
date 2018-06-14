@@ -5,15 +5,16 @@ using UnityEngine;
 public class LightSpot : MonoBehaviour {
 
     [SerializeField]
-    float moveDistance = 0.0f;
+    float moveDistance = 3f;
     [SerializeField]
-    float moveTime;
+    float moveTime = 60f;
 
     float startPosZ;
     int time = 0;
     bool isTimeUp;
 
-    bool isStart;
+    [SerializeField]
+    bool isStart = false;
     public bool IsStart
     {
         set { isStart = value; }
@@ -23,9 +24,7 @@ public class LightSpot : MonoBehaviour {
     // Use this for initialization
     void Start () {
         startPosZ = transform.position.z;
-        moveTime = 60;
         isTimeUp = true;
-        moveDistance = 3;
     }
 	
 	// Update is called once per frame
