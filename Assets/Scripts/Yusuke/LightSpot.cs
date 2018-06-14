@@ -5,18 +5,24 @@ using UnityEngine;
 public class LightSpot : MonoBehaviour {
     //移動領域
     [SerializeField]
-    float moveDistance = 3.0f;
+    float moveDistance = 3f;
     //移動時間
     [SerializeField]
-    float moveTime = 120;
+    float moveTime = 60f;
+
     //初期Z座標
     float startPosZ;
     //経過時間
     int time = 0;
+
+    bool isTimeUp;
+
+    //開始されたか
+    [SerializeField]
+    bool isStart = false;
+
     //タイムを加算するか
     bool isAddTime = true;
-    //開始されたか
-    bool isStart;
     public bool IsStart
     {
         set { isStart = value; }
@@ -26,9 +32,8 @@ public class LightSpot : MonoBehaviour {
     // Use this for initialization
     void Start () {
         startPosZ = transform.position.z;
-        moveTime = 60;
+        isTimeUp = true;
         isAddTime = true;
-        moveDistance = 3;
     }
 	
 	// Update is called once per frame
