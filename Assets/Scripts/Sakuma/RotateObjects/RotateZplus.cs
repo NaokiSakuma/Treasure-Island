@@ -5,7 +5,7 @@ using DG.Tweening;
 using UniRx;
 using UniRx.Triggers;
 
-public class RoteteZplus : RotateObjects {
+public class RotateZplus : RotateObjects {
     protected override void Start()
     {
         base.Start();
