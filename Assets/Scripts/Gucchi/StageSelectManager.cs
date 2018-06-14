@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GucchiCS
 {
@@ -27,6 +28,10 @@ namespace GucchiCS
         [SerializeField]
         Door _selectedDoor = null;
 
+        // 切り替えボタン
+        [SerializeField]
+        Button _changeButton = null;
+
         // Use this for initialization
         void Start()
         {
@@ -49,23 +54,29 @@ namespace GucchiCS
                         child.rotation = Quaternion.Euler(-angle, -angle, 0f);
 
                         // 子のドアを取り出す
-                        foreach (Transform door in child.GetChild(1).transform)
+                        foreach (Transform doorObj in child.GetChild(1).transform)
                         {
-                            _doors.Add(door.GetComponent<Door>());
+                            Door door = doorObj.GetComponent<Door>();
+
+                            // クリア済みならチェックをつける
+                            door.SetClearState();
+
+                            _doors.Add(door);
                         }
                     }
                 }
             }
 
-            // 前回遊んだステージを仮選択しておく
-            int beforeStageNo = StageNoReader._stageNo;
+            // 前回遊んだステージの次のステージを仮選択しておく
+            int beforeStageNo = StageNoReader._stageNo % _doors.Count;
             if (beforeStageNo == 0)
-            {
                 beforeStageNo = 1;
-            }
 
-            // 初期の仮選択を設定
-            _selectedDoor = _doors[beforeStageNo - 1];
+            // 初期の仮選択を設定（クリアした後なら次のステージ、そうでないなら前回のステージまたは１ステージ）
+            if (StageNoReader._isClear)
+                _selectedDoor = _doors[beforeStageNo];
+            else
+                _selectedDoor = _doors[beforeStageNo - 1];
             _selectedDoor.OnSelectEnter();
 
             // 仮選択ステージによってブロック位置を変更
@@ -240,6 +251,9 @@ namespace GucchiCS
                 .Where(_ => !_isChanging)
                 .Subscribe(_ =>
                 {
+                    // ボタンを消す
+                    Destroy(_changeButton.gameObject);
+
                     _selectedDoor.OnClick();
                 });
 
@@ -248,7 +262,7 @@ namespace GucchiCS
         }
 
         // ライト回転
-        void ChangeLightAction(int numBlock)
+        public void ChangeLightAction(int numBlock, bool buttonClick = false)
         {
             _isChanging = true;
 
@@ -258,14 +272,31 @@ namespace GucchiCS
             // すべてのブロックを移動
             foreach (SelectLight block in _blockList)
             {
-                block.ChangeLightAction(numBlock);
+                block.ChangeLightAction(numBlock, buttonClick);
             }
+
+            // ボタンの移動
+            _changeButton.GetComponent<ButtonOfStageSelect>().ChangeLightRotate(buttonClick);
         }
 
         // 回転終了通知を受け取る
         public void AnimationCompleteNotify()
         {
             _isChanging = false;
+        }
+
+        /* プロパティ */
+
+        // 回転中かどうか
+        public bool IsChanging
+        {
+            get { return _isChanging; }
+        }
+
+        // ブロック数
+        public int BlockNum
+        {
+            get { return _blockList.Count; }
         }
     }
 }
