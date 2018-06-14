@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 222430500687523744}
   - component: {fileID: 114806745908504882}
   - component: {fileID: 114719792157463568}
+  - component: {fileID: 114044538883081766}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -170,6 +171,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &114044538883081766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1725845256530914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca063b50dea7ad4c8085e2867215d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveTime: 120
 --- !u!114 &114047549068209072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -414,7 +427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
