@@ -92,7 +92,7 @@ Shader "Unlit/OutLine"{
 		//輪郭
 		Pass
         {
-		    Cull Front
+		    Cull Back
 			ZWrite Off
             CGPROGRAM
             #pragma vertex vert

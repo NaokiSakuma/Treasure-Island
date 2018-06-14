@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LightSpot : MonoBehaviour {
-
+    //移動領域
     [SerializeField]
-    float moveDistance = 0.0f;
+    float moveDistance = 3.0f;
+    //移動時間
     [SerializeField]
-    float moveTime;
-
+    float moveTime = 120;
+    //初期Z座標
     float startPosZ;
+    //経過時間
     int time = 0;
-    bool isTimeUp;
-
+    //タイムを加算するか
+    bool isAddTime = true;
+    //開始されたか
     bool isStart;
     public bool IsStart
     {
@@ -24,7 +27,7 @@ public class LightSpot : MonoBehaviour {
     void Start () {
         startPosZ = transform.position.z;
         moveTime = 60;
-        isTimeUp = true;
+        isAddTime = true;
         moveDistance = 3;
     }
 	
@@ -33,18 +36,28 @@ public class LightSpot : MonoBehaviour {
         if (!isStart)
             return;
 
-        Vector3 pos = transform.position;
-        pos = new Vector3(pos.x, pos.y, Mathf.Lerp((startPosZ - moveDistance) , (startPosZ - moveDistance / 2) ,(time / moveTime)));
-        transform.position = pos;
-
+        ZPosLearp();
         TimeUpdate();
-        IsTimeUp();
+        ChangeIsTimeUp();
+        StopAnimation();
     }
 
+    /// <summary>
+    /// Z座標をラープにより移動させる
+    /// </summary>
+    void ZPosLearp()
+    {
+        Vector3 pos = transform.position;
+        pos = new Vector3(pos.x, pos.y, Mathf.Lerp((startPosZ - moveDistance), (startPosZ - moveDistance / 2), (time / moveTime)));
+        transform.position = pos;
+    }
 
+    /// <summary>
+    /// 時間を更新
+    /// </summary>
     void TimeUpdate()
     {
-        if (isTimeUp)
+        if (isAddTime)
         {
             time++;
         }
@@ -54,16 +67,33 @@ public class LightSpot : MonoBehaviour {
         }
     }
 
-
-    void IsTimeUp()
+    /// <summary>
+    /// 時間更新フラグを変更する
+    /// </summary>
+    void ChangeIsTimeUp()
     {
-        if (!isTimeUp && time <= 0)
+        if (!isAddTime && time <= 0)
         {
-            isTimeUp = true;
+            isAddTime = true;
         }
-        if (isTimeUp && time >= moveTime)
+        if (isAddTime && time >= moveTime)
         {
-            isTimeUp = false;
+            isAddTime = false;
         }
+    }
+
+    /// <summary>
+    /// アニメーションを停止させる
+    /// </summary>
+    void StopAnimation()
+    {
+        if(GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.CLEAR)
+        {
+            IsStart = false;
+            Vector3 pos = transform.position;
+            pos = new Vector3(pos.x, pos.y, startPosZ - moveDistance);
+            transform.position = pos;
+        }
+
     }
 }
