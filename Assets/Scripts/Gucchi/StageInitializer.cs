@@ -93,9 +93,9 @@ namespace GucchiCS
                 .Take(1)
                 .Subscribe(_ => SetGame());
 
-            // Sキーが押されたらスキップ
+            // Xキーが押されたらスキップ
             this.LateUpdateAsObservable()
-                .Where(_ => Input.GetKeyDown(KeyCode.S))
+                .Where(_ => Input.GetKeyDown(KeyCode.X))
                 .Take(1)
                 .Subscribe(_ => Skip());
         }
@@ -208,7 +208,7 @@ namespace GucchiCS
                     _clear.transform.GetComponentInChildren<BoxCollider>().isTrigger = true;
                     _sequence = SEQUENCE.CORRECTED;
                 })
-                .OnComplete(() => _lightSpot.GetComponent<LightSpot>().IsStart = true); 
+                .OnComplete(() => _lightSpot.GetComponent<LightSpot>().IsStart = true);
 
 
             seq.Play();

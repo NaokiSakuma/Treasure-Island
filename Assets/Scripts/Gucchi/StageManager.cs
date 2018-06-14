@@ -47,7 +47,7 @@ namespace GucchiCS
             // モード切り替え //ホイールでも切り替えられるようにしました(Koshida)
             this.LateUpdateAsObservable()
                 .Where(_ => CheckState())
-                .Where(_ => Input.GetKeyDown(KeyCode.Space) || Input.GetAxis("Mouse ScrollWheel") != 0.0f)
+                .Where(_ => Input.GetKeyDown(KeyCode.Z) || Input.GetAxis("Mouse ScrollWheel") != 0.0f)
                 .Subscribe(_ =>
                 {
                     // 現在のモード

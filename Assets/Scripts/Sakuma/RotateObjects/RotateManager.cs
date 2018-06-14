@@ -94,7 +94,7 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
         // オブジェクトを仮登録する
         this.UpdateAsObservable()
             .Take(1)
-            .Subscribe(_ => 
+            .Subscribe(_ =>
             {
                 _hitObj = _stageChildObjs[0].gameObject;
             });
@@ -183,7 +183,7 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
                         }
 
                         // オブジェクトの選択
-                        else if (Input.GetKeyDown(KeyCode.Return))
+                        else if (Input.GetKeyDown(KeyCode.Space))
                         {
                             if (_hitObj == null) return;
                             if (_selectedObj != null)
