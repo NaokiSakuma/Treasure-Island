@@ -88,6 +88,9 @@ public class ModeIcons : MonoBehaviour {
 	}
 
 	void CreateSeqence(Image image, Mode mode){
+		if(mode == Mode.None){
+			return;
+		}
 		if(_reelRotater != null &&  _reelRotater.IsPlaying()){
 			_reelRotater.Kill();
 		}
