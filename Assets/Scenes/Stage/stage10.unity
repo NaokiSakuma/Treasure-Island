@@ -1762,7 +1762,7 @@ MonoBehaviour:
   _gameScreenDistance: 9
   _playerDistance: 3
   _changeTime: 1
-  _correctionXPos: 4
+  _correctionXPos: 3
   _isRotate: {fileID: 1118441786}
 --- !u!1 &1118441789 stripped
 GameObject:
@@ -1902,7 +1902,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.069284
+      value: 2.23
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1910,23 +1910,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -6.4830313
+      value: -7.87
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -0.20181212
+      value: -0.20181213
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.15411751
+      value: 0.15411752
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -0.0321753
+      value: -0.032175303
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.9666873
+      value: -0.9666874
       objectReference: {fileID: 0}
     - target: {fileID: 4083073948289016, guid: 03de7cfbcf660144ebc0e9cf196e461c, type: 2}
       propertyPath: m_RootOrder
