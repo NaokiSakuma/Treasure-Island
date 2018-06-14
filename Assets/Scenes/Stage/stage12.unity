@@ -1295,7 +1295,7 @@ Prefab:
     - target: {fileID: 114495575328868704, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _correctionXPos
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114341049581691638, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}

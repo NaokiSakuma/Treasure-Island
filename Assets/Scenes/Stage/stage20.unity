@@ -1560,7 +1560,7 @@ MonoBehaviour:
   _gameScreenDistance: 9
   _playerDistance: 3
   _changeTime: 1
-  _correctionXPos: 6
+  _correctionXPos: 2
   _isRotate: {fileID: 1056087001}
 --- !u!1 &1056087004 stripped
 GameObject:
