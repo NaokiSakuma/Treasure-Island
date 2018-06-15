@@ -34,9 +34,6 @@ namespace GucchiCS
         // Use this for initialization
         void Start()
         {
-            // モード
-            ModeChanger.MODE mode = ModeChanger.Instance.Mode;
-
             // ステージ番号をリーダーに設定
             StageNoReader.Instance.ChangeStageNo = _stageNo;
 
@@ -50,7 +47,7 @@ namespace GucchiCS
                 .Subscribe(_ =>
                 {
                     // 現在のモード
-                    mode = ModeChanger.Instance.Mode;
+                    ModeChanger.MODE mode = ModeChanger.Instance.Mode;
 
                     // ゲームモード　⇒　コントロールモード（オブジェクト選択なし）
                     if (mode == ModeChanger.MODE.GAME)
@@ -61,11 +58,13 @@ namespace GucchiCS
                     {
                         mode = ModeChanger.MODE.GAME;
                     }
-                });
 
-            // モード変更時通知
-            this.ObserveEveryValueChanged(newMode => mode)
-                .Subscribe(newMode => ModeChanger.Instance.Mode = newMode);
+                    // モード切り替え
+                    if (mode != ModeChanger.Instance.Mode)
+                    {
+                        ModeChanger.Instance.Mode = mode;
+                    }
+                });
         }
 
         // ゲーム操作可能状態チェック
