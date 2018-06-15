@@ -15,7 +15,6 @@ namespace GucchiCS
         // Use this for initialization
         void Start()
         {
-            Debug.Log("enter");
             DontDestroyOnLoad(this);
             _isClear = false;
         }
