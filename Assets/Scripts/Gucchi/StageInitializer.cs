@@ -163,6 +163,7 @@ namespace GucchiCS
         void SetGame()
         {
             // スキップボタンを削除
+            _isSkiped = true;
             Destroy(_skipButton.gameObject);
 
             // オブジェクトの影設定
@@ -194,7 +195,6 @@ namespace GucchiCS
                 .AppendCallback(() =>
                 {
                     StageManager.Instance.IsPlay = true;
-                    _isSkiped = true;
                 })
                 .Append(_clear.transform.DOScale(Vector3.zero, 1f))
                 .AppendCallback(() =>
