@@ -249,10 +249,11 @@ namespace GucchiCS
                 .Where(_ => Input.GetKeyDown(KeyCode.Space))
                 .Where(_ => !ControlState.Instance.IsStateMouse)
                 .Where(_ => !_isChanging)
+                .Take(1)
                 .Subscribe(_ =>
                 {
                     // ボタンを消す
-                    Destroy(_changeButton.gameObject);
+                    DisposeLightChangeButton();
 
                     _selectedDoor.OnClick();
                 });
@@ -283,6 +284,16 @@ namespace GucchiCS
         public void AnimationCompleteNotify()
         {
             _isChanging = false;
+        }
+
+        // ライト変更ボタンの削除
+        public void DisposeLightChangeButton()
+        {
+            if (_changeButton != null)
+            {
+                Destroy(_changeButton.gameObject);
+                _changeButton = null;
+            }
         }
 
         /* プロパティ */
