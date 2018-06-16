@@ -25,7 +25,7 @@ public class ButtonExitGame : MonoBehaviour {
 	
 	public void ExitGame(){
 		// ゲーム終了
-		Debug.Log("ここにゲーム終了処理");
+		Application.Quit();
 		// 念の為の記述、フェードアウト後ゲームに戻る
 		_group.DOFade(0.0f, _fadeTime).OnComplete(() => Destroy(this.gameObject));
 	}
