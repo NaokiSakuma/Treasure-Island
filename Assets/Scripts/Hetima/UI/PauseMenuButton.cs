@@ -24,7 +24,8 @@ public class PauseMenuButton : MonoBehaviour {
             .Where(_ => !GucchiCS.ModeChanger.Instance.IsChanging)
             .Subscribe(_ => {
                 Pausable.Instance.pausing = !Pausable.Instance.pausing;
-                RotateManager.Instance.HideObject();
+                // pauseした時にbuttonManagerを消す
+                RotateManager.Instance.Pause(!Pausable.Instance.pausing);
             });
 
         // 一時停止中と再生中で画像を変更する
