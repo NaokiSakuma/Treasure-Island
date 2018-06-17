@@ -61,11 +61,14 @@ public class ModeIcons : MonoBehaviour {
 
 		// モード切替
 		target.OnPointerClickAsObservable()
-			.Subscribe(_ => {
+            // オブジェクトと重なっていなかったら
+            .Where(_ => !RotateManager.Instance.IsMouseRayHit())
+            .Subscribe(_ => {
 				// プレイ状態ではないとき、ポーズ中、モード切り替え中、オブジェクト回転中は処理しない
 				if(!GucchiCS.StageManager.Instance.IsPlay || Pausable.Instance.pausing || GucchiCS.ModeChanger.Instance.IsChanging || GucchiCS.ModeChanger.Instance.IsRotate){
 					return;
 				}
+
 				var mc = GucchiCS.ModeChanger.Instance;
 				// プレイヤー操作モードもしくはオブジェクト選択モードなら切り替える
 				if(mc.Mode == GucchiCS.ModeChanger.MODE.GAME || mc.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL || mc.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED){

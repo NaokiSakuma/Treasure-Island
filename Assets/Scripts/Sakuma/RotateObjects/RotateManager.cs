@@ -105,8 +105,9 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
         this.UpdateAsObservable()
             .Subscribe(_ =>
             {
-                print("hitobj：" + _hitObj);
-                print("selectobj：" + _selectedObj);
+                //print("hitobj：" + _hitObj);
+                //print("selectobj：" + _selectedObj);
+                print("layerMask" + layerMask.value);
             });
 
         // 更新
@@ -152,7 +153,7 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
         // オブジェクトコントロールモードでのマウスでの処理
         this.UpdateAsObservable()
             .Where(_ => canRotateObject)
-            .Where(_ => !EventSystem.current.IsPointerOverGameObject())
+            //.Where(_ => !EventSystem.current.IsPointerOverGameObject())
             .Where(_ => GucchiCS.ControlState.Instance.IsStateMouse)
             .Subscribe(_ =>
             {
@@ -162,7 +163,6 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
         // オブジェクトコントロールモードでのキーボードでの処理
         this.UpdateAsObservable()
             .Where(_ => canRotateObject)
-            .Where(_ => !EventSystem.current.IsPointerOverGameObject())
             .Where(_ => !GucchiCS.ControlState.Instance.IsStateMouse)
             .Subscribe(_ =>
             {
@@ -358,4 +358,13 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
         }
     }
 
+    /// <summary>
+    /// mouseのrayに当たっているか
+    /// </summary>
+    /// <returns>true：当たっている、false：当たっていない</returns>
+    public bool IsMouseRayHit()
+    {
+        RaycastHit hit = new RaycastHit();
+        return Physics.Raycast(_mouseRay, out hit, Mathf.Infinity, layerMask.value);
+    }
 }

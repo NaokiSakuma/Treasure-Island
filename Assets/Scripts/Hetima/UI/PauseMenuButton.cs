@@ -22,6 +22,8 @@ public class PauseMenuButton : MonoBehaviour {
         img.OnPointerClickAsObservable()
             .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
             .Where(_ => !GucchiCS.ModeChanger.Instance.IsChanging)
+            // オブジェクトと重なっていなかったら
+            .Where(_ => !RotateManager.Instance.IsMouseRayHit())
             .Subscribe(_ => {
                 Pausable.Instance.pausing = !Pausable.Instance.pausing;
                 // pauseした時にbuttonManagerを消す
