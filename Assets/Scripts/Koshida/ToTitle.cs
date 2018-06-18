@@ -9,6 +9,7 @@ namespace Konji
     {
         public void OnClick()
         {
+            AudioManager.Instance.PlaySE(AUDIO.SE_POSE);
             SceneManager.LoadScene("TitleScene");
         }
     }
