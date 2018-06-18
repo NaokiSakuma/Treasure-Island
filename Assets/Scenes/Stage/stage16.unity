@@ -228,6 +228,10 @@ Prefab:
     - {fileID: 2300000, guid: 31d9183228ebedf4d8c9ad46570a626b, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 31d9183228ebedf4d8c9ad46570a626b, type: 3}
   m_IsPrefabParent: 0
+--- !u!4 &84312073 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 84312072}
 --- !u!1 &124519090
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +566,11 @@ Prefab:
       propertyPath: _rotateObjects.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114222517673691712, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 802046588}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5f986a361e915941859d1fffeb2df9c, type: 2}
   m_IsPrefabParent: 0
@@ -1682,7 +1691,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1740072933}
+  - {fileID: 84312073}
   - {fileID: 1407059384}
   m_Father: {fileID: 1047545533}
   m_RootOrder: 4
@@ -2065,10 +2074,6 @@ Camera:
 --- !u!1 &1740072932 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 31d9183228ebedf4d8c9ad46570a626b, type: 3}
-  m_PrefabInternal: {fileID: 84312072}
---- !u!4 &1740072933 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: 31d9183228ebedf4d8c9ad46570a626b, type: 3}
   m_PrefabInternal: {fileID: 84312072}
 --- !u!114 &1740072934
 MonoBehaviour:

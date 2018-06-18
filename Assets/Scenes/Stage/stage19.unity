@@ -599,6 +599,11 @@ Prefab:
       propertyPath: _rotateObjects.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114222517673691712, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 802046588}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5f986a361e915941859d1fffeb2df9c, type: 2}
   m_IsPrefabParent: 0
@@ -1278,10 +1283,6 @@ GameObject:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 3c262797e67973b4185c8c21745baf2b, type: 3}
   m_PrefabInternal: {fileID: 1913525755}
---- !u!4 &1013808926 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 400000, guid: 3c262797e67973b4185c8c21745baf2b, type: 3}
-  m_PrefabInternal: {fileID: 1913525755}
 --- !u!114 &1013808927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1889,7 +1890,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1013808926}
+  - {fileID: 1913525756}
   - {fileID: 908029731}
   m_Father: {fileID: 34464679}
   m_RootOrder: 4
@@ -2408,6 +2409,10 @@ Prefab:
     - {fileID: 2300000, guid: 3c262797e67973b4185c8c21745baf2b, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 3c262797e67973b4185c8c21745baf2b, type: 3}
   m_IsPrefabParent: 0
+--- !u!4 &1913525756 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1913525755}
 --- !u!1001 &2092804370
 Prefab:
   m_ObjectHideFlags: 0

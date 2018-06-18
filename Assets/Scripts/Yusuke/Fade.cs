@@ -7,8 +7,6 @@ public class Fade : MonoBehaviour
 {
     [SerializeField]
     int moveTime = 120;
-
-    float startPosZ = 0.0f;
     int time = 0;
     bool isTimeUp = false;
 
