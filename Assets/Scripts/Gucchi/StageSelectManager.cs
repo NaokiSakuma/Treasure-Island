@@ -32,7 +32,10 @@ namespace GucchiCS
         [SerializeField]
         Button _changeButton = null;
 
-        //タイトルへ戻るボタン([add]越田)
+        // 選択済みかどうか
+        bool _stageSelected = false;
+        
+        // タイトルへ戻るボタン
         [SerializeField]
         GameObject _toTitleButton = null;
 
@@ -99,6 +102,7 @@ namespace GucchiCS
             // 仮選択（マウス）
             this.LateUpdateAsObservable()
                 .Where(_ => ControlState.Instance.IsStateMouse)
+                .Where(_ => !_stageSelected)
                 .Subscribe(_ =>
                 {
                     // マウスの位置からrayを飛ばす
@@ -132,6 +136,7 @@ namespace GucchiCS
             this.LateUpdateAsObservable()
                 .Where(_ => !ControlState.Instance.IsStateMouse)
                 .Where(_ => Input.anyKeyDown)
+                .Where(_ => !_stageSelected)
                 .Subscribe(_ =>
                 {
                     // 選択中の扉ID
@@ -179,7 +184,8 @@ namespace GucchiCS
                 });
 
             // ホイール操作（手前）でライト変更
-            this.UpdateAsObservable()
+            this.LateUpdateAsObservable()
+                .Where(_ => !_stageSelected)
                 .Where(_ => Input.GetAxis("Mouse ScrollWheel") < 0)
                 .Where(_ => ControlState.Instance.IsStateMouse)
                 .Where(_ => !_isChanging)
@@ -193,6 +199,7 @@ namespace GucchiCS
             this.UpdateAsObservable()
                 .Where(_ => Input.GetAxis("Mouse ScrollWheel") > 0)
                 .Where(_ => ControlState.Instance.IsStateMouse)
+                .Where(_ => !_stageSelected)
                 .Where(_ => !_isChanging)
                 .Subscribe(_ =>
                 {
@@ -201,9 +208,10 @@ namespace GucchiCS
                 });
 
             // WSキーでライト変更
-            this.UpdateAsObservable()
+            this.LateUpdateAsObservable()
                 .Where(_ => Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
                 .Where(_ => !ControlState.Instance.IsStateMouse)
+                .Where(_ => !_stageSelected)
                 .Where(_ => !_isChanging)
                 .Subscribe(_ =>
                 {
@@ -252,6 +260,7 @@ namespace GucchiCS
             this.LateUpdateAsObservable()
                 .Where(_ => Input.GetKeyDown(KeyCode.Space))
                 .Where(_ => !ControlState.Instance.IsStateMouse)
+                .Where(_ => !_stageSelected)
                 .Where(_ => !_isChanging)
                 .Take(1)
                 .Subscribe(_ =>
@@ -315,8 +324,14 @@ namespace GucchiCS
             _isChanging = false;
         }
 
-        // ボタンの削除([fix]越田)
-        public void DisposeButton()
+        // ステージ選択通知
+        public void StageSelectNotify()
+        {
+            _stageSelected = true;
+        }
+
+        // ライト変更ボタンの削除
+        public void DisposeLightChangeButton()
         {
             if (_changeButton != null)
             {
@@ -332,6 +347,12 @@ namespace GucchiCS
         }
 
         /* プロパティ */
+
+        // 選択した扉
+        public Door SelectedDoor
+        {
+            set { _selectedDoor = value; }
+        }
 
         // 回転中かどうか
         public bool IsChanging

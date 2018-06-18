@@ -94,6 +94,10 @@ namespace GucchiCS
 
                     seq.Play();
                 });
+
+            // ステージ選択通知を送る
+            StageSelectManager.Instance.SelectedDoor = this;
+            StageSelectManager.Instance.StageSelectNotify();
         }
 
         // マウスポインタが触れたらガードを消す
