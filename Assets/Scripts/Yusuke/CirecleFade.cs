@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 
 
+
 public class CirecleFade : MonoBehaviour {
 
     //フェードにかける時間
@@ -20,13 +21,21 @@ public class CirecleFade : MonoBehaviour {
     //フェードの種類
     public enum FadeMode
     {
-        In,
-        Out
+        In,//フェードイン
+        Out//フェードアウト
     }
+
+    //音
+    [SerializeField]
+    private AudioSource sound;
+
     // Use this for initialization
     void Start () {
         //シェーダーに現在の進行時間を渡す
         GetComponent<Image>().material.SetFloat("_FadeTime", 0);
+        //音再生
+        sound = GetComponent<AudioSource>();
+        sound.PlayOneShot(sound.clip);
     }
 
     // Update is called once per frame
@@ -41,7 +50,7 @@ public class CirecleFade : MonoBehaviour {
     /// </summary>
     public void TimeReset()
     {
-        time = 0;
+        time = 0.0f;
     }
 
     /// <summary>

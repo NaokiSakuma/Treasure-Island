@@ -23,7 +23,7 @@ public class PauseBackToSelect : SimplePauseItem
     private GameObject pauseReset = null;
     //ポーズから戻る機能ゲームに
     [SerializeField]
-    private GameObject pauseBackToGame;
+    private GameObject pauseBackToGame = null;
     //シーン遷移をするか
     private bool isSceneTrans = false;
 

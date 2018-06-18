@@ -7,13 +7,15 @@ public class StageObject : MonoBehaviour {
     //マテリアル
     private Material material = null;
 
-
+    //選択されているか
     private bool isSelect;
     public bool IsSelect
     {
         set { isSelect = value; }
         get { return isSelect; }
     }
+
+    //仮選択されているか
     private bool isTemporary;
     public bool IsTemporary
     {

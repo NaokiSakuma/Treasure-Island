@@ -6,17 +6,15 @@ using UnityEngine.SceneManagement;
 public class LightSpot : MonoBehaviour {
     //移動領域
     [SerializeField]
-    float moveDistance = 3f;
+    float moveDistance = 3.0f;
     //移動時間
     [SerializeField]
     float moveTime = 60f;
 
     //初期Z座標
-    float startPosZ;
+    float startPosZ = 0.0f;
     //経過時間
     int time = 0;
-
-    bool isTimeUp;
 
     //開始されたか
     [SerializeField]
@@ -33,18 +31,19 @@ public class LightSpot : MonoBehaviour {
     // Use this for initialization
     void Start () {
         startPosZ = transform.position.z;
-        isTimeUp = true;
-        isAddTime = true;
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (!isStart)
             return;
-
+        //Z座標をラープ
         ZPosLearp();
+        //時間を更新
         TimeUpdate();
+        //時間を加算するか
         ChangeIsTimeUp();
+        //アニメーションを停止
         StopAnimation();
     }
 
@@ -96,7 +95,7 @@ public class LightSpot : MonoBehaviour {
         // ステージ選択画面なら使わないので無視
         if (SceneManager.GetActiveScene().name == "StageSelect")
             return;
-
+        //クリアしたら停止
         if(GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.CLEAR)
         {
             IsStart = false;
