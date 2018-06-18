@@ -40,10 +40,11 @@ namespace GucchiCS
         // リセット
         public void ResetObjects()
         {
+            // プレイヤーの行動を非アクティブにする（死亡防止）
+            _player.GetComponent<Konji.PlayerMove>().enabled = false;
+            _player.GetComponent<Konji.PlayerControl>().enabled = false;
 
             // プレイヤー
-            _player.GetComponent<Konji.PlayerMove>().gameObject.SetActive(false);
-            _player.GetComponent<Konji.PlayerControl>().gameObject.SetActive(false);
             _player.GetComponent<Konji.PlayerMove>().Reset(_temp[(int)OBJECT.PLAYER].Item1, _temp[(int)OBJECT.PLAYER].Item2);
 
             // 各オブジェクト
@@ -53,9 +54,9 @@ namespace GucchiCS
                 _rotateObjects[i - 1].transform.rotation = _temp[i].Item2;
             }
 
-            // プレイヤーのアクティブを戻す（死亡防止）
-            _player.GetComponent<Konji.PlayerMove>().gameObject.SetActive(true);
-            _player.GetComponent<Konji.PlayerControl>().gameObject.SetActive(true);
+            // プレイヤーの行動のアクティブを戻す
+            _player.GetComponent<Konji.PlayerMove>().enabled = true;
+            _player.GetComponent<Konji.PlayerControl>().enabled = true;
 
             // オブジェクトの選択
             ModeChanger.Instance.SelectedObject = null;

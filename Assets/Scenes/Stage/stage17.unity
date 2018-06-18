@@ -2221,7 +2221,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 92a3ab2eec989ae4c9c32fd89bc9e47e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 92a3ab2eec989ae4c9c32fd89bc9e47e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
