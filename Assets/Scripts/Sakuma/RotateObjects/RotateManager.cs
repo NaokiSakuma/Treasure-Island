@@ -297,7 +297,6 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
             else if(!EventSystem.current.IsPointerOverGameObject())
             {
                 HideRotationUI();
-                modeChanger.SelectedObject = null;
                 modeChanger.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
             }
         }
@@ -342,7 +341,6 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
             {
                 // null
                 HideRotationUI();
-                modeChanger.SelectedObject = null;
                 modeChanger.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
                 return;
             }

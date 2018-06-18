@@ -91,8 +91,9 @@ namespace GucchiCS
             if (_mode == MODE.OBJECT_CONTROL_SELECTED)
                 return;
 
-            // オブジェクト選択を解除したとき以外はSEを鳴らす
-            if (!_selectedObject)
+            // ゲームプレイ内でオブジェクト選択を解除したとき以外はSEを鳴らす
+            if (StageManager.Instance.IsPlay                        &&
+                !(_mode == MODE.OBJECT_CONTROL && _selectedObject))
             {
                 AudioManager.Instance.PlaySE(AUDIO.SE_VIEWCHANGE);
             }
