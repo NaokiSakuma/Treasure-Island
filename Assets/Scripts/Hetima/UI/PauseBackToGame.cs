@@ -20,7 +20,12 @@ public class PauseBackToGame : SimplePauseItem {
 	}
 
 	public override void OnClick(){
-        if(canPauseBackToGame)
-		Pausable.Instance.pausing = false;
+        if (canPauseBackToGame)
+        {
+            // SEを鳴らす
+            AudioManager.Instance.PlaySE(AUDIO.SE_POSE);
+
+            Pausable.Instance.pausing = false;
+        }
 	}
 }

@@ -91,10 +91,8 @@ public class Pausable : SingletonMonoBehaviour<Pausable>{
 			monoBehaviour.enabled = false;
 		}
 
-        // SEを鳴らす
-        AudioManager.Instance.ChangeVolume(Pausable.Instance.pausing ? 1f : 0.2f, 1f);
-        AudioManager.Instance.PlaySE(AUDIO.SE_POSE);
-
+        // ボリューム変更
+        AudioManager.Instance.ChangeVolume(0.2f, 1f);
     }
 
     /// <summary>
@@ -113,9 +111,7 @@ public class Pausable : SingletonMonoBehaviour<Pausable>{
 			monoBehaviour.enabled = true;
 		}
 
-        // SEを鳴らす
-        AudioManager.Instance.ChangeVolume(Pausable.Instance.pausing ? 1f : 0.2f, 1f);
-        AudioManager.Instance.PlaySE(AUDIO.SE_POSE);
-
+        // ボリューム変更
+        AudioManager.Instance.ChangeVolume(1f, 1f);
     }
 }
