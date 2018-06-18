@@ -21,12 +21,13 @@ public class StageSelectFade : MonoBehaviour {
             {
                 child.GetComponent<GucchiCS.Door>().CanSceneTrance = true;
             }
-            Destroy(this);
+            Destroy(gameObject.transform.parent.gameObject);
+            Destroy(this.gameObject);
         });
     }
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 }

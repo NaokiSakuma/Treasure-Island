@@ -1077,7 +1077,12 @@ Prefab:
         type: 2}
       propertyPath: _clearUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1306326011}
+    - target: {fileID: 114459475190286372, guid: c65cc30af06351b4283a21b46880090c,
+        type: 2}
+      propertyPath: _stageSelectButton
+      value: 
+      objectReference: {fileID: 1830354391}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c65cc30af06351b4283a21b46880090c, type: 2}
   m_IsPrefabParent: 0
@@ -3018,37 +3023,37 @@ Prefab:
         type: 2}
       propertyPath: _buttonManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 458182923}
     - target: {fileID: 114586200250804390, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _button
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1884891288}
     - target: {fileID: 114676502738419954, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _button
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1724369019}
     - target: {fileID: 114956342744635700, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _button
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1121165645}
     - target: {fileID: 114311373645106082, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _button
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 116023398}
     - target: {fileID: 114760754812740344, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _button
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 412891326}
     - target: {fileID: 114084338998974284, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _button
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 451194299}
     - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _blinkObj
@@ -3078,7 +3083,7 @@ Prefab:
         type: 2}
       propertyPath: _skipButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 953995727}
     - target: {fileID: 114096028921530774, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _stageObject
@@ -3166,7 +3171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 762885e0430d2544a857616b225e3fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _modeIcon: {fileID: 0}
+  _modeIcon: {fileID: 188607241}
   _gameScreen: {fileID: 315731361}
   _objRotateCamera: {fileID: 1083704342}
   _player: {fileID: 1115571383}
@@ -3339,12 +3344,12 @@ Prefab:
         type: 2}
       propertyPath: _canvas
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1697583052}
     - target: {fileID: 114481722530873590, guid: f5f986a361e915941859d1fffeb2df9c,
         type: 2}
       propertyPath: _skipButton
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 953995724}
     - target: {fileID: 114222517673691712, guid: f5f986a361e915941859d1fffeb2df9c,
         type: 2}
       propertyPath: canvas
