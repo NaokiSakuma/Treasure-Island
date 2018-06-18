@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using System;
 
 public class PauseMenuUI : MonoBehaviour {
 
@@ -30,9 +31,15 @@ public class PauseMenuUI : MonoBehaviour {
 			.Subscribe(_ => {
 				// ボタンを生成
 				var obj = Instantiate(_pauseButton, _canvas.transform);
-				// 生成したオブジェクトをgameovermanagerに登録
-                if(GameOverManager.Instance != null) GameOverManager.Instance.AddBlinkObject(obj);
-			});
+                var instance = GameOverManager.Instance;
+                if(instance) GameOverManager.Instance.AddBlinkObject(obj);
+                //// 生成したオブジェクトをgameovermanagerに登録
+                //try
+                //{
+                //    GameOverManager.Instance.AddBlinkObject(obj);
+                //}
+                //catch (NullReferenceException ex) { print("myLight was not set in the inspector"); }
+            });
 	}
 
 }

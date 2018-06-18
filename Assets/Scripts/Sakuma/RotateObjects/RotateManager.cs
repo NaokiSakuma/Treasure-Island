@@ -123,7 +123,7 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
                     stageChildObject.GetComponent<StageObject>().IsTemporary = false;
                 }
                 // エフェクトを付ける
-                if (_selectedObj == null) ChangeEffect(_hitObj, Effect.Temporary, true);
+                ChangeEffect(_hitObj, Effect.Temporary, true);
             });
 
         // selectedobjectのeffct
@@ -294,7 +294,7 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
                 modeChanger.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED;
             }
             // 無ければUIを消す
-            else
+            else if(!EventSystem.current.IsPointerOverGameObject())
             {
                 HideRotationUI();
                 modeChanger.SelectedObject = null;
@@ -304,7 +304,11 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
         else
         {
             // 選択していない状態でオブジェクトがあれば仮選択
-            if (!Physics.Raycast(_mouseRay, out hit, Mathf.Infinity, layerMask.value)) return;
+            if (!Physics.Raycast(_mouseRay, out hit, Mathf.Infinity, layerMask.value))
+            {
+                _hitObj = null;
+                return;
+            }
             _hitObj = hit.collider.gameObject;
         }
     }
