@@ -56,7 +56,7 @@ public class ModeIcons : MonoBehaviour {
 		skipButton.OnDestroyAsObservable()
 			.Subscribe(_ => {
 				SetActiveImages(true);
-                GameOverManager.Instance.AddBlinkObject(gameObject);
+                if(GameOverManager.Instance != null)GameOverManager.Instance.AddBlinkObject(gameObject);
 			});
 
 		// モード切替
