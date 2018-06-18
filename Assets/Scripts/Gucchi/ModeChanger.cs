@@ -73,9 +73,6 @@ namespace GucchiCS
                     // ゲームモード以外ならオブジェクトの影設定を行う
                     if (_mode != MODE.GAME)
                         StageManager.Instance.SetObjectShadowMode();
-
-                    // SEを鳴らす
-                    AudioManager.Instance.PlaySE(AUDIO.SE_VIEWCHANGE);
                 });
 
             // 選択オブジェクトの変更
@@ -93,6 +90,12 @@ namespace GucchiCS
         {
             if (_mode == MODE.OBJECT_CONTROL_SELECTED)
                 return;
+
+            // オブジェクト選択を解除したとき以外はSEを鳴らす
+            if (!_selectedObject)
+            {
+                AudioManager.Instance.PlaySE(AUDIO.SE_VIEWCHANGE);
+            }
 
             // 移動中ならアニメーションをやめる
             Camera.main.transform.DOComplete();
