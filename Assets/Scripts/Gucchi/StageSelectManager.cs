@@ -330,16 +330,18 @@ namespace GucchiCS
             _stageSelected = true;
         }
 
-        // ライト変更ボタンの削除
-        public void DisposeLightChangeButton()
+        // ボタンの削除
+        public void DisposeButton()
         {
+            // ライト変更ボタンの削除
             if (_changeButton != null)
             {
                 Destroy(_changeButton.gameObject);
                 _changeButton = null;
             }
 
-            if(_toTitleButton)
+            // タイトルに戻るボタンの削除
+            if (_toTitleButton)
             {
                 Destroy(_toTitleButton);
                 _toTitleButton = null;
