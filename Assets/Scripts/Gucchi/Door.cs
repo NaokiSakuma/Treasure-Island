@@ -46,7 +46,7 @@ namespace GucchiCS
         public void OnClick()
         {
             // ライト変更ボタンの削除
-            StageSelectManager.Instance.DisposeLightChangeButton();
+            StageSelectManager.Instance.DisposeButton();
 
             this.FixedUpdateAsObservable()
                 .Take(1)

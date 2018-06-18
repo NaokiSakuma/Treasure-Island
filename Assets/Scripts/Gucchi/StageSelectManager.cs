@@ -34,6 +34,10 @@ namespace GucchiCS
 
         // 選択済みかどうか
         bool _stageSelected = false;
+        
+        // タイトルへ戻るボタン
+        [SerializeField]
+        GameObject _toTitleButton = null;
 
         // Use this for initialization
         void Start()
@@ -262,9 +266,34 @@ namespace GucchiCS
                 .Subscribe(_ =>
                 {
                     // ボタンを消す
-                    DisposeLightChangeButton();
+                    DisposeButton();
 
                     _selectedDoor.OnClick();
+                });
+
+            //ライト回転中はタイトルへ戻るボタン非表示([add]越田)
+            this.ObserveEveryValueChanged(_ => IsChanging)
+                .Subscribe(_ =>
+                {
+                    if(IsChanging)
+                    {
+                        _toTitleButton.SetActive(false);
+                    }
+                    else
+                    {
+                        _toTitleButton.SetActive(true);
+                    }
+                });
+
+            //Escキーでタイトルへ戻る([add]越田)
+            this.LateUpdateAsObservable()
+                .Where(_ => !IsChanging)
+                .Where(_ => Input.GetKeyDown(KeyCode.Escape))
+                .Take(1)
+                .Subscribe(_ =>
+                {
+                    if(_toTitleButton)
+                        _toTitleButton.GetComponent<Konji.ToTitle>().OnClick();
                 });
 
             // BGMを再生
@@ -308,6 +337,12 @@ namespace GucchiCS
             {
                 Destroy(_changeButton.gameObject);
                 _changeButton = null;
+            }
+
+            if(_toTitleButton)
+            {
+                Destroy(_toTitleButton);
+                _toTitleButton = null;
             }
         }
 
