@@ -32,6 +32,10 @@ namespace GucchiCS
         [SerializeField]
         Button _changeButton = null;
 
+        //タイトルへ戻るボタン([add]越田)
+        [SerializeField]
+        GameObject _toTitleButton = null;
+
         // Use this for initialization
         void Start()
         {
@@ -249,12 +253,38 @@ namespace GucchiCS
                 .Where(_ => Input.GetKeyDown(KeyCode.Space))
                 .Where(_ => !ControlState.Instance.IsStateMouse)
                 .Where(_ => !_isChanging)
+                .Take(1)
                 .Subscribe(_ =>
                 {
                     // ボタンを消す
-                    Destroy(_changeButton.gameObject);
+                    DisposeButton();
 
                     _selectedDoor.OnClick();
+                });
+
+            //ライト回転中はタイトルへ戻るボタン非表示([add]越田)
+            this.ObserveEveryValueChanged(_ => IsChanging)
+                .Subscribe(_ =>
+                {
+                    if(IsChanging)
+                    {
+                        _toTitleButton.SetActive(false);
+                    }
+                    else
+                    {
+                        _toTitleButton.SetActive(true);
+                    }
+                });
+
+            //Escキーでタイトルへ戻る([add]越田)
+            this.LateUpdateAsObservable()
+                .Where(_ => !IsChanging)
+                .Where(_ => Input.GetKeyDown(KeyCode.Escape))
+                .Take(1)
+                .Subscribe(_ =>
+                {
+                    if(_toTitleButton)
+                        _toTitleButton.GetComponent<Konji.ToTitle>().OnClick();
                 });
 
             // BGMを再生
@@ -283,6 +313,22 @@ namespace GucchiCS
         public void AnimationCompleteNotify()
         {
             _isChanging = false;
+        }
+
+        // ボタンの削除([fix]越田)
+        public void DisposeButton()
+        {
+            if (_changeButton != null)
+            {
+                Destroy(_changeButton.gameObject);
+                _changeButton = null;
+            }
+
+            if(_toTitleButton)
+            {
+                Destroy(_toTitleButton);
+                _toTitleButton = null;
+            }
         }
 
         /* プロパティ */

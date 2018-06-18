@@ -53,7 +53,8 @@ namespace GucchiCS
         // クリックされたらシーン遷移
         public void OnClick()
         {
-            Debug.Log("click!");
+            // ライト変更ボタンの削除
+            StageSelectManager.Instance.DisposeButton();
 
             this.FixedUpdateAsObservable()
                 .Where(_ => canSceneTrance)
