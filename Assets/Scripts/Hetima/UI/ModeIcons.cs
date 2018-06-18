@@ -53,17 +53,20 @@ public class ModeIcons : MonoBehaviour {
 				CreateSeqence(image, mode);
 			});
 
-		// スキップボタンが破壊されたら表示する
-		skipButton.OnDestroyAsObservable()
-			.Subscribe(_ => {
+        // GameOverManagerのInstance
+        var instance = GameOverManager.Instance;
+        this.UpdateAsObservable()
+            .Subscribe(_ =>
+            {
+                instance = GameOverManager.Instance;
+            });
+
+        // スキップボタンが破壊されたら表示する
+        skipButton.OnDestroyAsObservable()
+            .Where(_ => instance != null)
+            .Subscribe(_ => {
 				SetActiveImages(true);
-                var instance = GameOverManager.Instance;
-                if (instance) GameOverManager.Instance.AddBlinkObject(gameObject);
-                //try
-                //{
-                //    GameOverManager.Instance.AddBlinkObject(gameObject);
-                //}
-                //catch (NullReferenceException ex) { print("myLight was not set in the inspector"); }
+                GameOverManager.Instance.AddBlinkObject(gameObject);
             });
 
 		// モード切替
