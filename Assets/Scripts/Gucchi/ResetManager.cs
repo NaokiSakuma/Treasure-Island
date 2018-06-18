@@ -23,9 +23,6 @@ namespace GucchiCS
         // 初期座標・回転角
         List<Tuple<Vector3, Quaternion>> _temp = new List<Tuple<Vector3, Quaternion>>();
 
-        // 初期状態かどうか
-        bool _isDefaultState = true;
-
         // Use this for initialization
         void Awake()
         {
@@ -44,15 +41,11 @@ namespace GucchiCS
         public void ResetObjects()
         {
             // プレイヤー
-            //_player.gameObject.SetActive(false);
-            _player.GetComponent<Rigidbody>().gameObject.SetActive(false);
-            //_player.position = _temp[(int)OBJECT.PLAYER].Item1;
-            //_player.rotation = _temp[(int)OBJECT.PLAYER].Item2;
-
+            _player.GetComponent<Konji.PlayerMove>().gameObject.SetActive(false);
+            _player.GetComponent<Konji.PlayerControl>().gameObject.SetActive(false);
             _player.GetComponent<Konji.PlayerMove>().Reset(_temp[(int)OBJECT.PLAYER].Item1, _temp[(int)OBJECT.PLAYER].Item2);
 
             // 各オブジェクト
-            Debug.Log(_rotateObjects.Count);
             for (int i = (int)OBJECT.ROTATE_OBJECT; i <= _rotateObjects.Count; i++)
             {
                 _rotateObjects[i - 1].transform.position = _temp[i].Item1;
@@ -60,8 +53,8 @@ namespace GucchiCS
             }
 
             // プレイヤーのアクティブを戻す（死亡防止）
-            //_player.gameObject.SetActive(true);
-            _player.GetComponent<Rigidbody>().gameObject.SetActive(true);
+            _player.GetComponent<Konji.PlayerMove>().gameObject.SetActive(true);
+            _player.GetComponent<Konji.PlayerControl>().gameObject.SetActive(true);
 
             // オブジェクトの選択
             ModeChanger.Instance.SelectedObject = null;
