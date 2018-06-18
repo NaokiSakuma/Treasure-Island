@@ -45,7 +45,7 @@ namespace GucchiCS
         // クリックされたらシーン遷移
         public void OnClick()
         {
-            // ライト変更ボタンの削除
+            // ボタンの削除
             StageSelectManager.Instance.DisposeButton();
 
             this.FixedUpdateAsObservable()
