@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
 using DG.Tweening;
+using System;
 
 public class ModeIcons : MonoBehaviour {
 
@@ -56,8 +57,14 @@ public class ModeIcons : MonoBehaviour {
 		skipButton.OnDestroyAsObservable()
 			.Subscribe(_ => {
 				SetActiveImages(true);
-                if(GameOverManager.Instance != null)GameOverManager.Instance.AddBlinkObject(gameObject);
-			});
+                var instance = GameOverManager.Instance;
+                if (instance) GameOverManager.Instance.AddBlinkObject(gameObject);
+                //try
+                //{
+                //    GameOverManager.Instance.AddBlinkObject(gameObject);
+                //}
+                //catch (NullReferenceException ex) { print("myLight was not set in the inspector"); }
+            });
 
 		// モード切替
 		target.OnPointerClickAsObservable()
