@@ -43,6 +43,7 @@ namespace GucchiCS
         // リセット
         public void ResetObjects()
         {
+
             // プレイヤー
             //_player.gameObject.SetActive(false);
             _player.GetComponent<Rigidbody>().gameObject.SetActive(false);

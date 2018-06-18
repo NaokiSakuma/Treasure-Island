@@ -755,6 +755,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: "\u30B9\u30C6\u30FC\u30B8\u30BB\u30EC\u30AF\u30C8\u3078"
+  fade: {fileID: 1759704844916136, guid: 6a8aee2f1d4219442adad032c701ddaf, type: 2}
+  canvas: {fileID: 0}
+  pauseReset: {fileID: 1404782356242580}
+  pauseBackToGame: {fileID: 1824358131284408}
 --- !u!114 &114481722530873590
 MonoBehaviour:
   m_ObjectHideFlags: 1

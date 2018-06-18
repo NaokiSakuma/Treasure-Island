@@ -805,6 +805,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 23678356957988730, guid: 5150689e31535b5458b56656ae96e367,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0170be18ff393c041aea1222ced6dcc1, type: 2}
+    - target: {fileID: 23678356957988730, guid: 5150689e31535b5458b56656ae96e367,
+        type: 2}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0170be18ff393c041aea1222ced6dcc1, type: 2}
+    - target: {fileID: 23678356957988730, guid: 5150689e31535b5458b56656ae96e367,
+        type: 2}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0170be18ff393c041aea1222ced6dcc1, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5150689e31535b5458b56656ae96e367, type: 2}
   m_IsPrefabParent: 0
@@ -1025,6 +1040,11 @@ Prefab:
       propertyPath: _skipButton
       value: 
       objectReference: {fileID: 602596166}
+    - target: {fileID: 114222517673691712, guid: f5f986a361e915941859d1fffeb2df9c,
+        type: 2}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 802046588}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5f986a361e915941859d1fffeb2df9c, type: 2}
   m_IsPrefabParent: 0
@@ -1137,7 +1157,7 @@ Canvas:
   m_GameObject: {fileID: 802046588}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1365,6 +1385,10 @@ Prefab:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1115571383}
+    - target: {fileID: 1847713499399060, guid: c65cc30af06351b4283a21b46880090c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c65cc30af06351b4283a21b46880090c, type: 2}
   m_IsPrefabParent: 0
@@ -2388,7 +2412,7 @@ Prefab:
     - target: {fileID: 224506658049267314, guid: 4d301587a678af74b812e63bc0bae4ef,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 111.9
+      value: 111.8999
       objectReference: {fileID: 0}
     - target: {fileID: 224506658049267314, guid: 4d301587a678af74b812e63bc0bae4ef,
         type: 2}

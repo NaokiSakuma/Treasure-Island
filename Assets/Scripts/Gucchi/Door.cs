@@ -30,6 +30,14 @@ namespace GucchiCS
         [SerializeField]
         Canvas _fadeInCanvas = null;
 
+        //シーン移行するか
+        private bool canSceneTrance = false;
+        public bool CanSceneTrance
+        {
+            set { canSceneTrance = value; }
+            get { return canSceneTrance; }
+        }
+
         void Start()
         {
             // クリア情報をリセット
@@ -49,6 +57,7 @@ namespace GucchiCS
             StageSelectManager.Instance.DisposeButton();
 
             this.FixedUpdateAsObservable()
+                .Where(_ => canSceneTrance)
                 .Take(1)
                 .Subscribe(_ =>
                 {
