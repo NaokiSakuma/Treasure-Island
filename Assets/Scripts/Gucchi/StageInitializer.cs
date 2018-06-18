@@ -220,6 +220,9 @@ namespace GucchiCS
             if (_isSkiped)
                 return;
 
+            // SEを鳴らす
+            AudioManager.Instance.PlaySE(AUDIO.SE_BUTTON);
+
             // アニメーション中であればアニメーションをやめる
             DOTween.KillAll(true);
 
