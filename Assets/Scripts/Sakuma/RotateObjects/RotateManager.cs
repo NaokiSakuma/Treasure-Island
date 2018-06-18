@@ -101,15 +101,6 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
         // オブジェクトを回転させることが出来るかどうか
         bool canRotateObject = false;
 
-        // デバッグ
-        this.UpdateAsObservable()
-            .Subscribe(_ =>
-            {
-                //print("hitobj：" + _hitObj);
-                //print("selectobj：" + _selectedObj);
-                print("layerMask" + layerMask.value);
-            });
-
         // 更新
         this.UpdateAsObservable()
             .Subscribe(_ =>
@@ -195,7 +186,7 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
             .Subscribe(_ =>
             {
                 // カメラのスクリーン座標
-                var cameraScreen = Camera.main.WorldToScreenPoint(_selectedObj.transform.position);
+                //var cameraScreen = Camera.main.WorldToScreenPoint(_selectedObj.transform.position);
                 //回転軸の位置調整
                 _rotateObj.transform.position = _selectedObj.transform.position;
             });
