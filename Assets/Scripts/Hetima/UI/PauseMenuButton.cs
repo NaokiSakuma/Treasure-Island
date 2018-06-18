@@ -26,7 +26,6 @@ public class PauseMenuButton : MonoBehaviour {
             .Where(_ => !RotateManager.Instance.IsMouseRayHit())
             .Subscribe(_ => {
                 // SEを鳴らす
-                AudioManager.Instance.ChangeVolume(Pausable.Instance.pausing ? 1f : 0.2f, 1f);
                 AudioManager.Instance.PlaySE(AUDIO.SE_POSE);
 
                 Pausable.Instance.pausing = !Pausable.Instance.pausing;
