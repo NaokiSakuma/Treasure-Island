@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-using UniRx.Triggers;
 
 namespace Konji
 {
@@ -11,7 +10,7 @@ namespace Konji
         enum NEST
         {
             TOP,
-            BUTTOM,
+            BOTTOM,
             FRONT,
             BACK,
 
@@ -57,7 +56,7 @@ namespace Konji
         {
         }
 
-        public void Reset(Vector3 pos ,Quaternion rot)
+        public void Reset(Vector3 pos, Quaternion rot)
         {
             transform.position = pos;
             transform.rotation = rot;
@@ -78,7 +77,7 @@ namespace Konji
             int distance = 30;
 
             //地面判定
-            Ray groundRay = new Ray(_nestCheck[(int)NEST.BUTTOM].position + new Vector3(0,0,distance / 2), new Vector3(0, 0, -1));
+            Ray groundRay = new Ray(_nestCheck[(int)NEST.BOTTOM].position + new Vector3(0, 0, distance / 2), new Vector3(0, 0, -1));
             Debug.DrawRay(groundRay.origin, groundRay.direction * distance);
             if (Physics.Raycast(groundRay, out hit, distance, layermask))
             {
@@ -90,19 +89,19 @@ namespace Konji
             }
 
             //下めり込み判定
-            Vector3 nestPos = _nestCheck[(int)NEST.BUTTOM].position + new Vector3(0, 0.05f, 0);
-            Ray nestRay = new Ray(nestPos + new Vector3(0,0,distance / 2), new Vector3(0, 0, -1));
+            Vector3 nestPos = _nestCheck[(int)NEST.BOTTOM].position + new Vector3(0, 0.05f, 0);
+            Ray nestRay = new Ray(nestPos + new Vector3(0, 0, distance / 2), new Vector3(0, 0, -1));
             Debug.DrawRay(nestRay.origin, nestRay.direction * distance);
             if (Physics.Raycast(nestRay, out hit, distance, layermask))
             {
                 //めり込み排斥
-                transform.position += nestPos - _nestCheck[(int)NEST.BUTTOM].position;
+                transform.position += nestPos - _nestCheck[(int)NEST.BOTTOM].position;
 
-                _isNest[(int)NEST.BUTTOM] = true;
+                _isNest[(int)NEST.BOTTOM] = true;
             }
             else
             {
-                _isNest[(int)NEST.BUTTOM] = false;
+                _isNest[(int)NEST.BOTTOM] = false;
             }
 
             //上めり込み判定
