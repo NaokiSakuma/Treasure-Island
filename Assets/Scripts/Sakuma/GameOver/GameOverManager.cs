@@ -45,7 +45,7 @@ public class GameOverManager : SingletonMonoBehaviour<GameOverManager> {
             .Where(_ => _player.IsDead)
             .Where(_ => GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.CLEAR)
             .Take(1)
-            .Subscribe(_ => BlinkCoroutine());
+            .Subscribe(_ => BlinkCoroutine()).AddTo(this);
 	}
 
 
