@@ -12,8 +12,8 @@ public class StageSelectFade : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //フェード終了後ステージオブジェクトを有効にする
-        GetComponent<CirecleFade>().SetFadeMode(CirecleFade.FadeMode.In);
-        Observable.Timer(TimeSpan.FromSeconds(GetComponent<CirecleFade>().FadeTime))
+        StageFade.Instance.Play(StageFade.FadeMode.In);
+        Observable.Timer(TimeSpan.FromSeconds(StageFade.Instance.FadeTime))
         .Subscribe(x =>
         {
             foreach(GameObject doors in doorss)
@@ -21,13 +21,13 @@ public class StageSelectFade : MonoBehaviour {
             {
                 child.GetComponent<GucchiCS.Door>().CanSceneTrance = true;
             }
-            Destroy(gameObject.transform.parent.gameObject);
-            Destroy(this.gameObject);
         });
+
+
     }
 
 	// Update is called once per frame
 	void Update () {
 
-	}
+    }
 }

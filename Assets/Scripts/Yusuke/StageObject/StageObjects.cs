@@ -10,7 +10,7 @@ public class StageObjects : MonoBehaviour {
     private StageObject lastZMoveStageObject = null;
 
     //Z座標移動させる定数
-    const float Z_Move_Distance = -0.1f;
+    const float Z_Move_Distance = -0.2f;
          
 	// Use this for initialization
 	void Start () {
@@ -30,7 +30,7 @@ public class StageObjects : MonoBehaviour {
     /// </summary>
     void ZFaitingCancell()
     {
-        Vector3 pos = Vector3.zero;
+        ZReset();
 
         //選択状態のステーオブジェクトを代入
         if (ZAddMinute(SearchSelectObj()))
@@ -78,6 +78,18 @@ public class StageObjects : MonoBehaviour {
             }
         }
         return null;
+    }
+
+    /// <summary>
+    /// 選択状態のステージオブジェクトを返す
+    /// </summary>
+    /// <returns>選択状態のステーオブジェクト</returns>
+    void ZReset()
+    {
+        foreach (StageObject stageObj in stageObjects)
+        {
+            stageObj.transform.position = new Vector3(stageObj.transform.position.x, stageObj.transform.position.y,0);
+        }
     }
 
     /// <summary>

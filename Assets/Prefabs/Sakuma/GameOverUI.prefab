@@ -397,6 +397,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Scenes/Gucchi/StageSelect
+  fade: {fileID: 1198041706547900, guid: e1208baa300eadc4088a3754245ade48, type: 2}
+  camvas: {fileID: 0}
 --- !u!114 &114685572792171816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -409,6 +411,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneName: Scenes/Stage/stage
+  fade: {fileID: 0}
+  camvas: {fileID: 0}
 --- !u!114 &114775674775708986
 MonoBehaviour:
   m_ObjectHideFlags: 1

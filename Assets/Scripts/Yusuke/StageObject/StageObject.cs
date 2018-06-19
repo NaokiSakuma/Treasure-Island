@@ -23,8 +23,18 @@ public class StageObject : MonoBehaviour {
         get { return isTemporary; }
     }
 
+    //初期座標
+    Vector3 startPos;
+    public Vector3 StartPos
+    {
+        set { startPos = value; }
+        get { return startPos; }
+    }
+
+
     // Use this for initialization
     void Start () {
+        startPos = transform.position;
     }
 	
 	// Update is called once per frame

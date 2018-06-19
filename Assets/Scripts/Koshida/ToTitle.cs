@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UniRx;
+using System;
 
 namespace Konji
 {
@@ -9,7 +11,14 @@ namespace Konji
     {
         public void OnClick()
         {
-            SceneManager.LoadScene("TitleScene");
+            //フェードを開始する
+            CirecleFade.Instance.Play(CirecleFade.FadeMode.Out);
+            Observable.Timer(TimeSpan.FromSeconds(CirecleFade.Instance.GetComponent<CirecleFade>().FadeTime))
+            .Subscribe(x =>
+            {
+                SceneManager.LoadScene("TitleScene");
+            });
+
         }
     }
 }

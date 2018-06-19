@@ -203,7 +203,6 @@ Shader "Unlit/OutLine"{
                 color.rgb  = UNITY_LIGHTMODEL_AMBIENT.rgb * 2 * tex.rgb;
                 color.rgb += (tex.rgb * _LightColor0.rgb * diff + _LightColor0.rgb * _SpecColor.rgb * spec) * (atten * 2);
                 color.a    = tex.a + (_LightColor0.a * _SpecColor.a * spec * atten);
-				color.a = 1;
                 return color;
             }
 

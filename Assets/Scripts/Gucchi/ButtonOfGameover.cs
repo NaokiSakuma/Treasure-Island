@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
+using UniRx;
 
 namespace GucchiCS
 {
@@ -28,8 +30,14 @@ namespace GucchiCS
         {
             // SEを鳴らす
             AudioManager.Instance.PlaySE(AUDIO.SE_BUTTON);
+            //フェードモードを開始する
+            CirecleFade.Instance.Play(CirecleFade.FadeMode.Out);
+            Observable.Timer(TimeSpan.FromSeconds(CirecleFade.Instance.GetComponent<CirecleFade>().FadeTime))
+            .Subscribe(x =>
+            {
+                SceneManager.LoadScene(_sceneName);
+            });
 
-            SceneManager.LoadScene(_sceneName);
         }
     }
 }

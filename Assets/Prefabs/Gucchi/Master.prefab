@@ -245,7 +245,7 @@ MonoBehaviour:
   _blinkObjs: []
   _player: {fileID: 0}
   _canvas: {fileID: 0}
-  _overPrefab: {fileID: 1012941462199900, guid: 0a5985e59c1e430408cf841a011e9dd3,
+  _overPrefab: {fileID: 1757784725199372, guid: 0a5985e59c1e430408cf841a011e9dd3,
     type: 2}
 --- !u!114 &114311373645106082
 MonoBehaviour:
