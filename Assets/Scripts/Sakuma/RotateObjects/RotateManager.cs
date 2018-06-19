@@ -113,6 +113,15 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
                 canRotateObject = GucchiCS.StageManager.Instance.IsPlay && isTouchMode && !modeChanger.IsChanging && !_isRotate;
             });
 
+        // 最初のオブジェクト選択
+        this.UpdateAsObservable()
+            .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
+            .Take(1)
+            .Subscribe(_ =>
+            {
+                _hitObj = _stageChildObjs[0].gameObject;
+            });
+
         // hitobjectのeffect
         this.ObserveEveryValueChanged(x => _hitObj)
             .Subscribe(_ =>
