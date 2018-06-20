@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FadeManager
+public class FadeManager : SingletonMonoBehaviour<FadeManager>
 {
     public enum FadeKind
     {
@@ -18,7 +18,6 @@ public class FadeManager
         get { return fade; }
     }
 
-
     // Use this for initialization
     void Start () {
 		
@@ -28,4 +27,18 @@ public class FadeManager
 	void Update () {
 		
 	}
+
+
+    void Play()
+    {
+        if(fade == FadeKind.Light)
+        {
+            LightFadeIn.Instance.Play();
+        }
+        else
+        {
+            CirecleFade.Instance.Play(CirecleFade.FadeMode.In);
+        }
+    }
+
 }
