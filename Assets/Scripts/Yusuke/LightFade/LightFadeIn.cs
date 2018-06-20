@@ -5,13 +5,10 @@ using DG.Tweening;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine.UI;
+using System;
 
-public class LightFadeIn : SingletonMonoBehaviour<LightFadeIn>
+public class LightFadeIn : MonoBehaviour
 {
-
-    // フェード用パネル
-    [SerializeField]
-    Canvas _fadeInCanvas = null;
 
     //フェード時間
     private float fadeTime = 4.0f;
@@ -24,47 +21,61 @@ public class LightFadeIn : SingletonMonoBehaviour<LightFadeIn>
     //カメラの初期座標
     private Vector3 cameraStartPos;
 
+    Material fadePanelMaterial = null;
+    Color changeColor = new Color(1, 1, 1, 1);
+
+    float time = 0;
+
     public void Play()
     {
+        gameObject.SetActive(true);
 
-                Canvas fadeInCanvas = null;
-                Image fadePanel = null;
+        Image fadePanel = null;
 
-                // カメラが次のステージに入るように向けてからステージ遷移
-                Sequence seq = DOTween.Sequence()
-                .OnStart(() =>
-                {
-                    // SEを鳴らす
-                    AudioManager.Instance.PlaySE(AUDIO.SE_DOORZOOM);
+        // カメラが次のステージに入るように向けてからステージ遷移
+        Sequence seq = DOTween.Sequence()
+        .OnStart(() =>
+        {
+            // SEを鳴らす
+            AudioManager.Instance.PlaySE(AUDIO.SE_DOORZOOM);
 
-                    // フェード用パネルの生成
-                    fadeInCanvas = Instantiate(_fadeInCanvas);
-                    fadePanel = fadeInCanvas.GetComponentInChildren<Image>();
+            // フェード用パネルの生成
+            fadePanel = gameObject.GetComponent<Image>();
+            fadePanelMaterial = gameObject.GetComponent<Image>().material;
 
-                    // フェード用パネルの透明度を０にする
-                    Color fadePanelColor = fadePanel.material.color;
-                    fadePanelColor.a = 1f;
-                    fadePanel.material.color = fadePanelColor;
+            // フェード用パネルの透明度を1にする
+            changeColor = fadePanel.material.color;
+            changeColor.a = 1f;
+            //fadePanel.material.color = fadePanelColor;
+          //  fadePanelMaterial.SetColor("_Color", changeColor);
+            //パネル座標
+            Vector3 panelPos = fadePanel.transform.position;
+            fadePanel.transform.position = new Vector3(panelPos.x, panelPos.y, panelPos.z + cameraMoveZ);
+        })
+        .AppendCallback(() =>
+        {
+            // フェード用パネルのアルファ値を半分まで上げる
+            DOTween.ToAlpha(
+            () => changeColor,
+            color => changeColor = color,
+            0f,
+            fadeTime)
+            .OnComplete(() =>
+            {
+                //gameObject.SetActive(false);
+                Debug.Log("Fade終わったよ");
+            });
+        });
+        seq.Play();
 
-                    //パネル座標
-                    Vector3 panelPos = fadePanel.transform.position;
-                    fadePanel.transform.position = new Vector3(panelPos.x, panelPos.y, panelPos.z + cameraMoveZ);
-                    //このエフェクトにより、カメラが移動する為、初期座標がずれる。これを防ぐために初期座標をずらしておく
-                    cameraStartPos = Camera.main.transform.position;
-                    Camera.main.transform.position = new Vector3(cameraStartPos.x, cameraStartPos.y, cameraStartPos.z + cameraMoveZ);
-                })
-                .AppendCallback(() =>
-                {
-                    // フェード用パネルのアルファ値を半分まで上げる
-                    DOTween.ToAlpha(
-                    () => fadePanel.material.color,
-                    color => fadePanel.material.color = color,
-                    0f,
-                    fadeTime
-                );
-                })
-                .Join(Camera.main.transform.DOMove(new Vector3(cameraStartPos.x, cameraStartPos.y, cameraStartPos.z), fadeTime));
+    }
 
-                seq.Play();
+    void Update()
+    {
+        Color color = gameObject.GetComponent<Image>().color;
+        color.a = time / fadeTime;
+        color.a = 1 - color.a;
+        gameObject.GetComponent<Image>().material.SetColor("_Color", color);
+        time+= Time.deltaTime;
     }
 }

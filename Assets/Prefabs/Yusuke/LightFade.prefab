@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 223073688727561188}
   - component: {fileID: 114071748998696104}
   - component: {fileID: 114513813672151004}
-  m_Layer: 5
-  m_Name: Canvas (2) 1
+  m_Layer: 14
+  m_Name: LightFade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,6 +39,9 @@ GameObject:
   - component: {fileID: 224725031914850786}
   - component: {fileID: 222701941204477238}
   - component: {fileID: 114972890077459490}
+  - component: {fileID: 114451239312302118}
+  - component: {fileID: 114195918454269278}
+  - component: {fileID: 114131095874192276}
   m_Layer: 5
   m_Name: FadePanel
   m_TagString: Untagged
@@ -57,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -67,6 +70,39 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114131095874192276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1642327351457410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d525c42c11d945f4398061ed8f84e5f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114195918454269278
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1642327351457410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb5e5014f40d6948815a7be8b174ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114451239312302118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1642327351457410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f57d121ff5beb349be457a30786d721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114513813672151004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,7 +170,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &224637159409577820
 RectTransform:

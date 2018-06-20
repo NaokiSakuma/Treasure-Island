@@ -96,9 +96,8 @@ namespace GucchiCS
                         .Join(Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f), 2f))
                         .AppendCallback(() =>
                         {
-                           // FadeManager.Instance.Fade = FadeManager.FadeKind.Light;
                             // ステージへ遷移
-                            string stageSceneName = SingletonName.STAGE_NAME + (_doorID + 1).ToString();
+                            string stageSceneName =                                SingletonName.STAGE_NAME + (_doorID + 1).ToString();
                             SceneManager.LoadScene(stageSceneName);
                         });
 

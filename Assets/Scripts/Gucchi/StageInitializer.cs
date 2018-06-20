@@ -76,9 +76,6 @@ namespace GucchiCS
             // カメラの初期化
             Camera.main.transform.position = _defaultCamera.transform.position;
             Camera.main.transform.localRotation = _defaultCamera.transform.localRotation;
-
-
-
          
         }
 
@@ -86,35 +83,35 @@ namespace GucchiCS
         {
             // BGMを再生
             PlaybackBGM();
-            //フェードフェードモードをフェードアウトにする
+            ////フェードフェードモードをフェードアウトにする
             FadeManager.Instance.InPlay();
-            //   Observable.Timer(TimeSpan.FromSeconds(FadeManager.Instance.FadeTime))
-            //.Subscribe(x =>
-            //{
-            //    // ライトの点滅でスタート
-            //    _light.gameObject.SetActive(false);
-            //    this.UpdateAsObservable()
-            //        .Take(1)
-            //        .Subscribe(_ => Blink());
+            Observable.Timer(TimeSpan.FromSeconds(FadeManager.Instance.FadeTime))
+         .Subscribe(x =>
+         {
+                // ライトの点滅でスタート
+                _light.gameObject.SetActive(false);
+             this.UpdateAsObservable()
+                 .Take(1)
+                 .Subscribe(_ => Blink());
 
-            //    // ライト点灯後カメラを移動させる
-            //    this.ObserveEveryValueChanged(_ => _sequence)
-            //        .Where(_ => _sequence == SEQUENCE.LIGHTED)
-            //        .Take(1)
-            //        .Subscribe(_ => SetCamera());
+                // ライト点灯後カメラを移動させる
+                this.ObserveEveryValueChanged(_ => _sequence)
+                 .Where(_ => _sequence == SEQUENCE.LIGHTED)
+                 .Take(1)
+                 .Subscribe(_ => SetCamera());
 
-            //    // カメラ移動後プレイヤーとゴールを出現させる
-            //    this.ObserveEveryValueChanged(_ => _sequence)
-            //        .Where(_ => _sequence == SEQUENCE.CAMERA_SETTED)
-            //        .Take(1)
-            //        .Subscribe(_ => SetGame());
+                // カメラ移動後プレイヤーとゴールを出現させる
+                this.ObserveEveryValueChanged(_ => _sequence)
+                 .Where(_ => _sequence == SEQUENCE.CAMERA_SETTED)
+                 .Take(1)
+                 .Subscribe(_ => SetGame());
 
-            //    // Xキーが押されたらスキップ
-            //    this.LateUpdateAsObservable()
-            //        .Where(_ => Input.GetKeyDown(KeyCode.X))
-            //        .Take(1)
-            //        .Subscribe(_ => Skip());
-            //});
+                // Xキーが押されたらスキップ
+                this.LateUpdateAsObservable()
+                 .Where(_ => Input.GetKeyDown(KeyCode.X))
+                 .Take(1)
+                 .Subscribe(_ => Skip());
+         });
 
             // ボリュームを最大にする
             AudioManager.Instance.ChangeVolume(1f, 1f);
