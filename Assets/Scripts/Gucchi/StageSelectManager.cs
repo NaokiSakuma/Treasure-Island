@@ -32,7 +32,10 @@ namespace GucchiCS
         [SerializeField]
         Button _changeButton = null;
 
-        //タイトルへ戻るボタン([add]越田)
+        // 選択済みかどうか
+        bool _stageSelected = false;
+        
+        // タイトルへ戻るボタン
         [SerializeField]
         GameObject _toTitleButton = null;
 
@@ -72,15 +75,18 @@ namespace GucchiCS
             }
 
             // 前回遊んだステージの次のステージを仮選択しておく
-            int beforeStageNo = StageNoReader._stageNo % _doors.Count;
-            if (beforeStageNo == 0)
-                beforeStageNo = 1;
+            int beforeStageNo = (StageNoReader._stageNo - 1) % _doors.Count;
 
-            // 初期の仮選択を設定（クリアした後なら次のステージ、そうでないなら前回のステージまたは１ステージ）
+            // クリアした後かどうかで仮選択させるステージの番号を変更
             if (StageNoReader._isClear)
-                _selectedDoor = _doors[beforeStageNo];
-            else
-                _selectedDoor = _doors[beforeStageNo - 1];
+                beforeStageNo = (++beforeStageNo) % _doors.Count;
+
+            // 直で開いた場合のエラー防止（ステージ番号の情報が受け取れなかったときの事故防止）
+            if (beforeStageNo < 0)
+                beforeStageNo = 0;
+
+            // 初期の仮選択を設定
+            _selectedDoor = _doors[beforeStageNo];
             _selectedDoor.OnSelectEnter();
 
             // 仮選択ステージによってブロック位置を変更
@@ -99,6 +105,7 @@ namespace GucchiCS
             // 仮選択（マウス）
             this.LateUpdateAsObservable()
                 .Where(_ => ControlState.Instance.IsStateMouse)
+                .Where(_ => !_stageSelected)
                 .Subscribe(_ =>
                 {
                     // マウスの位置からrayを飛ばす
@@ -132,6 +139,7 @@ namespace GucchiCS
             this.LateUpdateAsObservable()
                 .Where(_ => !ControlState.Instance.IsStateMouse)
                 .Where(_ => Input.anyKeyDown)
+                .Where(_ => !_stageSelected)
                 .Subscribe(_ =>
                 {
                     // 選択中の扉ID
@@ -179,7 +187,8 @@ namespace GucchiCS
                 });
 
             // ホイール操作（手前）でライト変更
-            this.UpdateAsObservable()
+            this.LateUpdateAsObservable()
+                .Where(_ => !_stageSelected)
                 .Where(_ => Input.GetAxis("Mouse ScrollWheel") < 0)
                 .Where(_ => ControlState.Instance.IsStateMouse)
                 .Where(_ => !_isChanging)
@@ -193,6 +202,7 @@ namespace GucchiCS
             this.UpdateAsObservable()
                 .Where(_ => Input.GetAxis("Mouse ScrollWheel") > 0)
                 .Where(_ => ControlState.Instance.IsStateMouse)
+                .Where(_ => !_stageSelected)
                 .Where(_ => !_isChanging)
                 .Subscribe(_ =>
                 {
@@ -201,9 +211,10 @@ namespace GucchiCS
                 });
 
             // WSキーでライト変更
-            this.UpdateAsObservable()
+            this.LateUpdateAsObservable()
                 .Where(_ => Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
                 .Where(_ => !ControlState.Instance.IsStateMouse)
+                .Where(_ => !_stageSelected)
                 .Where(_ => !_isChanging)
                 .Subscribe(_ =>
                 {
@@ -252,6 +263,7 @@ namespace GucchiCS
             this.LateUpdateAsObservable()
                 .Where(_ => Input.GetKeyDown(KeyCode.Space))
                 .Where(_ => !ControlState.Instance.IsStateMouse)
+                .Where(_ => !_stageSelected)
                 .Where(_ => !_isChanging)
                 .Take(1)
                 .Subscribe(_ =>
@@ -315,16 +327,24 @@ namespace GucchiCS
             _isChanging = false;
         }
 
-        // ボタンの削除([fix]越田)
+        // ステージ選択通知
+        public void StageSelectNotify()
+        {
+            _stageSelected = true;
+        }
+
+        // ボタンの削除
         public void DisposeButton()
         {
+            // ライト変更ボタンの削除
             if (_changeButton != null)
             {
                 Destroy(_changeButton.gameObject);
                 _changeButton = null;
             }
 
-            if(_toTitleButton)
+            // タイトルに戻るボタンの削除
+            if (_toTitleButton)
             {
                 Destroy(_toTitleButton);
                 _toTitleButton = null;
@@ -332,6 +352,12 @@ namespace GucchiCS
         }
 
         /* プロパティ */
+
+        // 選択した扉
+        public Door SelectedDoor
+        {
+            set { _selectedDoor = value; }
+        }
 
         // 回転中かどうか
         public bool IsChanging

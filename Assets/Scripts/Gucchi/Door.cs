@@ -30,6 +30,14 @@ namespace GucchiCS
         [SerializeField]
         Canvas _fadeInCanvas = null;
 
+        //シーン移行するか
+        private bool canSceneTrance = false;
+        public bool CanSceneTrance
+        {
+            set { canSceneTrance = value; }
+            get { return canSceneTrance; }
+        }
+
         void Start()
         {
             // クリア情報をリセット
@@ -45,10 +53,11 @@ namespace GucchiCS
         // クリックされたらシーン遷移
         public void OnClick()
         {
-            // ライト変更ボタンの削除
+            // ボタンの削除
             StageSelectManager.Instance.DisposeButton();
 
             this.FixedUpdateAsObservable()
+                .Where(_ => canSceneTrance)
                 .Take(1)
                 .Subscribe(_ =>
                 {
@@ -94,6 +103,10 @@ namespace GucchiCS
 
                     seq.Play();
                 });
+
+            // ステージ選択通知を送る
+            StageSelectManager.Instance.SelectedDoor = this;
+            StageSelectManager.Instance.StageSelectNotify();
         }
 
         // マウスポインタが触れたらガードを消す

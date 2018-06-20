@@ -51,7 +51,7 @@ namespace Konji
                     _move = 0;
                 });
 
-                //挟まれたら死亡
+            //挟まれたら死亡
             this.UpdateAsObservable()
                 .Where(_ => (_player.IsNest[0] && _player.IsNest[1]) || (_player.IsNest[2] && _player.IsNest[3]))
                 .Take(1)
@@ -75,15 +75,6 @@ namespace Konji
                 .Where(_ => !_isDead)
                 .Subscribe(_ =>
                 {
-                    // タイトルシーンは左画面外に行かないようにする
-                    if (SceneManager.GetActiveScene().name == SingletonName.TITLE_SCENE &&
-                        Input.GetKey(KeyCode.A)                                         &&
-                        transform.position.x < -7.8f)
-                    {
-                        transform.position = new Vector3(-7.8f, transform.position.y, transform.position.z);
-                        _move = 0;
-                    }
-
                     _player.Move(_move);
                 });
 

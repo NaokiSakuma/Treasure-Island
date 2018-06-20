@@ -45,7 +45,8 @@ public class GameOverManager : SingletonMonoBehaviour<GameOverManager> {
             .Where(_ => _player.IsDead)
             .Where(_ => GucchiCS.ModeChanger.Instance.Mode != GucchiCS.ModeChanger.MODE.CLEAR)
             .Take(1)
-            .Subscribe(_ => BlinkCoroutine());
+            .TakeUntilDestroy(this)
+            .Subscribe(_ => BlinkCoroutine()).AddTo(this);
 	}
 
 
@@ -80,6 +81,7 @@ public class GameOverManager : SingletonMonoBehaviour<GameOverManager> {
     {
         Observable.FromCoroutine(Blink)
             .DelayFrame(10)
+            .TakeUntilDestroy(this)
             .Subscribe(_ =>
             {
                 // SEを鳴らす

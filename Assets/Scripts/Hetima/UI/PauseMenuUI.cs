@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using System;
 
 public class PauseMenuUI : MonoBehaviour {
 
@@ -17,6 +18,7 @@ public class PauseMenuUI : MonoBehaviour {
 	[SerializeField]
 	private GameObject _pauseButton;
 
+    private bool isPlay = true;
 	// 監視対象のボタン
 	[SerializeField]
 	private GameObject _skipButton;
@@ -25,14 +27,28 @@ public class PauseMenuUI : MonoBehaviour {
 	}
 
 	void Start () {
+
+        // GameOverManagerのInstance
+        var instance = GameOverManager.Instance;
+        this.UpdateAsObservable()
+            .Subscribe(_ => 
+            {
+                instance = GameOverManager.Instance;
+            });
+
 		// 監視対象のボタンが削除されたら
 		_skipButton.OnDestroyAsObservable()
+            .Where(_ => instance != null)
+            .Where(_ => isPlay == true)
 			.Subscribe(_ => {
 				// ボタンを生成
-				var obj = Instantiate(_pauseButton, _canvas.transform);
-				// 生成したオブジェクトをgameovermanagerに登録
-                GameOverManager.Instance.AddBlinkObject(obj);
-			});
+				//Instantiate(_pauseButton, _canvas.transform);
+                GameOverManager.Instance.AddBlinkObject(Instantiate(_pauseButton, _canvas.transform));
+            });
 	}
 
+    private void OnApplicationQuit()
+    {
+        isPlay = false;
+    }
 }

@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class Fade : MonoBehaviour
 {
+    //フェードに掛ける時間
     [SerializeField]
-    int moveTime = 120;
-
-    float startPosZ = 0.0f;
-    int time = 0;
+    float moveTime = 5.0f;
+    //時間
+    float time = 0.0f;
+    //時間を加算するか
     bool isTimeUp = false;
 
 
@@ -19,32 +20,37 @@ public class Fade : MonoBehaviour
 
     void Update()
     {
-        gameObject.GetComponent<Text>().color = new Color(gameObject.GetComponent<Text>().color.r, gameObject.GetComponent<Text>().color.g, gameObject.GetComponent<Text>().color.b, (float)time / moveTime);
+        //learpでアルファ値を補完
+        gameObject.GetComponent<Text>().color = new Color(gameObject.GetComponent<Text>().color.r, gameObject.GetComponent<Text>().color.g, gameObject.GetComponent<Text>().color.b, time * 60 / moveTime);
         TimeUpdate();
         IsTimeUp();
     }
 
-
+    /// <summary>
+    /// 時間を更新する
+    /// </summary>
     void TimeUpdate()
     {
         if (isTimeUp)
         {
-            time++;
+            time += Time.deltaTime;
         }
         else
         {
-            time--;
+            time -= Time.deltaTime;
         }
     }
 
-
+    /// <summary>
+    /// タイムを加算するか決定
+    /// </summary>
     void IsTimeUp()
     {
-        if (!isTimeUp && time <= 0)
+        if (!isTimeUp && time * 60 <= 0.0f)
         {
             isTimeUp = true;
         }
-        if (isTimeUp && time >= moveTime)
+        if (isTimeUp && time * 60 >= moveTime)
         {
             isTimeUp = false;
         }

@@ -85,10 +85,13 @@ namespace GucchiCS
         // オブジェクトの影モード設定
         public void SetObjectShadowMode()
         {
+            // 現在のモード
+            ModeChanger.MODE mode = ModeChanger.Instance.Mode;
+
             foreach (Transform obj in _stageObjects)
             {
-                // ゲームモードならShadowOnlyにし、それ以外はOnにする
-                if (ModeChanger.Instance.Mode == ModeChanger.MODE.GAME)
+                // ゲームモードかクリアモードならShadowOnlyにし、それ以外はOnにする
+                if (mode == ModeChanger.MODE.GAME || mode ==  ModeChanger.MODE.CLEAR)
                     obj.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.ShadowsOnly;
                 else
                     obj.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;

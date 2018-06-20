@@ -25,6 +25,9 @@ public class StageObjects : MonoBehaviour {
         ZFaitingCancell();
     }
 
+    /// <summary>
+    /// Zファイティング解消
+    /// </summary>
     void ZFaitingCancell()
     {
         Vector3 pos = Vector3.zero;
@@ -37,7 +40,7 @@ public class StageObjects : MonoBehaviour {
         if (ZAddMinute(SearchSelectObj()))
             return;
 
-        //最後に
+        //Z座標に微小な定数を加える
         ZAddMinute(lastZMoveStageObject);
     }
 

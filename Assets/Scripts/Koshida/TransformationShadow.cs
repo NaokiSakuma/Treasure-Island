@@ -32,7 +32,7 @@ public class TransformationShadow : MonoBehaviour
         _startCollisionSize = transform.localScale;
 
         //回転させるオブジェクトと同期
-        this.UpdateAsObservable()
+        this.ObserveEveryValueChanged(_ => _appearObj.localRotation)
             .Subscribe(_ =>
             {
                 transform.localRotation = _appearObj.localRotation;

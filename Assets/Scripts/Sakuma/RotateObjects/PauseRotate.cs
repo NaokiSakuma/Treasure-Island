@@ -10,9 +10,9 @@ public class PauseRotate : MonoBehaviour {
 	void Start () {
 
         // ポーズしたときにオブジェクトを消す
-        this.UpdateAsObservable()
-            .Where(_ => Pausable.Instance.pausing)
-            .Subscribe(_ => RotateManager.Instance.HideObject());
+        this.ObserveEveryValueChanged(x => Pausable.Instance.pausing)
+            .Where(_ => GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
+            .Subscribe(x => { RotateManager.Instance.Pause(!x); });
 	}
 
 }

@@ -23,12 +23,14 @@ public class PauseMenuButton : MonoBehaviour {
             .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
             .Where(_ => !GucchiCS.ModeChanger.Instance.IsChanging)
             .Subscribe(_ => {
+                // SEを鳴らす
+                AudioManager.Instance.PlaySE(AUDIO.SE_POSE);
+
                 Pausable.Instance.pausing = !Pausable.Instance.pausing;
-                RotateManager.Instance.HideObject();
             });
 
-        // 一時停止中と再生中で画像を変更する
-        this.ObserveEveryValueChanged(x => Pausable.Instance.pausing)
+                // 一時停止中と再生中で画像を変更する
+                this.ObserveEveryValueChanged(x => Pausable.Instance.pausing)
             .Subscribe(isPause => {
                 img.sprite = isPause ? _playSprite : _pauseSprite;
             });
