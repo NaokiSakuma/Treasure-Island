@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class FadeManager : SingletonMonoBehaviour<FadeManager>
 {
-    [SerializeField]
-    private GameObject lightFadeIn = null;
     //イン・アウト含めたフェードの種類  
     private enum FadeKindAll
     {
@@ -70,12 +68,12 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
         switch (fadeKind)
         {
             case FadeKindAll.LightIn:
-                lightFadeIn.GetComponentInChildren<LightFadeIn>().Play();
-                //fadeTime = LightFadeIn.Instance.FadeTime;
+                LightFadeIn.Instance.Play();
+                fadeTime = LightFadeIn.Instance.FadeTime;
                 break;
             case FadeKindAll.LightOut:
-                lightFadeIn.GetComponentInChildren<LightFadeIn>().Play();
-                //fadeTime = LightFadeIn.Instance.FadeTime;
+                LightFadeIn.Instance.Play();
+                fadeTime = LightFadeIn.Instance.FadeTime;
                 break;
             case FadeKindAll.CircleIn:
                 CirecleFade.Instance.Play(CirecleFade.FadeMode.In);
@@ -84,12 +82,12 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
             case FadeKindAll.CircleOut:
                 CirecleFade.Instance.Play(CirecleFade.FadeMode.Out);
                 fadeTime = CirecleFade.Instance.FadeTime;
+                Debug.Log("dd");
                 break;
             default:
                 break;
         }
 
-        fadeTime = 4;
     }
 
 }

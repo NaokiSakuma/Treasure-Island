@@ -81,6 +81,8 @@ namespace GucchiCS
 
         void Start()
         {
+            Color skipCol = _skipButton.GetComponent<Image>().color;
+            _skipButton.GetComponent<Image>().color = new Color(skipCol.r, skipCol.g, skipCol.b, 0);
             // BGMを再生
             PlaybackBGM();
             ////フェードフェードモードをフェードアウトにする
@@ -111,6 +113,8 @@ namespace GucchiCS
                  .Where(_ => Input.GetKeyDown(KeyCode.X))
                  .Take(1)
                  .Subscribe(_ => Skip());
+             _skipButton.GetComponent<Image>().color = new Color(skipCol.r, skipCol.g, skipCol.b, 1);
+
          });
 
             // ボリュームを最大にする

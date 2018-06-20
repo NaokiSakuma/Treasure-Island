@@ -7,11 +7,11 @@ using UniRx.Triggers;
 using UnityEngine.UI;
 using System;
 
-public class LightFadeIn : MonoBehaviour
+public class LightFadeIn : SingletonMonoBehaviour<LightFadeIn>
 {
 
     //フェード時間
-    private float fadeTime = 4.0f;
+    private float fadeTime = 1.0f;
     public  float FadeTime
     {
         get { return fadeTime; }
@@ -23,12 +23,15 @@ public class LightFadeIn : MonoBehaviour
 
     Material fadePanelMaterial = null;
     Color changeColor = new Color(1, 1, 1, 1);
-
+    //時間
     float time = 0;
+    //フェードするか
+    bool isFead= false;
 
     public void Play()
     {
         gameObject.SetActive(true);
+       // gameObject.transform.parent.gameObject.SetActive(true);
 
         Image fadePanel = null;
 
@@ -44,10 +47,8 @@ public class LightFadeIn : MonoBehaviour
             fadePanelMaterial = gameObject.GetComponent<Image>().material;
 
             // フェード用パネルの透明度を1にする
-            changeColor = fadePanel.material.color;
-            changeColor.a = 1f;
-            //fadePanel.material.color = fadePanelColor;
-          //  fadePanelMaterial.SetColor("_Color", changeColor);
+            isFead = true;
+
             //パネル座標
             Vector3 panelPos = fadePanel.transform.position;
             fadePanel.transform.position = new Vector3(panelPos.x, panelPos.y, panelPos.z + cameraMoveZ);
@@ -62,8 +63,10 @@ public class LightFadeIn : MonoBehaviour
             fadeTime)
             .OnComplete(() =>
             {
-                //gameObject.SetActive(false);
-                Debug.Log("Fade終わったよ");
+                gameObject.SetActive(false);
+                //gameObject.transform.parent.gameObject.SetActive(false);
+                isFead = false;
+                time = 0;
             });
         });
         seq.Play();
