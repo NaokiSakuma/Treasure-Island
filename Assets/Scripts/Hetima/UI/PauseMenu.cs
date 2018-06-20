@@ -56,10 +56,10 @@ public class PauseMenu : MonoBehaviour {
 
         // カメラを規定の座標に移動させる
         this.ObserveEveryValueChanged(x => Pausable.Instance.pausing)
-            .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
 			.Subscribe(x => {
 				// 停止中で再生中でないなら基点の更新
 				if(x && !_tweener.IsPlaying()){
+					_tweener.Kill();
 					_startPos = Camera.main.transform.position;
 					_startRot = Camera.main.transform.rotation.eulerAngles;
 				}
@@ -77,22 +77,15 @@ public class PauseMenu : MonoBehaviour {
             .Where(_ => Pausable.Instance.pausing)
             .Where(_ => !GucchiCS.ControlState.Instance.IsStateMouse)
             .Select(_ => {
-				var x = Input.GetAxisRaw("Vertical");
 				int result = 0;
-				// 入力がしきい値を越えていたら入力されたことにする
-				if(x >= _threshold){
-					result = -1;
-				}
-				else if(x <= -_threshold){
-					result = 1;
-				}
-				return result;
+				result += Input.GetKeyDown(KeyCode.W) ? 1 : 0;
+				result += Input.GetKeyDown(KeyCode.S) ? -1 : 0;
+				return -result;
 			})
 			.Subscribe(x => _inputDirection.SetValueAndForceNotify(x));
 
 		// 入力方向が変更されたら選択項目を移動する
 		_inputDirection
-			.ThrottleFirst(TimeSpan.FromSeconds(_throttleSeconds))
 			.Subscribe(x => {
 				SelectNum += x;
 			});
