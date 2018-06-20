@@ -5,6 +5,7 @@ using UniRx;
 using UniRx.Triggers;
 using DG.Tweening;
 using System;
+using System.Linq;
 
 public class PauseMenu : MonoBehaviour {
 
@@ -59,7 +60,6 @@ public class PauseMenu : MonoBehaviour {
 			.Subscribe(x => {
 				// 停止中で再生中でないなら基点の更新
 				if(x && !_tweener.IsPlaying()){
-					_tweener.Kill();
 					_startPos = Camera.main.transform.position;
 					_startRot = Camera.main.transform.rotation.eulerAngles;
 				}
@@ -138,6 +138,12 @@ public class PauseMenu : MonoBehaviour {
 					var component = obj.transform.GetComponent<IPauseItem>();
 					if(component != null && component != _item){
 						component.OnEnter();
+
+						// ポーズメニューを持ったオブジェクトの番号を選択中にする
+						var trans = transform.GetComponentsInChildren<Transform>()
+							.FirstOrDefault(t => t.GetComponent<IPauseItem>() == component);
+						SelectNum = trans.GetSiblingIndex();
+
 						if(_item != null){
 							_item.OnExit();
 						}
