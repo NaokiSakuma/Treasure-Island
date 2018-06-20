@@ -3068,7 +3068,7 @@ Prefab:
         type: 2}
       propertyPath: _canvas
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1697583049}
     - target: {fileID: 114096028921530774, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _defaultTempSelectObj

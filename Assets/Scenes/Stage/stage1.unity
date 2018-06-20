@@ -500,6 +500,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 254780413}
     m_Modifications:
+    - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _blinkObjs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4568373185641880, guid: c8a66db713553a7408a8874d01f25197, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -651,7 +656,7 @@ Prefab:
         type: 2}
       propertyPath: _blinkObjs.Array.data[2]
       value: 
-      objectReference: {fileID: 1106432381}
+      objectReference: {fileID: 0}
     - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
         type: 2}
       propertyPath: _player
@@ -668,6 +673,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1757784725199372, guid: 0a5985e59c1e430408cf841a011e9dd3,
         type: 2}
+    - target: {fileID: 114110563070908752, guid: c8a66db713553a7408a8874d01f25197,
+        type: 2}
+      propertyPath: _blinkObjs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1706745881}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8a66db713553a7408a8874d01f25197, type: 2}
   m_IsPrefabParent: 0
@@ -1334,11 +1344,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1106432378}
   m_Script: {fileID: 11500000, guid: 4721b095c6a868f4fa702ebfdbade048, type: 3}
---- !u!1 &1106432381 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1618812577823786, guid: 2f3008b54c738e44dacdfff3df34f269,
-    type: 2}
-  m_PrefabInternal: {fileID: 1106432378}
 --- !u!1 &1115571376
 GameObject:
   m_ObjectHideFlags: 0
