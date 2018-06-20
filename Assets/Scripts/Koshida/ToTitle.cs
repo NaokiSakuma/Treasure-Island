@@ -12,8 +12,8 @@ namespace Konji
         public void OnClick()
         {
             //フェードを開始する
-            CirecleFade.Instance.Play(CirecleFade.FadeMode.Out);
-            Observable.Timer(TimeSpan.FromSeconds(CirecleFade.Instance.GetComponent<CirecleFade>().FadeTime))
+            FadeManager.Instance.OutPlay(FadeManager.FadeKind.Circle);
+            Observable.Timer(TimeSpan.FromSeconds(FadeManager.Instance.FadeTime))
             .Subscribe(x =>
             {
                 SceneManager.LoadScene("TitleScene");

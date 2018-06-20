@@ -13,25 +13,20 @@ public class LightFadeIn : SingletonMonoBehaviour<LightFadeIn>
     [SerializeField]
     Canvas _fadeInCanvas = null;
 
-
-    // Use this for initialization
-    void Start () {
-
+    //フェード時間
+    private float fadeTime = 4.0f;
+    public  float FadeTime
+    {
+        get { return fadeTime; }
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
-
+    //カメラ移動
+    private float cameraMoveZ = 0.5f;
+    //カメラの初期座標
+    private Vector3 cameraStartPos;
 
     public void Play()
     {
 
-        this.FixedUpdateAsObservable()
-            .Take(1)
-            .Subscribe(_ =>
-            {
                 Canvas fadeInCanvas = null;
                 Image fadePanel = null;
 
@@ -50,6 +45,13 @@ public class LightFadeIn : SingletonMonoBehaviour<LightFadeIn>
                     Color fadePanelColor = fadePanel.material.color;
                     fadePanelColor.a = 1f;
                     fadePanel.material.color = fadePanelColor;
+
+                    //パネル座標
+                    Vector3 panelPos = fadePanel.transform.position;
+                    fadePanel.transform.position = new Vector3(panelPos.x, panelPos.y, panelPos.z + cameraMoveZ);
+                    //このエフェクトにより、カメラが移動する為、初期座標がずれる。これを防ぐために初期座標をずらしておく
+                    cameraStartPos = Camera.main.transform.position;
+                    Camera.main.transform.position = new Vector3(cameraStartPos.x, cameraStartPos.y, cameraStartPos.z + cameraMoveZ);
                 })
                 .AppendCallback(() =>
                 {
@@ -58,13 +60,11 @@ public class LightFadeIn : SingletonMonoBehaviour<LightFadeIn>
                     () => fadePanel.material.color,
                     color => fadePanel.material.color = color,
                     0f,
-                    2f
+                    fadeTime
                 );
                 })
-                .Join(Camera.main.transform.DOMove(new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.5f), 2f));
+                .Join(Camera.main.transform.DOMove(new Vector3(cameraStartPos.x, cameraStartPos.y, cameraStartPos.z), fadeTime));
 
                 seq.Play();
-            });
-
     }
 }

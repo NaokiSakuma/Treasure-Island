@@ -57,6 +57,11 @@ public class CirecleFade : SingletonMonoBehaviour<CirecleFade>
         time += Time.deltaTime * 1.0f;
         //シェーダーに現在の進行時間を渡す
         GetComponent<Image>().material.SetFloat("_FadeTime", time  / fadeTime);
+
+        const float offset = 0.1f;        //シーン切り替えをした際にフェードが消えると都合がよくない
+
+        if (time / fadeTime >= 1.0f + offset)
+            gameObject.SetActive(false);
     }
 
     /// <summary>

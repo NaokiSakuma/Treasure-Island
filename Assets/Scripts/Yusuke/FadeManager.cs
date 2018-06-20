@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class FadeManager : SingletonMonoBehaviour<FadeManager>
 {
+
+    //円エフェクト
+    [SerializeField]
+    GameObject circleFade;
+
+    //イン・アウト含めたフェードの種類  
     private enum FadeKindAll
     {
         LightIn,
@@ -20,17 +26,14 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
     }
 
     //最後のフェードアウト
-    private FadeKind lastFadeout;
+    private FadeKind lastFadeout = FadeKind.Light;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    float fadeTime;
+    public float FadeTime
+    {
+        get {return fadeTime; }
+    }
+
 
     //フェードイン
     public void InPlay()
@@ -70,14 +73,20 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
         switch (fadeKind)
         {
             case FadeKindAll.LightIn:
+                LightFadeIn.Instance.Play();
+                fadeTime = LightFadeIn.Instance.FadeTime;
                 break;
             case FadeKindAll.LightOut:
+                LightFadeIn.Instance.Play();
+                fadeTime = LightFadeIn.Instance.FadeTime;
                 break;
             case FadeKindAll.CircleIn:
                 CirecleFade.Instance.Play(CirecleFade.FadeMode.In);
+                fadeTime = CirecleFade.Instance.FadeTime;
                 break;
             case FadeKindAll.CircleOut:
                 CirecleFade.Instance.Play(CirecleFade.FadeMode.Out);
+                fadeTime = CirecleFade.Instance.FadeTime;
                 break;
             default:
                 break;

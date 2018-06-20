@@ -41,7 +41,7 @@ public class PauseBackToSelect : SimplePauseItem
         pauseReset.GetComponent<PauseReset>().CanReset = false;
         pauseBackToGame.GetComponent<PauseBackToGame>().CanPauseBackToGame = false;
         //シーン遷移が終わった際シーン移行
-        Observable.Timer(TimeSpan.FromSeconds(CirecleFade.Instance.FadeTime))
+        Observable.Timer(TimeSpan.FromSeconds(FadeManager.Instance.FadeTime))
         .Subscribe(x =>
         {
             SceneManager.LoadScene("StageSelect");
