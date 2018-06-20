@@ -31,7 +31,7 @@ public class LightFadeIn : SingletonMonoBehaviour<LightFadeIn>
     public void Play()
     {
         gameObject.SetActive(true);
-       // gameObject.transform.parent.gameObject.SetActive(true);
+         gameObject.GetComponentInParent<Canvas>().gameObject.SetActive(true);
 
         Image fadePanel = null;
 
@@ -64,7 +64,7 @@ public class LightFadeIn : SingletonMonoBehaviour<LightFadeIn>
             .OnComplete(() =>
             {
                 gameObject.SetActive(false);
-                //gameObject.transform.parent.gameObject.SetActive(false);
+                gameObject.GetComponentInParent<Canvas>().gameObject.SetActive(false);
                 isFead = false;
                 time = 0;
             });
