@@ -81,6 +81,10 @@ namespace GucchiCS
             if (StageNoReader._isClear)
                 beforeStageNo = (++beforeStageNo) % _doors.Count;
 
+            // 直で開いた場合のエラー防止（ステージ番号の情報が受け取れなかったときの事故防止）
+            if (beforeStageNo < 0)
+                beforeStageNo = 0;
+
             // 初期の仮選択を設定
             _selectedDoor = _doors[beforeStageNo];
             _selectedDoor.OnSelectEnter();
