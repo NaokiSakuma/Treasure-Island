@@ -31,7 +31,7 @@ namespace GucchiCS
             // SEを鳴らす
             AudioManager.Instance.PlaySE(AUDIO.SE_BUTTON);
             //フェードモードを開始する
-            CirecleFade.Instance.Play(CirecleFade.FadeMode.Out);
+            FadeManager.Instance.OutPlay(FadeManager.FadeKind.Circle);
             Observable.Timer(TimeSpan.FromSeconds(CirecleFade.Instance.GetComponent<CirecleFade>().FadeTime))
             .Subscribe(x =>
             {

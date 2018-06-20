@@ -34,7 +34,7 @@ public class PauseBackToSelect : SimplePauseItem
         if (isSceneTrans)
             return;
         //フェードフェードモードをフェードアウトにする
-        CirecleFade.Instance.Play(CirecleFade.FadeMode.Out);
+        FadeManager.Instance.OutPlay(FadeManager.FadeKind.Circle);
         //シーン遷移の処理をおこなった
         isSceneTrans = true;
         //他の処理を停止させる
