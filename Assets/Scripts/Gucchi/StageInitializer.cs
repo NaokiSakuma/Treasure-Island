@@ -83,6 +83,15 @@ namespace GucchiCS
         {
             Color skipCol = _skipButton.GetComponent<Image>().color;
             _skipButton.GetComponent<Image>().color = new Color(skipCol.r, skipCol.g, skipCol.b, 0);
+
+            Color skipCol3 = _skipButton.GetComponent<Image>().GetComponentInChildren<Image>().GetComponentInChildren<Text>().color;
+            _skipButton.GetComponent<Image>().GetComponentInChildren<Image>().GetComponentInChildren<Text>().color = new Color(skipCol3.r, skipCol3.g, skipCol3.b, 0);
+
+            Color skipCol2 = _skipButton.GetComponent<Image>().GetComponentInChildren<Image>().GetComponentInChildren<Text>().transform.parent.GetComponent<Image>().color;
+            _skipButton.GetComponent<Image>().GetComponentInChildren<Image>().GetComponentInChildren<Text>().transform.parent.GetComponent<Image>().color = new Color(skipCol2.r, skipCol2.g, skipCol2.b, 0);
+
+            Debug.Log(_skipButton.GetComponent<Image>().GetComponentInChildren<Image>().GetComponentInChildren<Text>().transform.parent.GetComponent<Image>().gameObject.name);
+
             // BGMを再生
             PlaybackBGM();
             ////フェードフェードモードをフェードアウトにする
@@ -114,6 +123,10 @@ namespace GucchiCS
                  .Take(1)
                  .Subscribe(_ => Skip());
              _skipButton.GetComponent<Image>().color = new Color(skipCol.r, skipCol.g, skipCol.b, 1);
+
+             _skipButton.GetComponent<Image>().GetComponentInChildren<Image>().GetComponentInChildren<Text>().transform.parent.GetComponent<Image>().color = new Color(skipCol2.r, skipCol2.g, skipCol2.b, 1);
+
+             _skipButton.GetComponent<Image>().GetComponentInChildren<Image>().GetComponentInChildren<Text>().color = new Color(skipCol3.r, skipCol3.g, skipCol3.b, 1);
 
          });
 
