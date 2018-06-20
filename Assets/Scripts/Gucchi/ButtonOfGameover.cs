@@ -21,8 +21,15 @@ namespace GucchiCS
 
             // 現在のステージ番号を取得
             int stageNo = StageManager.Instance.StageNo;
+            //フェード終了後ステージオブジェクトを有効にする
+            FadeManager.Instance.OutPlay(FadeManager.FadeKind.Circle);
+            Observable.Timer(TimeSpan.FromSeconds(FadeManager.Instance.FadeTime))
+            .Subscribe(x =>
+            {
+                SceneManager.LoadScene(_sceneName + stageNo.ToString());
+            });
 
-            SceneManager.LoadScene(_sceneName + stageNo.ToString());
+
         }
 
         // クリック時
