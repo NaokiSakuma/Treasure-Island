@@ -21,7 +21,7 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
     }
 
     //最後のフェードアウト
-    private FadeKind lastFadeout;
+    private static FadeKind lastFadeout;
     public FadeKind LastFadeout
     {
         set { lastFadeout = value; }
@@ -87,9 +87,9 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
             case FadeKindAll.CircleOut:
                 CirecleFade.Instance.Play(CirecleFade.FadeMode.Out);
                 fadeTime = CirecleFade.Instance.FadeTime;
-                Debug.Log("dd");
                 break;
             default:
+                Debug.Log("条件外");
                 break;
         }
 

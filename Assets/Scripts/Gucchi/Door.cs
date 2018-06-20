@@ -74,6 +74,9 @@ namespace GucchiCS
                             // SEを鳴らす
                             AudioManager.Instance.PlaySE(AUDIO.SE_DOORZOOM);
 
+                            //最後に行ったフェード保存
+                            FadeManager.Instance.LastFadeout = FadeManager.FadeKind.Light;
+
                             // フェード用パネルの生成
                             fadeInCanvas = Instantiate(_fadeInCanvas);
                             fadePanel = fadeInCanvas.GetComponentInChildren<Image>();
