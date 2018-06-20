@@ -1143,6 +1143,21 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114787650242547466, guid: dab1c379da05a8d4c93cf34b20d9c043,
+        type: 2}
+      propertyPath: m_EffectColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114787650242547466, guid: dab1c379da05a8d4c93cf34b20d9c043,
+        type: 2}
+      propertyPath: m_EffectDistance.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114787650242547466, guid: dab1c379da05a8d4c93cf34b20d9c043,
+        type: 2}
+      propertyPath: m_EffectDistance.y
+      value: -5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dab1c379da05a8d4c93cf34b20d9c043, type: 2}
   m_IsPrefabParent: 0
