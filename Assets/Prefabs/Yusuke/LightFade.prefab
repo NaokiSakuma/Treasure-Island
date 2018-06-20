@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 223073688727561188}
   - component: {fileID: 114071748998696104}
   - component: {fileID: 114513813672151004}
-  m_Layer: 14
+  m_Layer: 5
   m_Name: LightFade
   m_TagString: Respawn
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &224637159409577820
 RectTransform:

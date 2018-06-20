@@ -12,8 +12,8 @@ public class StageSelectFade : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //フェード終了後ステージオブジェクトを有効にする
-        StageFade.Instance.Play(StageFade.FadeMode.In);
-        Observable.Timer(TimeSpan.FromSeconds(StageFade.Instance.FadeTime))
+        FadeManager.Instance.InPlay();
+        Observable.Timer(TimeSpan.FromSeconds(FadeManager.Instance.FadeTime))
         .Subscribe(x =>
         {
             foreach(GameObject doors in doorss)

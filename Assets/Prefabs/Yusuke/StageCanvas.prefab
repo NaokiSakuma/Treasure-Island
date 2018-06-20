@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 223045140226012600}
   - component: {fileID: 114264310251508440}
   - component: {fileID: 114393302407771672}
-  m_Layer: 14
+  m_Layer: 5
   m_Name: StageCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &224555658123662176
 RectTransform:

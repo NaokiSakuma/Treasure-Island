@@ -21,7 +21,12 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
     }
 
     //最後のフェードアウト
-    private FadeKind lastFadeout = FadeKind.Light;
+    private FadeKind lastFadeout;
+    public FadeKind LastFadeout
+    {
+        set { lastFadeout = value; }
+    }
+
 
     float fadeTime;
     public float FadeTime

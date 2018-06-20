@@ -49,6 +49,8 @@ namespace GucchiCS
         [SerializeField]
         Vector3 _goalPos = new Vector3(0f, 0f, 8.9f);
 
+        //最初のタイトルか
+        static bool isFirstTitle = true;
         // シーケンス
         enum SEQUENCE : int
         {
@@ -94,8 +96,12 @@ namespace GucchiCS
 
             // BGMを再生
             PlaybackBGM();
-            ////フェードフェードモードをフェードアウトにする
-            FadeManager.Instance.InPlay();
+            if(!isFirstTitle)
+            {
+                ////フェードフェードモードをフェードアウトにする
+                FadeManager.Instance.InPlay();
+            }
+            isFirstTitle = false;
             Observable.Timer(TimeSpan.FromSeconds(FadeManager.Instance.FadeTime))
          .Subscribe(x =>
          {

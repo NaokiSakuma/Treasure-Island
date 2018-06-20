@@ -105,6 +105,7 @@ namespace GucchiCS
         // クリア時のUIを出す
         void AppearClearUI()
         {
+            FadeManager.Instance.LastFadeout = FadeManager.FadeKind.Light;
             // タイトルシーンだった場合
             if (SceneManager.GetActiveScene().name == SingletonName.TITLE_SCENE)
             {
