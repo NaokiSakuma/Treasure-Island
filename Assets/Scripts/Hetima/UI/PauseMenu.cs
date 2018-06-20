@@ -56,7 +56,9 @@ public class PauseMenu : MonoBehaviour {
 
         // カメラを規定の座標に移動させる
         this.ObserveEveryValueChanged(x => Pausable.Instance.pausing)
+            .DistinctUntilChanged()
             .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
+            .Where(_ => !GucchiCS.ModeChanger.Instance.IsChanging)
 			.Subscribe(x => {
 				// 停止中で再生中でないなら基点の更新
 				if(x && !_tweener.IsPlaying()){

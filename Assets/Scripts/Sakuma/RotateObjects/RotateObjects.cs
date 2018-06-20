@@ -43,7 +43,6 @@ public class RotateObjects : MonoBehaviour {
         // ボタンが押された時の処理
         _button.onClick.AsObservable()
             .Where(_ => CanRotate())
-            //.Where(_ => !_rotateManager.IsRotate)
             .Subscribe(_ =>
             {
                 RotateMethod();

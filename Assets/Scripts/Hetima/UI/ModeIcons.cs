@@ -71,8 +71,6 @@ public class ModeIcons : MonoBehaviour {
 
 		// モード切替
 		target.OnPointerClickAsObservable()
-            // オブジェクトと重なっていなかったら
-            .Where(_ => !RotateManager.Instance.IsMouseRayHit())
             .Subscribe(_ => {
 				// プレイ状態ではないとき、ポーズ中、モード切り替え中、オブジェクト回転中は処理しない
 				if(!GucchiCS.StageManager.Instance.IsPlay || Pausable.Instance.pausing || GucchiCS.ModeChanger.Instance.IsChanging || GucchiCS.ModeChanger.Instance.IsRotate){
