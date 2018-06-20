@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 224545895457429702}
   - component: {fileID: 222042551451358270}
   - component: {fileID: 114074226529316474}
+  - component: {fileID: 114440617449281226}
   - component: {fileID: 114787650242547466}
   m_Layer: 5
   m_Name: Text
@@ -369,6 +370,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fadeTime: 0.2
+--- !u!114 &114440617449281226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1178722809243378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ca063b50dea7ad4c8085e2867215d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveTime: 120
 --- !u!114 &114521599262848248
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -465,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
   m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
 --- !u!114 &114869336338092896
