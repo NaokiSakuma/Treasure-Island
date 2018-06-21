@@ -41,6 +41,9 @@ namespace GucchiCS
             Canvas fadeInCanvas = null;
             Image fadePanel = null;
 
+            //ライトのフェードアウトを行ったことを保存
+            FadeManager.Instance.LastFadeout = FadeManager.FadeKind.Light;
+
             // カメラが次のステージに入るように向けてからステージ遷移
             Sequence seq = DOTween.Sequence()
                 .OnStart(() =>
@@ -77,6 +80,8 @@ namespace GucchiCS
 
                         if (stageNo + 1 > StageManager.MAX_STAGE_NUM)
                             stageNo = 0;
+                        //ライトのフェードアウトを行ったことを保存
+                        FadeManager.Instance.LastFadeout = FadeManager.FadeKind.Light;
 
                         // 次のステージへ遷移
                         string stageName = _sceneName + (++stageNo).ToString();
