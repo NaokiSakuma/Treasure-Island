@@ -57,15 +57,17 @@ public class PauseMenu : MonoBehaviour {
 
         // カメラを規定の座標に移動させる
         this.ObserveEveryValueChanged(x => Pausable.Instance.pausing)
+            .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
 			.Subscribe(x => {
-				// 停止中で再生中でないなら基点の更新
-				if(x && !_tweener.IsPlaying()){
-					_startPos = Camera.main.transform.position;
-					_startRot = Camera.main.transform.rotation.eulerAngles;
-				}
-				_tweener = Camera.main.transform.DOMove(x ? _goalPos : _startPos, _duration);
-				Camera.main.transform.DORotate(x ? _goalRot : _startRot, _duration);
-			});
+                // 停止中で再生中でないなら基点の更新
+                if (x && !_tweener.IsPlaying())
+                {
+                    _startPos = Camera.main.transform.position;
+                    _startRot = Camera.main.transform.rotation.eulerAngles;
+                }
+                _tweener = Camera.main.transform.DOMove(x ? _goalPos : _startPos, _duration);
+                Camera.main.transform.DORotate(x ? _goalRot : _startRot, _duration);
+            });
 
 		// マウスカーソル移動を取得
 		this.UpdateAsObservable()
