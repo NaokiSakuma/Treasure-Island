@@ -100,6 +100,7 @@ namespace GucchiCS
             {
                 ////フェードフェードモードをフェードアウトにする
                 FadeManager.Instance.InPlay();
+                Debug.Log("initFade");
             }
             isFirstTitle = false;
             Observable.Timer(TimeSpan.FromSeconds(FadeManager.Instance.FadeTime))
