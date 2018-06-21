@@ -13,9 +13,15 @@ namespace GucchiCS
         [SerializeField]
         string _sceneName = "";
 
+        //シーン変更したか
+        private bool isSceneChange = false;
+
         // クリック時
         public void OnClickRetry()
         {
+
+            if (isSceneChange)
+                return;
             // SEを鳴らす
             AudioManager.Instance.PlaySE(AUDIO.SE_BUTTON);
 
@@ -23,6 +29,7 @@ namespace GucchiCS
             int stageNo = StageManager.Instance.StageNo;
             //フェード終了後ステージオブジェクトを有効にする
             FadeManager.Instance.OutPlay(FadeManager.FadeKind.Circle);
+            isSceneChange = true;
             Observable.Timer(TimeSpan.FromSeconds(FadeManager.Instance.FadeTime))
             .Subscribe(x =>
             {
@@ -35,12 +42,18 @@ namespace GucchiCS
         // クリック時
         public void OnClickStageSelect()
         {
+
+            if (isSceneChange)
+                return;
+
             // SEを鳴らす
             AudioManager.Instance.PlaySE(AUDIO.SE_BUTTON);
             //フェードモードを開始する
             FadeManager.Instance.OutPlay(FadeManager.FadeKind.Circle);
+            isSceneChange = true;
+
             Observable.Timer(TimeSpan.FromSeconds(1))
-            .Subscribe(x =>
+                    .Subscribe(x =>
             {
                 SceneManager.LoadScene(_sceneName);
             });
