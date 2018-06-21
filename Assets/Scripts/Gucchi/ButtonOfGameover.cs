@@ -14,8 +14,12 @@ namespace GucchiCS
         string _sceneName = "";
 
         //シーン変更したか
-        private bool isSceneChange = false;
+        private static bool isSceneChange = false;
 
+        private void Start()
+        {
+            isSceneChange = false;
+        }
         // クリック時
         public void OnClickRetry()
         {
