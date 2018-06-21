@@ -41,13 +41,13 @@ namespace GucchiCS
         void Start()
         {
             // クリア情報をリセット
-            this.LateUpdateAsObservable()
-                .Where(_ => Input.GetKeyDown(KeyCode.C))
-                .Subscribe(_ =>
-                {
-                    PlayerPrefs.SetString("stage" + (_doorID + 1).ToString(), "");
-                    _guard.GetComponent<SpriteRenderer>().sprite = _stageDoor;
-                });
+            //this.LateUpdateAsObservable()
+            //    .Where(_ => Input.GetKeyDown(KeyCode.C))
+            //    .Subscribe(_ =>
+            //    {
+            //        PlayerPrefs.SetString("stage" + (_doorID + 1).ToString(), "");
+            //        _guard.GetComponent<SpriteRenderer>().sprite = _stageDoor;
+            //    });
         }
 
         // クリックされたらシーン遷移
