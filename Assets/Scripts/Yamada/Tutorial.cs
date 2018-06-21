@@ -26,7 +26,6 @@ public class Tutorial : MonoBehaviour {
         isCtrlChange = CheckObjectControlView();
         CtrlChange();
         if (isViewChange) return;
-        Debug.Log("aaa");
 
         if (GucchiCS.StageManager.Instance.IsPlay)
         {

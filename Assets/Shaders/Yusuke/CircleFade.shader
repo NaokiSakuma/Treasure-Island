@@ -4,7 +4,7 @@
 	{
 		_FadeColor ("TestColor", Color) = (0,0,0,1) 
 		_FadeTime ("FadeTime", float) = 0
-		[Enum(In,0,Out,1)]_FadeMode("FadeMode",Float) = 0//選
+		[Enum(In,0,Out,1,No,2)]_FadeMode("FadeMode",Float) = 0//選
  	}
 
 	SubShader
@@ -51,11 +51,15 @@
 
 			fixed4 frag (v2f i) : SV_Target
 			{
+				if(_FadeMode >= 1.5)
+				discard;
+
+
 				fixed4 col = _FadeColor;
 				col.w = 0;
 				float centerDistance = distance(float2(0.5,0.5),i.uv);
 				const float offset_ = 0.1;
-
+				
 				if(_FadeMode)
 				{
 					col.w = step(0.7071067811865475244008 - _FadeTime * 0.7071067811865475244008,centerDistance + offset_);

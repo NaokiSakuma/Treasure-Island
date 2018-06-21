@@ -13,23 +13,19 @@ public class PauseBackToSelect : SimplePauseItem
     [SerializeField]
     private string _text = "ステージセレクトへ";
     //フェードスさせるオブジェクト
-    [SerializeField]
-    private GameObject fade = null;
-    //フェードの親にするキャンバス
-    [SerializeField]
-    private GameObject canvas = null;
     //リセット機能
     [SerializeField]
     private GameObject pauseReset = null;
     //ポーズから戻る機能ゲームに
     [SerializeField]
-    private GameObject pauseBackToGame = null;
+    private GameObject pauseBackToGame;
     //シーン遷移をするか
     private bool isSceneTrans = false;
 
     void Start()
     {
         GetComponentInChildren<TextMesh>().text = _text;
+
     }
 
 
@@ -37,19 +33,15 @@ public class PauseBackToSelect : SimplePauseItem
     {
         if (isSceneTrans)
             return;
-        //フェードオブジェクト生成
-        Image fadeobj = Instantiate(fade).GetComponent<Image>();
-        //キャンバスを親に設定する
-        fadeobj.gameObject.transform.SetParent(canvas.transform, false);
         //フェードフェードモードをフェードアウトにする
-        fadeobj.GetComponent<CirecleFade>().SetFadeMode(CirecleFade.FadeMode.Out);
+        FadeManager.Instance.OutPlay(FadeManager.FadeKind.Circle);
         //シーン遷移の処理をおこなった
         isSceneTrans = true;
-        //
+        //他の処理を停止させる
         pauseReset.GetComponent<PauseReset>().CanReset = false;
         pauseBackToGame.GetComponent<PauseBackToGame>().CanPauseBackToGame = false;
         //シーン遷移が終わった際シーン移行
-        Observable.Timer(TimeSpan.FromSeconds(fadeobj.GetComponent<CirecleFade>().FadeTime))
+        Observable.Timer(TimeSpan.FromSeconds(FadeManager.Instance.FadeTime))
         .Subscribe(x =>
         {
             SceneManager.LoadScene("StageSelect");
