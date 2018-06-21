@@ -17,8 +17,8 @@ namespace Konji
             .Subscribe(x =>
             {
                 SceneManager.LoadScene("TitleScene");
+                AudioManager.Instance.PlaySE(AUDIO.SE_POSE);
             });
-
         }
     }
 }

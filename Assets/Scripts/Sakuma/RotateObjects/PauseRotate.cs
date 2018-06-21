@@ -11,8 +11,8 @@ public class PauseRotate : MonoBehaviour {
 
         // ポーズしたときにオブジェクトを消す
         this.ObserveEveryValueChanged(x => Pausable.Instance.pausing)
-            .Where(_ => (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL) || (GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED))
-            .Subscribe(x => RotateManager.Instance.Pause(!x));
+            .Where(_ => GucchiCS.ModeChanger.Instance.Mode == GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED)
+            .Subscribe(x => { RotateManager.Instance.Pause(!x); });
 	}
 
 }

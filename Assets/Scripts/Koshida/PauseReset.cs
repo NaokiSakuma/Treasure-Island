@@ -33,6 +33,8 @@ public class PauseReset : SimplePauseItem
             Pausable.Instance.pausing = false;
             //ステージリセット
             GetComponent<GucchiCS.ResetManager>().ResetObjects();
+            // SEを鳴らす
+            AudioManager.Instance.PlaySE(AUDIO.SE_BUTTON);
         }
     }
 }

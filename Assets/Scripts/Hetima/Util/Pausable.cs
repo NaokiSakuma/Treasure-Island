@@ -90,12 +90,15 @@ public class Pausable : SingletonMonoBehaviour<Pausable>{
 		foreach (var monoBehaviour in _pausingMonoBehaviours){
 			monoBehaviour.enabled = false;
 		}
-	}
 
-	/// <summary>
-	/// 再開
-	/// </summary>
-	void Resume (){
+        // ボリューム変更
+        AudioManager.Instance.ChangeVolume(0.2f, 1f);
+    }
+
+    /// <summary>
+    /// 再開
+    /// </summary>
+    void Resume (){
 		// Rigidbodyの再開
 		for (int i = 0; i < _pausingRigidbodies.Length; i++){
 			_pausingRigidbodies[i].WakeUp();
@@ -107,5 +110,8 @@ public class Pausable : SingletonMonoBehaviour<Pausable>{
 		foreach (var monoBehaviour in _pausingMonoBehaviours){
 			monoBehaviour.enabled = true;
 		}
-	}
+
+        // ボリューム変更
+        AudioManager.Instance.ChangeVolume(1f, 1f);
+    }
 }

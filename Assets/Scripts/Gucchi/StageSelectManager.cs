@@ -75,15 +75,18 @@ namespace GucchiCS
             }
 
             // 前回遊んだステージの次のステージを仮選択しておく
-            int beforeStageNo = StageNoReader._stageNo % _doors.Count;
-            if (beforeStageNo == 0)
-                beforeStageNo = 1;
+            int beforeStageNo = (StageNoReader._stageNo - 1) % _doors.Count;
 
-            // 初期の仮選択を設定（クリアした後なら次のステージ、そうでないなら前回のステージまたは１ステージ）
+            // クリアした後かどうかで仮選択させるステージの番号を変更
             if (StageNoReader._isClear)
-                _selectedDoor = _doors[beforeStageNo];
-            else
-                _selectedDoor = _doors[beforeStageNo - 1];
+                beforeStageNo = (++beforeStageNo) % _doors.Count;
+
+            // 直で開いた場合のエラー防止（ステージ番号の情報が受け取れなかったときの事故防止）
+            if (beforeStageNo < 0)
+                beforeStageNo = 0;
+
+            // 初期の仮選択を設定
+            _selectedDoor = _doors[beforeStageNo];
             _selectedDoor.OnSelectEnter();
 
             // 仮選択ステージによってブロック位置を変更

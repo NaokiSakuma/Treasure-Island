@@ -12,6 +12,7 @@ public class PausableController : MonoBehaviour {
             .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
             .Where(_ => !GucchiCS.ModeChanger.Instance.IsChanging)
 			.Where(_ => Input.GetKeyDown(KeyCode.Escape))
+			.Where(_ => !Input.GetMouseButton(0))
 			.Subscribe(_ =>{
                 // SEを鳴らす
                 AudioManager.Instance.ChangeVolume(Pausable.Instance.pausing ? 1f : 0.2f, 1f);

@@ -113,6 +113,15 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
                 canRotateObject = GucchiCS.StageManager.Instance.IsPlay && isTouchMode && !modeChanger.IsChanging && !_isRotate;
             });
 
+        // 最初のオブジェクト選択
+        this.UpdateAsObservable()
+            .Where(_ => GucchiCS.StageManager.Instance.IsPlay)
+            .Take(1)
+            .Subscribe(_ =>
+            {
+                _hitObj = _stageChildObjs[0].gameObject;
+            });
+
         // hitobjectのeffect
         this.ObserveEveryValueChanged(x => _hitObj)
             .Subscribe(_ =>
@@ -144,7 +153,7 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
         // オブジェクトコントロールモードでのマウスでの処理
         this.UpdateAsObservable()
             .Where(_ => canRotateObject)
-            //.Where(_ => !EventSystem.current.IsPointerOverGameObject())
+            .Where(_ => !EventSystem.current.IsPointerOverGameObject())
             .Where(_ => GucchiCS.ControlState.Instance.IsStateMouse)
             .Subscribe(_ =>
             {
@@ -297,7 +306,6 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
             else if(!EventSystem.current.IsPointerOverGameObject())
             {
                 HideRotationUI();
-                modeChanger.SelectedObject = null;
                 modeChanger.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
             }
         }
@@ -342,7 +350,6 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
             {
                 // null
                 HideRotationUI();
-                modeChanger.SelectedObject = null;
                 modeChanger.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL;
                 return;
             }
@@ -351,15 +358,5 @@ public class RotateManager : SingletonMonoBehaviour<RotateManager>
             modeChanger.Mode = GucchiCS.ModeChanger.MODE.OBJECT_CONTROL_SELECTED;
 
         }
-    }
-
-    /// <summary>
-    /// mouseのrayに当たっているか
-    /// </summary>
-    /// <returns>true：当たっている、false：当たっていない</returns>
-    public bool IsMouseRayHit()
-    {
-        RaycastHit hit = new RaycastHit();
-        return Physics.Raycast(_mouseRay, out hit, Mathf.Infinity, layerMask.value);
     }
 }

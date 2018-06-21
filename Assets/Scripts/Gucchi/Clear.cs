@@ -52,8 +52,6 @@ namespace GucchiCS
                 .Where(_ => !_player.GetComponent<Konji.PlayerControl>().IsDead)
                 .Subscribe(col =>
                 {
-                    Debug.Log("Clear enter!");
-
                     // クリア状態にする
                     ModeChanger.Instance.Mode = ModeChanger.MODE.CLEAR;
                     StageNoReader.Instance.Cleared();
@@ -72,8 +70,6 @@ namespace GucchiCS
                 .Delay(System.TimeSpan.FromSeconds(_goNextTime))
                 .Subscribe(_ =>
                 {
-                    Debug.Log("クリアしました～");
-
                     // 中に入っていくように見せる（z軸とスケールを変える）
                     Vector3 clearPos = new Vector3(transform.position.x, transform.position.y, _player.transform.position.z);
                     Vector3 endPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + _clearOutDistance);

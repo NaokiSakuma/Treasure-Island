@@ -46,7 +46,8 @@ public class PauseBackToSelect : SimplePauseItem
         {
             SceneManager.LoadScene("StageSelect");
         });
-
+        // SEを鳴らす
+        AudioManager.Instance.PlaySE(AUDIO.SE_BUTTON);
     }
 }
 

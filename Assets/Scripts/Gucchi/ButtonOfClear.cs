@@ -33,18 +33,10 @@ namespace GucchiCS
         // ボタンがクリックされたときの処理
         public void OnClick()
         {
-            // 透明色
-            Color noAlpha = new Color(1f, 1f, 1f, 0f);
-
-            // UIを透明化
+            // UIを無効化
             _clearText.text = "";
-            ColorBlock colors = new ColorBlock();
-            colors.normalColor = noAlpha;
-            colors.highlightedColor = noAlpha;
-            _stageSelectButton.colors = colors;
-            _stageSelectButton.GetComponentInChildren<Text>().text = "";
-            _nextStageButton.colors = colors;
-            _nextStageButton.GetComponentInChildren<Text>().text = "";
+            _stageSelectButton.gameObject.SetActive(false);
+            _nextStageButton.gameObject.SetActive(false);
 
             Canvas fadeInCanvas = null;
             Image fadePanel = null;
