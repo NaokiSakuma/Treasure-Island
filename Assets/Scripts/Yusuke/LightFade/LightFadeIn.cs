@@ -67,8 +67,6 @@ public class LightFadeIn : MonoBehaviour
             fadeTime)
             .OnComplete(() =>
             {
-                gameObject.SetActive(false);
-
             });
         });
         seq.Play();

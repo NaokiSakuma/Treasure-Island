@@ -29,12 +29,18 @@ public class StageObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
+        if (!isSelect && !isTemporary)
+        {
+            Debug.Log("Z OFF");
+        }
+
         MeshNormalAverage(GetComponent<MeshFilter>().mesh);
         material = GetComponent<MeshRenderer>().material;
 
         IfNeededEffect();
         ChangeColor();
-
     }
 
     /// <summary>

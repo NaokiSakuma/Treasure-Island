@@ -6,10 +6,10 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
 {
 
     [SerializeField]
-    GameObject circle;
+    private GameObject circle;
 
     [SerializeField]
-    GameObject lightFade;
+    private GameObject lightFade;
 
     //イン・アウト含めたフェードの種類  
     private enum FadeKindAll
@@ -80,10 +80,10 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager>
         switch (fadeKind)
         {
             case FadeKindAll.LightIn:
-                //Instantiate(lightFade, null);
-                //lightFade.GetComponentInChildren<LightFadeIn>().Play();
-                //Debug.Log(lightFade.GetComponentInChildren<LightFadeIn>().gameObject.name);
-                //fadeTime = lightFade.GetComponentInChildren<LightFadeIn>().FadeTime; break;
+                Instantiate(lightFade);
+                Debug.Log(lightFade.GetComponentInChildren<LightFadeIn>().gameObject.name);
+                lightFade.GetComponentInChildren<LightFadeIn>().Play();
+                fadeTime = lightFade.GetComponentInChildren<LightFadeIn>().FadeTime; break;
             case FadeKindAll.CircleIn:
                 Instantiate(circle);
                 circle.GetComponentInChildren<CirecleFade>().Play(CirecleFade.FadeMode.In);

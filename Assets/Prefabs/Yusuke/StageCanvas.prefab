@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 223045140226012600}
   - component: {fileID: 114264310251508440}
   - component: {fileID: 114393302407771672}
-  - component: {fileID: 114704093178584648}
   m_Layer: 5
   m_Name: StageCanvas
   m_TagString: Untagged
@@ -205,17 +204,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114704093178584648
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1891425944764470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eea04041056630a4380a1a081c9aa544, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &222984927087693566
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -249,7 +237,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1657851077332536}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 100}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 224883587624757102}

@@ -31,6 +31,10 @@ public class StageObjects : MonoBehaviour {
     void ZFaitingCancell()
     {
         Vector3 pos = Vector3.zero;
+        foreach (StageObject stageObj in stageObjects)
+        {
+               ZReset(stageObj);
+        }
 
         //選択状態のステーオブジェクトを代入
         if (ZAddMinute(SearchSelectObj()))
@@ -98,6 +102,23 @@ public class StageObjects : MonoBehaviour {
         return true;
     }
 
+    /// <summary>
+    /// Z座標に微小な定数を加える
+    /// </summary>
+    /// <param name="zChangeObj">Z座標を加算するオブジェクト</param>
+    bool ZReset(StageObject zChangeObj)
+    {
+        if (!zChangeObj)
+            return false;
+
+        Vector3 pos = zChangeObj.transform.position;
+
+        pos.z = 0;
+
+        zChangeObj.transform.position = pos;
+
+        return true;
+    }
 
 
 }
